@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiraz | Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden; /* لمنع السكرول */
+        }
+        
+        /* الصورة الخلفية مع تأثير الزووم البطيء */
+        .bg-image {
+            background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            animation: zoomIn 25s infinite alternate;
+        }
+        
+        /* طبقة زجاجية داكنة فوق الصورة عشان الكلام يوضح */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.9));
+            z-index: -1;
+        }
+        
+        /* تنسيق المحتوى في النص */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            animation: fadeIn 2s ease-out forwards;
+        }
+        
+        /* اسم الشركة */
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 12px;
+            color: #d4af37; /* لون ذهبي */
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        /* التخصص */
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 200;
+            letter-spacing: 6px;
+            color: #cccccc;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        
+        /* الخط الذهبي المتحرك */
+        .line {
+            width: 0;
+            height: 1px;
+            background-color: #d4af37;
+            margin-bottom: 40px;
+            animation: drawLine 1.5s 1s ease-out forwards;
+        }
+        
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .description {
+            font-size: 1rem;
+            font-weight: 200;
+            color: #aaaaaa;
+            max-width: 550px;
+            line-height: 1.8;
+        }
+        
+        /* زرار التواصل */
+        .contact {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 12px 35px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        
+        .contact:hover {
+            background-color: #d4af37;
+            color: #121212;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* الأكواد المسؤولة عن الحوارات والحركات */
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes drawLine {
+            0% { width: 0; }
+            100% { width: 120px; }
+        }
+        
+        /* تظبيط الموبايل */
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; letter-spacing: 8px; }
+            .main-title { font-size: 1.6rem; }
+            .description { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="logo">TIRAZ</div>
+        <div class="subtitle">Interior Finishing</div>
+        <div class="line"></div>
+        <h1 class="main-title">Crafting Your Space</h1>
+        <p class="description">We are currently upgrading our digital presence to match the quality of our projects. Something extraordinary is coming soon.</p>
+        <a href="mailto:info@tiraz.pro" class="contact">Contact Us</a>
+    </div>
+</body>
+</html>
