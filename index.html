@@ -5,15 +5,15 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>TIRAZ | Interior Design & Turnkey Finishing</title>
-  <meta name="description" content="TIRAZ for Architectural Excellence and Turnkey Finishing. We manage your project with engineering precision.">
-  <meta name="keywords" content="Interior Design, Turnkey Finishing, Architecture, Engineering, BOQ, Shop Drawings">
+  <meta name="description" content="TIRAZ for Architectural Excellence and Turnkey Finishing. We manage your project with engineering precision in El Shorouk and New Cairo.">
+  <meta name="keywords" content="Interior Design, Turnkey Finishing, Architecture, Engineering, BOQ, Shop Drawings, El Shorouk">
 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -22,6 +22,29 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/main.css" rel="stylesheet">
+  
+  <style>
+    .hero-carousel-img {
+      height: 100vh;
+      object-fit: cover;
+    }
+    .carousel-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .carousel-caption {
+      bottom: 0 !important;
+      top: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  </style>
 </head>
 
 <body class="index-page">
@@ -52,43 +75,86 @@
 
   <main class="main">
 
-    <section id="hero" class="hero section dark-background">
-      <img src="assets/img/hero-bg.jpg" alt="Tiraz Turnkey Finishing" data-aos="fade-in">
+    <section id="hero" class="hero section dark-background p-0">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
-      <div class="container d-flex flex-column align-items-center">
-        <h2 data-aos="fade-up" data-aos-delay="100">ARCHITECTURAL EXCELLENCE & TURNKEY FINISHING</h2>
-        <p data-aos="fade-up" data-aos-delay="200">From detailed Shop Drawings to final delivery, we manage your project with engineering precision.</p>
-        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-          <a href="#portfolio" class="btn-get-started">View Portfolio</a>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/img/hero-bg.jpg" class="d-block w-100 hero-carousel-img" alt="Luxury Finishing">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <h2 data-aos="fade-up">ARCHITECTURAL EXCELLENCE</h2>
+              <p data-aos="fade-up" data-aos-delay="100">From detailed Shop Drawings to final delivery, we manage your project with engineering precision.</p>
+              <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="#portfolio" class="btn-get-started">View Projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80" class="d-block w-100 hero-carousel-img" alt="Engineering Precision">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <h2>TURNKEY SOLUTIONS</h2>
+              <p>Specialized in high-end residential and commercial finishing with strict budget control.</p>
+              <div class="d-flex mt-4">
+                <a href="#services" class="btn-get-started">Our Services</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1920&q=80" class="d-block w-100 hero-carousel-img" alt="Technical Office">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <h2>TECHNICAL OFFICE EXPERTISE</h2>
+              <p>Accurate BOQ and precise quantity surveying to ensure your vision is built without waste.</p>
+              <div class="d-flex mt-4">
+                <a href="#contact" class="btn-get-started">Request a Quote</a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
       </div>
-    </section><section id="about" class="about section">
+    </section>
+
+    <section id="about" class="about section">
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3>Engineering Precision Meets Aesthetic Vision</h3>
-            <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="Engineering Planning">
-            <p>At TIRAZ, we are more than just contractors. We approach every project with a strict engineering mindset, ensuring that aesthetic designs are perfectly translated into reality.</p>
-            <p>We believe that flawless execution starts with precise Shop Drawings and accurate Bill of Quantities (BOQ). Our process guarantees zero material waste, strict budget adherence, and unparalleled finishing quality.</p>
+            <h3>Precision Engineering Meets Aesthetic Vision</h3>
+            <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="Engineering">
+            <p>At TIRAZ, we bridge the gap between complex architectural designs and flawless execution. Our approach is rooted in technical excellence and on-site management.</p>
+            <p>We specialize in managing the entire finishing cycle, ensuring that every joint, every level, and every material matches the engineering standards and your personal style.</p>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
             <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-                Whether you have a ready design or need a complete turnkey solution, we provide:
-              </p>
+              <p class="fst-italic">We provide a comprehensive engineering service that includes:</p>
               <ul>
-                <li><i class="bi bi-check-circle-fill"></i> <span><strong>Accurate BOQ:</strong> Detailed quantity surveying to prevent budget overruns.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i> <span><strong>Shop Drawings:</strong> Resolving design conflicts before execution begins.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i> <span><strong>On-Site Supervision:</strong> Daily management to ensure execution matches standards.</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span><strong>Technical Office:</strong> Accurate BOQ and cost control.</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span><strong>Shop Drawings:</strong> Detailed execution plans for every site detail.</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span><strong>On-Site Supervision:</strong> Senior-level engineering oversight.</span></li>
               </ul>
               <div class="position-relative mt-4">
-                <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="Site Execution">
+                <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="Site Management">
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section><section id="stats" class="stats section light-background">
+    </section>
+
+    <section id="stats" class="stats section light-background">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4 justify-content-center">
           <div class="col-lg-4 col-md-6">
@@ -120,61 +186,53 @@
           </div>
         </div>
       </div>
-    </section><section id="services" class="services section">
+    </section>
+
+    <section id="services" class="services section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Services</h2>
-        <p>OUR EXPERTISE</p>
+        <p>OUR CORE EXPERTISE</p>
       </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-5">
           <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="service-item">
-              <div class="img">
-                <img src="assets/img/services-1.jpg" class="img-fluid" alt="Turnkey Finishing">
-              </div>
+              <div class="img"><img src="assets/img/services-1.jpg" class="img-fluid" alt="Turnkey"></div>
               <div class="details position-relative">
                 <div class="icon"><i class="bi bi-house-door"></i></div>
-                <a href="#contact" class="stretched-link">
-                  <h3>Turnkey Finishing</h3>
-                </a>
-                <p>Full execution of architectural and MEP works. We handle everything from the brickwork to the final touches, delivering your space ready to live in.</p>
+                <h3>Turnkey Finishing</h3>
+                <p>Complete execution of residential and commercial projects from brickwork to luxury final handover.</p>
               </div>
             </div>
           </div>
           <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
             <div class="service-item">
-              <div class="img">
-                <img src="assets/img/services-2.jpg" class="img-fluid" alt="Technical Office">
-              </div>
+              <div class="img"><img src="assets/img/services-2.jpg" class="img-fluid" alt="Technical Office"></div>
               <div class="details position-relative">
                 <div class="icon"><i class="bi bi-calculator"></i></div>
-                <a href="#contact" class="stretched-link">
-                  <h3>Technical Office & BOQ</h3>
-                </a>
-                <p>Meticulous quantity surveying, Shop Drawings preparation, and strict cost control to optimize your budget and eliminate hidden expenses.</p>
+                <h3>Technical Office & BOQ</h3>
+                <p>Precise quantity surveying and detailed Shop Drawings to ensure budget adherence and execution quality.</p>
               </div>
             </div>
           </div>
           <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
             <div class="service-item">
-              <div class="img">
-                <img src="assets/img/services-3.jpg" class="img-fluid" alt="Engineering Supervision">
-              </div>
+              <div class="img"><img src="assets/img/services-3.jpg" class="img-fluid" alt="Supervision"></div>
               <div class="details position-relative">
                 <div class="icon"><i class="bi bi-compass"></i></div>
-                <a href="#contact" class="stretched-link">
-                  <h3>Engineering Supervision</h3>
-                </a>
-                <p>Professional on-site management and quality control to ensure all contractors execute the work according to the approved engineering standards.</p>
+                <h3>Engineering Supervision</h3>
+                <p>Expert site management and quality control to ensure every detail matches the approved design.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section><section id="portfolio" class="portfolio section">
+    </section>
+
+    <section id="portfolio" class="portfolio section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Portfolio</h2>
-        <p>CHECK OUR RECENT WORK</p>
+        <p>RECENT PROJECTS</p>
       </div>
       <div class="container">
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -182,63 +240,53 @@
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-residential">Residential</li>
             <li data-filter=".filter-commercial">Commercial</li>
-            <li data-filter=".filter-drawings">Shop Drawings</li>
           </ul>
-
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-residential">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="Residential Project">
+                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
-                  <h4>Villa Finishing</h4>
-                  <p>Residential Turnkey</p>
+                  <h4>Villa Project</h4>
+                  <p>Turnkey Finishing</p>
                   <a href="assets/img/portfolio/app-1.jpg" data-gallery="portfolio-gallery-residential" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div>
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-commercial">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="Commercial Project">
+                <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
-                  <h4>HQ Office</h4>
-                  <p>Commercial Execution</p>
+                  <h4>Office Space</h4>
+                  <p>Design & Execution</p>
                   <a href="assets/img/portfolio/product-1.jpg" data-gallery="portfolio-gallery-commercial" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-drawings">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="Engineering Drawings">
-                <div class="portfolio-info">
-                  <h4>Execution Details</h4>
-                  <p>Shop Drawings & BOQ</p>
-                  <a href="assets/img/portfolio/branding-1.jpg" data-gallery="portfolio-gallery-drawings" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section><section id="contact" class="contact section">
+    </section>
+
+    <section id="contact" class="contact section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>START YOUR PROJECT WITH US</p>
+        <p>GET IN TOUCH</p>
       </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4 justify-content-center">
-          <div class="col-lg-8">
+          <div class="col-lg-10">
             <div class="row gy-4">
-              <div class="col-lg-12">
+              <div class="col-md-12">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
-                  <h3>Office Location</h3>
+                  <h3>Office</h3>
                   <p>El Shorouk City, Cairo, Egypt</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
-                  <h3>Call Us / WhatsApp</h3>
+                  <h3>Call Us</h3>
                   <p>+20 (Available Soon)</p>
                 </div>
               </div>
@@ -253,7 +301,9 @@
           </div>
         </div>
       </div>
-    </section></main>
+    </section>
+
+  </main>
 
   <footer id="footer" class="footer dark-background">
     <div class="container footer-top">
@@ -263,9 +313,8 @@
             <span class="sitename">TIRAZ</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>El Shorouk City</p>
-            <p>Cairo, Egypt</p>
-            <p class="mt-3"><strong>Email:</strong> <span>info@tiraz.pro</span></p>
+            <p>El Shorouk City, Cairo</p>
+            <p><strong>Email:</strong> <span>info@tiraz.pro</span></p>
           </div>
         </div>
         <div class="col-lg-4 col-md-12 footer-links text-lg-end text-start">
@@ -273,17 +322,14 @@
           <ul>
             <li><i class="bi bi-chevron-right"></i> <a href="#">Turnkey Finishing</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="#">Technical Office & BOQ</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Engineering Supervision</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Shop Drawings</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Supervision</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">TIRAZ</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
     </div>
   </footer>
 
@@ -292,7 +338,6 @@
   <div id="preloader"></div>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
