@@ -1,59 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8">
-    <title>Arkitektur - Architecture HTML Template</title>
+    <title>Tiraz | طراز للتشطيبات والمقاولات</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="تشطيبات, ديكور, مقاولات, تصميم داخلي, إشراف هندسي" name="keywords">
+    <meta content="طراز للتنفيذ المتكامل والإشراف الهندسي" name="description">
 
-    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Teko:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
 
-    <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, select, textarea {
+            font-family: 'Tajawal', sans-serif !important;
+        }
+        .text-start { text-align: right !important; }
+        .text-end { text-align: left !important; }
+        .me-auto { margin-left: 0 !important; margin-right: auto !important; }
+        .ms-auto { margin-right: 0 !important; margin-left: auto !important; }
+        .me-3, .me-2, .me-4 { margin-left: 1rem !important; margin-right: 0 !important; }
+        .ms-4, .ms-3 { margin-right: 1.5rem !important; margin-left: 0 !important; }
+        .pe-5 { padding-left: 3rem !important; padding-right: 0 !important; }
+        .ps-4 { padding-right: 1.5rem !important; padding-left: 0 !important; }
+    </style>
 </head>
 
 <body>
-    <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
         <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
     </div>
-    <!-- Spinner End -->
-
-
-    <!-- Topbar Start -->
     <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="row gx-0 d-none d-lg-flex">
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-3">
-                    <a class="text-body px-2" href="tel:+0123456789"><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</a>
-                    <a class="text-body px-2" href="mailto:info@example.com"><i class="fa fa-envelope-open text-primary me-2"></i>info@example.com</a>
+                    <a class="text-body px-2" href="tel:+0123456789"><i class="fa fa-phone-alt text-primary me-2"></i>+20 123 456 7890</a>
+                    <a class="text-body px-2" href="mailto:info@tiraz.pro"><i class="fa fa-envelope-open text-primary me-2"></i>info@tiraz.pro</a>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-2">
-                    <a class="text-body px-2" href="">Terms</a>
-                    <a class="text-body px-2" href="">Privacy</a>
+                    <a class="text-body px-2" href="">الشروط والأحكام</a>
+                    <a class="text-body px-2" href="">سياسة الخصوصية</a>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -64,42 +69,33 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
-            <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="Icon"></h1>
+            <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="Icon"> طراز</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
+                <a href="index.html" class="nav-item nav-link active">الرئيسية</a>
+                <a href="about.html" class="nav-item nav-link">من نحن</a>
+                <a href="service.html" class="nav-item nav-link">خدماتنا</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu border-0 m-0">
-                        <a href="feature.html" class="dropdown-item">Our Features</a>
-                        <a href="project.html" class="dropdown-item">Our Projects</a>
-                        <a href="team.html" class="dropdown-item">Team Members</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">الصفحات</a>
+                    <div class="dropdown-menu border-0 m-0 text-end">
+                        <a href="feature.html" class="dropdown-item">مميزاتنا</a>
+                        <a href="project.html" class="dropdown-item">مشاريعنا</a>
+                        <a href="team.html" class="dropdown-item">فريق العمل</a>
+                        <a href="appointment.html" class="dropdown-item">طلب مقايسة</a>
+                        <a href="testimonial.html" class="dropdown-item">آراء العملاء</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
             </div>
-            <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Appointment</a>
+            <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
         </div>
     </nav>
-    <!-- Navbar End -->
-
-
-    <!-- Carousel Start -->
     <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative" data-dot="<img src='img/carousel-1.jpg'>">
@@ -108,9 +104,9 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Read More</a>
+                                <h1 class="display-1 text-white animated slideInDown">أفضل خدمات التشطيب المعماري والمقاولات</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-3">نحول المخططات الهندسية إلى واقع ملموس بأعلى معايير الجودة، مع التزام تام بالدقة ومطابقة المواصفات الفنية.</p>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">اكتشف المزيد</a>
                             </div>
                         </div>
                     </div>
@@ -122,9 +118,9 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Read More</a>
+                                <h1 class="display-1 text-white animated slideInDown">إدارة هندسية دقيقة وإشراف متكامل</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-3">نضمن لك تنفيذاً دقيقاً مطابقاً تماماً للرسومات التنفيذية (Shop Drawings) وحصر كميات (BOQ) دقيق لمنع أي هدر.</p>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">خدمات الإشراف</a>
                             </div>
                         </div>
                     </div>
@@ -136,9 +132,9 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Read More</a>
+                                <h1 class="display-1 text-white animated slideInDown">تسليم مفتاح (Turnkey Solutions)</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-3">راحة بالك هي أولويتنا. نتولى إدارة مشروعك بالكامل من مرحلة التصميم الداخلي وحتى التسليم النهائي.</p>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">تواصل معنا</a>
                             </div>
                         </div>
                     </div>
@@ -146,10 +142,6 @@
             </div>
         </div>
     </div>
-    <!-- Carousel End -->
-
-
-    <!-- Facts Start -->
     <div class="container-xxl py-5">
         <div class="container pt-5">
             <div class="row g-4">
@@ -158,8 +150,8 @@
                         <div class="fact-icon">
                             <img src="img/icons/icon-2.png" alt="Icon">
                         </div>
-                        <h3 class="mb-3">Design Approach</h3>
-                        <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <h3 class="mb-3">النهج الهندسي</h3>
+                        <p class="mb-0">نعتمد على المعايير الهندسية الصارمة في كل خطوة، من مراجعة المخططات إلى استلام البنود في الموقع.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -167,8 +159,8 @@
                         <div class="fact-icon">
                             <img src="img/icons/icon-3.png" alt="Icon">
                         </div>
-                        <h3 class="mb-3">Innovative Solutions</h3>
-                        <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <h3 class="mb-3">دقة المقايسات</h3>
+                        <p class="mb-0">إعداد قوائم كميات (BOQ) تفصيلية تضمن لك رؤية واضحة للميزانية بدون أي مفاجآت أو تكاليف خفية.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -176,17 +168,13 @@
                         <div class="fact-icon">
                             <img src="img/icons/icon-4.png" alt="Icon">
                         </div>
-                        <h3 class="mb-3">Project Management</h3>
-                        <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                        <h3 class="mb-3">إدارة المواقع</h3>
+                        <p class="mb-0">متابعة يومية دقيقة لسير العمل لضمان الالتزام بالجدول الزمني وتسليم المشروع في موعده المحدد.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Facts End -->
-
-
-    <!-- About Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
@@ -197,34 +185,30 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <h4 class="section-title">About Us</h4>
-                    <h1 class="display-5 mb-4">A Creative Architecture Agency For Your Dream Home</h1>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
+                    <h4 class="section-title">من نحن</h4>
+                    <h1 class="display-5 mb-4">شركة تشطيبات هندسية رائدة لبناء منزل أحلامك</h1>
+                    <p>في "طراز"، نحن لا نقوم بالتشطيب العشوائي. نحن ندير مشروعك بعقلية هندسية احترافية. نؤمن بأن جودة التشطيب تبدأ من التخطيط السليم والدراسة الدقيقة لكل بند.</p>
+                    <p class="mb-4">سواء كنت تمتلك تصميماً مسبقاً تبحث عن من ينفذه بدقة، أو تبحث عن حلول (تسليم مفتاح) متكاملة، فريقنا من المهندسين المتخصصين جاهز لتحويل رؤيتك إلى واقع ملموس يعكس ذوقك الرفيع.</p>
                     <div class="d-flex align-items-center mb-5">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center border border-5 border-primary" style="width: 120px; height: 120px;">
-                            <h1 class="display-1 mb-n2" data-toggle="counter-up">25</h1>
+                            <h1 class="display-1 mb-n2" data-toggle="counter-up">10</h1>
                         </div>
-                        <div class="ps-4">
-                            <h3>Years</h3>
-                            <h3>Working</h3>
-                            <h3 class="mb-0">Experience</h3>
+                        <div class="ps-4 ms-3">
+                            <h3>سنوات</h3>
+                            <h3>من الخبرة</h3>
+                            <h3 class="mb-0">الهندسية</h3>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5" href="">Read More</a>
+                    <a class="btn btn-primary py-3 px-5" href="">اقرأ المزيد</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
-
-
-    <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="section-title">Our Services</h4>
-                <h1 class="display-5 mb-4">We Focused On Modern Architecture And Interior Design</h1>
+                <h4 class="section-title">خدماتنا</h4>
+                <h1 class="display-5 mb-4">نركز على دقة التنفيذ، الإشراف الهندسي، والتشطيبات المتكاملة</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -232,9 +216,9 @@
                         <img class="bg-img" src="img/service-1.jpg" alt="">
                         <div class="service-text p-5">
                             <img class="mb-4" src="img/icons/icon-5.png" alt="Icon">
-                            <h3 class="mb-3">Architecture</h3>
-                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                            <h3 class="mb-3">التشطيب المتكامل</h3>
+                            <p class="mb-4">تنفيذ كافة البنود المعمارية والكهروميكانيكية بجودة فائقة ونظام تسليم المفتاح.</p>
+                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>المزيد</a>
                         </div>
                     </div>
                 </div>
@@ -243,9 +227,9 @@
                         <img class="bg-img" src="img/service-2.jpg" alt="">
                         <div class="service-text p-5">
                             <img class="mb-4" src="img/icons/icon-6.png" alt="Icon">
-                            <h3 class="mb-3">3D Animation</h3>
-                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                            <h3 class="mb-3">التصميم الداخلي</h3>
+                            <p class="mb-4">تصميمات 3D واقعية وعملية تراعي استغلال المساحات وقابلة للتنفيذ الفعلي.</p>
+                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>المزيد</a>
                         </div>
                     </div>
                 </div>
@@ -254,9 +238,9 @@
                         <img class="bg-img" src="img/service-3.jpg" alt="">
                         <div class="service-text p-5">
                             <img class="mb-4" src="img/icons/icon-7.png" alt="Icon">
-                            <h3 class="mb-3">House Planning</h3>
-                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                            <h3 class="mb-3">المخططات التنفيذية</h3>
+                            <p class="mb-4">إعداد (Shop Drawings) دقيقة تضمن تفادي الأخطاء أثناء مراحل التنفيذ.</p>
+                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>المزيد</a>
                         </div>
                     </div>
                 </div>
@@ -265,9 +249,9 @@
                         <img class="bg-img" src="img/service-4.jpg" alt="">
                         <div class="service-text p-5">
                             <img class="mb-4" src="img/icons/icon-8.png" alt="Icon">
-                            <h3 class="mb-3">Interior Design</h3>
-                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                            <h3 class="mb-3">الإشراف الهندسي</h3>
+                            <p class="mb-4">إدارة يومية للموقع وضبط جودة استلام البنود من المقاولين والصنايعية.</p>
+                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>المزيد</a>
                         </div>
                     </div>
                 </div>
@@ -276,9 +260,9 @@
                         <img class="bg-img" src="img/service-5.jpg" alt="">
                         <div class="service-text p-5">
                             <img class="mb-4" src="img/icons/icon-9.png" alt="Icon">
-                            <h3 class="mb-3">Renovation</h3>
-                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                            <h3 class="mb-3">التجديد والترميم</h3>
+                            <p class="mb-4">إعادة تأهيل وتجديد الوحدات السكنية والإدارية لتعود كالجديدة تماماً.</p>
+                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>المزيد</a>
                         </div>
                     </div>
                 </div>
@@ -287,33 +271,29 @@
                         <img class="bg-img" src="img/service-6.jpg" alt="">
                         <div class="service-text p-5">
                             <img class="mb-4" src="img/icons/icon-10.png" alt="Icon">
-                            <h3 class="mb-3">Construction</h3>
-                            <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                            <h3 class="mb-3">المقايسات والحصر</h3>
+                            <p class="mb-4">حصر كميات دقيق وإعداد مقايسات (BOQ) لحماية ميزانيتك من الهدر.</p>
+                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>المزيد</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Service End -->
-
-
-    <!-- Feature Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h4 class="section-title">Why Choose Us!</h4>
-                    <h1 class="display-5 mb-4">Why You Should Trust Us? Learn More About Us!</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <h4 class="section-title">لماذا تختارنا!</h4>
+                    <h1 class="display-5 mb-4">لماذا يجب أن تثق بنا في تنفيذ مشروعك؟</h1>
+                    <p class="mb-4">لأننا ندمج بين الجانب الفني للتصميم والصرامة الهندسية في التنفيذ. نحن نتولى مسؤولية مشروعك بالكامل ونحميك من عشوائية السوق وتلاعب العمالة، لنسلمك وحدة مطابقة للمواصفات.</p>
                     <div class="row g-4">
                         <div class="col-12">
                             <div class="d-flex align-items-start">
                                 <img class="flex-shrink-0" src="img/icons/icon-2.png" alt="Icon">
                                 <div class="ms-4">
-                                    <h3>Design Approach</h3>
-                                    <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                                    <h3>شفافية التعامل</h3>
+                                    <p class="mb-0">تقارير دورية ومقايسات واضحة تضعك في الصورة خطوة بخطوة.</p>
                                 </div>
                             </div>
                         </div>
@@ -321,8 +301,8 @@
                             <div class="d-flex align-items-start">
                                 <img class="flex-shrink-0" src="img/icons/icon-3.png" alt="Icon">
                                 <div class="ms-4">
-                                    <h3>Innovative Solutions</h3>
-                                    <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                                    <h3>حلول هندسية مبتكرة</h3>
+                                    <p class="mb-0">معالجة التحديات المعمارية في الموقع بذكاء وكفاءة عالية.</p>
                                 </div>
                             </div>
                         </div>
@@ -330,8 +310,8 @@
                             <div class="d-flex align-items-start">
                                 <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
                                 <div class="ms-4">
-                                    <h3>Project Management</h3>
-                                    <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                                    <h3>إدارة صارمة للموقع</h3>
+                                    <p class="mb-0">رقابة يومية لضمان عدم وجود أي أخطاء أو تأخير في الجدول الزمني.</p>
                                 </div>
                             </div>
                         </div>
@@ -346,30 +326,26 @@
             </div>
         </div>
     </div>
-    <!-- Feature End -->
-
-
-    <!-- Project Start -->
     <div class="container-xxl project py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="section-title">Our Projects</h4>
-                <h1 class="display-5 mb-4">Visit Our Latest Projects And Our Innovative Works</h1>
+                <h4 class="section-title">مشاريعنا</h4>
+                <h1 class="display-5 mb-4">تصفح أحدث مشاريعنا وأعمالنا المنفذة</h1>
             </div>
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-lg-4">
                     <div class="nav nav-pills d-flex justify-content-between w-100 h-100 me-4">
                         <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4 active" data-bs-toggle="pill" data-bs-target="#tab-pane-1" type="button">
-                            <h3 class="m-0">01. Modern Complex</h3>
+                            <h3 class="m-0">01. فيلا سكنية - التجمع</h3>
                         </button>
                         <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4" data-bs-toggle="pill" data-bs-target="#tab-pane-2" type="button">
-                            <h3 class="m-0">02. Royal Hotel</h3>
+                            <h3 class="m-0">02. مقر إداري - الشروق</h3>
                         </button>
                         <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4" data-bs-toggle="pill" data-bs-target="#tab-pane-3" type="button">
-                            <h3 class="m-0">03. Mexwel Buiding</h3>
+                            <h3 class="m-0">03. شقة فندقية مودرن</h3>
                         </button>
                         <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-0" data-bs-toggle="pill" data-bs-target="#tab-pane-4" type="button">
-                            <h3 class="m-0">04. Shopping Complex</h3>
+                            <h3 class="m-0">04. مطعم تجاري</h3>
                         </button>
                     </div>
                 </div>
@@ -384,12 +360,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h1 class="mb-3">25 Years Of Experience In Architecture Industry</h1>
-                                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Design Approach</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Innovative Solutions</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Project Management</p>
-                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">Read More</a>
+                                    <h1 class="mb-3">تشطيب متكامل بنظام تسليم المفتاح</h1>
+                                    <p class="mb-4">تم استلام الوحدة على الطوب الأحمر، وقمنا بإعداد التصميمات والمقايسات، ثم الإشراف على التنفيذ حتى التسليم النهائي متضمناً الديكورات والإضاءة.</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>تصميم داخلي</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>إشراف هندسي</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>توريد وتركيب</p>
+                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">عرض التفاصيل</a>
                                 </div>
                             </div>
                         </div>
@@ -402,12 +378,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h1 class="mb-3">25 Years Of Experience In Architecture Industry</h1>
-                                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Design Approach</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Innovative Solutions</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Project Management</p>
-                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">Read More</a>
+                                    <h1 class="mb-3">إدارة وتنفيذ المساحات الإدارية</h1>
+                                    <p class="mb-4">تنفيذ التأسيسات الكهروميكانيكية المتطورة لتناسب احتياجات الشركات، مع تشطيبات تعكس الهوية البصرية للعلامة التجارية.</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>تأسيس شبكات</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>قواطع زجاجية</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>أنظمة تكييف وحريق</p>
+                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">عرض التفاصيل</a>
                                 </div>
                             </div>
                         </div>
@@ -420,12 +396,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h1 class="mb-3">25 Years Of Experience In Architecture Industry</h1>
-                                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Design Approach</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Innovative Solutions</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Project Management</p>
-                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">Read More</a>
+                                    <h1 class="mb-3">تحويل المساحات لحلول سكنية ذكية</h1>
+                                    <p class="mb-4">تعديل معماري شامل للاستفادة القصوى من المساحات، مع تشطيب بألوان هادئة وإضاءات مخفية تبرز جمال الديكور.</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>تعديلات معمارية</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>ديكورات جبسية</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>أرضيات HDF</p>
+                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">عرض التفاصيل</a>
                                 </div>
                             </div>
                         </div>
@@ -438,12 +414,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h1 class="mb-3">25 Years Of Experience In Architecture Industry</h1>
-                                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Design Approach</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Innovative Solutions</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Project Management</p>
-                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">Read More</a>
+                                    <h1 class="mb-3">تشطيب المساحات التجارية بأعلى معايير الأمان</h1>
+                                    <p class="mb-4">تنفيذ المطاعم والمقاهي يتطلب دقة في أعمال السباكة، التهوية، واشتراطات الحماية المدنية، وهو ما نضمنه في "طراز".</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>أنظمة شفط وتهوية</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>تأسيس مطابخ صناعية</p>
+                                    <p><i class="fa fa-check text-primary ms-3"></i>واجهات ديكورية</p>
+                                    <a href="" class="btn btn-primary py-3 px-5 mt-3">عرض التفاصيل</a>
                                 </div>
                             </div>
                         </div>
@@ -452,15 +428,11 @@
             </div>
         </div>
     </div>
-    <!-- Project End -->
-
-
-    <!-- Team Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="section-title">Team Members</h4>
-                <h1 class="display-5 mb-4">We Are Creative Architecture Team For Your Dream Home</h1>
+                <h4 class="section-title">فريق العمل</h4>
+                <h1 class="display-5 mb-4">نخبة من المهندسين لضمان نجاح مشروعك</h1>
             </div>
             <div class="row g-0 team-items">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -474,8 +446,8 @@
                             </div>
                         </div>
                         <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
+                            <h3 class="mt-2">اسم المهندس</h3>
+                            <span class="text-primary">مدير المشروعات</span>
                         </div>
                     </div>
                 </div>
@@ -490,8 +462,8 @@
                             </div>
                         </div>
                         <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
+                            <h3 class="mt-2">اسم المهندس</h3>
+                            <span class="text-primary">مهندس مكتب فني (BOQ)</span>
                         </div>
                     </div>
                 </div>
@@ -506,8 +478,8 @@
                             </div>
                         </div>
                         <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
+                            <h3 class="mt-2">اسم المهندس</h3>
+                            <span class="text-primary">مهندس موقع</span>
                         </div>
                     </div>
                 </div>
@@ -522,25 +494,21 @@
                             </div>
                         </div>
                         <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
+                            <h3 class="mt-2">اسم المهندس</h3>
+                            <span class="text-primary">مصمم داخلي</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Team End -->
-
-
-    <!-- Appointment Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h4 class="section-title">Appointment</h4>
-                    <h1 class="display-5 mb-4">Make An Appointment To Start Your Dream Project</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <h4 class="section-title">طلب مقايسة</h4>
+                    <h1 class="display-5 mb-4">احجز موعداً لمعاينة الموقع وبدء مشروعك</h1>
+                    <p class="mb-4">نسعد بتواصلكم لتحديد موعد للمعاينة الميدانية ومناقشة متطلبات التشطيب وإعداد المقايسات الأولية.</p>
                     <div class="row g-4">
                         <div class="col-12">
                             <div class="d-flex">
@@ -548,8 +516,8 @@
                                     <i class="fa fa-2x fa-phone-alt text-primary"></i>
                                 </div>
                                 <div class="ms-4">
-                                    <p class="mb-2">Call Us Now</p>
-                                    <h3 class="mb-0">+012 345 6789</h3>
+                                    <p class="mb-2">اتصل بنا الآن</p>
+                                    <h3 class="mb-0" dir="ltr">+20 123 456 7890</h3>
                                 </div>
                             </div>
                         </div>
@@ -559,8 +527,8 @@
                                     <i class="fa fa-2x fa-envelope-open text-primary"></i>
                                 </div>
                                 <div class="ms-4">
-                                    <p class="mb-2">Mail Us Now</p>
-                                    <h3 class="mb-0">info@example.com</h3>
+                                    <p class="mb-2">راسلنا عبر البريد</p>
+                                    <h3 class="mb-0">info@tiraz.pro</h3>
                                 </div>
                             </div>
                         </div>
@@ -569,88 +537,80 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="row g-3">
                         <div class="col-12 col-sm-6">
-                            <input type="text" class="form-control" placeholder="Your Name" style="height: 55px;">
+                            <input type="text" class="form-control" placeholder="الاسم الكريم" style="height: 55px;">
                         </div>
                         <div class="col-12 col-sm-6">
-                            <input type="email" class="form-control" placeholder="Your Email" style="height: 55px;">
+                            <input type="email" class="form-control" placeholder="البريد الإلكتروني" style="height: 55px;">
                         </div>
                         <div class="col-12 col-sm-6">
-                            <input type="text" class="form-control" placeholder="Your Mobile" style="height: 55px;">
+                            <input type="text" class="form-control" placeholder="رقم الهاتف المحمول" style="height: 55px;">
                         </div>
                         <div class="col-12 col-sm-6">
                             <select class="form-select" style="height: 55px;">
-                                <option selected>Choose Service</option>
-                                <option value="1">Service 1</option>
-                                <option value="2">Service 2</option>
-                                <option value="3">Service 3</option>
+                                <option selected>اختر الخدمة المطلوبة</option>
+                                <option value="1">تشطيب متكامل (تسليم مفتاح)</option>
+                                <option value="2">إشراف هندسي وحصر كميات</option>
+                                <option value="3">تصميم داخلي ورسومات تنفيذية</option>
                             </select>
                         </div>
                         <div class="col-12 col-sm-6">
                             <div class="date" id="date" data-target-input="nearest">
                                 <input type="text"
                                     class="form-control datetimepicker-input"
-                                    placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                    placeholder="تاريخ المعاينة المقترح" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
                             <div class="time" id="time" data-target-input="nearest">
                                 <input type="text"
                                     class="form-control datetimepicker-input"
-                                    placeholder="Choose Date" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
+                                    placeholder="الوقت المناسب" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
                             </div>
                         </div>
                         <div class="col-12">
-                            <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                            <textarea class="form-control" rows="5" placeholder="تفاصيل الوحدة (المساحة، الموقع، حالة الاستلام)"></textarea>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Book Appointment</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">إرسال طلب المعاينة</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Appointment End -->
-
-
-    <!-- Testimonial Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="section-title">Testimonial</h4>
-                <h1 class="display-5 mb-4">Thousands Of Customers Who Trust Us And Our Services</h1>
+                <h4 class="section-title">آراء العملاء</h4>
+                <h1 class="display-5 mb-4">نفخر بثقة عملائنا في جودة تنفيذنا</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                 <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='img/testimonial-1.jpg' alt=''>">
-                    <p class="fs-5">Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                    <h3>Client Name</h3>
-                    <span class="text-primary">Profession</span>
+                    <p class="fs-5">"التزام تام بالمواعيد والمقايسات، استلمت شقتي مطابقة للتصميم اللي اتفقنا عليه بالظبط وبدون أي مفاجآت في التكاليف. شكراً طراز."</p>
+                    <h3>عميل مميز</h3>
+                    <span class="text-primary">صاحب فيلا</span>
                 </div>
                 <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='img/testimonial-2.jpg' alt=''>">
-                    <p class="fs-5">Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                    <h3>Client Name</h3>
-                    <span class="text-primary">Profession</span>
+                    <p class="fs-5">"التعامل مع مهندسين فاهمين شغلهم بيفرق جداً. المتابعة اليومية للموقع والإشراف على الصنايعية ريحني جداً من وجع الدماغ."</p>
+                    <h3>عميل مميز</h3>
+                    <span class="text-primary">صاحب مقر إداري</span>
                 </div>
                 <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='img/testimonial-3.jpg' alt=''>">
-                    <p class="fs-5">Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                    <h3>Client Name</h3>
-                    <span class="text-primary">Profession</span>
+                    <p class="fs-5">"شغل المقايسات كان دقيق جداً، وده ساعدنا ندير الميزانية صح وميحصلش هدر في الخامات. احترافية عالية في التنفيذ."</p>
+                    <h3>عميل مميز</h3>
+                    <span class="text-primary">مستثمر عقاري</span>
                 </div>
             </div>      
         </div>
     </div>
-    <!-- Testimonial End -->
-
-
-    <!-- Footer Start -->
     <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">Address</h3>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p>
+                    <h3 class="text-light mb-4">بيانات التواصل</h3>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>القاهرة، مصر</p>
+                    <p class="mb-2" dir="ltr"><i class="fa fa-phone-alt text-primary ms-3"></i>+20 123 456 7890</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@tiraz.pro</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -659,27 +619,27 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">Services</h3>
-                    <a class="btn btn-link" href="">Architecture</a>
-                    <a class="btn btn-link" href="">3D Animation</a>
-                    <a class="btn btn-link" href="">House Planning</a>
-                    <a class="btn btn-link" href="">Interior Design</a>
-                    <a class="btn btn-link" href="">Construction</a>
+                    <h3 class="text-light mb-4">خدماتنا</h3>
+                    <a class="btn btn-link" href="">التشطيب المتكامل</a>
+                    <a class="btn btn-link" href="">الإشراف الهندسي</a>
+                    <a class="btn btn-link" href="">المقايسات وحصر الكميات</a>
+                    <a class="btn btn-link" href="">التصميم الداخلي</a>
+                    <a class="btn btn-link" href="">الرسومات التنفيذية</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">Quick Links</h3>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
+                    <h3 class="text-light mb-4">روابط سريعة</h3>
+                    <a class="btn btn-link" href="">من نحن</a>
+                    <a class="btn btn-link" href="">تواصل معنا</a>
+                    <a class="btn btn-link" href="">خدماتنا</a>
+                    <a class="btn btn-link" href="">الشروط والأحكام</a>
+                    <a class="btn btn-link" href="">الدعم الفني</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">Newsletter</h3>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <h3 class="text-light mb-4">النشرة البريدية</h3>
+                    <p>اشترك ليصلك أحدث أعمالنا الهندسية وعروض التشطيب.</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="البريد الإلكتروني">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 start-0 mt-2 ms-2">اشتراك</button>
                     </div>
                 </div>
             </div>
@@ -688,25 +648,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; <a href="#">Tiraz.pro</a>, جميع الحقوق محفوظة.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        <br> Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        تصميم وتطوير بواسطة <a href="#">Tiraz Engineering</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
@@ -718,7 +671,6 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
 
