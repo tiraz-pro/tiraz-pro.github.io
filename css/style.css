@@ -609,3 +609,108 @@ h6,
 .footer .copyright a:hover {
     color: #FFFFFF;
 }
+
+/* =========================================
+   TIRAZ PREMIUM DARK THEME OVERRIDES
+   ========================================= */
+
+/* 1. توحيد اللون الذهبي الأساسي في كل مكان */
+:root {
+    --primary: #D4AF37 !important;
+    --bs-primary: #D4AF37 !important;
+}
+
+/* 2. تحويل الموقع بالكامل للون الداكن */
+body {
+    background-color: #121212 !important;
+    color: #cccccc !important;
+}
+
+/* 3. العناوين والنصوص الأساسية باللون الأبيض */
+h1, h2, h3, h4, h5, h6, .text-dark, h3.mb-0, h1.display-5 {
+    color: #ffffff !important;
+}
+p.mb-2 {
+    color: #aaaaaa !important;
+}
+
+/* 4. تغيير خلفية النافبار العلوية (Navbar) لتكون داكنة لتبرز اللوجو الذهبي */
+.navbar.bg-white {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #dddddd !important;
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary) !important;
+}
+
+/* 5. نسف أي خلفية بيضاء أو فاتحة في الأقسام وتحويلها لرمادي فخم */
+.bg-light, .bg-white {
+    background-color: #1e1e1e !important;
+}
+.bg-dark {
+    background-color: #0a0a0a !important;
+}
+
+/* 6. توحيد الأزرار لتكون ذهبية أنيقة */
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #121212 !important;
+    font-weight: 700 !important;
+    border-radius: 4px !important;
+}
+.btn-primary:hover {
+    background-color: #b5952f !important;
+    border-color: #b5952f !important;
+    color: #ffffff !important;
+}
+
+/* 7. الأيقونات والأسهم باللون الذهبي */
+.text-primary, .text-primary i, i.text-primary, .fa-check {
+    color: var(--primary) !important;
+}
+
+/* 8. حل مشكلة السلايدر الطويل (ضبط الأبعاد لتكون متناسقة على كل الشاشات) */
+.header-carousel .owl-carousel-item {
+    height: 75vh !important;
+    min-height: 500px !important;
+    max-height: 750px !important;
+}
+.header-carousel .owl-carousel-item img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.owl-carousel-inner {
+    background: rgba(0, 0, 0, 0.7) !important; /* تعتيم الصور لبروز الكلام */
+}
+
+/* 9. تظبيط المربعات في الأقسام (خدمات، فريق، إحصائيات) */
+.fact-item, .service-item .service-text, .team-item .bg-light, .bg-light.p-4 {
+    background-color: #1a1a1a !important;
+    border: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+.fact-icon {
+    background-color: #121212 !important;
+    border: 2px solid var(--primary) !important;
+}
+
+/* 10. تظبيط حقول الإدخال (فورم التواصل) */
+.form-control, .form-select {
+    background-color: #2a2a2a !important;
+    border-color: #444 !important;
+    color: #fff !important;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25) !important;
+}
+
+/* 11. الفوتر */
+.footer.bg-dark {
+    border-top: 2px solid var(--primary) !important;
+}
