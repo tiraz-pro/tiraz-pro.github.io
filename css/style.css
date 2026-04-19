@@ -554,688 +554,96 @@ h6,
 
 
 
-
-/********** Template CSS **********/
-:root {
-    /* Royal Gold - يتناسب مع اللوجو الذهبي */
-    --primary: #D4AF37; 
-    
-    /* Creamy Off-White - مريح للعين ويعطي إحساس المساحات الفخمة */
-    --light: #FAFAFA;   
-    
-    /* Deep Midnight Blue/Charcoal - أزرق ليلي داكن جداً يبرز الذهبي بقوة */
-    --dark: #0A192F;    
-}
-
-h1,
-h2,
-.h1,
-.h2,
-.fw-bold {
-    font-weight: 700 !important; /* زيادة سماكة العناوين لفخامة أكثر */
-}
-
-h3,
-h4,
-.h3,
-.h4,
-.fw-medium {
-    font-weight: 500 !important;
-}
-
-h5,
-h6,
-.h5,
-.h6,
-.fw-normal {
-    font-weight: 400 !important;
-}
-
-.back-to-top {
-    position: fixed;
-    display: none;
-    left: 30px; /* تم التعديل لليسار ليناسب اللغة العربية */
-    right: auto;
-    bottom: 30px;
-    z-index: 99;
-}
-
-
-/*** Spinner ***/
-#spinner {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s ease-out, visibility 0s linear .5s;
-    z-index: 99999;
-}
-
-#spinner.show {
-    transition: opacity .5s ease-out, visibility 0s linear 0s;
-    visibility: visible;
-    opacity: 1;
-}
-
-
-/*** Button ***/
-.btn {
-    font-weight: 600;
-    transition: .5s;
-    border-radius: 4px; /* حواف شبه مستطيلة لطابع هندسي صارم */
-}
-
-.btn.btn-primary,
-.btn.btn-secondary {
-    color: var(--dark); /* النص داكن على الزر الذهبي ليكون مقروء ومميز */
-}
-
-.btn.btn-primary:hover {
-    background-color: var(--dark);
-    color: var(--primary);
-    border-color: var(--dark);
-}
-
-.btn-square {
-    width: 38px;
-    height: 38px;
-}
-
-.btn-sm-square {
-    width: 32px;
-    height: 32px;
-}
-
-.btn-lg-square {
-    width: 48px;
-    height: 48px;
-}
-
-.btn-square,
-.btn-sm-square,
-.btn-lg-square {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: normal;
-    border-radius: 4px;
-}
-
-.btn-outline-body {
-    color: var(--primary);
-    border-color: #777777;
-}
-
-.btn-outline-body:hover {
-    color: var(--dark);
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-
-/*** Navbar ***/
-.navbar .dropdown-toggle::after {
-    border: none;
-    content: "\f107";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    vertical-align: middle;
-    margin-right: 8px; /* تم عكس الهامش للعربية */
-    margin-left: 0;
-}
-
-.navbar .navbar-nav .nav-link {
-    margin-left: 30px; /* تم عكس الهامش للعربية */
-    margin-right: 0;
-    padding: 30px 0;
-    color: #555555; /* لون نص القائمة أغمق قليلا ليكون مقروء */
-    font-weight: 600;
-    text-transform: uppercase;
-    outline: none;
-    transition: color 0.3s;
-}
-
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
-}
-
-.navbar.sticky-top {
-    top: -100px;
-    transition: .5s;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* ظل خفيف للقائمة عند النزول */
-}
-
-@media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link {
-        margin-left: 0;
-        padding: 10px 0;
-    }
-
-    .navbar .navbar-nav {
-        border-top: 1px solid #EEEEEE;
-    }
-}
-
-@media (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu {
-        display: block;
-        visibility: hidden;
-        top: 100%;
-        transform: rotateX(-75deg);
-        transform-origin: 0% 0%;
-        transition: .5s;
-        opacity: 0;
-        text-align: right; /* ضبط القائمة المنسدلة للعربية */
-    }
-
-    .navbar .nav-item:hover .dropdown-menu {
-        transform: rotateX(0deg);
-        visibility: visible;
-        transition: .5s;
-        opacity: 1;
-    }
-}
-
-
-/*** Header ***/
-.owl-carousel-inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    background: rgba(10, 25, 47, .65); /* فلتر كحلي داكن فوق الصور ليتناسب مع الثيم */
-}
-
-@media (max-width: 768px) {
-    .header-carousel .owl-carousel-item {
-        position: relative;
-        min-height: 500px;
-    }
-
-    .header-carousel .owl-carousel-item img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .header-carousel .owl-carousel-item p {
-        font-size: 16px !important;
-    }
-}
-
-.header-carousel .owl-dots {
-    position: absolute;
-    width: 60px;
-    height: 100%;
-    top: 0;
-    left: 30px; /* تم النقل لليسار للعربية */
-    right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.header-carousel .owl-dots .owl-dot {
-    position: relative;
-    width: 45px;
-    height: 45px;
-    margin: 5px 0;
-    background: var(--dark);
-    transition: .5s;
-    border: 2px solid transparent;
-}
-
-.header-carousel .owl-dots .owl-dot.active {
-    width: 60px;
-    height: 60px;
-    border-color: var(--primary); /* إطار ذهبي للصورة النشطة */
-}
-
-.header-carousel .owl-dots .owl-dot img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    padding: 2px;
-    transition: .5s;
-    opacity: .3;
-}
-
-.header-carousel .owl-dots .owl-dot.active img {
-    opacity: 1;
-}
-
-.page-header {
-    background: linear-gradient(rgba(10, 25, 47, .7), rgba(10, 25, 47, .7)), url(../img/carousel-1.jpg) center center no-repeat; /* فلتر متناسق لصفحات العناوين */
-    background-size: cover;
-}
-
-.breadcrumb-item+.breadcrumb-item::before {
-    color: var(--light);
-}
-
-
-/*** Section Title ***/
-.section-title {
-    color: var(--primary);
-    font-weight: 700;
-    letter-spacing: 0px; /* إلغاء التباعد لأنه يفسد الخط العربي */
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-
-/*** Facts ***/
-.fact-item .fact-icon {
-    width: 120px;
-    height: 120px;
-    margin-top: -60px;
-    margin-bottom: 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    border-radius: 5px; /* شكل هندسي بدل الدائرة */
-    box-shadow: 0 0 30px rgba(0,0,0,0.05); /* ظل خفيف */
-    transition: .5s;
-}
-
-.fact-item:hover .fact-icon {
-    background: var(--dark);
-}
-
-.fact-item .fact-icon img {
-    filter: invert(72%) sepia(45%) saturate(543%) hue-rotate(5deg) brightness(88%) contrast(92%); /* تحويل الأيقونات للذهبي */
-    transition: .5s;
-}
-
-.fact-item:hover .fact-icon img {
-    filter: invert(100%); /* تحويل الأيقونات للأبيض عند الهوفر */
-}
-
-
-/*** About & Feature ***/
-.about-img,
-.feature-img {
-    position: relative;
-    height: 100%;
-    min-height: 400px;
-}
-
-.about-img img,
-.feature-img img {
-    position: absolute;
-    width: 60%;
-    height: 80%;
-    object-fit: cover;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.about-img img:last-child,
-.feature-img img:last-child {
-    margin: 20% 40% 0 0; /* تم التعديل للاتجاه العربي */
-}
-
-.about-img::before,
-.feature-img::before {
-    position: absolute;
-    content: "";
-    width: 60%;
-    height: 80%;
-    top: 10%;
-    right: 20%; /* تم التعديل للاتجاه العربي */
-    left: auto;
-    border: 5px solid var(--primary);
-    z-index: -1;
-}
-
-
-/*** Service ***/
-.service-item .bg-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-.service-item .service-text {
-    background: var(--light);
-    transition: .5s;
-    border-bottom: 3px solid transparent;
-}
-
-.service-item:hover .service-text {
-    background: rgba(10, 25, 47, .85); /* خلفية كحلي شفافة */
-    border-bottom: 3px solid var(--primary); /* خط ذهبي من الأسفل */
-}
-
-.service-item * {
-    transition: .5;
-}
-
-.service-item:hover * {
-    color: #FFFFFF;
-}
-
-.service-item:hover h3 {
-    color: var(--primary); /* العنوان يصبح ذهبي عند الهوفر */
-}
-
-.service-item .btn {
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    color: var(--primary);
-    background: #FFFFFF;
-    white-space: nowrap;
-    overflow: hidden;
-    transition: .5s;
-    border-radius: 4px;
-}
-
-.service-item:hover .btn {
-    width: 140px;
-    background: var(--primary);
-    color: var(--dark);
-}
-
-
-/*** Project ***/
-.project .nav .nav-link {
-    background: var(--light);
-    transition: .5s;
-    border-right: 3px solid transparent; /* خط للتبويبات بالعربي */
-}
-
-.project .nav .nav-link.active {
-    background: var(--dark);
-    border-right: 3px solid var(--primary);
-}
-
-.project .nav .nav-link.active h3 {
-    color: var(--primary) !important;
-}
-
-
-/*** Team ***/
-.team-items {
-    margin: -.75rem;
-}
-
-.team-item {
-    padding: .75rem;
-}
-
-.team-item::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 0;
-    top: 0;
-    left: 0;
-    background: #FFFFFF;
-    transition: .5s;
-    z-index: -1;
-}
-
-.team-item:hover::after {
-    height: 100%;
-    background: var(--dark);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-.team-item:hover h3 {
-    color: var(--primary);
-}
-.team-item:hover span {
-    color: #FFFFFF !important;
-}
-
-.team-item .team-social {
-    position: absolute;
-    width: 100%;
-    bottom: -20px;
-    left: 0;
-}
-
-.team-item .team-social .btn {
-    display: inline-flex;
-    margin: 0 2px;
-    color: var(--dark);
-    background: var(--primary);
-}
-
-.team-item .team-social .btn:hover {
-    color: var(--primary);
-    background: var(--dark);
-}
-
-
-/*** Appointment ***/
-.bootstrap-datetimepicker-widget.bottom {
-    top: auto !important;
-}
-
-.bootstrap-datetimepicker-widget .table * {
-    border-bottom-width: 0px;
-}
-
-.bootstrap-datetimepicker-widget .table th {
-    font-weight: 500;
-}
-
-.bootstrap-datetimepicker-widget.dropdown-menu {
-    padding: 10px;
-    border-radius: 2px;
-}
-
-.bootstrap-datetimepicker-widget table td.active,
-.bootstrap-datetimepicker-widget table td.active:hover {
-    background: var(--primary);
-    color: var(--dark);
-}
-
-.bootstrap-datetimepicker-widget table td.today::before {
-    border-bottom-color: var(--primary);
-}
-
-
-/*** Testimonial ***/
-.testimonial-carousel {
-    display: flex !important;
-    flex-direction: column-reverse;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.testimonial-carousel .owl-dots {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.testimonial-carousel .owl-dots .owl-dot {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    margin: 0 5px;
-    transition: .5s;
-}
-
-.testimonial-carousel .owl-dots .owl-dot.active {
-    width: 100px;
-    height: 100px;
-}
-
-.testimonial-carousel .owl-dots .owl-dot::after {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    content: "\f10d";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: var(--dark);
-    background: var(--primary);
-    border-radius: 40px;
-    transition: .5s;
-    opacity: 0;
-}
-
-.testimonial-carousel .owl-dots .owl-dot.active::after {
-    opacity: 1;
-}
-
-.testimonial-carousel .owl-dots .owl-dot img {
-    opacity: .4;
-    transition: .5s;
-    border: 2px solid transparent;
-    border-radius: 50%;
-}
-
-.testimonial-carousel .owl-dots .owl-dot.active img {
-    opacity: 1;
-    border-color: var(--primary);
-}
-
-
-/*** Footer ***/
-.footer .btn.btn-link {
-    display: block;
-    margin-bottom: 5px;
-    padding: 0;
-    text-align: right; /* ضبط للعربية */
-    color: #999999;
-    font-weight: normal;
-    text-transform: capitalize;
-    transition: .3s;
-}
-
-.footer .btn.btn-link::before {
-    position: relative;
-    content: "\f104"; /* سهم يتجه لليسار بدل اليمين */
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: var(--primary);
-    margin-left: 10px;
-    margin-right: 0;
-}
-
-.footer .btn.btn-link:hover {
-    color: var(--primary);
-    letter-spacing: 0px; /* إلغاء التباعد للغة العربية */
-    box-shadow: none;
-    padding-right: 10px; /* حركة خفيفة عند الهوفر */
-}
-
-.footer .form-control {
-    border-color: #555555;
-}
-
-.footer .form-control:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
-}
-
-.footer .copyright {
-    padding: 25px 0;
-    font-size: 15px;
-    border-top: 1px solid rgba(255, 255, 255, .05);
-}
-
-.footer .copyright a {
-    color: var(--primary);
-}
-
-.footer .copyright a:hover {
-    color: #FFFFFF;
-}
-
 /* =========================================
-   TIRAZ PREMIUM DARK THEME OVERRIDES
+   TIRAZ PREMIUM DARK THEME OVERRIDES - V2 (MUTED GOLD)
    ========================================= */
 
-/* 1. توحيد اللون الذهبي الأساسي في كل مكان */
+/* 1. توحيد اللون الذهبي العتيق المطفى (Matte Antique Gold) - لضمان الشياكة */
 :root {
-    --primary: #D4AF37 !important;
-    --bs-primary: #D4AF37 !important;
+    --primary: #C5A059 !important; /* درجة دهبي وقورة وغير فاقعة */
+    --bs-primary: #C5A059 !important;
 }
 
-/* 2. تحويل الموقع بالكامل للون الداكن */
+/* 2. تحويل الموقع بالكامل للون الداكن الفخم */
 body {
-    background-color: #121212 !important;
-    color: #cccccc !important;
+    background-color: #121212 !important; /* أسود فحمي غامق */
+    color: #aaaaaa !important; /* نص رمادي فاتح مريح للعين */
 }
 
-/* 3. العناوين والنصوص الأساسية باللون الأبيض */
-h1, h2, h3, h4, h5, h6, .text-dark, h3.mb-0, h1.display-5 {
-    color: #ffffff !important;
+/* 3. العناوين والنصوص الأساسية باللون الأبيض المريح */
+h1, h2, h3, h4, h5, h6, .text-dark, h3.mb-0, h1.display-5, .display-1 {
+    color: #e0e0e0 !important;
 }
 p.mb-2 {
-    color: #aaaaaa !important;
+    color: #999999 !important;
 }
 
-/* 4. تغيير خلفية النافبار العلوية (Navbar) لتكون داكنة لتبرز اللوجو الذهبي */
+/* 4. تغيير خلفية النافبار العلوية (Navbar) لتكون داكنة جداً أبرز اللوجو */
 .navbar.bg-white {
-    background-color: #1a1a1a !important;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    background-color: #0d0d0d !important;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15) !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.5) !important;
+}
+.navbar-light .navbar-brand h1 {
+    color: var(--primary) !important;
 }
 .navbar-light .navbar-nav .nav-link {
-    color: #dddddd !important;
+    color: #bbbbbb !important;
+    font-weight: 600 !important;
 }
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active {
     color: var(--primary) !important;
 }
 
-/* 5. نسف أي خلفية بيضاء أو فاتحة في الأقسام وتحويلها لرمادي فخم */
+/* 5. نسف أي خلفية بيضاء أو فاتحة وتحويلها لدرجات أسود متدرجة */
 .bg-light, .bg-white {
-    background-color: #1e1e1e !important;
+    background-color: #161616 !important; /* أفتح قليلاً من الخلفية الأساسية */
 }
 .bg-dark {
-    background-color: #0a0a0a !important;
+    background-color: #080808 !important; /* أغمق قليلاً */
+}
+.fact-item.bg-light {
+    background-color: #1a1a1a !important;
 }
 
-/* 6. توحيد الأزرار لتكون ذهبية أنيقة */
+/* 6. توحيد الأزرار لتكون ذهبية عتيقة أنيقة والنص عليها أسود */
 .btn-primary {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
-    color: #121212 !important;
+    color: #0d0d0d !important; /* النص أسود لتباين شيك */
     font-weight: 700 !important;
     border-radius: 4px !important;
 }
 .btn-primary:hover {
-    background-color: #b5952f !important;
-    border-color: #b5952f !important;
+    background-color: #a68545 !important; /* تغميق بسيط عند الهوفر */
+    border-color: #a68545 !important;
     color: #ffffff !important;
 }
-
-/* 7. الأيقونات والأسهم باللون الذهبي */
-.text-primary, .text-primary i, i.text-primary, .fa-check {
+/* أزرار السوشيال ميديا في الفوتر */
+.btn-outline-body {
     color: var(--primary) !important;
+    border-color: #444 !important;
+}
+.btn-outline-body:hover {
+    background-color: var(--primary) !important;
+    color: #0d0d0d !important;
 }
 
-/* 8. حل مشكلة السلايدر الطويل (ضبط الأبعاد لتكون متناسقة على كل الشاشات) */
+/* 7. الأيقونات والأسهم والقوائم باللون الذهبي الدافئ */
+.text-primary, .text-primary i, i.text-primary, .fa-check, .fa-map-marker-alt, .fa-phone-alt, .fa-envelope-open {
+    color: var(--primary) !important;
+}
+/* تحويل أيقونات الـ SVG (الصور) للون الذهبي الجديد */
+.fact-item .fact-icon img, .service-item .service-text img {
+    filter: invert(71%) sepia(37%) saturate(674%) hue-rotate(3deg) brightness(89%) contrast(91%) !important;
+}
+
+/* 8. ضبط أبعاد السلايدر (Carousel) وتعتيمه لبروز النص */
 .header-carousel .owl-carousel-item {
-    height: 75vh !important;
+    height: 70vh !important; /* تقليل الارتفاع قليلاً لنسبة أجمل */
     min-height: 500px !important;
-    max-height: 750px !important;
+    max-height: 700px !important;
 }
 .header-carousel .owl-carousel-item img {
     height: 100% !important;
@@ -1243,31 +651,42 @@ p.mb-2 {
     object-fit: cover !important;
 }
 .owl-carousel-inner {
-    background: rgba(0, 0, 0, 0.7) !important; /* تعتيم الصور لبروز الكلام */
+    background: rgba(0, 0, 0, 0.75) !important; /* زيادة التعتيم قليلاً */
 }
 
-/* 9. تظبيط المربعات في الأقسام (خدمات، فريق، إحصائيات) */
-.fact-item, .service-item .service-text, .team-item .bg-light, .bg-light.p-4 {
+/* 9. تظبيط المربعات والبطاقات (Cards) */
+.service-item .service-text, .team-item, .bg-light.p-4, .project .nav .nav-link {
     background-color: #1a1a1a !important;
-    border: 1px solid rgba(212, 175, 55, 0.1) !important;
+    border: 1px solid rgba(197, 160, 89, 0.05) !important; /* إطار ذهبي شبه شفاف */
 }
 .fact-icon {
-    background-color: #121212 !important;
-    border: 2px solid var(--primary) !important;
+    background-color: #0d0d0d !important;
+    border: 1px solid var(--primary) !important;
+}
+.service-item:hover .service-text {
+    background: rgba(197, 160, 89, 0.05) !important; /* خلفية ذهبية خفيفة جداً عند الهوفر */
 }
 
-/* 10. تظبيط حقول الإدخال (فورم التواصل) */
+/* 10. تظبيط حقول الإدخال (الأنماط أنيقة وداكنة) */
 .form-control, .form-select {
-    background-color: #2a2a2a !important;
-    border-color: #444 !important;
-    color: #fff !important;
+    background-color: #222222 !important;
+    border: 1px solid #333333 !important;
+    color: #ffffff !important;
+    border-radius: 2px !important;
 }
 .form-control:focus, .form-select:focus {
     border-color: var(--primary) !important;
-    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25) !important;
+    box-shadow: 0 0 0 0.25rem rgba(197, 160, 89, 0.15) !important;
 }
 
-/* 11. الفوتر */
+/* 11. الفوتر واللاين الذهبي */
 .footer.bg-dark {
-    border-top: 2px solid var(--primary) !important;
+    background-color: #080808 !important;
+    border-top: 1px solid rgba(197, 160, 89, 0.3) !important;
+}
+.footer .btn.btn-link {
+    color: #888888 !important;
+}
+.footer .btn.btn-link:hover {
+    color: var(--primary) !important;
 }
