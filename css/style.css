@@ -687,6 +687,29 @@ p.mb-2 {
 .footer .btn.btn-link {
     color: #888888 !important;
 }
+
+/* =========================================
+   إصلاح ألوان نصوص القائمة العلوية (Navbar)
+   ========================================= */
+
+.navbar .navbar-nav .nav-link {
+    color: #f8f9fa !important; /* لون أوف وايت فاتح جداً عشان ينطق على الخلفية الغامقة */
+    font-weight: 600 !important;
+    font-size: 16px !important;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary) !important; /* يقلب للون الدهبي العتيق بتاعنا لما تقف عليه */
+}
+
+/* عشان الأيقونة بتاعة القائمة المنسدلة (السهم الصغير) تنور هي كمان */
+.navbar .dropdown-toggle::after {
+    color: #f8f9fa !important;
+}
+.navbar .nav-item:hover .dropdown-toggle::after {
+    color: var(--primary) !important;
+}
 .footer .btn.btn-link:hover {
     color: var(--primary) !important;
 }
