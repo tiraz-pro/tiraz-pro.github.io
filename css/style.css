@@ -706,3 +706,75 @@ p.mb-2 {
 .container-fluid.bg-dark .text-body:hover {
     color: var(--primary) !important;
 }
+
+/* =========================================
+   تغيير اللون الذهبي الإجباري للموقع بالكامل (#af7e3c)
+   ========================================= */
+
+/* 1. النصوص والأيقونات */
+.text-primary, 
+.text-primary i, 
+i.text-primary, 
+.fa-check, 
+.fa-map-marker-alt, 
+.fa-phone-alt, 
+.fa-envelope,
+.fa-envelope-open,
+.navbar-brand h1 {
+    color: #af7e3c !important;
+}
+
+/* 2. الأزرار الأساسية */
+.btn-primary {
+    background-color: #af7e3c !important;
+    border-color: #af7e3c !important;
+    color: #121212 !important; /* لون النص أسود فخم */
+}
+.btn-primary:hover {
+    background-color: #8f652d !important; /* درجة أغمق سنة لما تقف عليه بالماوس */
+    border-color: #8f652d !important;
+    color: #ffffff !important;
+}
+
+/* 3. أزرار السوشيال ميديا في الفوتر */
+.btn-outline-body {
+    color: #af7e3c !important;
+}
+.btn-outline-body:hover {
+    background-color: #af7e3c !important;
+    border-color: #af7e3c !important;
+    color: #121212 !important;
+}
+
+/* 4. الإطارات والحدود (Borders) */
+.border-primary,
+.fact-icon,
+.header-carousel .owl-dots .owl-dot.active,
+.testimonial-carousel .owl-dots .owl-dot.active img,
+.project .nav .nav-link.active {
+    border-color: #af7e3c !important;
+}
+
+/* 5. تأثيرات الهوفر (لما تقف بالماوس على أي حاجة) */
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active,
+.navbar .nav-item:hover .dropdown-toggle::after,
+.container-fluid.bg-dark .text-body:hover,
+.container-fluid.bg-dark .text-body:hover i,
+.footer .btn.btn-link:hover,
+.footer .copyright a:hover,
+.service-item:hover h3,
+.team-item:hover h3 {
+    color: #af7e3c !important;
+}
+
+/* خط أسفل الخدمات عند الهوفر */
+.service-item:hover .service-text {
+    border-bottom-color: #af7e3c !important;
+}
+
+/* 6. تأثيرات الفلاتر للصور (الأيقونات بصيغة png) */
+.fact-item .fact-icon img, .service-item .service-text img {
+    /* فلتر مقارب جداً لدرجة #af7e3c */
+    filter: invert(56%) sepia(35%) saturate(765%) hue-rotate(352deg) brightness(89%) contrast(85%) !important;
+}
