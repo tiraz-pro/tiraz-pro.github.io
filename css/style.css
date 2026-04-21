@@ -952,5 +952,51 @@ i.text-primary,
     color: #121212 !important;
 }
 
+/* =========================================
+   تنسيقات الشاشة المنبثقة للمشاريع (Project Modal)
+   ========================================= */
 
+/* إطار الشاشة */
+.tiraz-modal {
+    border: 1px solid var(--primary) !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+}
+
+/* إجبار السلايدر على أخذ مساحة كاملة ومنع التداخل */
+.tiraz-modal .carousel-inner,
+.tiraz-modal .carousel-item {
+    height: 100%;
+}
+
+/* طول ثابت للصور عشان السلايدر ما يضربش */
+.tiraz-modal .modal-img {
+    height: 500px !important; 
+    object-fit: cover !important;
+    width: 100%;
+    background-color: #121212;
+}
+
+/* تظبيط شكل أسهم التقليب */
+.tiraz-modal .custom-arrow {
+    background-color: var(--primary) !important;
+    border-radius: 50%;
+    padding: 20px;
+    background-size: 50%;
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+.tiraz-modal .carousel-control-prev:hover .custom-arrow,
+.tiraz-modal .carousel-control-next:hover .custom-arrow {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* تظبيط الطول في شاشات الموبايل */
+@media (max-width: 991px) {
+    .tiraz-modal .modal-img {
+        height: 350px !important;
+    }
+}
 
