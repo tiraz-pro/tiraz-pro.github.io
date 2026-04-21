@@ -1000,3 +1000,40 @@ i.text-primary,
     }
 }
 
+
+
+/* =========================================
+   التصميم المودرن لسلايدر المشاريع (Modern Modal)
+   ========================================= */
+
+/* إجبار الصورة على أخذ طول ثابت يملى نص الشاشة وميضربش السلايدر */
+.modern-hero-img {
+    height: 600px !important;
+    object-fit: cover !important;
+    width: 100% !important;
+    background-color: #121212; /* عشان لو الصورة تقيلة بيحمل لون أنيق لحد ما تظهر */
+}
+
+/* تصميم أسهم التقليب بشكل راقي */
+.modern-nav-icon {
+    background-color: var(--primary) !important;
+    border-radius: 50%;
+    width: 45px !important;
+    height: 45px !important;
+    background-size: 50% !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+}
+
+.carousel-control-prev:hover .modern-nav-icon,
+.carousel-control-next:hover .modern-nav-icon {
+    transform: scale(1.1);
+    background-color: #ffffff !important; /* تقلب أبيض لما الماوس ييجي عليها */
+}
+
+/* تظبيط الارتفاع في الموبايل عشان ميبقاش طويل جداً */
+@media (max-width: 991px) {
+    .modern-hero-img {
+        height: 350px !important;
+    }
+}
