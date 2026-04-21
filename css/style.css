@@ -953,23 +953,4 @@ i.text-primary,
 }
 
 
-/* =========================================
-   إصلاح سلايدر المشاريع (Tiraz Fade Effect)
-   ========================================= */
-.tiraz-fade .carousel-item {
-    transition: opacity 0.6s ease-in-out !important;
-    transform: none !important; /* نسف حركة السحب يمين وشمال اللي بتبوظ الصور */
-    opacity: 0; /* إخفاء الصور الغير نشطة */
-    display: block !important; /* إجبار البوتستراب يعرضهم ومايخفيهمش */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-}
 
-.tiraz-fade .carousel-item.active {
-    opacity: 1 !important; /* إظهار الصورة النشطة بتلاشي ناعم */
-    position: relative;
-    z-index: 2;
-}
