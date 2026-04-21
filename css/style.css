@@ -689,24 +689,15 @@ p.mb-2 {
 }
 
 /* =========================================
-   الحل النهائي الإجباري لألوان الناف بار
+   إصلاح ألوان الشريط العلوي (Topbar) الإجبارية
    ========================================= */
-.navbar .navbar-nav .nav-link {
-    color: #ffffff !important; /* أبيض صريح عشان ينطق على الخلفية الغامقة */
-    font-weight: 700 !important;
-    opacity: 0.9 !important;
+.container-fluid.bg-dark .text-body,
+.container-fluid.bg-dark .text-body i {
+    color: #e0e0e0 !important; /* لون أوف وايت فاتح عشان ينطق على الخلفية السودة */
+    transition: 0.3s;
 }
 
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link.active {
-    color: #C5A059 !important; /* اللون الدهبي العتيق بتاعنا */
-    opacity: 1 !important;
-}
-
-/* لون السهم بتاع القائمة المنسدلة */
-.navbar .dropdown-toggle::after {
-    color: #ffffff !important;
-}
-.navbar .nav-item:hover .dropdown-toggle::after {
-    color: #C5A059 !important;
+.container-fluid.bg-dark .text-body:hover,
+.container-fluid.bg-dark .text-body:hover i {
+    color: var(--primary) !important; /* يقلب للدهبي بتاعنا لما تقف عليه بالماوس */
 }
