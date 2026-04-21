@@ -775,3 +775,50 @@ i.text-primary,
     /* فلتر مقارب جداً لدرجة #af7e3c */
     filter: invert(56%) sepia(35%) saturate(765%) hue-rotate(352deg) brightness(89%) contrast(85%) !important;
 }
+
+
+/* =========================================
+   تعتيم خلفيات العناوين في الصفحات الداخلية لبروز الفهرس
+   ========================================= */
+
+/* 1. عمل طبقة تعتيم فوق الصورة مباشرة */
+.page-header {
+    position: relative;
+}
+.page-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.75) !important; /* درجة تعتيم 75% بلون فحمي */
+    z-index: 1;
+}
+
+/* 2. رفع العناوين والفهرس فوق طبقة التعتيم عشان تنور */
+.page-header > .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* 3. تظبيط ألوان الفهرس (الروابط) عشان تبقى أوضح وأشيك */
+.breadcrumb-item a, 
+.breadcrumb-item a.text-white {
+    color: #e0e0e0 !important; /* أوف وايت مريح */
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: 0.3s;
+}
+.breadcrumb-item a:hover {
+    color: #af7e3c !important; /* تقلب للدهبي المعتق عند الماوس */
+}
+.breadcrumb-item.active {
+    color: #af7e3c !important;
+    font-weight: 700 !important;
+}
+
+/* تلوين الشرطة المايلة (/) اللي بين الكلمات */
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #888888 !important; 
+}
