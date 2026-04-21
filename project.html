@@ -282,52 +282,74 @@
         </div>
     </div>
 
-  <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+ <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content bg-dark text-white" style="border: 1px solid #af7e3c; border-radius: 15px; overflow: hidden;">
+            <div class="modal-content bg-dark text-white border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
                 
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4 z-3" data-bs-dismiss="modal" aria-label="Close" style="background-color: rgba(0,0,0,0.5); padding: 12px; border-radius: 50%;"></button>
                 
                 <div class="modal-body p-0">
                     <div class="row g-0">
                         
-                        <div class="col-lg-7" style="background-color: #121212;">
-                            <img id="mainImage1" src="img/project-1.jpg" class="w-100" style="height: 400px; object-fit: cover; border-bottom: 2px solid #af7e3c;" alt="المشروع">
-                            
-                            <div class="d-flex justify-content-center p-3" style="gap: 15px; background-color: #0a0a0a;">
+                        <div class="col-lg-6 position-relative">
+                            <div id="modernCarousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                                <div class="carousel-inner h-100">
+                                    <div class="carousel-item active h-100">
+                                        <img src="img/project-1.jpg" class="d-block w-100 modern-hero-img" alt="صورة 1">
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <img src="img/project-2.jpg" class="d-block w-100 modern-hero-img" alt="صورة 2">
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <img src="img/project-3.jpg" class="d-block w-100 modern-hero-img" alt="صورة 3">
+                                    </div>
+                                </div>
                                 
-                                <img src="img/project-1.jpg" style="width: 100px; height: 75px; object-fit: cover; cursor: pointer; border-radius: 5px; border: 1px solid rgba(175, 126, 60, 0.5); transition: 0.3s;" 
-                                onmouseover="this.style.borderColor='#af7e3c'" onmouseout="this.style.borderColor='rgba(175, 126, 60, 0.5)'" 
-                                onclick="document.getElementById('mainImage1').src=this.src">
-
-                                <img src="img/project-2.jpg" style="width: 100px; height: 75px; object-fit: cover; cursor: pointer; border-radius: 5px; border: 1px solid rgba(175, 126, 60, 0.5); transition: 0.3s;" 
-                                onmouseover="this.style.borderColor='#af7e3c'" onmouseout="this.style.borderColor='rgba(175, 126, 60, 0.5)'" 
-                                onclick="document.getElementById('mainImage1').src=this.src">
-
-                                <img src="img/project-3.jpg" style="width: 100px; height: 75px; object-fit: cover; cursor: pointer; border-radius: 5px; border: 1px solid rgba(175, 126, 60, 0.5); transition: 0.3s;" 
-                                onmouseover="this.style.borderColor='#af7e3c'" onmouseout="this.style.borderColor='rgba(175, 126, 60, 0.5)'" 
-                                onclick="document.getElementById('mainImage1').src=this.src">
-                                
+                                <button class="carousel-control-prev" type="button" data-bs-target="#modernCarousel1" data-bs-slide="prev" style="width: 10%;">
+                                    <span class="carousel-control-prev-icon modern-nav-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">السابق</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#modernCarousel1" data-bs-slide="next" style="width: 10%;">
+                                    <span class="carousel-control-next-icon modern-nav-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">التالي</span>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="col-lg-5 p-5 d-flex flex-column justify-content-center text-start">
-                            <h2 class="mb-4" style="color: #af7e3c;">فيلا سكنية - التجمع الخامس</h2>
-                            <p class="mb-4" style="color: #e0e0e0; line-height: 1.8; font-size: 1.1rem;">
-                                تم إعداد اللوحات التنفيذية وتنسيقها مع الإنشائي. نفذنا التشطيب المتكامل معتمدين على قطاعات ألومنيوم حديثة للواجهات للحصول على أفضل عزل، بالإضافة لتأسيس شبكات كهروميكانيكية تتحمل الأحمال العالية.
-                            </p>
-                            <ul class="list-unstyled mb-5">
-                                <li class="mb-3 border-bottom pb-2" style="border-color: rgba(255, 255, 255, 0.1) !important;">
-                                    <i class="fa fa-map-marker-alt ms-2" style="color: #af7e3c;"></i> <strong class="text-white">الموقع:</strong> التجمع الخامس
-                                </li>
-                                <li class="mb-3 border-bottom pb-2" style="border-color: rgba(255, 255, 255, 0.1) !important;">
-                                    <i class="fa fa-ruler-combined ms-2" style="color: #af7e3c;"></i> <strong class="text-white">المساحة:</strong> 450 متر مربع
-                                </li>
-                                <li class="mb-3 border-bottom pb-2" style="border-color: rgba(255, 255, 255, 0.1) !important;">
-                                    <i class="fa fa-check-circle ms-2" style="color: #af7e3c;"></i> <strong class="text-white">النطاق:</strong> تصميم وتنفيذ كامل
-                                </li>
-                            </ul>
-                            <a href="appointment.html" class="btn btn-primary py-3 w-100 fw-bold" style="background-color: #af7e3c; border-color: #af7e3c; color: #121212;">اطلب تنفيذ مشروع مشابه</a>
+                        <div class="col-lg-6 d-flex flex-column justify-content-center p-5" style="background: linear-gradient(145deg, #161616, #0d0d0d);">
+                            <div class="px-lg-4">
+                                <h2 class="mb-4" style="color: var(--primary); font-weight: 800;">فيلا سكنية - التجمع الخامس</h2>
+                                <p class="mb-4" style="color: #cccccc; line-height: 1.9; font-size: 1.1rem;">
+                                    تم إعداد اللوحات التنفيذية وتنسيقها مع الإنشائي. نفذنا التشطيب المتكامل معتمدين على قطاعات ألومنيوم حديثة للواجهات للحصول على أفضل عزل، بالإضافة لتأسيس شبكات كهروميكانيكية تتحمل الأحمال العالية.
+                                </p>
+                                
+                                <div class="row g-4 mb-5 mt-2">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="btn-square rounded-circle flex-shrink-0" style="background: rgba(175, 126, 60, 0.1);">
+                                                <i class="fa fa-map-marker-alt text-primary"></i>
+                                            </div>
+                                            <div class="ms-3">
+                                                <p class="mb-0 text-muted" style="font-size: 0.9rem;">الموقع</p>
+                                                <h6 class="text-white mb-0">التجمع الخامس</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="btn-square rounded-circle flex-shrink-0" style="background: rgba(175, 126, 60, 0.1);">
+                                                <i class="fa fa-ruler-combined text-primary"></i>
+                                            </div>
+                                            <div class="ms-3">
+                                                <p class="mb-0 text-muted" style="font-size: 0.9rem;">المساحة</p>
+                                                <h6 class="text-white mb-0">450 متر مربع</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <a href="appointment.html" class="btn btn-primary py-3 px-5 w-100 fw-bold" style="border-radius: 8px;">اطلب تنفيذ مشروع مشابه</a>
+                            </div>
                         </div>
                         
                     </div>
@@ -335,7 +357,6 @@
             </div>
         </div>
     </div>
-    
 
     
     
