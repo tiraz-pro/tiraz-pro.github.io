@@ -691,13 +691,18 @@ p.mb-2 {
 /* =========================================
    إصلاح ألوان الشريط العلوي (Topbar) الإجبارية
    ========================================= */
-.container-fluid.bg-dark .text-body,
-.container-fluid.bg-dark .text-body i {
-    color: #e0e0e0 !important; /* لون أوف وايت فاتح عشان ينطق على الخلفية السودة */
+/* 1. النص فقط باللون الفاتح */
+.container-fluid.bg-dark .text-body {
+    color: #e0e0e0 !important; 
     transition: 0.3s;
 }
 
-.container-fluid.bg-dark .text-body:hover,
-.container-fluid.bg-dark .text-body:hover i {
-    color: var(--primary) !important; /* يقلب للدهبي بتاعنا لما تقف عليه بالماوس */
+/* 2. الأيقونات ترجع للون الذهبي بتاع طراز */
+.container-fluid.bg-dark .text-body i {
+    color: var(--primary) !important;
+}
+
+/* 3. تأثير الهوفر: النص يقلب ذهبي لما تقف عليه */
+.container-fluid.bg-dark .text-body:hover {
+    color: var(--primary) !important;
 }
