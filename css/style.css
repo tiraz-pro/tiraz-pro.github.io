@@ -560,8 +560,8 @@ h6,
 
 /* 1. توحيد اللون الذهبي العتيق المطفى (Matte Antique Gold) - لضمان الشياكة */
 :root {
-    --primary: #C5A059 !important; /* درجة دهبي وقورة وغير فاقعة */
-    --bs-primary: #C5A059 !important;
+    --primary: #af7e3c !important;
+    --bs-primary: #af7e3c !important;
 }
 
 /* 2. تحويل الموقع بالكامل للون الداكن الفخم */
