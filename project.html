@@ -325,23 +325,19 @@
         }
     </style>
 
-    <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+   <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                
                 <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" style="z-index: 99; background-color: rgba(0,0,0,0.6); padding: 15px; border-radius: 50%;" data-bs-dismiss="modal"></button>
-                
                 <div class="modal-body">
                     <div class="my-custom-slider" id="sliderContainer1">
-                        <img src="img/project-1.jpg" class="my-slide active" alt="صورة 1">
-                        <img src="img/project-2.jpg" class="my-slide" alt="صورة 2">
-                        <img src="img/project-3.jpg" class="my-slide" alt="صورة 3">
-
-                        <button class="my-nav-btn my-prev" onclick="moveSlide1(-1)"><i class="fa fa-chevron-right"></i></button>
-                        <button class="my-nav-btn my-next" onclick="moveSlide1(1)"><i class="fa fa-chevron-left"></i></button>
+                        <img src="img/project-1.jpg" class="my-slide active" alt="صورة">
+                        <img src="img/project-2.jpg" class="my-slide" alt="صورة">
+                        <img src="img/project-3.jpg" class="my-slide" alt="صورة">
+                        <button class="my-nav-btn my-prev" onclick="moveSlide('sliderContainer1', -1)"><i class="fa fa-chevron-right"></i></button>
+                        <button class="my-nav-btn my-next" onclick="moveSlide('sliderContainer1', 1)"><i class="fa fa-chevron-left"></i></button>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <div class="info-left">
                         <h4 class="info-title">فيلا سكنية - التجمع الخامس</h4>
@@ -350,107 +346,192 @@
                             <li><i class="fa fa-ruler-combined"></i> <strong class="text-white">المساحة:</strong> 450 م²</li>
                         </ul>
                     </div>
-                    <div>
-                        <a href="appointment.html" class="info-btn">اطلب تنفيذ مشروع مشابه</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-   
-
-<div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content bg-dark text-white border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
-                
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4 z-3" data-bs-dismiss="modal" aria-label="Close" style="background-color: rgba(0,0,0,0.5); padding: 12px; border-radius: 50%;"></button>
-                
-                <div class="modal-body p-0">
-                    <div class="row g-0">
-                        
-                        <div class="col-lg-8 p-0">
-                            <div class="tiraz-custom-slider">
-                                <img src="img/project-2.jpg" class="tiraz-custom-slide active" alt="صورة 1">
-                                <img src="img/carousel-1.jpg" class="tiraz-custom-slide" alt="صورة 2">
-                                <img src="img/carousel-2.jpg" class="tiraz-custom-slide" alt="صورة 3">
-
-                                <button class="tiraz-nav-btn tiraz-prev"><i class="fa fa-chevron-right"></i></button>
-                                <button class="tiraz-nav-btn tiraz-next"><i class="fa fa-chevron-left"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 d-flex flex-column justify-content-center p-4" style="background: linear-gradient(145deg, #161616, #0d0d0d);">
-                            <div>
-                                <h3 class="mb-3" style="color: #af7e3c; font-weight: 800;">مقر إداري لشركة - الشروق</h3>
-                                <p class="mb-4" style="color: #cccccc; line-height: 1.8; font-size: 1rem;">
-                                    تنفيذ التأسيسات الكهروميكانيكية المتطورة لتناسب احتياجات الشركات، مع تشطيبات تعكس الهوية البصرية، وتأسيس شبكات الداتا والقواطع الزجاجية (Glass Partitions) لتوفير إضاءة طبيعية.
-                                </p>
-                                
-                                <div class="row g-3 mb-4 mt-1">
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center">
-                                            <div class="btn-square rounded-circle flex-shrink-0" style="background: rgba(175, 126, 60, 0.1); width: 40px; height: 40px;">
-                                                <i class="fa fa-map-marker-alt" style="color: #af7e3c;"></i>
-                                            </div>
-                                            <div class="ms-3">
-                                                <h6 class="text-white mb-0">مدينة الشروق</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center">
-                                            <div class="btn-square rounded-circle flex-shrink-0" style="background: rgba(175, 126, 60, 0.1); width: 40px; height: 40px;">
-                                                <i class="fa fa-ruler-combined" style="color: #af7e3c;"></i>
-                                            </div>
-                                            <div class="ms-3">
-                                                <h6 class="text-white mb-0">250 متر مربع</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="appointment.html" class="btn py-3 px-4 w-100 fw-bold" style="background-color: #af7e3c; color: #121212; border-radius: 8px;">اطلب تنفيذ مشروع مشابه</a>
-                            </div>
-                        </div>
-                        
-                    </div>
+                    <div><a href="appointment.html" class="info-btn">اطلب تنفيذ مشروع مشابه</a></div>
                 </div>
             </div>
         </div>
     </div>
-    
 
-    
-     <script>
-        let currSlide1 = 0;
-        let slideTimer1;
-        
-        function showSlide1(index) {
-            const slides = document.querySelectorAll('#sliderContainer1 .my-slide');
-            if(slides.length === 0) return;
+    <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" style="z-index: 99; background-color: rgba(0,0,0,0.6); padding: 15px; border-radius: 50%;" data-bs-dismiss="modal"></button>
+                <div class="modal-body">
+                    <div class="my-custom-slider" id="sliderContainer2">
+                        <img src="img/project-2.jpg" class="my-slide active" alt="صورة">
+                        <img src="img/carousel-1.jpg" class="my-slide" alt="صورة">
+                        <img src="img/carousel-2.jpg" class="my-slide" alt="صورة">
+                        <button class="my-nav-btn my-prev" onclick="moveSlide('sliderContainer2', -1)"><i class="fa fa-chevron-right"></i></button>
+                        <button class="my-nav-btn my-next" onclick="moveSlide('sliderContainer2', 1)"><i class="fa fa-chevron-left"></i></button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="info-left">
+                        <h4 class="info-title">مقر إداري لشركة - الشروق</h4>
+                        <ul class="info-details">
+                            <li><i class="fa fa-map-marker-alt"></i> <strong class="text-white">الموقع:</strong> الشروق</li>
+                            <li><i class="fa fa-ruler-combined"></i> <strong class="text-white">المساحة:</strong> 250 م²</li>
+                        </ul>
+                    </div>
+                    <div><a href="appointment.html" class="info-btn">اطلب تنفيذ مشروع مشابه</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" style="z-index: 99; background-color: rgba(0,0,0,0.6); padding: 15px; border-radius: 50%;" data-bs-dismiss="modal"></button>
+                <div class="modal-body">
+                    <div class="my-custom-slider" id="sliderContainer3">
+                        <img src="img/project-3.jpg" class="my-slide active" alt="صورة">
+                        <img src="img/project-1.jpg" class="my-slide" alt="صورة">
+                        <img src="img/project-2.jpg" class="my-slide" alt="صورة">
+                        <button class="my-nav-btn my-prev" onclick="moveSlide('sliderContainer3', -1)"><i class="fa fa-chevron-right"></i></button>
+                        <button class="my-nav-btn my-next" onclick="moveSlide('sliderContainer3', 1)"><i class="fa fa-chevron-left"></i></button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="info-left">
+                        <h4 class="info-title">شقة فندقية مودرن - المعادي</h4>
+                        <ul class="info-details">
+                            <li><i class="fa fa-map-marker-alt"></i> <strong class="text-white">الموقع:</strong> المعادي</li>
+                            <li><i class="fa fa-ruler-combined"></i> <strong class="text-white">المساحة:</strong> 180 م²</li>
+                        </ul>
+                    </div>
+                    <div><a href="appointment.html" class="info-btn">اطلب تنفيذ مشروع مشابه</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectModal4" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" style="z-index: 99; background-color: rgba(0,0,0,0.6); padding: 15px; border-radius: 50%;" data-bs-dismiss="modal"></button>
+                <div class="modal-body">
+                    <div class="my-custom-slider" id="sliderContainer4">
+                        <img src="img/project-4.jpg" class="my-slide active" alt="صورة">
+                        <img src="img/carousel-1.jpg" class="my-slide" alt="صورة">
+                        <img src="img/project-3.jpg" class="my-slide" alt="صورة">
+                        <button class="my-nav-btn my-prev" onclick="moveSlide('sliderContainer4', -1)"><i class="fa fa-chevron-right"></i></button>
+                        <button class="my-nav-btn my-next" onclick="moveSlide('sliderContainer4', 1)"><i class="fa fa-chevron-left"></i></button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="info-left">
+                        <h4 class="info-title">تشطيب مطعم وكافيه - زايد</h4>
+                        <ul class="info-details">
+                            <li><i class="fa fa-map-marker-alt"></i> <strong class="text-white">الموقع:</strong> الشيخ زايد</li>
+                            <li><i class="fa fa-ruler-combined"></i> <strong class="text-white">المساحة:</strong> 300 م²</li>
+                        </ul>
+                    </div>
+                    <div><a href="appointment.html" class="info-btn">اطلب تنفيذ مشروع مشابه</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectModal5" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" style="z-index: 99; background-color: rgba(0,0,0,0.6); padding: 15px; border-radius: 50%;" data-bs-dismiss="modal"></button>
+                <div class="modal-body">
+                    <div class="my-custom-slider" id="sliderContainer5">
+                        <img src="img/carousel-1.jpg" class="my-slide active" alt="صورة">
+                        <img src="img/project-2.jpg" class="my-slide" alt="صورة">
+                        <img src="img/project-4.jpg" class="my-slide" alt="صورة">
+                        <button class="my-nav-btn my-prev" onclick="moveSlide('sliderContainer5', -1)"><i class="fa fa-chevron-right"></i></button>
+                        <button class="my-nav-btn my-next" onclick="moveSlide('sliderContainer5', 1)"><i class="fa fa-chevron-left"></i></button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="info-left">
+                        <h4 class="info-title">مركز طبي متكامل - مصر الجديدة</h4>
+                        <ul class="info-details">
+                            <li><i class="fa fa-map-marker-alt"></i> <strong class="text-white">الموقع:</strong> مصر الجديدة</li>
+                            <li><i class="fa fa-ruler-combined"></i> <strong class="text-white">المساحة:</strong> 400 م²</li>
+                        </ul>
+                    </div>
+                    <div><a href="appointment.html" class="info-btn">اطلب تنفيذ مشروع مشابه</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectModal6" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" style="z-index: 99; background-color: rgba(0,0,0,0.6); padding: 15px; border-radius: 50%;" data-bs-dismiss="modal"></button>
+                <div class="modal-body">
+                    <div class="my-custom-slider" id="sliderContainer6">
+                        <img src="img/carousel-2.jpg" class="my-slide active" alt="صورة">
+                        <img src="img/project-1.jpg" class="my-slide" alt="صورة">
+                        <img src="img/project-3.jpg" class="my-slide" alt="صورة">
+                        <button class="my-nav-btn my-prev" onclick="moveSlide('sliderContainer6', -1)"><i class="fa fa-chevron-right"></i></button>
+                        <button class="my-nav-btn my-next" onclick="moveSlide('sliderContainer6', 1)"><i class="fa fa-chevron-left"></i></button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="info-left">
+                        <h4 class="info-title">واجهات وتنسيق حدائق لفيلا</h4>
+                        <ul class="info-details">
+                            <li><i class="fa fa-map-marker-alt"></i> <strong class="text-white">الموقع:</strong> القاهرة الجديدة</li>
+                            <li><i class="fa fa-ruler-combined"></i> <strong class="text-white">المساحة:</strong> 600 م²</li>
+                        </ul>
+                    </div>
+                    <div><a href="appointment.html" class="info-btn">اطلب تنفيذ مشروع مشابه</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const sliderData = {};
+        const sliderTimers = {};
+
+        function moveSlide(sliderId, step) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+            
+            // تهيئة العداد لو دي أول مرة نفتح المشروع
+            if (sliderData[sliderId] === undefined) sliderData[sliderId] = 0;
+            
+            const slides = slider.querySelectorAll('.my-slide');
             slides.forEach(s => s.classList.remove('active'));
-            if (index >= slides.length) currSlide1 = 0;
-            if (index < 0) currSlide1 = slides.length - 1;
-            slides[currSlide1].classList.add('active');
+            
+            sliderData[sliderId] += step;
+            
+            if (sliderData[sliderId] >= slides.length) sliderData[sliderId] = 0;
+            if (sliderData[sliderId] < 0) sliderData[sliderId] = slides.length - 1;
+            
+            slides[sliderData[sliderId]].classList.add('active');
+            resetAutoSlide(sliderId); // تصفير التايمر عشان ما يقلبش فجأة
         }
-        
-        function moveSlide1(step) {
-            currSlide1 += step;
-            showSlide1(currSlide1);
-            resetTimer1();
+
+        function resetAutoSlide(sliderId) {
+            clearInterval(sliderTimers[sliderId]);
+            sliderTimers[sliderId] = setInterval(() => { moveSlide(sliderId, 1); }, 3000);
         }
-        
-        function resetTimer1() {
-            clearInterval(slideTimer1);
-            slideTimer1 = setInterval(() => { moveSlide1(1); }, 3000); // بيقلب كل 3 ثواني
-        }
-        
-        // تشغيل السلايدر مع فتح المودال
-        document.getElementById('projectModal1').addEventListener('shown.bs.modal', resetTimer1);
-        document.getElementById('projectModal1').addEventListener('hidden.bs.modal', () => clearInterval(slideTimer1));
+
+        // ربط السكريبت بفتح وإغلاق المودال
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.modal').forEach(modal => {
+                const slider = modal.querySelector('.my-custom-slider');
+                if (slider) {
+                    modal.addEventListener('shown.bs.modal', () => {
+                        sliderData[slider.id] = 0; 
+                        resetAutoSlide(slider.id);
+                    });
+                    modal.addEventListener('hidden.bs.modal', () => {
+                        clearInterval(sliderTimers[slider.id]);
+                    });
+                }
+            });
+        });
     </script>
-    
    
     
     <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
