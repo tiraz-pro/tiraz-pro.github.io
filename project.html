@@ -233,16 +233,18 @@
             height: 100%;
             position: relative;
         }
-        [id^="projectModal"] .my-slide {
+       [id^="projectModal"] .my-slide {
             width: 100%;
             height: 100%;
-            object-fit: cover !important; 
+            /* التعديل السحري هنا: غيرنا cover لـ contain */
+            object-fit: contain !important; 
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
             z-index: 1;
+            background-color: #000; /* عشان لو فيه مساحة فاضية تبقى سودة وشيك */
         }
         [id^="projectModal"] .my-slide.active {
             opacity: 1;
