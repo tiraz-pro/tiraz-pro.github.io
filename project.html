@@ -204,13 +204,33 @@
     
                
 <style>
-        /* 1. تنسيقات السلايدر المخصوص اللي بيمنع الانهيار */
-        .tiraz-custom-slider {
-            position: relative;
-            height: 600px;
-            width: 100%;
-            background-color: #121212;
+        /* =========================================
+           التصميم المودرن المتداخل (16:9 Overlay Modal)
+           ========================================= */
+
+        /* تظبيط المودال عشان ياخد الشاشة كلها بنسبة 16:9 */
+        .modal-content {
+            background-color: transparent !important;
+            border: none;
+        }
+        .modal-body.overlay-design {
+            padding: 0;
             overflow: hidden;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            aspect-ratio: 16 / 9 !important; /* السر هنا: نسبة 16:9 الإجبارية */
+            background-color: #121212;
+            width: 100%;
+        }
+
+        /* السلايدر المخصوص */
+        .tiraz-custom-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* بياخد مساحة الـ 16:9 بالكامل */
         }
         .tiraz-custom-slide {
             position: absolute;
@@ -220,114 +240,116 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out; /* حركة تلاشي ناعمة */
+            transition: opacity 0.8s ease-in-out;
             z-index: 1;
         }
         .tiraz-custom-slide.active {
             opacity: 1;
             z-index: 2;
         }
-        
-        /* 2. تنسيقات الأسهم الذهبية */
+
+        /* مربع النص المتراكب (Overlay) اللي عايم فوق الصورة */
+        .tiraz-info-overlay {
+            position: absolute;
+            bottom: 30px;
+            right: 30px; /* على اليمين عشان العربي */
+            width: 35%; /* واخد 35% من عرض الشاشة والباقي للصورة */
+            background-color: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 12px;
+            z-index: 10;
+            color: #ffffff;
+            border: 1px solid rgba(175, 126, 60, 0.3);
+        }
+
+        /* زراير التقليب */
         .tiraz-nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background-color: #af7e3c;
             color: #121212;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            z-index: 15;
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            border: none;
-            font-size: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             transition: 0.3s;
+            cursor: pointer;
         }
         .tiraz-nav-btn:hover {
             background-color: #ffffff;
             transform: translateY(-50%) scale(1.1);
         }
-        .tiraz-prev { right: 20px; } /* سهم اليمين */
-        .tiraz-next { left: 20px; } /* سهم الشمال */
+        .tiraz-prev { right: 20px; }
+        .tiraz-next { left: 20px; }
 
-        /* 3. تظبيط الارتفاع في شاشات الموبايل */
+        /* تظبيط الموبايل */
         @media (max-width: 991px) {
-            .tiraz-custom-slider { height: 350px; }
+            .modal-body.overlay-design {
+                aspect-ratio: auto !important;
+                height: 85vh;
+            }
+            .tiraz-info-overlay {
+                width: 90%;
+                bottom: 15px;
+                right: 5%;
+                padding: 20px;
+            }
         }
 
-        /* 4. كود التعتيم والضبابية (Backdrop) اللي ورا الشاشة */
+        /* التعتيم الضبابي للخلفية */
         .modal-backdrop {
             background-color: #000000 !important;
         }
         .modal-backdrop.show {
-            opacity: 0.85 !important; /* تعتيم بنسبة 85% */
-            backdrop-filter: blur(6px) !important; /* تأثير ضبابي فخم */
+            opacity: 0.85 !important;
+            backdrop-filter: blur(6px) !important;
         }
     </style>
 
     <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content bg-dark text-white border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+            <div class="modal-content">
                 
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4 z-3" data-bs-dismiss="modal" aria-label="Close" style="background-color: rgba(0,0,0,0.5); padding: 12px; border-radius: 50%;"></button>
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4 z-3" data-bs-dismiss="modal" aria-label="Close" style="background-color: rgba(0,0,0,0.6); padding: 12px; border-radius: 50%;"></button>
                 
-                <div class="modal-body p-0">
-                    <div class="row g-0">
-                        
-                        <div class="col-lg-8 p-0">
-                            <div class="tiraz-custom-slider" id="slider1">
-                                <img src="img/project-1.jpg" class="tiraz-custom-slide active" alt="صورة 1">
-                                <img src="img/project-2.jpg" class="tiraz-custom-slide" alt="صورة 2">
-                                <img src="img/project-3.jpg" class="tiraz-custom-slide" alt="صورة 3">
+                <div class="modal-body overlay-design">
+                    
+                    <div class="tiraz-custom-slider" id="slider1">
+                        <img src="img/project-1.jpg" class="tiraz-custom-slide active" alt="صورة 1">
+                        <img src="img/project-2.jpg" class="tiraz-custom-slide" alt="صورة 2">
+                        <img src="img/project-3.jpg" class="tiraz-custom-slide" alt="صورة 3">
 
-                                <button class="tiraz-nav-btn tiraz-prev"><i class="fa fa-chevron-right"></i></button>
-<button class="tiraz-nav-btn tiraz-next"><i class="fa fa-chevron-left"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 d-flex flex-column justify-content-center p-4" style="background: linear-gradient(145deg, #161616, #0d0d0d);">
-                            <div>
-                                <h3 class="mb-3" style="color: #af7e3c; font-weight: 800;">فيلا سكنية - التجمع الخامس</h3>
-                                <p class="mb-4" style="color: #cccccc; line-height: 1.8; font-size: 1rem;">
-                                    تم إعداد اللوحات التنفيذية وتنسيقها مع الإنشائي. نفذنا التشطيب المتكامل معتمدين على قطاعات ألومنيوم حديثة للواجهات للحصول على أفضل عزل، بالإضافة لتأسيس شبكات كهروميكانيكية.
-                                </p>
-                                
-                                <div class="row g-3 mb-4 mt-1">
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center">
-                                            <div class="btn-square rounded-circle flex-shrink-0" style="background: rgba(175, 126, 60, 0.1); width: 40px; height: 40px;">
-                                                <i class="fa fa-map-marker-alt" style="color: #af7e3c;"></i>
-                                            </div>
-                                            <div class="ms-3">
-                                                <h6 class="text-white mb-0">التجمع الخامس</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center">
-                                            <div class="btn-square rounded-circle flex-shrink-0" style="background: rgba(175, 126, 60, 0.1); width: 40px; height: 40px;">
-                                                <i class="fa fa-ruler-combined" style="color: #af7e3c;"></i>
-                                            </div>
-                                            <div class="ms-3">
-                                                <h6 class="text-white mb-0">450 متر مربع</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="appointment.html" class="btn py-3 px-4 w-100 fw-bold" style="background-color: #af7e3c; color: #121212; border-radius: 8px;">اطلب تنفيذ مشروع مشابه</a>
-                            </div>
-                        </div>
-                        
+                        <button class="tiraz-nav-btn tiraz-prev"><i class="fa fa-chevron-right"></i></button>
+                        <button class="tiraz-nav-btn tiraz-next"><i class="fa fa-chevron-left"></i></button>
                     </div>
+
+                    <div class="tiraz-info-overlay text-start">
+                        <h3 class="mb-3" style="color: #af7e3c; font-weight: 800;">فيلا سكنية - التجمع الخامس</h3>
+                        <p class="mb-4" style="color: #cccccc; line-height: 1.8; font-size: 1rem;">
+                            تم إعداد اللوحات التنفيذية وتنسيقها مع الإنشائي. نفذنا التشطيب المتكامل معتمدين على قطاعات ألومنيوم حديثة للواجهات للحصول على أفضل عزل، بالإضافة لتأسيس شبكات كهروميكانيكية.
+                        </p>
+                        
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fa fa-map-marker-alt" style="color: #af7e3c; width: 20px;"></i> <strong class="text-white">الموقع:</strong> <span class="text-muted">التجمع الخامس</span></li>
+                            <li><i class="fa fa-ruler-combined" style="color: #af7e3c; width: 20px;"></i> <strong class="text-white">المساحة:</strong> <span class="text-muted">450 متر مربع</span></li>
+                        </ul>
+                        
+                        <a href="appointment.html" class="btn py-3 px-4 w-100 fw-bold" style="background-color: #af7e3c; color: #121212; border-radius: 8px;">اطلب تنفيذ مشروع مشابه</a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
+
 
 <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
