@@ -204,151 +204,242 @@
     
                
 <style>
-        /* =========================================
-           التصميم المودرن المتداخل (16:9 Overlay Modal)
-           ========================================= */
+  /* =========================================
+   التصميم الجديد: شريط معلومات سفلي (Bottom Info Bar)
+   ========================================= */
 
-        /* تظبيط المودال عشان ياخد الشاشة كلها بنسبة 16:9 */
-        .modal-content {
-            background-color: transparent !important;
-            border: none;
-        }
-        .modal-body.overlay-design {
-            padding: 0;
-            overflow: hidden;
-            position: relative;
-            border-radius: 15px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-            aspect-ratio: 16 / 9 !important; /* السر هنا: نسبة 16:9 الإجبارية */
-            background-color: #121212;
-            width: 100%;
-        }
+/* تنسيقات الـ Modal ككل لتكون مضغوطة وبدون سكرول */
+.tiraz-bottom-modal .modal-dialog {
+    max-width: 900px; /* حجم lg مضغوط */
+}
 
-        /* السلايدر المخصوص */
-        .tiraz-custom-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%; /* بياخد مساحة الـ 16:9 بالكامل */
-        }
-        .tiraz-custom-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            z-index: 1;
-        }
-        .tiraz-custom-slide.active {
-            opacity: 1;
-            z-index: 2;
-        }
+.tiraz-bottom-modal .modal-content {
+    background-color: #1a1a1a; /* خلفية داكنة */
+    border: 1px solid rgba(175, 126, 60, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* تحديد أقصى ارتفاع ليتناسب مع الشاشة ويمنع السكرول */
+    max-height: 90vh; 
+}
 
-        /* مربع النص المتراكب (Overlay) اللي عايم فوق الصورة */
-        .tiraz-info-overlay {
-            position: absolute;
-            bottom: 30px;
-            right: 30px; /* على اليمين عشان العربي */
-            width: 35%; /* واخد 35% من عرض الشاشة والباقي للصورة */
-            background-color: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 12px;
-            z-index: 10;
-            color: #ffffff;
-            border: 1px solid rgba(175, 126, 60, 0.3);
-        }
+/* زر الإغلاق في الهيدر */
+.tiraz-bottom-modal .modal-header {
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    padding: 10px;
+}
 
-        /* زراير التقليب */
-        .tiraz-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #af7e3c;
-            color: #121212;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            z-index: 15;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .tiraz-nav-btn:hover {
-            background-color: #ffffff;
-            transform: translateY(-50%) scale(1.1);
-        }
-        .tiraz-prev { right: 20px; }
-        .tiraz-next { left: 20px; }
+/* الجزء العلوي: السلايدر (Carousel) */
+.tiraz-bottom-modal .modal-body {
+    padding: 0;
+    flex: 1 1 auto; /* يتمدد ليأخذ المساحة المتاحة */
+    overflow: hidden;
+    position: relative;
+    /* إعطاء ارتفاع مرن للصورة */
+    height: 400px; /* ارتفاع أولي للصورة، سيتمدد في الشاشات الكبيرة */
+}
 
-        /* تظبيط الموبايل */
-        @media (max-width: 991px) {
-            .modal-body.overlay-design {
-                aspect-ratio: auto !important;
-                height: 85vh;
-            }
-            .tiraz-info-overlay {
-                width: 90%;
-                bottom: 15px;
-                right: 5%;
-                padding: 20px;
-            }
-        }
+/* جعل السلايدر يملأ الـ body */
+.tiraz-bottom-modal .tiraz-custom-slider {
+    width: 100%;
+    height: 100%;
+}
 
-        /* التعتيم الضبابي للخلفية */
-        .modal-backdrop {
-            background-color: #000000 !important;
-        }
-        .modal-backdrop.show {
-            opacity: 0.85 !important;
-            backdrop-filter: blur(6px) !important;
-        }
+.tiraz-bottom-modal .tiraz-custom-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ملء الصورة بالكامل */
+}
+
+/* زراير التقليب (الأسهم) */
+.tiraz-bottom-modal .tiraz-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #af7e3c;
+    color: #121212;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 15;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.tiraz-bottom-modal .tiraz-nav-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.tiraz-bottom-modal .tiraz-prev { right: 15px; }
+.tiraz-bottom-modal .tiraz-next { left: 15px; }
+
+
+/* الجزء السفلي: شريط المعلومات الأفقي (Bottom Bar) */
+.tiraz-bottom-modal .modal-footer {
+    border-top: 1px solid rgba(175, 126, 60, 0.3);
+    padding: 15px;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* للسماح بالالتفاف في الشاشات الصغيرة */
+}
+
+/* تنسيق العناصر داخل الشريط السفلي */
+.tiraz-bottom-modal .info-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1 1 auto;
+}
+
+.tiraz-bottom-modal .info-bar-title {
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.tiraz-bottom-modal .info-bar-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+.tiraz-bottom-modal .info-bar-details li {
+    list-style: none;
+}
+
+.tiraz-bottom-modal .info-bar-details i {
+    color: #af7e3c;
+    margin-left: 5px;
+}
+
+.tiraz-bottom-modal .info-bar-details li strong {
+    color: #ffffff;
+    margin-left: 2px;
+}
+
+.tiraz-bottom-modal .info-bar-right {
+    flex: 0 0 auto;
+}
+
+.tiraz-bottom-modal .info-bar-btn {
+    background-color: #af7e3c;
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.tiraz-bottom-modal .info-bar-btn:hover {
+    background-color: #ffffff;
+    color: #121212;
+}
+
+
+/* تظبيط الموبايل */
+@media (max-width: 991px) {
+    .tiraz-bottom-modal .modal-content {
+        max-height: 95vh;
+    }
+    
+    .tiraz-bottom-modal .modal-body {
+        height: 300px;
+    }
+    
+    .tiraz-bottom-modal .modal-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .tiraz-bottom-modal .info-bar-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .tiraz-bottom-modal .info-bar-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .tiraz-bottom-modal .info-bar-right {
+        width: 100%;
+    }
+    
+    .tiraz-bottom-modal .info-bar-btn {
+        width: 100%;
+    }
+}
+
+/* التعتيم الضبابي للخلفية */
+.modal-backdrop {
+    background-color: #000000 !important;
+}
+.modal-backdrop.show {
+    opacity: 0.85 !important;
+    backdrop-filter: blur(6px) !important;
+}
     </style>
 
-    <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4 z-3" data-bs-dismiss="modal" aria-label="Close" style="background-color: rgba(0,0,0,0.6); padding: 12px; border-radius: 50%;"></button>
-                
-                <div class="modal-body overlay-design">
-                    
-                    <div class="tiraz-custom-slider" id="slider1">
-                        <img src="img/project-1.jpg" class="tiraz-custom-slide active" alt="صورة 1">
-                        <img src="img/project-2.jpg" class="tiraz-custom-slide" alt="صورة 2">
-                        <img src="img/project-3.jpg" class="tiraz-custom-slide" alt="صورة 3">
+    <div class="modal fade tiraz-bottom-modal" id="projectModal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="btn-close btn-close-white z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="tiraz-custom-slider" id="slider1">
+                    <img src="img/project-1.jpg" class="tiraz-custom-slide active" alt="صورة 1">
+                    <img src="img/project-2.jpg" class="tiraz-custom-slide" alt="صورة 2">
+                    <img src="img/project-3.jpg" class="tiraz-custom-slide" alt="صورة 3">
 
-                        <button class="tiraz-nav-btn tiraz-prev"><i class="fa fa-chevron-right"></i></button>
-                        <button class="tiraz-nav-btn tiraz-next"><i class="fa fa-chevron-left"></i></button>
-                    </div>
-
-                    <div class="tiraz-info-overlay text-start">
-                        <h3 class="mb-3" style="color: #af7e3c; font-weight: 800;">فيلا سكنية - التجمع الخامس</h3>
-                        <p class="mb-4" style="color: #cccccc; line-height: 1.8; font-size: 1rem;">
-                            تم إعداد اللوحات التنفيذية وتنسيقها مع الإنشائي. نفذنا التشطيب المتكامل معتمدين على قطاعات ألومنيوم حديثة للواجهات للحصول على أفضل عزل، بالإضافة لتأسيس شبكات كهروميكانيكية.
-                        </p>
-                        
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-2"><i class="fa fa-map-marker-alt" style="color: #af7e3c; width: 20px;"></i> <strong class="text-white">الموقع:</strong> <span class="text-muted">التجمع الخامس</span></li>
-                            <li><i class="fa fa-ruler-combined" style="color: #af7e3c; width: 20px;"></i> <strong class="text-white">المساحة:</strong> <span class="text-muted">450 متر مربع</span></li>
-                        </ul>
-                        
-                        <a href="appointment.html" class="btn py-3 px-4 w-100 fw-bold" style="background-color: #af7e3c; color: #121212; border-radius: 8px;">اطلب تنفيذ مشروع مشابه</a>
-                    </div>
-                    
+                    <button class="tiraz-nav-btn tiraz-prev"><i class="fa fa-chevron-right"></i></button>
+                    <button class="tiraz-nav-btn tiraz-next"><i class="fa fa-chevron-left"></i></button>
                 </div>
             </div>
+
+            <div class="modal-footer">
+                <div class="info-bar-left">
+                    <h5 class="info-bar-title">فيلا سكنية - التجمع الخامس</h5>
+                    <ul class="info-bar-details p-0 m-0">
+                        <li><i class="fa fa-map-marker-alt"></i> <strong>الموقع:</strong> التجمع الخامس</li>
+                        <li><i class="fa fa-ruler-combined"></i> <strong>المساحة:</strong> 450 م²</li>
+                    </ul>
+                </div>
+                <div class="info-bar-right">
+                    <a href="appointment.html" class="info-bar-btn">اطلب تنفيذ مشروع مشابه</a>
+                </div>
+            </div>
+            
         </div>
     </div>
+</div>
 
 
 <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
