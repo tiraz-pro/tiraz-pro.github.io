@@ -273,17 +273,22 @@
         [id^="projectModal"] .my-next { left: 25px; }
 
         /* الشريط السفلي (بدون سكرول) */
+        /* الشريط السفلي (شفاف وعايم فوق الصورة - Glassmorphism) */
         [id^="projectModal"] .modal-footer {
-            background-color: #1a1a1a;
-            border-top: 1px solid rgba(175, 126, 60, 0.3);
+            position: absolute; /* الخدعة هنا: الشريط بقى عايم فوق الصورة */
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.65); /* أسود شفاف بنسبة 65% */
+            backdrop-filter: blur(12px); /* زغللة راقية للصورة اللي وراه */
+            -webkit-backdrop-filter: blur(12px); /* عشان يشتغل على شاشات الأيفون وسفاري */
+            border-top: 1px solid rgba(175, 126, 60, 0.4);
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
-            z-index: 5;
-            flex-shrink: 0; 
+            z-index: 10;
         }
         [id^="projectModal"] .info-left {
             display: flex;
