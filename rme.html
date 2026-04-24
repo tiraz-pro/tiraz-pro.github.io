@@ -122,114 +122,108 @@
     </nav>
 
     <style>
+        /* ============================================== */
+        /* السلايدر السينمائي النظيف (بدون بوكسات) */
+        /* ============================================== */
         .tiraz-hero-slider {
-            position: relative;
-            width: 100%;
-            height: 90vh; 
-            overflow: hidden;
-            background-color: #121212;
+            position: relative; width: 100%; height: 90vh; overflow: hidden; background-color: #121212;
         }
         .tiraz-hero-slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out; 
-            z-index: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; transition: opacity 1.5s ease-in-out; z-index: 1;
         }
         .tiraz-hero-slide.active { opacity: 1; z-index: 2; }
+        
         .tiraz-hero-slide img {
             width: 100%; height: 100%; object-fit: cover; 
             transform: scale(1.0); transition: transform 8s linear; 
         }
         .tiraz-hero-slide.active img { transform: scale(1.1); }
         
-        /* التعتيم من اليمين للشمال عشان العربي */
+        /* تدرج لوني خفيف جداً من اليمين عشان الكلام يبان من غير بوكس */
         .hero-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to left, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.5) 50%, rgba(18, 18, 18, 0) 100%);
+            background: linear-gradient(to left, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 55%);
             z-index: 3; display: flex; align-items: center; 
-            padding-right: 8%; justify-content: flex-start;
+            padding-right: 8%;
         }
         
-        /* البوكس الشفاف الفخم */
-        .hero-content {
-            background: rgba(18, 18, 18, 0.6) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border-right: 5px solid #af7e3c !important;
-            padding: 40px !important;
-            border-radius: 15px !important;
-            max-width: 600px;
-            color: white;
-            text-align: right; /* إجبار النص يكون يمين */
-            transform: translateY(30px); opacity: 0;
-            animation: fadeInUp 1.5s ease 0.5s forwards; 
+        /* حاوية النص الحرة (بدون خلفية) */
+        .hero-text-container {
+            max-width: 650px; text-align: right;
+            opacity: 0; transform: translateY(40px);
+            transition: all 1.2s ease 0.5s; /* حركة دخول ناعمة بعد ما الصورة تظهر */
         }
-        .hero-content h1 { 
-            color: #ffffff; 
-            font-size: 2.8rem !important; /* صغرناه شوية عشان ميقطمش الكلام */
-            font-weight: 900; line-height: 1.4; margin-bottom: 20px; 
+        .tiraz-hero-slide.active .hero-text-container {
+            opacity: 1; transform: translateY(0);
         }
-        .hero-content h1 span { color: #af7e3c; }
-        .hero-content p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 30px; line-height: 1.8; }
+
+        .hero-text-container h1 { 
+            color: #ffffff; font-size: 3.5rem; font-weight: 900; line-height: 1.4; margin-bottom: 20px; 
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* ظل للكلام عشان ينطق */
+        }
+        .hero-text-container h1 span { color: #af7e3c; }
+        .hero-text-container p { 
+            font-size: 1.2rem; color: #f8f9fa; margin-bottom: 30px; line-height: 1.8; 
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
         .hero-btn {
             background-color: #af7e3c; color: #ffffff; padding: 12px 35px; font-size: 1.1rem; font-weight: bold;
             border-radius: 8px; text-decoration: none; display: inline-block; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         .hero-btn:hover { background-color: #ffffff; color: #121212; transform: translateY(-3px); }
         
-        @keyframes fadeInUp { to { transform: translateY(0); opacity: 1; } }
-        
-        /* تظبيط الموبايل */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2rem !important; }
-            .hero-overlay { background: rgba(18, 18, 18, 0.8); justify-content: center; padding: 20px; text-align: center; }
-            .hero-content { border-right: none !important; border-bottom: 4px solid #af7e3c !important; text-align: center; padding: 25px !important;}
+            .hero-text-container h1 { font-size: 2.2rem; }
+            .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 70%); align-items: flex-end; padding-bottom: 10%; justify-content: center; padding-right: 0;}
+            .hero-text-container { text-align: center; }
         }
     </style>
 
-    <div class="tiraz-hero-slider" id="dynamicHero">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>نحوّل المساحات إلى <span>تحف فنية</span></h1>
-                <p>تنفيذ متكامل وتشطيبات راقية تعكس هويتك، بإدارة هندسية تضمن لك أعلى معايير الجودة والتسليم في الموعد.</p>
-                <a href="appointment.html" class="hero-btn">اطلب مقايسة مشروعك</a>
-            </div>
-        </div>
-    </div>
-
-    <script>
+    <div class="tiraz-hero-slider" id="dynamicHero"></div>
+   <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // توليد قائمة الـ 40 صورة
-            const projectImages = [];
+            
+            // 1. العبارات اللي هتتغير مع كل صورة
+            const marketingTexts = [
+                { title: "نحوّل المساحات إلى", highlight: "تحف فنية", desc: "تنفيذ متكامل وتشطيبات راقية تعكس هويتك، بإدارة هندسية تضمن لك أعلى معايير الجودة." },
+                { title: "دقة التنفيذ و", highlight: "روعة التصميم", desc: "نلتزم بأدق التفاصيل الهندسية لتحويل المخططات إلى واقع ملموس يعيش طويلاً." },
+                { title: "تسليم مفتاح بـ", highlight: "أعلى جودة", desc: "راحة بالك هي أولويتنا.. ندير مشروعك من التأسيس وحتى اللمسات النهائية والديكور." },
+                { title: "إدارة هندسية", highlight: "احترافية", desc: "إشراف دقيق على كل بند لضمان التنفيذ المطابق للمواصفات الفنية والميزانية المحددة." }
+            ];
+
+            // 2. توليد قائمة الـ 40 صورة
+            const allImages = [];
             for (let i = 1; i <= 40; i++) {
-                projectImages.push(`img/TIRAZ(${i}).jpeg`);
+                allImages.push(`img/TIRAZ(${i}).jpeg`);
             }
 
-            function getRandomImages(arr, num) {
-                const shuffled = [...arr].sort(() => 0.5 - Math.random());
-                return shuffled.slice(0, num);
-            }
+            // 3. لخبطة الصور واختيار 4 صور على قد العبارات
+            const shuffledImages = allImages.sort(() => 0.5 - Math.random()).slice(0, marketingTexts.length);
 
-            // سحب 6 صور عشوائية للتقليب بينهم (عشان منعملش لود على الموقع)
-            const selectedImages = getRandomImages(projectImages, 6); 
             const heroContainer = document.getElementById('dynamicHero');
-            const overlay = heroContainer.querySelector('.hero-overlay');
 
-            selectedImages.forEach((imgSrc, index) => {
+            // 4. بناء السلايدر (صورة + النص بتاعها)
+            marketingTexts.forEach((textData, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'tiraz-hero-slide' + (index === 0 ? ' active' : '');
-                const img = document.createElement('img');
-                img.src = imgSrc;
                 
-                // لو الصورة مش موجودة، كمل عادي ومتبوظش السلايدر
-                img.onerror = function() { this.parentElement.style.display = 'none'; }; 
-                
-                slide.appendChild(img);
-                heroContainer.insertBefore(slide, overlay);
+                // كود الـ HTML اللي هيتزرع لكل شريحة
+                slide.innerHTML = `
+                    <img src="${shuffledImages[index]}" onerror="this.parentElement.style.display='none';">
+                    <div class="hero-overlay">
+                        <div class="hero-text-container">
+                            <h1>${textData.title} <span>${textData.highlight}</span></h1>
+                            <p>${textData.desc}</p>
+                            <a href="appointment.html" class="hero-btn">اطلب مقايسة مشروعك</a>
+                        </div>
+                    </div>
+                `;
+                heroContainer.appendChild(slide);
             });
 
+            // 5. تشغيل التقليب الأوتوماتيك
             let currentHeroSlide = 0;
             const heroSlides = document.querySelectorAll('.tiraz-hero-slide');
             
@@ -238,7 +232,7 @@
                     heroSlides[currentHeroSlide].classList.remove('active');
                     currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
                     heroSlides[currentHeroSlide].classList.add('active');
-                }, 6000); 
+                }, 6000); // التقليب كل 6 ثواني
             }
         });
     </script>
