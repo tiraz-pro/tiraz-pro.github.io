@@ -142,25 +142,31 @@
         }
 
 
+       /* ============================================== */
+        /* تظبيط ألوان الفونتات (عشان الكلام الصغير ينطق) */
         /* ============================================== */
-        /* إجبار الصفحة على الستايل الفاتح النظيف (Bright Theme) */
-        /* ============================================== */
-        body {
-            background-color: #ffffff !important;
+
+        /* 1. العناوين الأساسية (أسود صريح وفخم) */
+        h1, h2, h3, h4, h5, h6 {
+            color: #121212 !important;
+        }
+
+        /* 2. الكلام العادي والتفاصيل اللي تحت العناوين (رمادي غامق جداً ومقروء) */
+        p, span, .text-muted, .text-secondary {
             color: #444444 !important;
+            font-weight: 500; /* تخناه سنة بسيطة عشان يبقى أوضح */
         }
-        .bg-white {
-            background-color: #ffffff !important;
+
+        /* 3. العناوين المكتوبة بلون طراز الدهبي */
+        .text-primary, .section-title {
+            color: #af7e3c !important;
         }
-        .bg-light {
-            background-color: #f8f9fa !important;
-        }
-        .text-muted, .text-secondary {
-            color: #666666 !important; /* رمادي شيك ومقروء جداً */
-        }
-        h1, h2, h3, h4, h5, h6, .text-dark {
-            color: #121212 !important; /* أسود صريح للعناوين عشان تنطق */
-        }
+
+        /* 4. استثناء مهم: كلام السلايدر لازم يفضل أبيض عشان التعتيم اللي وراه */
+        .hero-content h1 { color: #ffffff !important; }
+        .hero-content p { color: #f8f9fa !important; }
+        .hero-content h1 span { color: #af7e3c !important; }
+        .text-light { color: #ffffff !important; }
     </style>
 
     <div class="tiraz-hero-slider" id="dynamicHero"></div>
