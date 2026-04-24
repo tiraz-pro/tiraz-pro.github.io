@@ -395,38 +395,208 @@
                 </div>
                 <a href="project.html" class="btn text-white py-3 px-4 d-none d-md-block" style="background-color: #121212; border-radius: 8px;">عرض كل المشاريع</a>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative" style="border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <img class="img-fluid w-100" src="img/project-1.jpg" style="object-fit: cover; height: 350px;" alt="">
-                        <div class="position-absolute bottom-0 start-0 w-100 bg-white p-4">
-                            <h4 class="mb-2">فيلا سكنية - التجمع</h4>
-                            <p class="text-muted mb-3"><i class="fa fa-map-marker-alt me-2" style="color: #af7e3c;"></i> تشطيب متكامل</p>
-                            <a href="project.html" class="btn w-100 text-white" style="background-color: #af7e3c;">شاهد التفاصيل</a>
+           <style>
+                /* ستايل كروت المشاريع (Glow & Glassmorphism) */
+                .project-carousel .tiraz-project-card {
+                    background: linear-gradient(145deg, #1a1a1a, #111111);
+                    border-radius: 16px;
+                    overflow: hidden;
+                    border: 1px solid rgba(175, 126, 60, 0.15);
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    position: relative;
+                    margin: 15px 10px; /* مسافة عشان تأثير الإضاءة يبان */
+                }
+
+                /* تأثير الإضاءة الخلفية والبروز لما الماوس ييجي عليه */
+                .project-carousel .tiraz-project-card:hover {
+                    transform: translateY(-10px);
+                    border-color: #af7e3c;
+                    box-shadow: 0 15px 35px rgba(175, 126, 60, 0.3); /* الإضاءة الدهبي من الخلف */
+                }
+
+                .project-carousel .project-img {
+                    position: relative;
+                    overflow: hidden;
+                    height: 280px; /* توحيد طول الصور عشان الشريط ميبقاش طالع نازل */
+                }
+
+                .project-carousel .project-img img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s ease;
+                }
+
+                /* زووم ناعم للصورة مع الهوفر */
+                .project-carousel .tiraz-project-card:hover .project-img img {
+                    transform: scale(1.1);
+                }
+
+                .project-carousel .project-info {
+                    background: rgba(18, 18, 18, 0.9);
+                    border-top: 1px solid rgba(175, 126, 60, 0.2);
+                }
+
+                .project-carousel .project-info h4 {
+                    color: #ffffff;
+                    font-size: 1.2rem;
+                }
+
+                /* زرار العدسة الدائري */
+                .project-carousel .btn-square {
+                    width: 50px;
+                    height: 50px;
+                    background: #af7e3c !important;
+                    border: none !important;
+                    color: #121212 !important;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+                    transition: 0.3s;
+                }
+                .project-carousel .btn-square:hover {
+                    background: #ffffff !important;
+                    transform: scale(1.1);
+                }
+
+                /* أزرار التقليب بتاعة الشريط (الأسهم) */
+                .project-carousel .owl-nav {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 40px;
+                    gap: 20px;
+                }
+                .project-carousel .owl-nav .owl-prev,
+                .project-carousel .owl-nav .owl-next {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: #121212 !important;
+                    border: 1px solid #af7e3c !important;
+                    color: #af7e3c !important;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 20px;
+                    transition: 0.3s;
+                }
+                .project-carousel .owl-nav .owl-prev:hover,
+                .project-carousel .owl-nav .owl-next:hover {
+                    background: #af7e3c !important;
+                    color: #121212 !important;
+                    box-shadow: 0 0 20px rgba(175, 126, 60, 0.6); /* إضاءة للأسهم */
+                }
+            </style>
+
+            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
+                
+                <div class="tiraz-project-card">
+                    <div class="project-img">
+                        <img class="img-fluid" src="img/TIRAZ(1).jpeg" alt="فيلا التجمع">
+                        <div class="project-overlay">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#projectModal1" class="btn btn-primary btn-square rounded-circle"><i class="fa fa-search-plus"></i></button>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="position-relative" style="border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <img class="img-fluid w-100" src="img/project-2.jpg" style="object-fit: cover; height: 350px;" alt="">
-                        <div class="position-absolute bottom-0 start-0 w-100 bg-white p-4">
-                            <h4 class="mb-2">مقر إداري - الشروق</h4>
-                            <p class="text-muted mb-3"><i class="fa fa-map-marker-alt me-2" style="color: #af7e3c;"></i> تأسيس مكاتب</p>
-                            <a href="project.html" class="btn w-100 text-white" style="background-color: #af7e3c;">شاهد التفاصيل</a>
-                        </div>
+                    <div class="project-info p-4 text-center">
+                        <span class="text-primary fw-bold mb-2 d-block">سكني (تسليم مفتاح)</span>
+                        <h4 class="mb-0">فيلا سكنية - التجمع الخامس</h4>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="position-relative" style="border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <img class="img-fluid w-100" src="img/project-3.jpg" style="object-fit: cover; height: 350px;" alt="">
-                        <div class="position-absolute bottom-0 start-0 w-100 bg-white p-4">
-                            <h4 class="mb-2">شقة فندقية - المعادي</h4>
-                            <p class="text-muted mb-3"><i class="fa fa-map-marker-alt me-2" style="color: #af7e3c;"></i> ديكور وتعديل</p>
-                            <a href="project.html" class="btn w-100 text-white" style="background-color: #af7e3c;">شاهد التفاصيل</a>
+
+                <div class="tiraz-project-card">
+                    <div class="project-img">
+                        <img class="img-fluid" src="img/TIRAZ(20).jpeg" alt="روف سكنى">
+                        <div class="project-overlay">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#projectModal2" class="btn btn-primary btn-square rounded-circle"><i class="fa fa-search-plus"></i></button>
                         </div>
                     </div>
+                    <div class="project-info p-4 text-center">
+                        <span class="text-primary fw-bold mb-2 d-block">سكنى</span>
+                        <h4 class="mb-0">شقه روف - الشروق</h4>
+                    </div>
                 </div>
+
+                <div class="tiraz-project-card">
+                    <div class="project-img">
+                        <img class="img-fluid" src="img/TIRAZ(21).jpeg" alt="شقة مودرن">
+                        <div class="project-overlay">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#projectModal3" class="btn btn-primary btn-square rounded-circle"><i class="fa fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="project-info p-4 text-center">
+                        <span class="text-primary fw-bold mb-2 d-block">تعديل معماري وديكور</span>
+                        <h4 class="mb-0">ستوديو فندقى - المعادي</h4>
+                    </div>
+                </div>
+
+                <div class="tiraz-project-card">
+                    <div class="project-img">
+                        <img class="img-fluid" src="img/TIRAZ(27).jpeg" alt="مطعم تجاري">
+                        <div class="project-overlay">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#projectModal4" class="btn btn-primary btn-square rounded-circle"><i class="fa fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="project-info p-4 text-center">
+                        <span class="text-primary fw-bold mb-2 d-block">تجاري وتجهيزات</span>
+                        <h4 class="mb-0">تشطيب مطعم وكافيه - زايد</h4>
+                    </div>
+                </div>
+
+                <div class="tiraz-project-card">
+                    <div class="project-img">
+                        <img class="img-fluid" src="img/TIRAZ(32).jpeg" alt="عيادة طبية">
+                        <div class="project-overlay">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#projectModal5" class="btn btn-primary btn-square rounded-circle"><i class="fa fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="project-info p-4 text-center">
+                        <span class="text-primary fw-bold mb-2 d-block">طبي ورعاية صحية</span>
+                        <h4 class="mb-0">عيادة اسنان - مصر الجديدة</h4>
+                    </div>
+                </div>
+
+                <div class="tiraz-project-card">
+                    <div class="project-img">
+                        <img class="img-fluid" src="img/TIRAZ(37).jpeg" alt="لاندسكيب">
+                        <div class="project-overlay">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#projectModal6" class="btn btn-primary btn-square rounded-circle"><i class="fa fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="project-info p-4 text-center">
+                        <span class="text-primary fw-bold mb-2 d-block">لاندسكيب وتصميم خارجي</span>
+                        <h4 class="mb-0">واجهات وتنسيق حدائق لفيلا</h4>
+                    </div>
+                </div>
+
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // تشغيل الـ Owl Carousel بعد تحميل الصفحة
+                    setTimeout(function() {
+                        if(jQuery().owlCarousel) {
+                            $('.project-carousel').owlCarousel({
+                                autoplay: true,
+                                smartSpeed: 1000,
+                                margin: 20,
+                                loop: true,
+                                center: true, // يخلي الكارت اللي في النص بارز
+                                dots: false,
+                                nav: true,
+                                navText : [
+                                    '<i class="fa fa-chevron-right"></i>',
+                                    '<i class="fa fa-chevron-left"></i>'
+                                ],
+                                responsive: {
+                                    0:{ items: 1 },
+                                    768:{ items: 2 },
+                                    992:{ items: 3 }
+                                }
+                            });
+                        }
+                    }, 500); // تأخير بسيط لضمان تحميل مكتبة الجيكويري
+                });
+            </script>
+            
+                    
             <div class="text-center mt-5 d-block d-md-none">
                 <a href="project.html" class="btn text-white py-3 px-5 w-100" style="background-color: #121212; border-radius: 8px;">عرض كل المشاريع</a>
             </div>
