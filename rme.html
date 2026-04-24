@@ -342,105 +342,105 @@
         </div>
     </div>
 
-   <style>
-        .tiraz-service-card-new {
+  <style>
+        .tiraz-service-card-v2 {
             position: relative;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            height: 380px; /* طول الكارت */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(175, 126, 60, 0.2);
-            transition: all 0.5s ease;
+            height: 340px; /* صغرنا طول الكارت عشان يكون ملموم وشيك */
+            background-color: #0a0a0a;
+            border: 1px solid rgba(175, 126, 60, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
         }
-        
-        /* صورة الخلفية للخدمة */
-        .tiraz-service-card-new img.service-bg {
-            width: 100%;
-            height: 100%;
+
+        /* صورة الخلفية (هتكون معتمة دايماً عشان الكلام ينطق) */
+        .tiraz-service-card-v2 img.service-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        .tiraz-service-card-new:hover img.service-bg {
-            transform: scale(1.1); /* زووم ناعم للصورة */
+            opacity: 0.25; /* تعتيم قوي للصورة عشان تبقى خلفية بس */
+            transition: transform 0.8s ease, opacity 0.4s ease;
         }
 
-        /* طبقة التعتيم المتدرجة فوق الصورة */
-        .service-overlay-new {
+        /* زووم وتفتيح بسيط للصورة مع الهوفر */
+        .tiraz-service-card-v2:hover img.service-bg {
+            transform: scale(1.1);
+            opacity: 0.15; /* نغمقها أكتر سِنة مع الهوفر عشان الكلام يبرز أكتر */
+        }
+
+        /* تدرج لوني من تحت لفوق */
+        .service-overlay-v2 {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, #111111 0%, rgba(17,17,17,0.7) 40%, transparent 100%);
-            transition: 0.5s;
+            background: linear-gradient(to top, #0a0a0a 10%, rgba(10,10,10,0.6) 60%, transparent 100%);
+            padding: 30px 25px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px 25px;
-        }
-        .tiraz-service-card-new:hover .service-overlay-new {
-            background: linear-gradient(to top, #111111 0%, rgba(17,17,17,0.9) 60%, rgba(17,17,17,0.4) 100%);
+            justify-content: flex-end; /* يخلي المحتوى كله تحت */
+            z-index: 2;
         }
 
-        /* المحتوى جوه الكارت */
-        .service-content-new {
-            transform: translateY(50px); /* بننزل المحتوى تحت شوية عشان نخفي الوصف */
-            transition: transform 0.5s ease;
-        }
-        .tiraz-service-card-new:hover .service-content-new {
-            transform: translateY(0); /* المحتوى بيطلع لفوق لما الماوس ييجي عليه */
+        /* تأثير البروز والإضاءة للكارت نفسه */
+        .tiraz-service-card-v2:hover {
+            border-color: #af7e3c;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(175, 126, 60, 0.15);
         }
 
-        /* الأيقونة */
-        .service-icon-new {
-            width: 60px; height: 60px;
-            background: #af7e3c;
-            color: #111111;
+        /* الأيقونة الملمومة */
+        .service-icon-v2 {
+            width: 55px; height: 55px;
+            background: rgba(175, 126, 60, 0.1);
+            border: 1px solid #af7e3c;
+            color: #af7e3c;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(175,126,60,0.4);
+            font-size: 22px;
+            margin-bottom: 20px;
             transition: 0.4s;
         }
-        .tiraz-service-card-new:hover .service-icon-new {
-            background: #ffffff;
-            color: #af7e3c;
-        }
-
-        .service-content-new h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        /* الشرح اللي بيظهر مع الهوفر */
-        .service-desc-new {
-            opacity: 0;
-            color: #d1d1d1;
-            transition: opacity 0.5s ease;
-            height: 0;
-            overflow: hidden;
-        }
-        .tiraz-service-card-new:hover .service-desc-new {
-            opacity: 1;
-            height: auto;
-            margin-top: 15px;
-        }
-        
-        .service-btn-new {
-            display: inline-block;
-            color: #af7e3c;
-            border: 1px solid #af7e3c;
-            padding: 8px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 15px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .service-btn-new:hover {
+        .tiraz-service-card-v2:hover .service-icon-v2 {
             background: #af7e3c;
             color: #111;
+            box-shadow: 0 0 15px rgba(175, 126, 60, 0.5);
+        }
+
+        /* العناوين والنصوص (دايماً ظاهرة) */
+        .service-content-v2 h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .service-content-v2 p {
+            color: #b0b0b0; /* رمادي فاتح مريح للعين */
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* لينك اطلب الخدمة الشيك */
+        .service-link-v2 {
+            color: #af7e3c;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .service-link-v2 i {
+            margin-right: 8px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .tiraz-service-card-v2:hover .service-link-v2 {
+            color: #ffffff;
+        }
+        .tiraz-service-card-v2:hover .service-link-v2 i {
+            transform: translateX(-5px); /* السهم بيتحرك مع الهوفر */
         }
     </style>
 
@@ -453,96 +453,84 @@
             <div class="row g-4">
                 
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="tiraz-service-card-new">
-                        <img class="service-bg" src="img/TIRAZ(5).jpeg" alt="التشطيب المتكامل">
-                        <div class="service-overlay-new">
-                            <div class="service-content-new">
-                                <div class="service-icon-new"><i class="fa fa-home"></i></div>
+                    <div class="tiraz-service-card-v2">
+                        <img class="service-bg" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=80" alt="التشطيب المتكامل">
+                        <div class="service-overlay-v2">
+                            <div class="service-icon-v2"><i class="fa fa-home"></i></div>
+                            <div class="service-content-v2">
                                 <h3>التشطيب المتكامل</h3>
-                                <div class="service-desc-new">
-                                    <p>تنفيذ كافة البنود المعمارية والكهروميكانيكية بجودة فائقة ونظام تسليم المفتاح.</p>
-                                    <a href="appointment.html" class="service-btn-new">اطلب الخدمة</a>
-                                </div>
+                                <p>تنفيذ كافة البنود المعمارية والكهروميكانيكية بجودة فائقة ونظام تسليم المفتاح.</p>
+                                <a href="appointment.html" class="service-link-v2">اطلب الخدمة <i class="fa fa-arrow-left"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="tiraz-service-card-new">
-                        <img class="service-bg" src="img/TIRAZ(14).jpeg" alt="التصميم الداخلي">
-                        <div class="service-overlay-new">
-                            <div class="service-content-new">
-                                <div class="service-icon-new"><i class="fa fa-couch"></i></div>
+                    <div class="tiraz-service-card-v2">
+                        <img class="service-bg" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80" alt="التصميم الداخلي">
+                        <div class="service-overlay-v2">
+                            <div class="service-icon-v2"><i class="fa fa-couch"></i></div>
+                            <div class="service-content-v2">
                                 <h3>التصميم الداخلي</h3>
-                                <div class="service-desc-new">
-                                    <p>تصميمات 3D واقعية وعملية تراعي استغلال المساحات وقابلة للتنفيذ الفعلي.</p>
-                                    <a href="appointment.html" class="service-btn-new">اطلب الخدمة</a>
-                                </div>
+                                <p>تصميمات 3D واقعية وعملية تراعي استغلال المساحات وقابلة للتنفيذ الفعلي.</p>
+                                <a href="appointment.html" class="service-link-v2">اطلب الخدمة <i class="fa fa-arrow-left"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="tiraz-service-card-new">
-                        <img class="service-bg" src="img/TIRAZ(22).jpeg" alt="المخططات التنفيذية">
-                        <div class="service-overlay-new">
-                            <div class="service-content-new">
-                                <div class="service-icon-new"><i class="fa fa-drafting-compass"></i></div>
+                    <div class="tiraz-service-card-v2">
+                        <img class="service-bg" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80" alt="المخططات التنفيذية">
+                        <div class="service-overlay-v2">
+                            <div class="service-icon-v2"><i class="fa fa-drafting-compass"></i></div>
+                            <div class="service-content-v2">
                                 <h3>المخططات التنفيذية</h3>
-                                <div class="service-desc-new">
-                                    <p>إعداد (Shop Drawings) دقيقة تضمن تفادي الأخطاء أثناء مراحل التنفيذ.</p>
-                                    <a href="appointment.html" class="service-btn-new">اطلب الخدمة</a>
-                                </div>
+                                <p>إعداد (Shop Drawings) دقيقة تضمن تفادي الأخطاء أثناء مراحل التنفيذ.</p>
+                                <a href="appointment.html" class="service-link-v2">اطلب الخدمة <i class="fa fa-arrow-left"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="tiraz-service-card-new">
-                        <img class="service-bg" src="img/TIRAZ(28).jpeg" alt="الإشراف الهندسي">
-                        <div class="service-overlay-new">
-                            <div class="service-content-new">
-                                <div class="service-icon-new"><i class="fa fa-hard-hat"></i></div>
+                    <div class="tiraz-service-card-v2">
+                        <img class="service-bg" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="الإشراف الهندسي">
+                        <div class="service-overlay-v2">
+                            <div class="service-icon-v2"><i class="fa fa-hard-hat"></i></div>
+                            <div class="service-content-v2">
                                 <h3>الإشراف الهندسي</h3>
-                                <div class="service-desc-new">
-                                    <p>إدارة يومية للموقع وضبط جودة استلام البنود من المقاولين والصنايعية.</p>
-                                    <a href="appointment.html" class="service-btn-new">اطلب الخدمة</a>
-                                </div>
+                                <p>إدارة يومية للموقع وضبط جودة استلام البنود من المقاولين والصنايعية.</p>
+                                <a href="appointment.html" class="service-link-v2">اطلب الخدمة <i class="fa fa-arrow-left"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="tiraz-service-card-new">
-                        <img class="service-bg" src="img/TIRAZ(35).jpeg" alt="التجديد والترميم">
-                        <div class="service-overlay-new">
-                            <div class="service-content-new">
-                                <div class="service-icon-new"><i class="fa fa-tools"></i></div>
+                    <div class="tiraz-service-card-v2">
+                        <img class="service-bg" src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80" alt="التجديد والترميم">
+                        <div class="service-overlay-v2">
+                            <div class="service-icon-v2"><i class="fa fa-tools"></i></div>
+                            <div class="service-content-v2">
                                 <h3>التجديد والترميم</h3>
-                                <div class="service-desc-new">
-                                    <p>إعادة تأهيل وتجديد الوحدات السكنية والإدارية لتعود كالجديدة تماماً.</p>
-                                    <a href="appointment.html" class="service-btn-new">اطلب الخدمة</a>
-                                </div>
+                                <p>إعادة تأهيل وتجديد الوحدات السكنية والإدارية لتعود كالجديدة تماماً.</p>
+                                <a href="appointment.html" class="service-link-v2">اطلب الخدمة <i class="fa fa-arrow-left"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="tiraz-service-card-new">
-                        <img class="service-bg" src="img/TIRAZ(40).jpeg" alt="المقايسات والحصر">
-                        <div class="service-overlay-new">
-                            <div class="service-content-new">
-                                <div class="service-icon-new"><i class="fa fa-calculator"></i></div>
+                    <div class="tiraz-service-card-v2">
+                        <img class="service-bg" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="المقايسات والحصر">
+                        <div class="service-overlay-v2">
+                            <div class="service-icon-v2"><i class="fa fa-calculator"></i></div>
+                            <div class="service-content-v2">
                                 <h3>المقايسات والحصر</h3>
-                                <div class="service-desc-new">
-                                    <p>حصر كميات دقيق وإعداد مقايسات (BOQ) لحماية ميزانيتك من الهدر.</p>
-                                    <a href="appointment.html" class="service-btn-new">اطلب الخدمة</a>
-                                </div>
+                                <p>حصر كميات دقيق وإعداد مقايسات (BOQ) لحماية ميزانيتك من الهدر.</p>
+                                <a href="appointment.html" class="service-link-v2">اطلب الخدمة <i class="fa fa-arrow-left"></i></a>
                             </div>
                         </div>
                     </div>
