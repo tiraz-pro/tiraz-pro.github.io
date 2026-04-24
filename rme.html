@@ -93,8 +93,103 @@
         </div>
     </nav>
 
+<style>
+        .tiraz-hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100vh; 
+            overflow: hidden;
+            background-color: #121212;
+        }
+        .tiraz-hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; 
+            z-index: 1;
+        }
+        .tiraz-hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .tiraz-hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.0);
+            transition: transform 8s linear; 
+        }
+        .tiraz-hero-slide.active img {
+            transform: scale(1.1); 
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0.2) 100%);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            padding-right: 8%; 
+        }
+        .hero-content {
+            background: rgba(18, 18, 18, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-right: 4px solid #af7e3c;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            color: white;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.5s forwards; 
+        }
+        .hero-content h1 {
+            color: #ffffff;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 span { color: #af7e3c; }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+        .hero-btn {
+            background-color: #af7e3c;
+            color: #121212;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .hero-btn:hover {
+            background-color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        @keyframes fadeInUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-overlay { background: rgba(18, 18, 18, 0.7); justify-content: center; padding: 20px; }
+            .hero-content { border-right: none; border-bottom: 4px solid #af7e3c; text-align: center; }
+        }
+    </style>
 
-<div class="tiraz-hero-slider" id="dynamicHero">
+    <div class="tiraz-hero-slider" id="dynamicHero">
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1>نحوّل المساحات إلى <span>تحف فنية</span></h1>
@@ -103,6 +198,50 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectImages = [
+                'img/project-1.jpg',
+                'img/project-2.jpg',
+                'img/project-3.jpg',
+                'img/project-4.jpg',
+                'img/carousel-1.jpg',
+                'img/carousel-2.jpg'
+            ];
+
+            function getRandomImages(arr, num) {
+                const shuffled = [...arr].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, num);
+            }
+
+            const selectedImages = getRandomImages(projectImages, 2);
+            const heroContainer = document.getElementById('dynamicHero');
+            const overlay = heroContainer.querySelector('.hero-overlay');
+
+            selectedImages.forEach((imgSrc, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'tiraz-hero-slide' + (index === 0 ? ' active' : '');
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                slide.appendChild(img);
+                heroContainer.insertBefore(slide, overlay);
+            });
+
+            let currentHeroSlide = 0;
+            const heroSlides = document.querySelectorAll('.tiraz-hero-slide');
+            
+            if(heroSlides.length > 0) {
+                setInterval(() => {
+                    heroSlides[currentHeroSlide].classList.remove('active');
+                    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                    heroSlides[currentHeroSlide].classList.add('active');
+                }, 6000); 
+            }
+        });
+    </script>
+    
+
 
     <div class="container-xxl py-5 mt-5">
         <div class="container">
