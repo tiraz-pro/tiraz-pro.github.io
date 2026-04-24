@@ -404,7 +404,7 @@
                     border: 1px solid rgba(175, 126, 60, 0.15);
                     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     position: relative;
-                    margin: 15px 10px; /* مسافة عشان تأثير الإضاءة يبان */
+                    margin: 15px 0; /* التعديل هنا: خلينا المسافة فوق وتحت بس، وشيلنا الجنب */
                 }
 
                 /* تأثير الإضاءة الخلفية والبروز لما الماوس ييجي عليه */
@@ -568,17 +568,17 @@
 
             </div>
 
-            <script>
+           <script>
                 document.addEventListener('DOMContentLoaded', function() {
-                    // تشغيل الـ Owl Carousel بعد تحميل الصفحة
                     setTimeout(function() {
                         if(jQuery().owlCarousel) {
                             $('.project-carousel').owlCarousel({
                                 autoplay: true,
                                 smartSpeed: 1000,
-                                margin: 20,
+                                margin: 20, /* السكريبت هو اللي هيحسب المسافات الجانبية دلوقتي */
                                 loop: true,
-                                center: true, // يخلي الكارت اللي في النص بارز
+                                center: true,
+                                rtl: true, /* الكلمة السحرية اللي هتمنع الشاشة السودة */
                                 dots: false,
                                 nav: true,
                                 navText : [
@@ -592,7 +592,7 @@
                                 }
                             });
                         }
-                    }, 500); // تأخير بسيط لضمان تحميل مكتبة الجيكويري
+                    }, 500); 
                 });
             </script>
             
