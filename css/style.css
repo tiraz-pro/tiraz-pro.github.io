@@ -1037,3 +1037,85 @@ i.text-primary,
         height: 350px !important;
     }
 }
+
+
+
+/* =========================================
+   الهوية الجديدة لشركة طراز (Premium Dark)
+   ========================================= */
+
+/* خلفية الموقع بالكامل */
+body {
+    background-color: #121212 !important;
+    color: #cccccc !important;
+}
+
+/* العناوين الأساسية */
+h1, h2, h3, h4, h5, h6, .text-dark {
+    color: #ffffff !important;
+}
+.section-title {
+    color: #af7e3c !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* كروت الخدمات المودرن */
+.tiraz-service-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(175, 126, 60, 0.2);
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.tiraz-service-card:hover {
+    transform: translateY(-10px);
+    border-color: #af7e3c;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+.tiraz-service-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(175, 126, 60, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px auto;
+    color: #af7e3c;
+    font-size: 35px;
+    transition: 0.4s;
+}
+.tiraz-service-card:hover .tiraz-service-icon {
+    background: #af7e3c;
+    color: #121212;
+}
+
+/* فورم طلب المقايسة (Glassmorphism) */
+.tiraz-glass-form {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(175, 126, 60, 0.3);
+    border-radius: 20px;
+    padding: 50px;
+}
+.tiraz-glass-form .form-control, .tiraz-glass-form .form-select {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #333 !important;
+    color: #fff !important;
+    border-radius: 8px;
+}
+.tiraz-glass-form .form-control:focus {
+    border-color: #af7e3c !important;
+    box-shadow: none;
+}
+
+/* إخفاء أي خلفيات بيضاء قديمة */
+.bg-light, .bg-white {
+    background-color: transparent !important;
+}
