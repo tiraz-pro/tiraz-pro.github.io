@@ -1119,3 +1119,20 @@ h1, h2, h3, h4, h5, h6, .text-dark {
 .bg-light, .bg-white {
     background-color: transparent !important;
 }
+
+
+
+/* ============================================== */
+        /* كسر أوامر البوتستراب الإجبارية (Fix Text Colors) */
+        /* ============================================== */
+        
+        /* تفتيح كلاسات النصوص اللي البوتستراب مغمقها */
+        .text-muted, .text-secondary {
+            --bs-secondary-color: #d1d1d1 !important; /* بنغير قيمة المتغير نفسه لرمادي فاتح */
+            color: #d1d1d1 !important;
+        }
+
+        /* تفتيح الكلام المكتوب جوه الفورم (Placeholders) عشان يبان على الخلفية الغامقة #222 */
+        .form-control::placeholder, .form-select::placeholder {
+            color: #999999 !important;
+        }
