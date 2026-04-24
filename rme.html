@@ -22,9 +22,7 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-
     <link href="css/style.css" rel="stylesheet">
 
     <style>
@@ -39,6 +37,41 @@
         .ms-4, .ms-3 { margin-right: 1.5rem !important; margin-left: 0 !important; }
         .pe-5 { padding-left: 3rem !important; padding-right: 0 !important; }
         .ps-4 { padding-right: 1.5rem !important; padding-left: 0 !important; }
+
+        /* ستايل السلايدر السينمائي المدمج */
+        .tiraz-hero-slider {
+            position: relative; width: 100%; height: 90vh; overflow: hidden; background-color: #121212;
+        }
+        .tiraz-hero-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; z-index: 1;
+        }
+        .tiraz-hero-slide.active { opacity: 1; z-index: 2; }
+        .tiraz-hero-slide img {
+            width: 100%; height: 100%; object-fit: cover; transform: scale(1.0); transition: transform 8s linear; 
+        }
+        .tiraz-hero-slide.active img { transform: scale(1.1); }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(18, 18, 18, 0.85) 0%, rgba(18, 18, 18, 0.1) 100%);
+            z-index: 3; display: flex; align-items: center; padding-right: 8%; 
+        }
+        .hero-content {
+            max-width: 650px; color: white; transform: translateY(30px); opacity: 0;
+            animation: fadeInUp 1.5s ease 0.5s forwards; 
+        }
+        .hero-content h1 { color: #ffffff; font-size: 3.5rem; font-weight: 900; line-height: 1.3; margin-bottom: 20px; }
+        .hero-content h1 span { color: #af7e3c; }
+        .hero-content p { font-size: 1.2rem; color: #e0e0e0; margin-bottom: 30px; line-height: 1.8; }
+        .hero-btn {
+            background-color: #af7e3c; color: #ffffff; padding: 15px 40px; font-size: 1.1rem; font-weight: bold;
+            border-radius: 8px; text-decoration: none; display: inline-block; transition: 0.3s;
+        }
+        .hero-btn:hover { background-color: #ffffff; color: #121212; transform: translateY(-3px); }
+        @keyframes fadeInUp { to { transform: translateY(0); opacity: 1; } }
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-overlay { background: rgba(18, 18, 18, 0.7); justify-content: center; padding: 20px; text-align: center; }
+        }
     </style>
 </head>
 
@@ -47,16 +80,13 @@
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
         <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
     </div>
+
     <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="row gx-0 d-none d-lg-flex">
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-3">
-                    <a class="text-body px-2" href="tel:+201214503036">
-                        <i class="fa fa-phone-alt text-primary me-2"></i><span dir="ltr" class="d-inline-block">+20 121 450 3036</span>
-                    </a>
-                    <a class="text-body px-2" href="mailto:info@tiraz.pro">
-                        <i class="fa fa-envelope-open text-primary me-2"></i>info@tiraz.pro
-                    </a>
+                    <a class="text-body px-2" href="tel:+201214503036"><i class="fa fa-phone-alt text-primary me-2"></i><span dir="ltr" class="d-inline-block">+20 121 450 3036</span></a>
+                    <a class="text-body px-2" href="mailto:info@tiraz.pro"><i class="fa fa-envelope-open text-primary me-2"></i>info@tiraz.pro</a>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
@@ -66,14 +96,12 @@
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-0" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
     </div>
-   
+    
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
             <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="Icon"></h1>
@@ -81,140 +109,270 @@
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">الرئيسية</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">الرئيسية</a>
                 <a href="about.html" class="nav-item nav-link">من نحن</a>
                 <a href="service.html" class="nav-item nav-link">خدماتنا</a>
                 <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
-                <a href="testimonial.html" class="nav-item nav-link">آراء العملاء</a>
                 <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
             </div>
-            <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
+            <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
         </div>
     </nav>
-
-<style>
-        .tiraz-hero-slider {
-            position: relative;
-            width: 100%;
-            height: 100vh; 
-            overflow: hidden;
-            background-color: #121212;
-        }
-        .tiraz-hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out; 
-            z-index: 1;
-        }
-        .tiraz-hero-slide.active {
-            opacity: 1;
-            z-index: 2;
-        }
-        .tiraz-hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scale(1.0);
-            transition: transform 8s linear; 
-        }
-        .tiraz-hero-slide.active img {
-            transform: scale(1.1); 
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0.2) 100%);
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            padding-right: 8%; 
-        }
-        .hero-content {
-            background: rgba(18, 18, 18, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-right: 4px solid #af7e3c;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 600px;
-            color: white;
-            transform: translateY(30px);
-            opacity: 0;
-            animation: fadeInUp 1.5s ease 0.5s forwards; 
-        }
-        .hero-content h1 {
-            color: #ffffff;
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-        .hero-content h1 span { color: #af7e3c; }
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #e0e0e0;
-            margin-bottom: 30px;
-        }
-        .hero-btn {
-            background-color: #af7e3c;
-            color: #121212;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-        }
-        .hero-btn:hover {
-            background-color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        @keyframes fadeInUp {
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-overlay { background: rgba(18, 18, 18, 0.7); justify-content: center; padding: 20px; }
-            .hero-content { border-right: none; border-bottom: 4px solid #af7e3c; text-align: center; }
-        }
-    </style>
 
     <div class="tiraz-hero-slider" id="dynamicHero">
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1>نحوّل المساحات إلى <span>تحف فنية</span></h1>
                 <p>تنفيذ متكامل وتشطيبات راقية تعكس هويتك، بإدارة هندسية تضمن لك أعلى معايير الجودة والتسليم في الموعد.</p>
-                <a href="appointment.html" class="hero-btn">اطلب مقايسة الآن</a>
+                <a href="appointment.html" class="hero-btn">اطلب مقايسة مشروعك</a>
             </div>
         </div>
     </div>
 
+    <div class="container-xxl py-5">
+        <div class="container pt-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="fact-item text-center bg-light h-100 p-5 pt-0">
+                        <div class="fact-icon"><img src="img/icons/icon-2.png" alt="Icon"></div>
+                        <h3 class="mb-3">النهج الهندسي</h3>
+                        <p class="mb-0">نعتمد على المعايير الهندسية الصارمة في كل خطوة، من مراجعة المخططات إلى استلام البنود في الموقع.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="fact-item text-center bg-light h-100 p-5 pt-0">
+                        <div class="fact-icon"><img src="img/icons/icon-3.png" alt="Icon"></div>
+                        <h3 class="mb-3">دقة المقايسات</h3>
+                        <p class="mb-0">إعداد قوائم كميات (BOQ) تفصيلية تضمن لك رؤية واضحة للميزانية بدون أي مفاجآت أو تكاليف خفية.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="fact-item text-center bg-light h-100 p-5 pt-0">
+                        <div class="fact-icon"><img src="img/icons/icon-4.png" alt="Icon"></div>
+                        <h3 class="mb-3">إدارة المواقع</h3>
+                        <p class="mb-0">متابعة يومية دقيقة لسير العمل لضمان الالتزام بالجدول الزمني وتسليم المشروع في موعده المحدد.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img">
+                        <img class="img-fluid" src="img/about-1.jpg" alt="">
+                        <img class="img-fluid" src="img/about-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h4 class="section-title">من نحن</h4>
+                    <h1 class="display-5 mb-4">نحن لا "نشطب" فقط.. نحن ندير مشروعك باحترافية</h1>
+                    <p class="mb-4">في طراز، ندمج بين الجانب الفني للتصميم والصرامة الهندسية في التنفيذ. نحميك من عشوائية السوق وتلاعب العمالة، لنسلمك وحدة مطابقة للمواصفات الفنية تماماً.</p>
+                    <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center border border-5 border-primary" style="width: 120px; height: 120px;">
+                            <h1 class="display-1 mb-n2" data-toggle="counter-up">10</h1>
+                        </div>
+                        <div class="ps-4 ms-3">
+                            <h3>سنوات</h3>
+                            <h3>من الخبرة</h3>
+                            <h3 class="mb-0">الهندسية</h3>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5" href="about.html">اقرأ المزيد عنا</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title">خدماتنا</h4>
+                <h1 class="display-5 mb-4">نركز على دقة التنفيذ والإشراف الهندسي</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex position-relative text-center h-100">
+                        <img class="bg-img" src="img/service-1.jpg" alt="">
+                        <div class="service-text p-5">
+                            <img class="mb-4" src="img/icons/icon-5.png" alt="Icon">
+                            <h3 class="mb-3">التشطيب المتكامل</h3>
+                            <p class="mb-4">تنفيذ كافة البنود المعمارية والكهروميكانيكية بجودة فائقة ونظام تسليم المفتاح.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex position-relative text-center h-100">
+                        <img class="bg-img" src="img/service-2.jpg" alt="">
+                        <div class="service-text p-5">
+                            <img class="mb-4" src="img/icons/icon-8.png" alt="Icon">
+                            <h3 class="mb-3">الإشراف الهندسي</h3>
+                            <p class="mb-4">إدارة يومية للموقع وضبط جودة استلام البنود من المقاولين والصنايعية.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item d-flex position-relative text-center h-100">
+                        <img class="bg-img" src="img/service-3.jpg" alt="">
+                        <div class="service-text p-5">
+                            <img class="mb-4" src="img/icons/icon-10.png" alt="Icon">
+                            <h3 class="mb-3">المقايسات والحصر</h3>
+                            <p class="mb-4">حصر كميات دقيق وإعداد مقايسات (BOQ) لحماية ميزانيتك من الهدر.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title">أعمالنا</h4>
+                <h1 class="display-5 mb-4">تصفح أحدث مشاريعنا المنفذة</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex position-relative text-center h-100" style="border-radius: 10px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+                        <img class="img-fluid w-100" src="img/project-1.jpg" alt="فيلا التجمع" style="object-fit: cover; height: 300px;">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-white" style="border-top: 3px solid #af7e3c;">
+                            <h4 class="mb-2">فيلا سكنية - التجمع</h4>
+                            <p class="mb-3 text-muted">تشطيب متكامل وتسليم مفتاح</p>
+                            <a href="project.html" class="btn btn-primary px-4">شاهد التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex position-relative text-center h-100" style="border-radius: 10px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+                        <img class="img-fluid w-100" src="img/project-2.jpg" alt="مقر الشروق" style="object-fit: cover; height: 300px;">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-white" style="border-top: 3px solid #af7e3c;">
+                            <h4 class="mb-2">مقر إداري - الشروق</h4>
+                            <p class="mb-3 text-muted">تأسيس كهروميكانيك وتشطيب</p>
+                            <a href="project.html" class="btn btn-primary px-4">شاهد التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item d-flex position-relative text-center h-100" style="border-radius: 10px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+                        <img class="img-fluid w-100" src="img/project-3.jpg" alt="شقة المعادي" style="object-fit: cover; height: 300px;">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-white" style="border-top: 3px solid #af7e3c;">
+                            <h4 class="mb-2">شقة فندقية - المعادي</h4>
+                            <p class="mb-3 text-muted">تعديل معماري وديكورات</p>
+                            <a href="project.html" class="btn btn-primary px-4">شاهد التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="project.html" class="btn btn-outline-primary py-3 px-5">عرض جميع المشاريع</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h4 class="section-title">طلب مقايسة</h4>
+                    <h1 class="display-5 mb-4">احجز موعداً لمعاينة الموقع وبدء مشروعك</h1>
+                    <p class="mb-4">نسعد بتواصلكم لتحديد موعد للمعاينة الميدانية ومناقشة متطلبات التشطيب وإعداد المقايسات الأولية.</p>
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-light" style="width: 65px; height: 65px;">
+                                    <i class="fa fa-2x fa-phone-alt text-primary"></i>
+                                </div>
+                                <div class="ms-4">
+                                    <p class="mb-2">اتصل بنا الآن</p>
+                                    <h3 class="mb-0" dir="ltr">+20 121 450 3036</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6"><input type="text" class="form-control" placeholder="الاسم الكريم" style="height: 55px;"></div>
+                        <div class="col-12 col-sm-6"><input type="text" class="form-control" placeholder="رقم الهاتف المحمول" style="height: 55px;"></div>
+                        <div class="col-12">
+                            <select class="form-select" style="height: 55px;">
+                                <option selected>اختر الخدمة المطلوبة</option>
+                                <option value="1">تشطيب متكامل (تسليم مفتاح)</option>
+                                <option value="2">إشراف هندسي وحصر كميات</option>
+                            </select>
+                        </div>
+                        <div class="col-12"><textarea class="form-control" rows="5" placeholder="تفاصيل الوحدة (المساحة، الموقع)"></textarea></div>
+                        <div class="col-12"><button class="btn btn-primary w-100 py-3" type="submit">إرسال طلب المعاينة</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="text-light mb-4">بيانات التواصل</h3>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>برج ريحانة، المرشدى جروب، مدخل B-2، وحدة 02 F12،  زهراء المعادي، القاهرة</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i><span dir="ltr" class="d-inline-block">+20 121 450 3036</span></p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@tiraz.pro</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="text-light mb-4">روابط سريعة</h3>
+                    <a class="btn btn-link" href="about.html">من نحن</a>
+                    <a class="btn btn-link" href="service.html">خدماتنا</a>
+                    <a class="btn btn-link" href="project.html">سابقة الأعمال</a>
+                    <a class="btn btn-link" href="contact.html">تواصل معنا</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="text-light mb-4">النشرة البريدية</h3>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="البريد الإلكتروني">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 start-0 mt-2 ms-2">اشتراك</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a href="#">Tiraz.pro</a>, جميع الحقوق محفوظة.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const projectImages = [
-                'img/project-1.jpg',
-                'img/project-2.jpg',
-                'img/project-3.jpg',
-                'img/project-4.jpg',
-                'img/carousel-1.jpg',
-                'img/carousel-2.jpg'
-            ];
+            // توليد قائمة الـ 40 صورة أوتوماتيك
+            const projectImages = [];
+            for (let i = 1; i <= 40; i++) {
+                projectImages.push(`img/TIRAZ(${i}).jpeg`);
+            }
 
             function getRandomImages(arr, num) {
                 const shuffled = [...arr].sort(() => 0.5 - Math.random());
                 return shuffled.slice(0, num);
             }
 
+            // سحب صورتين عشوائيين من الـ 40 صورة
             const selectedImages = getRandomImages(projectImages, 2);
             const heroContainer = document.getElementById('dynamicHero');
             const overlay = heroContainer.querySelector('.hero-overlay');
@@ -240,181 +398,5 @@
             }
         });
     </script>
-    
-
-
-    <div class="container-xxl py-5 mt-5">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="position-relative" style="border-radius: 15px; overflow: hidden; border: 1px solid rgba(175,126,60,0.3);">
-                        <img class="img-fluid w-100" src="img/about-1.jpg" alt="طراز للتشطيبات" style="height: 500px; object-fit: cover;">
-                        <div class="position-absolute bottom-0 start-0 m-4 p-4" style="background: rgba(18,18,18,0.8); backdrop-filter: blur(10px); border-radius: 10px; border-right: 4px solid #af7e3c;">
-                            <h1 class="display-3 text-primary mb-0" style="font-weight: 900;">10</h1>
-                            <h4 class="text-white mb-0">سنوات من الهندسة</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <h4 class="section-title mb-3">رؤيتنا الهندسية</h4>
-                    <h1 class="display-5 mb-4 text-white">نحن لا "نشطب" فقط.. نحن ندير مشروعك باحترافية</h1>
-                    <p class="mb-4 text-muted" style="line-height: 1.8; font-size: 1.1rem;">
-                        في طراز، ندمج بين الجانب الفني للتصميم والصرامة الهندسية في التنفيذ. نحميك من عشوائية السوق وتلاعب العمالة، لنسلمك وحدة مطابقة للمواصفات الفنية تماماً، وبدون تجاوز لميزانيتك.
-                    </p>
-                    <div class="row g-4 mb-4">
-                        <div class="col-sm-6"><i class="fa fa-check text-primary me-2"></i> مقايسات وحصر دقيق (BOQ)</div>
-                        <div class="col-sm-6"><i class="fa fa-check text-primary me-2"></i> إشراف هندسي يومي</div>
-                        <div class="col-sm-6"><i class="fa fa-check text-primary me-2"></i> التزام صارم بالجدول الزمني</div>
-                        <div class="col-sm-6"><i class="fa fa-check text-primary me-2"></i> تسليم مفتاح (Turnkey)</div>
-                    </div>
-                    <a class="btn py-3 px-5" style="background-color: #af7e3c; color: #121212; font-weight: bold; border-radius: 8px;" href="about.html">تعرف علينا أكثر</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="section-title">مجالات التخصص</h4>
-                <h1 class="display-6 mb-4 text-white">حلول هندسية متكاملة لراحتك</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="tiraz-service-card">
-                        <div class="tiraz-service-icon"><i class="fa fa-home"></i></div>
-                        <h4 class="mb-3 text-white">التشطيب المتكامل</h4>
-                        <p class="mb-0 text-muted">تنفيذ كافة البنود المعمارية والكهروميكانيكية بجودة فائقة ونظام تسليم المفتاح.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="tiraz-service-card">
-                        <div class="tiraz-service-icon"><i class="fa fa-hard-hat"></i></div>
-                        <h4 class="mb-3 text-white">الإشراف الهندسي</h4>
-                        <p class="mb-0 text-muted">إدارة يومية للموقع وضبط جودة استلام البنود من المقاولين والصنايعية.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="tiraz-service-card">
-                        <div class="tiraz-service-icon"><i class="fa fa-calculator"></i></div>
-                        <h4 class="mb-3 text-white">حصر ومقايسات (BOQ)</h4>
-                        <p class="mb-0 text-muted">حصر كميات دقيق وإعداد مقايسات تفصيلية لحماية ميزانيتك من أي هدر.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-xxl py-5 mb-5" style="background: url('img/carousel-2.jpg') center center no-repeat; background-size: cover; background-attachment: fixed; position: relative;">
-        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8);"></div>
-        
-        <div class="container position-relative z-index-1">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="tiraz-glass-form">
-                        <div class="text-center mb-5">
-                            <h4 class="section-title">طلب مقايسة ومعاينة</h4>
-                            <h2 class="text-white">خطوتك الأولى نحو مشروع مثالي</h2>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control py-3" placeholder="الاسم الكريم">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control py-3" placeholder="رقم الهاتف">
-                            </div>
-                            <div class="col-12">
-                                <select class="form-select py-3">
-                                    <option selected>نوع الخدمة المطلوبة...</option>
-                                    <option value="1">تشطيب متكامل (تسليم مفتاح)</option>
-                                    <option value="2">إشراف هندسي فقط</option>
-                                    <option value="3">حصر كميات وعمل مقايسة</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control py-3" rows="3" placeholder="تفاصيل الوحدة (المساحة، الموقع، حالة الاستلام)"></textarea>
-                            </div>
-                            <div class="col-12 mt-4 text-center">
-                                <button class="btn py-3 px-5 w-100" style="background-color: #af7e3c; color: #121212; font-weight: bold; font-size: 1.1rem; border-radius: 8px;" type="submit">إرسال الطلب</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    
-    <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">بيانات التواصل</h3>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>برج ريحانة، المرشدى جروب، مدخل B-2، وحدة 02 F12،  زهراء المعادي، القاهرة</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i><span dir="ltr" class="d-inline-block">+20 121 450 3036</span></p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@tiraz.pro</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-body me-0" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">خدماتنا</h3>
-                    <a class="btn btn-link" href="">التشطيب المتكامل</a>
-                    <a class="btn btn-link" href="">الإشراف الهندسي</a>
-                    <a class="btn btn-link" href="">المقايسات وحصر الكميات</a>
-                    <a class="btn btn-link" href="">التصميم الداخلي</a>
-                    <a class="btn btn-link" href="">الرسومات التنفيذية</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">روابط سريعة</h3>
-                    <a class="btn btn-link" href="about.html">من نحن</a>
-                    <a class="btn btn-link" href="contact.html">تواصل معنا</a>
-                    <a class="btn btn-link" href="service.html">خدماتنا</a>
-                    <a class="btn btn-link" href="">الشروط والأحكام</a>
-                    <a class="btn btn-link" href="">الدعم الفني</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">النشرة البريدية</h3>
-                    <p>اشترك ليصلك أحدث أعمالنا الهندسية وعروض التشطيب.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="البريد الإلكتروني">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 start-0 mt-2 ms-2">اشتراك</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Tiraz.pro</a>, جميع الحقوق محفوظة.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        تصميم وتطوير بواسطة <a href="#">Tiraz Engineering</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <script src="js/main.js"></script>
 </body>
-
 </html>
