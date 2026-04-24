@@ -141,32 +141,30 @@
             .hero-text-container { text-align: center; }
         }
 
-
-       /* ============================================== */
-        /* تظبيط ألوان الفونتات (عشان الكلام الصغير ينطق) */
+/* ============================================== */
+        /* تفتيح كل الفونتات لتظهر بوضوح على الخلفية السوداء */
         /* ============================================== */
-
-        /* 1. العناوين الأساسية (أسود صريح وفخم) */
-        h1, h2, h3, h4, h5, h6 {
-            color: #121212 !important;
+        
+        /* النصوص العادية والفقرات (رمادي فاتح مريح للعين) */
+        body, p, span, .text-muted, .text-secondary {
+            color: #d1d1d1 !important;
         }
 
-        /* 2. الكلام العادي والتفاصيل اللي تحت العناوين (رمادي غامق جداً ومقروء) */
-        p, span, .text-muted, .text-secondary {
-            color: #444444 !important;
-            font-weight: 500; /* تخناه سنة بسيطة عشان يبقى أوضح */
+        /* العناوين الأساسية (أبيض ناصع) */
+        h1, h2, h3, h4, h5, h6, .text-dark {
+            color: #ffffff !important;
         }
 
-        /* 3. العناوين المكتوبة بلون طراز الدهبي */
+        /* الكلمات المميزة وعناوين الأقسام (اللون الدهبي) */
         .text-primary, .section-title {
             color: #af7e3c !important;
         }
-
-        /* 4. استثناء مهم: كلام السلايدر لازم يفضل أبيض عشان التعتيم اللي وراه */
-        .hero-content h1 { color: #ffffff !important; }
-        .hero-content p { color: #f8f9fa !important; }
-        .hero-content h1 span { color: #af7e3c !important; }
-        .text-light { color: #ffffff !important; }
+        
+        /* تلوين الأيقونات المرفقة بالنصوص */
+        i.text-primary {
+            color: #af7e3c !important;
+        }
+      
     </style>
 
     <div class="tiraz-hero-slider" id="dynamicHero"></div>
