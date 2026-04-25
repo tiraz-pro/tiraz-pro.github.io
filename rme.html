@@ -83,7 +83,22 @@
 
    <style>
         /* ستايل أيقونات السوشيال في الشريط العلوي */
-        .topbar-social-btn {
+       
+       /* ============================================== */
+        /* فك الاشتباك بين خط تاجوال وأيقونات السوشيال ميديا */
+        /* ============================================== */
+        i.fab, .fab {
+            font-family: "Font Awesome 5 Brands" !important;
+            font-weight: 400 !important;
+        }
+        
+        i.fa, i.fas, .fa, .fas {
+            font-family: "Font Awesome 5 Free" !important;
+            font-weight: 900 !important;
+        }
+       
+       
+       .topbar-social-btn {
             width: 32px; height: 32px;
             display: inline-flex; align-items: center; justify-content: center;
             border: 1px solid rgba(175, 126, 60, 0.5);
