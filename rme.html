@@ -1130,15 +1130,6 @@
             padding: 5px;
         }
         
-        .brand-logo-wrapper a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* ستايل اللوجوهات (رصاصي ومطفي) */
         .brand-logo-wrapper img {
             max-height: 100%;
             max-width: 100%;
@@ -1147,10 +1138,16 @@
             transition: all 0.4s ease;
         }
 
-        /* اللوجو ينور بلونه الأصلي لما تقف عليه */
-        .brand-logo-wrapper a:hover img {
+        .brand-logo-wrapper:hover img {
             filter: grayscale(0%) opacity(1);
             transform: scale(1.1);
+        }
+
+        /* لضمان انسيابية الحركة المستمرة */
+        .brands-carousel .owl-stage {
+            display: flex;
+            align-items: center;
+            transition-timing-function: linear !important;
         }
     </style>
 
@@ -1159,78 +1156,41 @@
             <h6 class="brands-title">نعتمد في تشطيباتنا على أفضل الخامات من كبرى العلامات التجارية العالمية</h6>
             
             <div class="owl-carousel brands-carousel">
-                
-                <div class="brand-logo-wrapper">
-                    <a href="https://www.jotun.com/eg-ar/" target="_blank" rel="noopener noreferrer" title="دهانات جوتن">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/9219742163598393876" alt="Jotun">
-                    </a>
-                </div>
-                
-                <div class="brand-logo-wrapper">
-                    <a href="https://www.se.com/eg/en/" target="_blank" rel="noopener noreferrer" title="شنايدر إلكتريك">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/8842600811749026211" alt="Schneider Electric">
-                    </a>
-                </div>
-                
-                <div class="brand-logo-wrapper">
-                    <a href="https://www.grohe.com.eg/" target="_blank" rel="noopener noreferrer" title="جروهي">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/1020900256347227782" alt="Grohe">
-                    </a>
-                </div>
-                
-                <div class="brand-logo-wrapper">
-                    <a href="https://knauf.eg/" target="_blank" rel="noopener noreferrer" title="كناوف">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/9010945634446697379" alt="Knauf">
-                    </a>
-                </div>
-                
-                <div class="brand-logo-wrapper">
-                    <a href="https://www.duravit.com/" target="_blank" rel="noopener noreferrer" title="ديورافيت">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/1493787676097602960" alt="Duravit">
-                    </a>
-                </div>
-                
-                <div class="brand-logo-wrapper">
-                    <a href="https://glcpaints.com/" target="_blank" rel="noopener noreferrer" title="دهانات GLC">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/12095983797877273607" alt="GLC Paints">
-                    </a>
-                </div>
-                
-                <div class="brand-logo-wrapper">
-                    <a href="https://www.cleopatraceramics.com/" target="_blank" rel="noopener noreferrer" title="سيراميكا كليوباترا">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/13644136361776530266" alt="Ceramica Cleopatra">
-                    </a>
-                </div>
-
+                <div class="brand-logo-wrapper"><a href="https://www.jotun.com/eg-ar/" target="_blank"><img src="img/logo/Jotun.png" alt="Jotun"></a></div>
+                <div class="brand-logo-wrapper"><a href="https://www.se.com/eg/en/" target="_blank"><img src="img/logo/Schneider.png" alt="Schneider"></a></div>
+                <div class="brand-logo-wrapper"><a href="https://www.grohe.com.eg/" target="_blank"><img src="img/logo/Grohe.png" alt="Grohe"></a></div>
+                <div class="brand-logo-wrapper"><a href="https://knauf.eg/" target="_blank"><img src="img/logo/Knauf.png" alt="Knauf"></a></div>
+                <div class="brand-logo-wrapper"><a href="https://www.duravit.com/" target="_blank"><img src="img/logo/Duravit.png" alt="Duravit"></a></div>
+                <div class="brand-logo-wrapper"><a href="https://glcpaints.com/" target="_blank"><img src="img/logo/glc.png" alt="GLC"></a></div>
+                <div class="brand-logo-wrapper"><a href="https://www.cleopatraceramics.com/" target="_blank"><img src="img/logo/cleopatra.png" alt="Cleopatra"></a></div>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // تأخير بسيط للتأكد من تحميل مكتبة jQuery و Owl Carousel
             setTimeout(function() {
-                if(jQuery().owlCarousel) {
+                if(window.jQuery && jQuery().owlCarousel) {
                     $('.brands-carousel').owlCarousel({
                         loop: true,
-                        margin: 40,
+                        margin: 50,
                         rtl: true, 
                         nav: false, 
                         dots: false,
                         autoplay: true,
-                        slideTransition: 'linear', 
-                        autoplayTimeout: 3000, 
-                        autoplaySpeed: 3000,
-                        autoplayHoverPause: true, 
+                        autoplayTimeout: 2000, // المدة بين كل حركة
+                        autoplaySpeed: 2000, // سرعة الحركة نفسها
+                        slideTransition: 'linear', // أهم خاصية للحركة المستمرة "الماركي"
                         responsive: {
                             0: { items: 2 },
                             576: { items: 3 },
                             768: { items: 4 },
-                            992: { items: 5 },
-                            1200: { items: 6 }
+                            992: { items: 6 }
                         }
                     });
                 }
-            }, 600); 
+            }, 800); 
         });
     </script>
    
