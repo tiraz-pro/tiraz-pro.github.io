@@ -254,25 +254,161 @@
 
     <div class="tiraz-hero-slider" id="dynamicHero"></div>
 
-    <div class="container-fluid text-white py-4 wow fadeIn" data-wow-delay="0.1s" style="background-color: #af7e3c;">
+    <style>
+        .trust-bar-v2 {
+            background: linear-gradient(to right, #050505, #151515, #050505); /* خلفية سوداء متدرجة فخمة */
+            border-top: 1px solid rgba(175, 126, 60, 0.2);
+            border-bottom: 1px solid rgba(175, 126, 60, 0.2);
+            position: relative;
+            overflow: hidden;
+            padding: 60px 0;
+        }
+
+        /* هالة إضاءة خفيفة جداً في نص الشريط من ورا */
+        .trust-bar-v2::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: 50%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(175, 126, 60, 0.08) 0%, transparent 70%);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .trust-item {
+            position: relative;
+            z-index: 1;
+            padding: 10px 0;
+        }
+
+        /* الفواصل بين الأرقام بتدرج فخم بدل الخط الصلب */
+        .trust-divider {
+            border-right: 1px solid transparent;
+            border-image: linear-gradient(to bottom, transparent, rgba(175, 126, 60, 0.3), transparent) 1;
+        }
+
+        /* ستايل الأرقام (ذهب معدني 3D) */
+        .trust-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin-bottom: 5px;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5); /* ظل عشان يبرز الرقم */
+            line-height: 1;
+        }
+
+        /* علامة الـ + والـ % */
+        .trust-symbol {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-right: 8px;
+        }
+
+        .trust-text {
+            color: #b0b0b0;
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        /* تظبيط الفواصل للموبايل */
+        @media (max-width: 768px) {
+            .trust-divider {
+                border-right: none;
+                border-bottom: 1px solid transparent;
+                border-image: linear-gradient(to right, transparent, rgba(175, 126, 60, 0.3), transparent) 1;
+                padding-bottom: 30px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
+    <div class="container-fluid trust-bar-v2 wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
             <div class="row g-4 text-center align-items-center justify-content-center">
-                <div class="col-md-4 border-end border-light border-opacity-25">
-                    <h2 class="text-white mb-1 fw-bold" style="font-size: 2.5rem;">+10</h2>
-                    <p class="mb-0 fs-5">سنوات من الخبرة الهندسية</p>
+                
+                <div class="col-md-4 trust-divider">
+                    <div class="trust-item">
+                        <div class="d-flex justify-content-center align-items-center" dir="ltr">
+                            <span class="trust-symbol">+</span>
+                            <span class="trust-number counter-value" data-target="10">0</span>
+                        </div>
+                        <p class="mb-0 trust-text">سنوات من الخبرة الهندسية</p>
+                    </div>
                 </div>
-                <div class="col-md-4 border-end border-light border-opacity-25">
-                    <h2 class="text-white mb-1 fw-bold" style="font-size: 2.5rem;">100%</h2>
-                    <p class="mb-0 fs-5">دقة في مقايسات الـ BOQ</p>
+                
+                <div class="col-md-4 trust-divider">
+                    <div class="trust-item">
+                        <div class="d-flex justify-content-center align-items-center" dir="ltr">
+                            <span class="trust-symbol">%</span>
+                            <span class="trust-number counter-value" data-target="100">0</span>
+                        </div>
+                        <p class="mb-0 trust-text">دقة في مقايسات الـ BOQ</p>
+                    </div>
                 </div>
+
                 <div class="col-md-4">
-                    <h2 class="text-white mb-1 fw-bold" style="font-size: 2.5rem;">تسليم</h2>
-                    <p class="mb-0 fs-5">على المفتاح في الموعد المحدد</p>
+                    <div class="trust-item">
+                        <div class="d-flex justify-content-center align-items-center" dir="ltr">
+                            <span class="trust-symbol">%</span>
+                            <span class="trust-number counter-value" data-target="100">0</span>
+                        </div>
+                        <p class="mb-0 trust-text">تسليم على المفتاح في الموعد</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const counters = document.querySelectorAll(".counter-value");
+            const speed = 40; // سرعة العداد (كل ما الرقم قل، السرعة تزيد)
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute("data-target");
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 30); // التحديث كل 30 ملي ثانية ليكون ناعم
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            };
+
+            // الـ IntersectionObserver بيراقب الشاشة، وأول ما القسم ده يظهر بنسبة 50% بيشغل العداد
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.disconnect(); // بنفصل المراقبة عشان العداد ميشتغلش تاني لما يطلع وينزل
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const trustSection = document.querySelector('.trust-bar-v2');
+            if(trustSection) {
+                observer.observe(trustSection);
+            }
+        });
+    </script>
+    
+اعمل ريفريش، وانزل بالماوس للقسم ده واتفرج على الأرقام وهي بتعد وقولي رأيك!
     <div class="container-xxl py-5 mt-5">
         <div class="container">
             <div class="row g-5 align-items-center">
