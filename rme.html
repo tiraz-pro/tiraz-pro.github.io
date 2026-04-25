@@ -81,26 +81,62 @@
         <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
     </div>
 
-    <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
+   <style>
+        /* ستايل أيقونات السوشيال في الشريط العلوي */
+        .topbar-social-btn {
+            width: 32px; height: 32px;
+            display: inline-flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(175, 126, 60, 0.5);
+            color: #af7e3c;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s ease;
+            margin-right: 5px;
+        }
+        .topbar-social-btn:hover {
+            background: #af7e3c;
+            color: #111111;
+            box-shadow: 0 0 10px rgba(175, 126, 60, 0.5);
+        }
+        .topbar-text {
+            color: #aaaaaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .topbar-text:hover {
+            color: #ffffff;
+        }
+    </style>
+
+    <div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s" style="background-color: #050505; border-bottom: 1px solid rgba(175, 126, 60, 0.1);">
         <div class="row gx-0 d-none d-lg-flex">
+            
             <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-3">
-                    <a class="text-body px-2" href="tel:+201214503036"><i class="fa fa-phone-alt text-primary me-2"></i><span dir="ltr" class="d-inline-block">+20 121 450 3036</span></a>
-                    <a class="text-body px-2" href="mailto:info@tiraz.pro"><i class="fa fa-envelope-open text-primary me-2"></i>info@tiraz.pro</a>
+                <div class="h-100 d-inline-flex align-items-center py-2 me-3">
+                    <a class="topbar-text px-3 border-end border-secondary" href="mailto:info@tiraz.pro">
+                        <i class="fa fa-envelope text-primary me-2"></i>info@tiraz.pro
+                    </a>
+                    <a class="topbar-text px-3" href="tel:+201214503036">
+                        <i class="fa fa-phone-alt text-primary me-2"></i><span dir="ltr" class="d-inline-block">+20 121 450 3036</span>
+                    </a>
                 </div>
             </div>
+
             <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-2">
-                    <a class="text-body px-2" href="">الشروط والأحكام</a>
-                    <a class="text-body px-2" href="">سياسة الخصوصية</a>
+                <div class="h-100 d-inline-flex align-items-center py-2 me-3">
+                    <span class="topbar-text px-3 border-end border-secondary" style="cursor: default;">
+                        <i class="far fa-clock text-primary me-2"></i>مواعيد العمل: السبت - الخميس (10 ص - 6 م)
+                    </span>
                 </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-instagram"></i></a>
+                <div class="h-100 d-inline-flex align-items-center ps-2">
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+            
         </div>
     </div>
+    
     
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
