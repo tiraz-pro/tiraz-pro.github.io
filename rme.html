@@ -1105,6 +1105,136 @@
         </div>
     </div>
 
+<style>
+        .brands-section {
+            background-color: #0a0a0a;
+            padding: 50px 0;
+            border-top: 1px solid rgba(175, 126, 60, 0.05);
+            border-bottom: 1px solid rgba(175, 126, 60, 0.05);
+        }
+        
+        .brands-title {
+            text-align: center;
+            color: #666666;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 35px;
+        }
+
+        .brand-logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70px; 
+            padding: 5px;
+        }
+        
+        .brand-logo-wrapper a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ستايل اللوجوهات (رصاصي ومطفي) */
+        .brand-logo-wrapper img {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto !important;
+            filter: grayscale(100%) opacity(0.4);
+            transition: all 0.4s ease;
+        }
+
+        /* اللوجو ينور بلونه الأصلي لما تقف عليه */
+        .brand-logo-wrapper a:hover img {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.1);
+        }
+    </style>
+
+    <div class="brands-section wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid px-5">
+            <h6 class="brands-title">نعتمد في تشطيباتنا على أفضل الخامات من كبرى العلامات التجارية العالمية</h6>
+            
+            <div class="owl-carousel brands-carousel">
+                
+                <div class="brand-logo-wrapper">
+                    <a href="https://www.jotun.com/eg-ar/" target="_blank" rel="noopener noreferrer" title="دهانات جوتن">
+                        <img src="img/logos/jotun.png" alt="Jotun">
+                    </a>
+                </div>
+                
+                <div class="brand-logo-wrapper">
+                    <a href="https://www.se.com/eg/en/" target="_blank" rel="noopener noreferrer" title="شنايدر إلكتريك">
+                        <img src="img/logos/schneider.png" alt="Schneider Electric">
+                    </a>
+                </div>
+                
+                <div class="brand-logo-wrapper">
+                    <a href="https://www.grohe.com.eg/" target="_blank" rel="noopener noreferrer" title="جروهي">
+                        <img src="img/logos/grohe.png" alt="Grohe">
+                    </a>
+                </div>
+                
+                <div class="brand-logo-wrapper">
+                    <a href="https://knauf.eg/" target="_blank" rel="noopener noreferrer" title="كناوف">
+                        <img src="img/logos/knauf.png" alt="Knauf">
+                    </a>
+                </div>
+                
+                <div class="brand-logo-wrapper">
+                    <a href="https://www.duravit.com/" target="_blank" rel="noopener noreferrer" title="ديورافيت">
+                        <img src="img/logos/duravit.png" alt="Duravit">
+                    </a>
+                </div>
+                
+                <div class="brand-logo-wrapper">
+                    <a href="https://glcpaints.com/" target="_blank" rel="noopener noreferrer" title="دهانات GLC">
+                        <img src="img/logos/glc.png" alt="GLC Paints">
+                    </a>
+                </div>
+                
+                <div class="brand-logo-wrapper">
+                    <a href="https://www.cleopatraceramics.com/" target="_blank" rel="noopener noreferrer" title="سيراميكا كليوباترا">
+                        <img src="img/logos/cleopatra.png" alt="Ceramica Cleopatra">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                if(jQuery().owlCarousel) {
+                    $('.brands-carousel').owlCarousel({
+                        loop: true,
+                        margin: 40,
+                        rtl: true, 
+                        nav: false, 
+                        dots: false,
+                        autoplay: true,
+                        slideTransition: 'linear', 
+                        autoplayTimeout: 3000, 
+                        autoplaySpeed: 3000,
+                        autoplayHoverPause: true, 
+                        responsive: {
+                            0: { items: 2 },
+                            576: { items: 3 },
+                            768: { items: 4 },
+                            992: { items: 5 },
+                            1200: { items: 6 }
+                        }
+                    });
+                }
+            }, 600); 
+        });
+    </script>
+   
+    
     <div class="container-fluid bg-light py-5 mt-5">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
