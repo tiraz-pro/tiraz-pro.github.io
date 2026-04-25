@@ -448,35 +448,196 @@
         });
     </script>
     
+   <style>
+        /* حاوية الصورة والفيديو */
+        .video-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            height: 500px;
+            position: relative;
+        }
+        .video-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .video-wrapper:hover img {
+            transform: scale(1.05); /* زووم خفيف للصورة */
+        }
+        
+        /* التعتيم فوق الصورة */
+        .video-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 10, 10, 0.4);
+            z-index: 1;
+        }
+
+        /* زرار التشغيل (Play) النابض */
+        .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85px; height: 85px;
+            background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+            color: #111;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            z-index: 3;
+            text-decoration: none;
+            animation: pulse-border 2s infinite;
+            transition: 0.3s;
+            padding-left: 5px; /* تظبيط توسيط مثلث البلاي */
+        }
+        .play-btn:hover {
+            background: #ffffff;
+            color: #af7e3c;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(175, 126, 60, 0.7); }
+            70% { box-shadow: 0 0 0 25px rgba(175, 126, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(175, 126, 60, 0); }
+        }
+
+        /* البادج العائم (شريكك الهندسي) */
+        .floating-badge {
+            position: absolute;
+            bottom: 30px; right: 30px;
+            background: rgba(15, 15, 15, 0.9);
+            border-right: 4px solid #af7e3c; /* خط دهبي من اليمين */
+            padding: 20px 25px;
+            border-radius: 12px;
+            z-index: 3;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+        .floating-badge h3 { color: #af7e3c; margin: 0; font-weight: 900; font-size: 2rem; line-height: 1; }
+        .floating-badge p { color: #d1d1d1; margin: 0; font-size: 0.95rem; margin-top: 5px; }
+
+        /* كروت المميزات الصغيرة المودرن */
+        .feature-box {
+            background: #111111;
+            border: 1px solid rgba(175, 126, 60, 0.15);
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+            height: 100%;
+        }
+        .feature-box:hover {
+            border-color: #af7e3c;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(175, 126, 60, 0.1);
+        }
+        .feature-box i {
+            color: #af7e3c;
+            font-size: 1.6rem;
+            margin-left: 15px; /* مسافة من الشمال لأننا عربي */
+        }
+        .feature-box span {
+            color: #e0e0e0;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+    </style>
+
     <div class="container-xxl py-5 mt-5">
         <div class="container">
             <div class="row g-5 align-items-center">
+                
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="position-relative h-100" style="min-height: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <img class="position-absolute img-fluid w-100 h-100" src="img/about-2.jpg" style="object-fit: cover;" alt="">
-                        <div class="position-absolute bottom-0 end-0 m-4 p-4 bg-white shadow-lg" style="border-radius: 10px; border-right: 4px solid #af7e3c; max-width: 250px;">
-                            <h4 class="mb-2 text-dark">شريكك الهندسي</h4>
-                            <p class="mb-0 text-muted" style="font-size: 0.9rem;">ندير مشروعك من الفكرة وحتى اللمسة الأخيرة.</p>
+                    <div class="video-wrapper">
+                        <img src="img/TIRAZ(15).jpeg" alt="فلسفة طراز">
+                        <div class="video-overlay"></div>
+                        
+                        <a href="#" class="play-btn" data-bs-toggle="modal" data-bs-target="#videoModal">
+                            <i class="fas fa-play"></i>
+                        </a>
+                        
+                        <div class="floating-badge">
+                            <h3 dir="ltr">+10</h3>
+                            <p>سنوات من الثقة</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <h4 class="section-title mb-3" style="color: #af7e3c;">فلسفة طراز</h4>
-                    <h1 class="display-5 mb-4">التشطيب ليس مجرد ألوان.. بل صرامة هندسية</h1>
-                    <p class="mb-4 text-secondary" style="line-height: 1.8; font-size: 1.1rem;">
+                    <h1 class="display-5 mb-4 text-white">التشطيب ليس مجرد ألوان.. بل صرامة هندسية</h1>
+                    <p class="mb-4" style="color: #b0b0b0; line-height: 1.8; font-size: 1.1rem;">
                         على عكس السوق التقليدي، نحن في طراز لا نعتمد على العشوائية. نحن نحمي ميزانيتك من خلال حصر كميات دقيق، ونحمي جودة وحدتك من خلال إشراف هندسي يومي صارم يضمن استلام كل بند وفقاً لأعلى معايير الكود الهندسي.
                     </p>
-                    <div class="row g-4 mb-4">
-                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-shield-alt fa-2x me-3" style="color: #af7e3c;"></i> <span>حماية كاملة للميزانية</span></div>
-                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-pencil-ruler fa-2x me-3" style="color: #af7e3c;"></i> <span>تصميمات قابلة للتنفيذ</span></div>
-                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-hard-hat fa-2x me-3" style="color: #af7e3c;"></i> <span>إشراف هندسي للموقع</span></div>
-                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-key fa-2x me-3" style="color: #af7e3c;"></i> <span>تسليم مفتاح Turnkey</span></div>
+                    
+                    <div class="row g-3 mb-5">
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-shield-alt"></i>
+                                <span>حماية كاملة للميزانية</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-pencil-ruler"></i>
+                                <span>تصميمات قابلة للتنفيذ</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-hard-hat"></i>
+                                <span>إشراف هندسي للموقع</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-key"></i>
+                                <span>تسليم مفتاح Turnkey</span>
+                            </div>
+                        </div>
                     </div>
-                    <a class="btn py-3 px-5 text-white" style="background-color: #121212; border-radius: 8px;" href="about.html">تعرف على مهندسينا</a>
+                    
+                    <a class="btn text-white py-3 px-5" style="background: linear-gradient(135deg, #af7e3c 0%, #8a632b 100%); border-radius: 8px; font-weight: bold; border: none;" href="about.html">تعرف على مسيرتنا <i class="fa fa-arrow-left ms-2"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0 pb-0 justify-content-end">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="opacity: 1; text-shadow: none;"></button>
+                </div>
+                <div class="modal-body p-0 mt-2" style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid rgba(175, 126, 60, 0.3);">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=0" title="Tiraz Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var videoModal = document.getElementById('videoModal');
+            var iframe = videoModal.querySelector('iframe');
+            var videoSrc = iframe.src;
+
+            // لما المودال يقفل، بنعمل ريست لمصدر الفيديو عشان يوقف تشغيل الصوت
+            videoModal.addEventListener('hide.bs.modal', function () {
+                iframe.src = videoSrc;
+            });
+        });
+    </script>
+   
 
     <div class="container-xxl bg-light py-5 my-5">
         <div class="container py-5">
