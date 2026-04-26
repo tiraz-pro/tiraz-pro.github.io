@@ -42,6 +42,18 @@
         }
         i.text-primary { background: none !important; -webkit-text-fill-color: #af7e3c !important; color: #af7e3c !important; }
 
+        /* التوب بار */
+        .text-start { text-align: right !important; }
+        .text-end { text-align: left !important; }
+        .topbar-social-btn {
+            width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(175, 126, 60, 0.5); color: #af7e3c; border-radius: 50%;
+            text-decoration: none; transition: 0.3s ease; margin-right: 5px; font-size: 14px;
+        }
+        .topbar-social-btn:hover { background: #af7e3c; color: #111111; box-shadow: 0 0 10px rgba(175, 126, 60, 0.5); }
+        .topbar-text { color: #aaaaaa; text-decoration: none; transition: 0.3s; }
+        .topbar-text:hover { color: #ffffff; }
+
         /* ستايل كروت المدونة (Blog Cards) */
         .blog-card {
             background-color: #111111;
@@ -74,7 +86,7 @@
             font-weight: 800;
             position: absolute;
             top: 15px;
-            right: 15px; /* RTL - اليمين */
+            right: 15px; 
             padding: 5px 15px;
             border-radius: 5px;
             font-size: 0.9rem;
@@ -124,7 +136,7 @@
             transition: 0.3s;
         }
         .read-more-btn:hover i {
-            transform: translateX(-5px); /* حركة السهم لليسار في RTL */
+            transform: translateX(-5px); 
         }
 
         /* ستايل ترقيم الصفحات (Pagination) */
@@ -143,17 +155,30 @@
             color: #111;
         }
 
-        /* التوب بار والفوتر */
-        .text-start { text-align: right !important; }
-        .text-end { text-align: left !important; }
-        .topbar-social-btn {
-            width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
-            border: 1px solid rgba(175, 126, 60, 0.5); color: #af7e3c; border-radius: 50%;
-            text-decoration: none; transition: 0.3s ease; margin-right: 5px; font-size: 14px;
+        /* الفوتر والواتساب */
+        .tiraz-footer {
+            background: linear-gradient(to bottom, #111111 0%, #050505 100%); border-top: 1px solid rgba(175, 126, 60, 0.2); color: #b0b0b0; padding-top: 70px; font-size: 0.95rem; position: relative;
         }
-        .topbar-social-btn:hover { background: #af7e3c; color: #111111; box-shadow: 0 0 10px rgba(175, 126, 60, 0.5); }
-        .topbar-text { color: #aaaaaa; text-decoration: none; transition: 0.3s; }
-        .topbar-text:hover { color: #ffffff; }
+        .tiraz-footer h4 { color: #ffffff; font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .tiraz-footer h4::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 3px; background: #af7e3c; border-radius: 2px; }
+        .footer-link { display: flex; align-items: center; color: #b0b0b0; text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
+        .footer-link i { margin-left: 8px; font-size: 0.8rem; color: #af7e3c; transition: 0.3s; }
+        .footer-link:hover { color: #ffffff; }
+        .footer-link:hover i { transform: translateX(-5px); color: #ffffff; }
+        .footer-contact p { display: flex; align-items: flex-start; margin-bottom: 15px; }
+        .footer-contact i { color: #af7e3c; font-size: 1.1rem; margin-left: 10px; margin-top: 4px; }
+        .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); color: #af7e3c; border-radius: 50%; text-decoration: none; transition: all 0.4s ease; border: 1px solid rgba(175, 126, 60, 0.2); }
+        .footer-social a:hover { background: #af7e3c; color: #111111; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(175, 126, 60, 0.4); }
+        .footer-wa-btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff !important; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; transition: 0.3s; border: none; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2); }
+        .footer-wa-btn i { font-size: 1.3rem; margin-left: 8px; }
+        .footer-wa-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); color: #ffffff; }
+        .footer-bottom { background: #000000; padding: 20px 0; margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .floating-whatsapp { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; transition: 0.3s; text-decoration: none; animation: wa-pulse 2s infinite; }
+        .floating-whatsapp:hover { background-color: #128C7E; color: #ffffff; transform: scale(1.1); }
+        @keyframes wa-pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; background: #af7e3c; color: #111; border: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .back-to-top:hover { background: #ffffff; color: #af7e3c; }
     </style>
 </head>
 
@@ -192,7 +217,7 @@
         </div>
     </div>
    
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s" style="background-color: #0a0a0a !important; border-bottom: 1px solid rgba(175, 126, 60, 0.2);">
         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
             <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="Icon"></h1>
         </a>
@@ -201,18 +226,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">الرئيسية</a>
-                <a href="about.html" class="nav-item nav-link">من نحن</a>
-                <a href="service.html" class="nav-item nav-link">خدماتنا</a>
-                <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
-                <a href="blog.html" class="nav-item nav-link active">المدونة</a>
-                <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
+                <a href="index.html" class="nav-item nav-link" style="color: #d1d1d1;">الرئيسية</a>
+                <a href="about.html" class="nav-item nav-link" style="color: #d1d1d1;">من نحن</a>
+                <a href="service.html" class="nav-item nav-link" style="color: #d1d1d1;">خدماتنا</a>
+                <a href="project.html" class="nav-item nav-link" style="color: #d1d1d1;">سوابق أعمالنا</a>
+                <a href="blog.html" class="nav-item nav-link active" style="color: #af7e3c;">المدونة</a>
+                <a href="contact.html" class="nav-item nav-link" style="color: #d1d1d1;">تواصل معنا</a>
             </div>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
+            <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block" style="background: #af7e3c; color:#111; border:none; font-weight:bold;">اطلب مقايسة</a>
         </div>
     </nav>
 
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(img/TIRAZ\\(1\\).jpeg) center center no-repeat; background-size: cover;">
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(img/TIRAZ\(1\).jpeg) center center no-repeat; background-size: cover;">
         <div class="container py-5">
             <h1 class="display-1 text-white animated slideInDown">المدونة</h1>
             <nav aria-label="breadcrumb animated slideInDown">
@@ -231,10 +256,10 @@
                 <h1 class="display-5 mb-4 text-white">نصائح ومعلومات حول التشطيب والمقاولات</h1>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-4" id="blogContainer">
                 
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="blog-card">
+                <div class="col-lg-4 col-md-6 wow fadeInUp blog-item" data-wow-delay="0.1s">
+                    <div class="blog-card" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#blogModal1">
                         <div class="blog-img">
                             <span class="blog-category">دليل العميل</span>
                             <img class="img-fluid w-100" src="img/TIRAZ(1).jpeg" alt="تشطيب فيلات" style="height: 250px; object-fit: cover;">
@@ -242,17 +267,16 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <span><i class="far fa-calendar-alt"></i> 12 أبريل 2026</span>
-                                <span><i class="far fa-user"></i> الإدارة الهندسية</span>
                             </div>
-                            <a href="#" class="blog-title">دليل تشطيب الفيلات الفاخرة في التجمع الخامس والشروق</a>
-                            <p class="text-light opacity-75 mb-4">كل ما تحتاج معرفته عن مراحل تأسيس وتشطيب الفيلات المستقلة، وأهم التحديات المعمارية في المدن الجديدة وكيفية تفاديها...</p>
-                            <a href="#" class="read-more-btn">اقرأ المقال <i class="fa fa-arrow-left"></i></a>
+                            <h4 class="blog-title text-white">دليل تشطيب الفيلات الفاخرة في التجمع الخامس والشروق</h4>
+                            <p class="text-light opacity-75 mb-4">تعرف على مراحل تأسيس وتشطيب الفيلات المستقلة وكيفية تفادي التحديات المعمارية في المدن الجديدة...</p>
+                            <span class="read-more-btn">اقرأ المقال كاملاً <i class="fa fa-arrow-left"></i></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="blog-card">
+                <div class="col-lg-4 col-md-6 wow fadeInUp blog-item" data-wow-delay="0.3s">
+                    <div class="blog-card" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#blogModal2">
                         <div class="blog-img">
                             <span class="blog-category">إدارة مشروعات</span>
                             <img class="img-fluid w-100" src="img/TIRAZ(21).jpeg" alt="المكتب الفني BOQ" style="height: 250px; object-fit: cover;">
@@ -260,17 +284,16 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <span><i class="far fa-calendar-alt"></i> 05 أبريل 2026</span>
-                                <span><i class="far fa-user"></i> مكتب فني (BOQ)</span>
                             </div>
-                            <a href="#" class="blog-title">أهمية الاستعانة بمكتب فني (BOQ) قبل بدء التشطيب</a>
-                            <p class="text-light opacity-75 mb-4">كيف تساعدك جداول حصر الكميات والمقايسات التقديرية في حماية ميزانيتك من الهدر وتلاعب السوق قبل دفع أي مبالغ...</p>
-                            <a href="#" class="read-more-btn">اقرأ المقال <i class="fa fa-arrow-left"></i></a>
+                            <h4 class="blog-title text-white">أهمية الاستعانة بمكتب فني (BOQ) قبل بدء التشطيب</h4>
+                            <p class="text-light opacity-75 mb-4">كيف تحمي ميزانيتك من الهدر وتلاعب السوق باستخدام مقايسات دقيقة وحصر كميات حقيقي...</p>
+                            <span class="read-more-btn">اقرأ المقال كاملاً <i class="fa fa-arrow-left"></i></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="blog-card">
+                <div class="col-lg-4 col-md-6 wow fadeInUp blog-item" data-wow-delay="0.5s">
+                    <div class="blog-card" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#blogModal3">
                         <div class="blog-img">
                             <span class="blog-category">رسومات تنفيذية</span>
                             <img class="img-fluid w-100" src="img/TIRAZ(20).jpeg" alt="الشوب دروينج" style="height: 250px; object-fit: cover;">
@@ -278,17 +301,16 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <span><i class="far fa-calendar-alt"></i> 28 مارس 2026</span>
-                                <span><i class="far fa-user"></i> قسم التصميم</span>
                             </div>
-                            <a href="#" class="blog-title">الـ Shop Drawings: كلمة السر لنجاح أي مشروع سكني</a>
-                            <p class="text-light opacity-75 mb-4">لماذا تعتبر المخططات التنفيذية الدقيقة أهم مرحلة قبل بدء العمالة في الموقع؟ وتأثيرها على تقليل الأخطاء الإنشائية...</p>
-                            <a href="#" class="read-more-btn">اقرأ المقال <i class="fa fa-arrow-left"></i></a>
+                            <h4 class="blog-title text-white">الـ Shop Drawings: كلمة السر لنجاح أي مشروع سكني</h4>
+                            <p class="text-light opacity-75 mb-4">لماذا تعتبر المخططات التنفيذية الدقيقة أهم مرحلة قبل بدء العمالة في الموقع؟</p>
+                            <span class="read-more-btn">اقرأ المقال كاملاً <i class="fa fa-arrow-left"></i></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="blog-card">
+                <div class="col-lg-4 col-md-6 wow fadeInUp blog-item" data-wow-delay="0.1s">
+                    <div class="blog-card" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#blogModal4">
                         <div class="blog-img">
                             <span class="blog-category">نصائح ديكور</span>
                             <img class="img-fluid w-100" src="img/TIRAZ(27).jpeg" alt="ديكورات حديثة" style="height: 250px; object-fit: cover;">
@@ -296,17 +318,16 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <span><i class="far fa-calendar-alt"></i> 15 مارس 2026</span>
-                                <span><i class="far fa-user"></i> التصميم الداخلي</span>
                             </div>
-                            <a href="#" class="blog-title">أحدث اتجاهات الديكور الداخلي لعام 2026 في مصر</a>
-                            <p class="text-light opacity-75 mb-4">تعرف على كيفية دمج الفخامة المودرن مع العملية، وأحدث صيحات الإضاءة المخفية واستخدامات الجبس بورد الذكية...</p>
-                            <a href="#" class="read-more-btn">اقرأ المقال <i class="fa fa-arrow-left"></i></a>
+                            <h4 class="blog-title text-white">أحدث اتجاهات الديكور الداخلي لعام 2026 في مصر</h4>
+                            <p class="text-light opacity-75 mb-4">تعرف على كيفية دمج الفخامة المودرن مع العملية، وأحدث صيحات الإضاءة المخفية في المساحات المفتوحة...</p>
+                            <span class="read-more-btn">اقرأ المقال كاملاً <i class="fa fa-arrow-left"></i></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="blog-card">
+                <div class="col-lg-4 col-md-6 wow fadeInUp blog-item" data-wow-delay="0.3s">
+                    <div class="blog-card" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#blogModal5">
                         <div class="blog-img">
                             <span class="blog-category">مراحل التنفيذ</span>
                             <img class="img-fluid w-100" src="img/TIRAZ(32).jpeg" alt="استلام المحارة" style="height: 250px; object-fit: cover;">
@@ -314,17 +335,16 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <span><i class="far fa-calendar-alt"></i> 02 مارس 2026</span>
-                                <span><i class="far fa-user"></i> مهندس الموقع</span>
                             </div>
-                            <a href="#" class="blog-title">استلام الشقة على المحارة: المواصفات الهندسية الدقيقة</a>
-                            <p class="text-light opacity-75 mb-4">القواعد الذهبية والأدوات التي يجب استخدامها عند استلام بند البياض (المحارة) لتجنب عيوب الدهانات لاحقاً...</p>
-                            <a href="#" class="read-more-btn">اقرأ المقال <i class="fa fa-arrow-left"></i></a>
+                            <h4 class="blog-title text-white">استلام الشقة على المحارة: المواصفات الهندسية الدقيقة</h4>
+                            <p class="text-light opacity-75 mb-4">القواعد الذهبية والأدوات التي يجب استخدامها عند استلام بند البياض لتجنب عيوب الدهانات لاحقاً...</p>
+                            <span class="read-more-btn">اقرأ المقال كاملاً <i class="fa fa-arrow-left"></i></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="blog-card">
+                <div class="col-lg-4 col-md-6 wow fadeInUp blog-item" data-wow-delay="0.5s">
+                    <div class="blog-card" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#blogModal6">
                         <div class="blog-img">
                             <span class="blog-category">خامات وتشطيب</span>
                             <img class="img-fluid w-100" src="img/TIRAZ(37).jpeg" alt="السيراميك والبورسلين" style="height: 250px; object-fit: cover;">
@@ -332,90 +352,165 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <span><i class="far fa-calendar-alt"></i> 20 فبراير 2026</span>
-                                <span><i class="far fa-user"></i> الإدارة الفنية</span>
                             </div>
-                            <a href="#" class="blog-title">السيراميك، البورسلين أم الرخام: كيف تختار الأنسب؟</a>
+                            <h4 class="blog-title text-white">السيراميك، البورسلين أم الرخام: كيف تختار الأنسب؟</h4>
                             <p class="text-light opacity-75 mb-4">مقارنة شاملة بين أشهر خامات الأرضيات في السوق المصري من حيث التكلفة، المتانة، وأماكن الاستخدام الأمثل...</p>
-                            <a href="#" class="read-more-btn">اقرأ المقال <i class="fa fa-arrow-left"></i></a>
+                            <span class="read-more-btn">اقرأ المقال كاملاً <i class="fa fa-arrow-left"></i></span>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="row mt-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center custom-pagination mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-chevron-right"></i></a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a>
-                            </li>
+                    <nav>
+                        <ul class="pagination justify-content-center custom-pagination" id="blogPagination">
+                            <li class="page-item disabled" id="prevPageItem"><a class="page-link" href="#" id="prevPageBtn">السابق</a></li>
+                            <li class="page-item active"><a class="page-link page-number" href="#" data-page="1">1</a></li>
+                            <li class="page-item"><a class="page-link page-number" href="#" data-page="2">2</a></li>
+                            <li class="page-item" id="nextPageItem"><a class="page-link" href="#" id="nextPageBtn">التالي</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
-    <style>
-        .tiraz-footer {
-            background: linear-gradient(to bottom, #111111 0%, #050505 100%);
-            border-top: 1px solid rgba(175, 126, 60, 0.2);
-            color: #b0b0b0;
-            padding-top: 70px;
-            font-size: 0.95rem;
-            position: relative;
-        }
-        .tiraz-footer h4 {
-            color: #ffffff;
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        .tiraz-footer h4::after {
-            content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 3px; background: #af7e3c; border-radius: 2px;
-        }
-        .footer-link {
-            display: flex; align-items: center; color: #b0b0b0; text-decoration: none; margin-bottom: 12px; transition: 0.3s;
-        }
-        .footer-link i { margin-left: 8px; font-size: 0.8rem; color: #af7e3c; transition: 0.3s; }
-        .footer-link:hover { color: #ffffff; }
-        .footer-link:hover i { transform: translateX(-5px); color: #ffffff; }
-        .footer-contact p { display: flex; align-items: flex-start; margin-bottom: 15px; }
-        .footer-contact i { color: #af7e3c; font-size: 1.1rem; margin-left: 10px; margin-top: 4px; }
-        .footer-social { display: flex; gap: 10px; margin-top: 20px; }
-        .footer-social a {
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            background: rgba(255, 255, 255, 0.05); color: #af7e3c; border-radius: 50%; text-decoration: none; transition: all 0.4s ease; border: 1px solid rgba(175, 126, 60, 0.2);
-        }
-        .footer-social a:hover { background: #af7e3c; color: #111111; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(175, 126, 60, 0.4); }
-        .footer-wa-btn {
-            display: inline-flex; align-items: center; justify-content: center; width: 100%;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff !important;
-            padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; transition: 0.3s; border: none; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
-        }
-        .footer-wa-btn i { font-size: 1.3rem; margin-left: 8px; }
-        .footer-wa-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); color: #ffffff; }
-        .footer-bottom { background: #000000; padding: 20px 0; margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
-        
-        .floating-whatsapp {
-            position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
-            background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center;
-            font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000;
-            display: flex; align-items: center; justify-content: center; transition: 0.3s; text-decoration: none; animation: wa-pulse 2s infinite;
-        }
-        .floating-whatsapp:hover { background-color: #128C7E; color: #ffffff; transform: scale(1.1); }
-        @keyframes wa-pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        .back-to-top { position: fixed; bottom: 30px; right: 30px; background: #af7e3c; color: #111; border: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .back-to-top:hover { background: #ffffff; color: #af7e3c; }
-    </style>
+    <div class="modal fade" id="blogModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark" style="border: 1px solid #af7e3c; border-radius: 15px;">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-primary">دليل العميل</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-light" style="line-height: 1.8;">
+                    <img src="img/TIRAZ(1).jpeg" class="img-fluid rounded mb-4 w-100" style="max-height: 450px; object-fit: cover;" alt="">
+                    <h2 class="mb-4 text-white">دليل تشطيب الفيلات الفاخرة في التجمع الخامس والشروق</h2>
+                    <p>يعتبر تشطيب الفيلات في المدن الجديدة مثل التجمع الخامس والشروق رحلة تتطلب دقة هندسية عالية. في "طراز"، نبدأ أولاً بدراسة الموقع العام للفيلا وتأثير الشمس والرياح على التصميم الداخلي.</p>
+                    <h4 class="text-primary mt-4">1. مرحلة التأسيس الذكي:</h4>
+                    <p>لا نكتفي بتمديدات الكهرباء والسباكة التقليدية، بل نؤسس لأنظمة (Smart Home) وتكييفات مركزية مدروسة مع الأحمال الإنشائية للفيلا.</p>
+                    <h4 class="text-primary mt-4">2. العزل المتكامل:</h4>
+                    <p>من أهم النقاط في تشطيب الفيلات هو عزل الأسطح والحمامات وحمامات السباحة بأجود الخامات لضمان طول عمر المنشأ.</p>
+                    <p>نحن في طراز نضمن لك تسليم الفيلا مطابقة لأعلى المعايير العالمية مع الالتزام التام بالتصميم المعتمد.</p>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                    <a href="appointment.html" class="btn btn-primary" style="background: #af7e3c; border:none; color:#111; font-weight:bold;">اطلب استشارة لمشروعك</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="blogModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark" style="border: 1px solid #af7e3c; border-radius: 15px;">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-primary">إدارة مشروعات</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-light" style="line-height: 1.8;">
+                    <img src="img/TIRAZ(21).jpeg" class="img-fluid rounded mb-4 w-100" style="max-height: 450px; object-fit: cover;" alt="">
+                    <h2 class="mb-4 text-white">أهمية الاستعانة بمكتب فني (BOQ) قبل بدء التشطيب</h2>
+                    <p>أكبر خطأ يقع فيه العميل هو البدء في التنفيذ بناءً على "أرقام تقريبية". في طراز، يعمل مهندسو المكتب الفني لدينا على استخراج جداول حصر دقيقة لكل مسمار وسلك كهرباء سيتم تركيبه.</p>
+                    <h4 class="text-primary mt-4">فوائد المقايسة الدقيقة:</h4>
+                    <ul>
+                        <li>تحديد التكلفة النهائية للمشروع قبل البدء بنسبة دقة تصل لـ 95%.</li>
+                        <li>منع الهدر في الخامات (مثل الرخام والسيراميك) وتوفير مبالغ ضخمة.</li>
+                        <li>القدرة على اختيار بدائل للخامات بما يتناسب مع ميزانيتك دون المساس بالجودة.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                    <a href="appointment.html" class="btn btn-primary" style="background: #af7e3c; border:none; color:#111; font-weight:bold;">اطلب مقايسة دقيقة</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="blogModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark" style="border: 1px solid #af7e3c; border-radius: 15px;">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-primary">رسومات تنفيذية</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-light" style="line-height: 1.8;">
+                    <img src="img/TIRAZ(20).jpeg" class="img-fluid rounded mb-4 w-100" style="max-height: 450px; object-fit: cover;" alt="">
+                    <h2 class="mb-4 text-white">الـ Shop Drawings: كلمة السر لنجاح أي مشروع سكني</h2>
+                    <p>الفرق بين "طراز" وبين أي "صنايعي" هو المخططات التنفيذية. نحن لا نترك مجالاً للاجتهاد في الموقع. كل فني يستلم لوحة "Shop Drawing" توضح له مكان كل بلاطة وارتفاع كل مفتاح كهرباء بالملي.</p>
+                    <p>هذه الرسومات تضمن مطابقة ما تم تصميمه في الـ 3D مع ما يتم تنفيذه فعلياً على أرض الواقع، مما يحقق الفخامة التي يبحث عنها عملاؤنا ويتفادى أي تكسير أو تعديلات مكلفة لاحقاً.</p>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="blogModal4" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark" style="border: 1px solid #af7e3c; border-radius: 15px;">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-primary">نصائح ديكور</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-light" style="line-height: 1.8;">
+                    <img src="img/TIRAZ(27).jpeg" class="img-fluid rounded mb-4 w-100" style="max-height: 450px; object-fit: cover;" alt="">
+                    <h2 class="mb-4 text-white">أحدث اتجاهات الديكور الداخلي لعام 2026 في مصر</h2>
+                    <p>يشهد عام 2026 تحولاً نحو الديكور الذي يدمج بين الفخامة والراحة النفسية (Luxury Comfort). الألوان الترابية والرمادية الدافئة تتصدر المشهد، مع دمج الأخشاب الطبيعية والمعادن المطفية.</p>
+                    <p>أصبح التوجه الأساسي هو تقليل التكلف في الأسقف المعلقة والاعتماد أكثر على الإضاءات المخفية (Hidden Lights) وتوزيع الإضاءة الموجهة (Spotlights) لإبراز جماليات قطع الأثاث واللوحات الفنية، وهو ما نطبقه ببراعة في تصاميم طراز.</p>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="blogModal5" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark" style="border: 1px solid #af7e3c; border-radius: 15px;">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-primary">مراحل التنفيذ</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-light" style="line-height: 1.8;">
+                    <img src="img/TIRAZ(32).jpeg" class="img-fluid rounded mb-4 w-100" style="max-height: 450px; object-fit: cover;" alt="">
+                    <h2 class="mb-4 text-white">استلام الشقة على المحارة: المواصفات الهندسية الدقيقة</h2>
+                    <p>بند البياض (المحارة) هو العمود الفقري لأي تشطيب. استلام المحارة بشكل خاطئ يؤدي إلى كوارث في الدهانات وتركيب الأبواب والأرضيات.</p>
+                    <h4 class="text-primary mt-4">كيف نستلم المحارة في طراز؟</h4>
+                    <ul>
+                        <li>استخدام "القدة" الألومنيوم والميزان المائي للتأكد من استواء الحوائط وعدم وجود أي تعرجات.</li>
+                        <li>التأكد من زوايا الغرف (تأكيس وتربيع) لتكون 90 درجة تماماً، مما يسهل تركيب السيراميك والفرش لاحقاً.</li>
+                        <li>اختبار تماسك المحارة وتجنب ظاهرة "التطبيل".</li>
+                    </ul>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="blogModal6" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark" style="border: 1px solid #af7e3c; border-radius: 15px;">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-primary">خامات وتشطيب</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-light" style="line-height: 1.8;">
+                    <img src="img/TIRAZ(37).jpeg" class="img-fluid rounded mb-4 w-100" style="max-height: 450px; object-fit: cover;" alt="">
+                    <h2 class="mb-4 text-white">السيراميك، البورسلين أم الرخام: كيف تختار الأنسب؟</h2>
+                    <p>اختيار الأرضيات يحدد طابع المنزل بالكامل. الرخام يظل رمزاً للفخامة الكلاسيكية ولكنه يحتاج إلى عناية خاصة وصيانة دورية، بالإضافة إلى تكلفته العالية.</p>
+                    <p>من ناحية أخرى، تطور البورسلين بشكل مذهل وأصبح يتوفر بتصاميم تحاكي الرخام الطبيعي والأخشاب (باركيه)، مع صلابة أعلى ومقاومة للخدش وسهولة في التنظيف، مما يجعله الخيار المفضل حالياً في معظم تصاميمنا العصرية الحديثة في "طراز".</p>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="tiraz-footer wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
@@ -435,7 +530,7 @@
                     <a class="footer-link" href="index.html"><i class="fa fa-chevron-left"></i> الرئيسية</a>
                     <a class="footer-link" href="about.html"><i class="fa fa-chevron-left"></i> من نحن</a>
                     <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> خدماتنا الهندسية</a>
-                    <a class="footer-link" href="blog.html"><i class="fa fa-chevron-left"></i> المدونة</a>
+                    <a class="footer-link" href="project.html"><i class="fa fa-chevron-left"></i> سابقة الأعمال</a>
                     <a class="footer-link" href="contact.html"><i class="fa fa-chevron-left"></i> تواصل معنا</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -469,7 +564,7 @@
                 </div>
             </div>
         </div>
-   </footer>
+    </footer>
 
     <a href="https://wa.me/201214503036" target="_blank" class="floating-whatsapp" title="تواصل معنا عبر واتساب">
         <i class="fab fa-whatsapp"></i>
@@ -487,8 +582,72 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
     <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const itemsPerPage = 3; 
+            const blogItems = document.querySelectorAll('.blog-item');
+            const pageNumbers = document.querySelectorAll('.page-number');
+            const prevBtn = document.getElementById('prevPageBtn');
+            const nextBtn = document.getElementById('nextPageBtn');
+            const prevItem = document.getElementById('prevPageItem');
+            const nextItem = document.getElementById('nextPageItem');
+            
+            let currentPage = 1;
+            const totalPages = Math.ceil(blogItems.length / itemsPerPage);
+
+            function showPage(page) {
+                blogItems.forEach((item, index) => {
+                    item.style.display = 'none';
+                    if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
+                        item.style.display = 'block';
+                        item.style.animationName = 'none';
+                        setTimeout(() => { item.style.animationName = 'fadeInUp'; }, 50);
+                    }
+                });
+
+                pageNumbers.forEach(link => link.parentElement.classList.remove('active'));
+                const currentLink = document.querySelector(`.page-number[data-page="${page}"]`);
+                if(currentLink) currentLink.parentElement.classList.add('active');
+
+                if (page === 1) prevItem.classList.add('disabled');
+                else prevItem.classList.remove('disabled');
+
+                if (page === totalPages) nextItem.classList.add('disabled');
+                else nextItem.classList.remove('disabled');
+            }
+
+            pageNumbers.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    currentPage = parseInt(this.getAttribute('data-page'));
+                    showPage(currentPage);
+                    window.scrollTo({ top: document.getElementById('blogContainer').offsetTop - 100, behavior: 'smooth' });
+                });
+            });
+
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                    window.scrollTo({ top: document.getElementById('blogContainer').offsetTop - 100, behavior: 'smooth' });
+                }
+            });
+
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                    window.scrollTo({ top: document.getElementById('blogContainer').offsetTop - 100, behavior: 'smooth' });
+                }
+            });
+
+            showPage(1);
+        });
+    </script>
 </body>
 
 </html>
