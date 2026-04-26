@@ -47,47 +47,87 @@
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
         <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
     </div>
-    <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
+
+    <style>
+        /* ستايل أيقونات السوشيال في الشريط العلوي */
+        .topbar-social-btn {
+            width: 32px; height: 32px;
+            display: inline-flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(175, 126, 60, 0.5);
+            color: #af7e3c;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s ease;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        .topbar-social-btn:hover {
+            background: #af7e3c;
+            color: #111111;
+            box-shadow: 0 0 10px rgba(175, 126, 60, 0.5);
+        }
+        .topbar-text {
+            color: #aaaaaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .topbar-text:hover {
+            color: #ffffff;
+        }
+    </style>
+
+    <div class="container-fluid p-0" style="background-color: #050505; border-bottom: 1px solid rgba(175, 126, 60, 0.1);">
         <div class="row gx-0 d-none d-lg-flex">
-            <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-3">
-                    <a class="text-body px-2" href="tel:+0123456789"><i class="fa fa-phone-alt text-primary me-2"></i>+20 123 456 7890</a>
-                    <a class="text-body px-2" href="mailto:info@tiraz.pro"><i class="fa fa-envelope-open text-primary me-2"></i>info@tiraz.pro</a>
+            
+            <div class="col-lg-6 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-2 me-3">
+                    <a class="topbar-text px-3 border-end border-secondary" href="mailto:info@tiraz.pro">
+                        <i class="fa fa-envelope text-primary me-2"></i>info@tiraz.pro
+                    </a>
+                    <a class="topbar-text px-3" href="tel:+201214503036">
+                        <i class="fa fa-phone-alt text-primary me-2"></i><span dir="ltr" class="d-inline-block">+20 121 450 3036</span>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-2">
-                    <a class="text-body px-2" href="">الشروط والأحكام</a>
-                    <a class="text-body px-2" href="">سياسة الخصوصية</a>
+
+            <div class="col-lg-6 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-2 me-3">
+                    <span class="topbar-text px-3 border-end border-secondary" style="cursor: default;">
+                        <i class="far fa-clock text-primary me-2"></i>مواعيد العمل: السبت - الخميس (10 ص - 6 م)
+                    </span>
                 </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-0" href=""><i class="fab fa-instagram"></i></a>
+                <div class="h-100 d-inline-flex align-items-center ps-2">
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="topbar-social-btn" href="https://instagram.com/tiraz.pro" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
+            
         </div>
     </div>
+   
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
-            <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="لوجو طراز"></h1>
+            <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="Icon"></h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.html" class="nav-item nav-link">الرئيسية</a>
-            <a href="about.html" class="nav-item nav-link">من نحن</a>
-            <a href="service.html" class="nav-item nav-link">خدماتنا</a>
-            <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
-            <a href="testimonial.html" class="nav-item nav-link">آراء العملاء</a>
-            <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
-        </div>
-            <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
+                <a href="index.html" class="nav-item nav-link">الرئيسية</a>
+                <a href="about.html" class="nav-item nav-link active">من نحن</a>
+                <a href="service.html" class="nav-item nav-link">خدماتنا</a>
+                <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
+                <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
+            </div>
+            <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
         </div>
     </nav>
+
+
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <h1 class="display-1 text-white animated slideInDown">من نحن</h1>
@@ -249,60 +289,249 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
+    <style>
+        /* خلفية الفوتر الفخمة */
+        .tiraz-footer {
+            background: linear-gradient(to bottom, #111111 0%, #050505 100%);
+            border-top: 1px solid rgba(175, 126, 60, 0.2);
+            color: #b0b0b0;
+            padding-top: 70px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        /* العناوين في الفوتر */
+        .tiraz-footer h4 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        /* خط دهبي شيك تحت كل عنوان */
+        .tiraz-footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 40px; height: 3px;
+            background: #af7e3c;
+            border-radius: 2px;
+        }
+
+        /* روابط الفوتر */
+        .footer-link {
+            display: flex;
+            align-items: center;
+            color: #b0b0b0;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+        .footer-link i {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            color: #af7e3c;
+            transition: 0.3s;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+        }
+        .footer-link:hover i {
+            transform: translateX(-5px); /* السهم بيتحرك مع الهوفر */
+            color: #ffffff;
+        }
+
+        /* بيانات التواصل */
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .footer-contact i {
+            color: #af7e3c;
+            font-size: 1.1rem;
+            margin-left: 10px;
+            margin-top: 4px;
+        }
+
+        /* أيقونات السوشيال ميديا */
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .footer-social a {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: #af7e3c;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(175, 126, 60, 0.2);
+        }
+        .footer-social a:hover {
+            background: #af7e3c;
+            color: #111111;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(175, 126, 60, 0.4);
+        }
+
+        /* زرار الواتساب اللي جوه الفوتر */
+        .footer-wa-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #ffffff !important;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: 0.3s;
+            border: none;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+        }
+        .footer-wa-btn i {
+            font-size: 1.3rem;
+            margin-left: 8px;
+        }
+        .footer-wa-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            color: #ffffff;
+        }
+
+        /* حقوق الملكية (البار السفلي) */
+        .footer-bottom {
+            background: #000000;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* ================================================== */
+        /* زرار الواتساب العائم (Floating WhatsApp) - السحر كله */
+        /* ================================================== */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            left: 30px; /* في العربي بنخليه شمال عشان السهم بتاع الطلوع يمين */
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        /* تأثير النبض (Pulse) عشان يخطف عين العميل */
+        .floating-whatsapp {
+            animation: wa-pulse 2s infinite;
+        }
+        .floating-whatsapp:hover {
+            background-color: #128C7E;
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+        @keyframes wa-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* تظبيط زرار العودة للأعلى عشان يتماشى مع الدارك مود */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #af7e3c;
+            color: #111;
+            border: none;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .back-to-top:hover {
+            background: #ffffff;
+            color: #af7e3c;
+        }
+    </style>
+
+    <footer class="tiraz-footer wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
             <div class="row g-5">
+                
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">بيانات التواصل</h3>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>القاهرة، مصر</p>
-                    <p class="mb-2" dir="ltr"><i class="fa fa-phone-alt text-primary ms-3"></i>+20 123 456 7890</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@tiraz.pro</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-body me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <h2 class="text-primary mb-4" style="font-weight: 900; letter-spacing: 1px;">TIRAZ <span style="color: #fff; font-weight: 300;">.PRO</span></h2>
+                    <p class="mb-4">ندمج بين الجانب الفني للتصميم والصرامة الهندسية في التنفيذ. نسلمك وحدتك مطابقة للمواصفات، بدون تجاوز لميزانيتك.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">خدماتنا</h3>
-                    <a class="btn btn-link" href="">التشطيب المتكامل</a>
-                    <a class="btn btn-link" href="">الإشراف الهندسي</a>
-                    <a class="btn btn-link" href="">المقايسات وحصر الكميات</a>
-                    <a class="btn btn-link" href="">التصميم الداخلي</a>
-                    <a class="btn btn-link" href="">الرسومات التنفيذية</a>
+                    <h4>روابط سريعة</h4>
+                    <a class="footer-link" href="index.html"><i class="fa fa-chevron-left"></i> الرئيسية</a>
+                    <a class="footer-link" href="about.html"><i class="fa fa-chevron-left"></i> من نحن</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> خدماتنا الهندسية</a>
+                    <a class="footer-link" href="project.html"><i class="fa fa-chevron-left"></i> سابقة الأعمال</a>
+                    <a class="footer-link" href="contact.html"><i class="fa fa-chevron-left"></i> تواصل معنا</a>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">روابط سريعة</h3>
-                    <a class="btn btn-link" href="">من نحن</a>
-                    <a class="btn btn-link" href="">تواصل معنا</a>
-                    <a class="btn btn-link" href="">خدماتنا</a>
-                    <a class="btn btn-link" href="">الشروط والأحكام</a>
-                    <a class="btn btn-link" href="">الدعم الفني</a>
+                    <h4>مجالات التخصص</h4>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> التشطيب المتكامل</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> التصميم الداخلي 3D</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> الإشراف الهندسي</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> المخططات التنفيذية</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> المقايسات والحصر</a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">النشرة البريدية</h3>
-                    <p>اشترك ليصلك أحدث أعمالنا الهندسية وعروض التشطيب.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="البريد الإلكتروني">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 start-0 mt-2 ms-2">اشتراك</button>
-                    </div>
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>بيانات التواصل</h4>
+                    <p><i class="fa fa-map-marker-alt"></i> <span>برج ريحانة، المرشدى جروب، مدخل B-2، وحدة 02 F12، زهراء المعادي، القاهرة</span></p>
+                    <p><i class="fa fa-envelope"></i> <span>info@tiraz.pro</span></p>
+                    <p><i class="fa fa-phone-alt"></i> <span dir="ltr">+20 121 450 3036</span></p>
+                    
+                    <a href="https://wa.me/201214503036" target="_blank" class="footer-wa-btn">
+                        <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+                    </a>
                 </div>
+
             </div>
         </div>
-        <div class="container-fluid copyright">
+        
+        <div class="footer-bottom text-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Tiraz.pro</a>, جميع الحقوق محفوظة.
+                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                        &copy; جميع الحقوق محفوظة لشركة <strong class="text-primary">طراز للتشطيبات والمقاولات</strong>.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        تصميم وتطوير بواسطة <a href="#">Tiraz Engineering</a>
+                        <span style="font-size: 0.85rem; color: #666;">تصميم وتطوير بواسطة <span class="text-white">Tiraz Engineering</span></span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+   </footer>
+
+    <a href="https://wa.me/201214503036" target="_blank" class="floating-whatsapp" title="تواصل معنا عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
