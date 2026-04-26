@@ -54,7 +54,7 @@
         .pe-5 { padding-left: 3rem !important; padding-right: 0 !important; }
         .ps-4 { padding-right: 1.5rem !important; padding-left: 0 !important; }
 
-        /* ستايل كروت التواصل */
+        /* ستايل كروت بيانات التواصل */
         .contact-info-card {
             transition: all 0.4s ease;
             border: 1px solid rgba(175, 126, 60, 0.1);
@@ -65,24 +65,29 @@
             box-shadow: 0 10px 25px rgba(175, 126, 60, 0.15);
         }
 
-        /* ستايل نموذج المراسلة (Contact Form) */
+        /* ============================================== */
+        /* ستايل نموذج المراسلة (بناءً على الصفحة الرئيسية) */
+        /* ============================================== */
+        .contact-form-glass {
+            background: rgba(20, 20, 20, 0.85) !important;
+            backdrop-filter: blur(15px) !important;
+            -webkit-backdrop-filter: blur(15px) !important;
+            border: 1px solid rgba(175, 126, 60, 0.2) !important;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8) !important;
+        }
         .form-control {
-            background-color: transparent !important;
-            border: 1px solid rgba(175, 126, 60, 0.3) !important;
+            background-color: #0f0f0f !important;
+            border: 1px solid rgba(255,255,255,0.05) !important;
             color: #fff !important;
-            border-radius: 8px;
+            border-radius: 8px !important;
+            transition: 0.3s;
         }
         .form-control:focus {
             border-color: #af7e3c !important;
-            box-shadow: 0 0 0 0.25rem rgba(175, 126, 60, 0.25) !important;
+            box-shadow: 0 0 0 0.25rem rgba(175, 126, 60, 0.1) !important;
         }
-        .form-floating label { color: #888; }
-        .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label {
-            color: #af7e3c;
-            background-color: #0a0a0a;
-            padding: 0 5px;
-            height: auto;
-            transform: scale(.85) translateY(-1.5rem) translateX(0.15rem);
+        .form-control::placeholder {
+            color: #888 !important;
         }
 
         /* فلتر الخريطة الداكن */
@@ -210,7 +215,7 @@
                             </div>
                             <div class="ms-4">
                                 <p class="mb-2 text-light opacity-75">العنوان</p>
-                                <h4 class="mb-0 text-white">برج ريحانة، المعادي، القاهرة</h4>
+                                <h4 class="mb-0 text-white" style="font-size: 1.1rem; line-height: 1.6;">برج ريحانة، المرشدى جروب، مدخل B-2، وحدة 02 F12، زهراء المعادي، القاهرة</h4>
                             </div>
                         </div>
                         <div class="bg-light contact-info-card d-flex align-items-center w-100 p-4 mb-4">
@@ -235,46 +240,34 @@
                 </div>
 
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="الاسم الكريم">
-                                    <label for="name">الاسم الكريم</label>
+                    <div class="contact-form-glass p-4 p-md-5" style="border-radius: 15px;">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control py-3" placeholder="الاسم الكريم">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control py-3" placeholder="البريد الإلكتروني">
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control py-3" placeholder="الموضوع">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control py-3" rows="5" placeholder="رسالتك (استفسار، طلب معاينة، استشارة...)"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn w-100 py-3 text-white mt-2" type="submit" style="background: linear-gradient(135deg, #af7e3c 0%, #8a632b 100%); font-weight: bold; border: none; border-radius: 8px;">إرسال الرسالة</button>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="البريد الإلكتروني">
-                                    <label for="email">البريد الإلكتروني</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="الموضوع">
-                                    <label for="subject">الموضوع</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="اكتب رسالتك هنا..." id="message" style="height: 150px"></textarea>
-                                    <label for="message">رسالتك (استفسار، طلب معاينة، استشارة...)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit" style="background: #af7e3c; color: #111; font-weight: bold; border: none; border-radius: 8px;">إرسال الرسالة</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="container-xxl pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container">
-            <iframe class="w-100 mb-n2 dark-map" style="height: 450px;"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.969197905183!2d31.2829!3d29.9515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDU3JzA1LjQiTiAzMcKwMTYnNTguNCJF!5e0!3m2!1sar!2seg!4v1650000000000!5m2!1sar!2seg"
-                frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <div class="container-fluid p-0">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1053.4005615552119!2d31.288808021807696!3d29.960382079212728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145838413fb546ed%3A0xf0742a7c18fcda87!2sMorshedy%20Group%20%7C%20Residence!5e1!3m2!1sen!2seg!4v1777224273520!5m2!1sen!2seg" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="dark-map mb-n2 w-100"></iframe>
         </div>
     </div>
 
