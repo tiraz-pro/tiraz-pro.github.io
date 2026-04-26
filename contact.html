@@ -239,24 +239,33 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="contact-form-glass p-4 p-md-5" style="border-radius: 15px;">
+               <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="tiraz-glass-form p-5 shadow-sm" style="border-radius: 15px;">
                         <form>
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control py-3" placeholder="الاسم الكريم">
+                                    <input type="text" class="form-control py-3 bg-light border-0" placeholder="الاسم الكريم">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control py-3" placeholder="البريد الإلكتروني">
+                                    <input type="text" class="form-control py-3 bg-light border-0" placeholder="رقم الهاتف">
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control py-3" placeholder="الموضوع">
+                                    <select class="form-select py-3 bg-light border-0" style="color: #666;">
+                                        <option selected disabled>حدد نوع الخدمة...</option>
+                                        <option value="استشارة هندسية">استشارة هندسية</option>
+                                        <option value="التشطيب المتكامل">التشطيب المتكامل (تسليم مفتاح)</option>
+                                        <option value="التصميم الداخلي">التصميم الداخلي 3D</option>
+                                        <option value="المخططات التنفيذية">المخططات التنفيذية (Shop Drawings)</option>
+                                        <option value="الإشراف الهندسي">الإشراف الهندسي</option>
+                                        <option value="التجديد والترميم">التجديد والترميم</option>
+                                        <option value="المقايسات والحصر">المقايسات وحصر الكميات (BOQ)</option>
+                                    </select>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control py-3" rows="5" placeholder="رسالتك (استفسار، طلب معاينة، استشارة...)"></textarea>
+                                    <textarea class="form-control py-3 bg-light border-0" rows="4" placeholder="رسالتك أو تفاصيل الوحدة..."></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn w-100 py-3 text-white mt-2" type="submit" style="background: linear-gradient(135deg, #af7e3c 0%, #8a632b 100%); font-weight: bold; border: none; border-radius: 8px;">إرسال الرسالة</button>
+                                    <button class="btn text-white w-100 py-3 mt-2" style="background-color: #af7e3c; font-weight: bold; border-radius: 8px; border: none; box-shadow: 0 4px 15px rgba(175, 126, 60, 0.3); transition: 0.3s;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#121212';" onmouseout="this.style.backgroundColor='#af7e3c'; this.style.color='#fff';" type="submit">إرسال الطلب</button>
                                 </div>
                             </div>
                         </form>
