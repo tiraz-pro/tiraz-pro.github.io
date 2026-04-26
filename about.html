@@ -190,39 +190,90 @@
         </div>
     </div>
 
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="position-relative p-3 p-md-4">
-                        <div class="position-absolute" style="top: 0; right: 10%; width: 80%; height: 80%; border: 3px solid #af7e3c; z-index: 1; border-radius: 10px;"></div>
-                        
-                        <div id="aboutStorySlider" class="carousel slide carousel-fade position-relative" data-bs-ride="carousel" data-bs-interval="3000" style="aspect-ratio: 1 / 1; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.8); z-index: 2; margin-top: 15%; margin-left: -5%;">
-                            <div class="carousel-inner h-100">
-                                <div class="carousel-item active h-100">
-                                    <img src="img/TIRAZ(1).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 1">
-                                </div>
-                                <div class="carousel-item h-100">
-                                    <img src="img/TIRAZ(20).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 20">
-                                </div>
-                                <div class="carousel-item h-100">
-                                    <img src="img/TIRAZ(21).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 21">
-                                </div>
-                                <div class="carousel-item h-100">
-                                    <img src="img/TIRAZ(27).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 27">
-                                </div>
-                                <div class="carousel-item h-100">
-                                    <img src="img/TIRAZ(32).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 32">
-                                </div>
-                                <div class="carousel-item h-100">
-                                    <img src="img/TIRAZ(37).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 37">
-                                </div>
-                            </div>
-                        </div>
+   <style>
+    .about-square-slider {
+        width: 100%;
+        aspect-ratio: 1 / 1; /* مربع تماماً */
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        z-index: 2;
+        background-color: #000;
+    }
+    .about-slide-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* يملأ المربع بدون تشويه */
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 1;
+    }
+    .about-slide-img.active {
+        opacity: 1;
+        z-index: 2;
+    }
+</style>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="position-relative p-3 p-md-4">
+                    <div class="position-absolute" style="top: 0; right: 10%; width: 80%; height: 80%; border: 3px solid #af7e3c; z-index: 1; border-radius: 10px;"></div>
+                    
+                    <div id="aboutStorySlider" class="about-square-slider" style="margin-top: 10%; margin-left: -5%;">
+                        <img src="img/TIRAZ(1).jpeg" class="about-slide-img active" alt="مشروع طراز 1">
+                        <img src="img/TIRAZ(20).jpeg" class="about-slide-img" alt="مشروع طراز 2">
+                        <img src="img/TIRAZ(21).jpeg" class="about-slide-img" alt="مشروع طراز 3">
+                        <img src="img/TIRAZ(27).jpeg" class="about-slide-img" alt="مشروع طراز 4">
+                        <img src="img/TIRAZ(32).jpeg" class="about-slide-img" alt="مشروع طراز 5">
+                        <img src="img/TIRAZ(37).jpeg" class="about-slide-img" alt="مشروع طراز 6">
                     </div>
                 </div>
+            </div>
 
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h4 class="section-title">قصتنا</h4>
+                <h1 class="display-5 mb-4 text-white">نخبة من الخبراء لتحويل حلمك إلى واقع ملموس</h1>
+                <p class="text-light opacity-75 mb-4" style="line-height: 1.8; font-size: 1.1rem;">
+                    في "طراز"، نحن لا نصمم مساحات فحسب بل نخلق انطباعات دائمة. فريقنا يمتلك البوصلة الهندسية التي تقوده نحو تحقيق أعلى معايير الجودة والابتكار. نحن لسنا مجرد منفذين! بل شركاء في رحلة إبداع طويلة، حيث نؤمن بأن كل زاوية وكل مساحة تستحق أن تكون تحفة فنية فريدة تعكس جوهرك وتتجاوز توقعاتك.
+                </p>
+                <div class="d-flex align-items-center mb-5">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center border border-2" style="width: 120px; height: 120px; border-color: #af7e3c !important; border-radius: 50%;">
+                        <h1 class="display-1 mb-n2 text-primary" data-toggle="counter-up">10</h1>
+                    </div>
+                    <div class="ps-4 ms-3">
+                        <h3 class="text-white">سنوات</h3>
+                        <h3 class="text-white">من الخبرة</h3>
+                        <h3 class="mb-0 text-white">الهندسية</h3>
+                    </div>
+                </div>
+                <a class="btn py-3 px-5 text-dark" href="contact.html" style="background-color: #af7e3c; font-weight: bold; border-radius: 8px;">تواصل معنا الآن</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentAboutSlide = 0;
+        const aboutSlides = document.querySelectorAll('#aboutStorySlider .about-slide-img');
+        
+        if(aboutSlides.length > 0) {
+            setInterval(() => {
+                aboutSlides[currentAboutSlide].classList.remove('active');
+                currentAboutSlide = (currentAboutSlide + 1) % aboutSlides.length;
+                aboutSlides[currentAboutSlide].classList.add('active');
+            }, 3500); // يقلب كل 3 ثواني ونص
+        }
+    });
+</script>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <h4 class="section-title">قصتنا</h4>
                     <h1 class="display-5 mb-4 text-white">نخبة من الخبراء لتحويل حلمك إلى واقع ملموس</h1>
