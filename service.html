@@ -29,18 +29,14 @@
         /* ============================================== */
         /* التأسيس والخطوط وفك الاشتباك */
         /* ============================================== */
-        body, h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, select, textarea {
-            font-family: 'Tajawal', sans-serif !important;
-        }
-        .text-start { text-align: right !important; }
-        .text-end { text-align: left !important; }
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, select, textarea { font-family: 'Tajawal', sans-serif !important; }
+        .text-start { text-align: right !important; } .text-end { text-align: left !important; }
         .me-auto { margin-left: 0 !important; margin-right: auto !important; }
         .ms-auto { margin-right: 0 !important; margin-left: auto !important; }
         .me-3, .me-2, .me-4 { margin-left: 1rem !important; margin-right: 0 !important; }
         .ms-4, .ms-3 { margin-right: 1.5rem !important; margin-left: 0 !important; }
         .pe-5 { padding-left: 3rem !important; padding-right: 0 !important; }
         .ps-4 { padding-right: 1.5rem !important; padding-left: 0 !important; }
-
         i.fab, .fab { font-family: "Font Awesome 5 Brands" !important; font-weight: 400 !important; }
         i.fa, i.fas, .fa, .fas { font-family: "Font Awesome 5 Free" !important; font-weight: 900 !important; }
 
@@ -52,81 +48,128 @@
         h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
         .section-title, .text-primary, h4.section-title {
             background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
+            -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important;
             display: inline-block; font-weight: 800;
         }
         i.text-primary, .fa { background: none !important; -webkit-text-fill-color: #af7e3c !important; color: #af7e3c !important; }
 
         /* ============================================== */
-        /* شياكة الكروت والشهادات (Hover Effects) */
+        /* الكروت والشهادات والمميزات (Hover Effects) */
         /* ============================================== */
         .fact-item {
             background: linear-gradient(145deg, #1a1a1a, #111111) !important;
-            border: 1px solid rgba(175, 126, 60, 0.1) !important;
-            border-radius: 16px !important;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.5) !important;
-            transition: all 0.4s ease !important;
+            border: 1px solid rgba(175, 126, 60, 0.1) !important; border-radius: 16px !important;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5) !important; transition: all 0.4s ease !important;
         }
-        .fact-item:hover {
-            transform: translateY(-10px) !important;
-            border-color: rgba(175, 126, 60, 0.5) !important;
-            box-shadow: 0 15px 35px rgba(175, 126, 60, 0.15) !important;
-        }
-        
-        .testimonial-item {
-            background: #111 !important;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(175,126,60,0.1) !important;
-        }
+        .fact-item:hover { transform: translateY(-10px) !important; border-color: rgba(175, 126, 60, 0.5) !important; box-shadow: 0 15px 35px rgba(175, 126, 60, 0.15) !important; }
+        .testimonial-item { background: #111 !important; padding: 30px; border-radius: 15px; border: 1px solid rgba(175,126,60,0.1) !important; }
 
         /* ============================================== */
-        /* الشريط العلوي (Topbar) */
+        /* الشريط العلوي */
         /* ============================================== */
-        .topbar-social-btn {
-            width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
-            border: 1px solid rgba(175, 126, 60, 0.5); color: #af7e3c; border-radius: 50%;
-            text-decoration: none; transition: 0.3s ease; margin-right: 5px; font-size: 14px;
-        }
+        .topbar-social-btn { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(175, 126, 60, 0.5); color: #af7e3c; border-radius: 50%; text-decoration: none; transition: 0.3s ease; margin-right: 5px; font-size: 14px; }
         .topbar-social-btn:hover { background: #af7e3c; color: #111111; box-shadow: 0 0 10px rgba(175, 126, 60, 0.5); }
         .topbar-text { color: #aaaaaa; text-decoration: none; transition: 0.3s; }
         .topbar-text:hover { color: #ffffff; }
 
         /* ============================================== */
-        /* كروت الخدمات الجديدة (Service v2) */
+        /* كروت الخدمات المودرن v2 */
         /* ============================================== */
-        .tiraz-service-card-v2 {
-            position: relative; border-radius: 12px; overflow: hidden; height: 340px; 
-            background-color: #0a0a0a; border: 1px solid rgba(175, 126, 60, 0.15); 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;
-        }
-        .tiraz-service-card-v2 img.service-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; 
-            opacity: 0.25; transition: transform 0.8s ease, opacity 0.4s ease;
-        }
+        .tiraz-service-card-v2 { position: relative; border-radius: 12px; overflow: hidden; height: 340px; background-color: #0a0a0a; border: 1px solid rgba(175, 126, 60, 0.15); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .tiraz-service-card-v2 img.service-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; transition: transform 0.8s ease, opacity 0.4s ease; }
         .tiraz-service-card-v2:hover img.service-bg { transform: scale(1.1); opacity: 0.15; }
-        .service-overlay-v2 {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
-            background: linear-gradient(to top, #0a0a0a 10%, rgba(10,10,10,0.6) 60%, transparent 100%); 
-            padding: 30px 25px; display: flex; flex-direction: column; justify-content: flex-end; z-index: 2;
-        }
+        .service-overlay-v2 { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, #0a0a0a 10%, rgba(10,10,10,0.6) 60%, transparent 100%); padding: 30px 25px; display: flex; flex-direction: column; justify-content: flex-end; z-index: 2; }
         .tiraz-service-card-v2:hover { border-color: #af7e3c; transform: translateY(-8px); box-shadow: 0 15px 30px rgba(175, 126, 60, 0.15); }
-        .service-icon-v2 {
-            width: 55px; height: 55px; background: rgba(175, 126, 60, 0.1); border: 1px solid #af7e3c; 
-            color: #af7e3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-size: 22px; margin-bottom: 20px; transition: 0.4s;
-        }
-        .tiraz-service-card-v2:hover .service-icon-v2 {
-            background: rgba(175, 126, 60, 0.15); color: #ffffff; border-color: #af7e3c; 
-            box-shadow: 0 0 25px rgba(175, 126, 60, 0.6); transform: scale(1.1);
-        }
+        .service-icon-v2 { width: 55px; height: 55px; background: rgba(175, 126, 60, 0.1); border: 1px solid #af7e3c; color: #af7e3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; transition: 0.4s; }
+        .tiraz-service-card-v2:hover .service-icon-v2 { background: rgba(175, 126, 60, 0.15); color: #ffffff; border-color: #af7e3c; box-shadow: 0 0 25px rgba(175, 126, 60, 0.6); transform: scale(1.1); }
         .service-content-v2 h3 { color: #ffffff; font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
         .service-content-v2 p { color: #b0b0b0; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
         .service-link-v2 { color: #af7e3c; font-size: 0.95rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: 0.3s; }
         .service-link-v2 i { margin-right: 8px; font-size: 0.8rem; transition: 0.3s; }
         .tiraz-service-card-v2:hover .service-link-v2 { color: #ffffff; }
         .tiraz-service-card-v2:hover .service-link-v2 i { transform: translateX(-5px); }
+
+        /* ============================================== */
+        /* قسم الفيديو التفاعلي */
+        /* ============================================== */
+        .video-wrapper { border-radius: 16px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.4); height: 500px; position: relative; }
+        .video-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .video-wrapper:hover img { transform: scale(1.05); }
+        .video-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 10, 10, 0.4); z-index: 1; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85px; height: 85px; background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%); color: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 3; text-decoration: none; animation: pulse-border 2s infinite; transition: 0.3s; padding-left: 5px; }
+        .play-btn:hover { background: #ffffff; color: #af7e3c; transform: translate(-50%, -50%) scale(1.1); }
+        @keyframes pulse-border { 0% { box-shadow: 0 0 0 0 rgba(175, 126, 60, 0.7); } 70% { box-shadow: 0 0 0 25px rgba(175, 126, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(175, 126, 60, 0); } }
+        .floating-badge { position: absolute; bottom: 30px; right: 30px; background: rgba(15, 15, 15, 0.9); border-right: 4px solid #af7e3c; padding: 20px 25px; border-radius: 12px; z-index: 3; backdrop-filter: blur(10px); text-align: center; border-top: 1px solid rgba(255,255,255,0.05); border-left: 1px solid rgba(255,255,255,0.05); }
+        .floating-badge h3 { color: #af7e3c; margin: 0; font-weight: 900; font-size: 2rem; line-height: 1; }
+        .floating-badge p { color: #d1d1d1; margin: 0; font-size: 0.95rem; margin-top: 5px; }
+        .feature-box { background: #111111; border: 1px solid rgba(175, 126, 60, 0.15); padding: 15px 20px; border-radius: 10px; display: flex; align-items: center; transition: 0.3s; height: 100%; }
+        .feature-box:hover { border-color: #af7e3c; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(175, 126, 60, 0.1); }
+        .feature-box i { color: #af7e3c; font-size: 1.6rem; margin-left: 15px; }
+        .feature-box span { color: #e0e0e0; font-weight: 700; font-size: 0.95rem; }
+
+        /* ============================================== */
+        /* سلايدر الأعمال */
+        /* ============================================== */
+        .portfolio-card { position: relative; height: 420px; border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid rgba(175, 126, 60, 0.2); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); margin: 15px 5px; }
+        .portfolio-card:hover { border-color: #af7e3c; box-shadow: 0 15px 35px rgba(175, 126, 60, 0.2); transform: translateY(-10px); }
+        .portfolio-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .portfolio-card:hover img { transform: scale(1.1); }
+        .portfolio-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 40%, transparent 100%); padding: 30px 25px; display: flex; flex-direction: column; justify-content: flex-end; z-index: 2; }
+        .portfolio-category { color: #af7e3c; font-size: 0.9rem; font-weight: 800; margin-bottom: 8px; letter-spacing: 0.5px; display: flex; align-items: center; }
+        .portfolio-category i { margin-left: 6px; }
+        .portfolio-title { color: #ffffff; font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; line-height: 1.4; }
+        .portfolio-link { color: #d1d1d1; font-size: 1rem; font-weight: 600; transition: 0.3s; display: flex; align-items: center; }
+        .portfolio-link i { margin-right: 8px; transition: 0.3s; }
+        .portfolio-card:hover .portfolio-link { color: #af7e3c; }
+        .portfolio-card:hover .portfolio-link i { transform: translateX(-5px); }
+        .project-carousel .owl-nav { display: flex; justify-content: center; margin-top: 30px; gap: 15px; }
+        .project-carousel .owl-nav button { width: 50px; height: 50px; border-radius: 50% !important; background: #111111 !important; border: 1px solid #af7e3c !important; color: #af7e3c !important; display: flex !important; align-items: center; justify-content: center; font-size: 18px !important; transition: 0.3s !important; }
+        .project-carousel .owl-nav button:hover { background: #af7e3c !important; color: #111111 !important; box-shadow: 0 0 15px rgba(175,126,60,0.4); }
+
+        /* ============================================== */
+        /* الأسئلة الشائعة (Luxury FAQ Accordion) */
+        /* ============================================== */
+        .tiraz-accordion .accordion-item {
+            background-color: transparent !important;
+            border: none !important;
+            margin-bottom: 15px;
+        }
+        .tiraz-accordion .accordion-button {
+            background: linear-gradient(145deg, #1a1a1a, #111111) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(175, 126, 60, 0.2) !important;
+            border-radius: 10px !important;
+            padding: 20px 25px !important;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+        }
+        .tiraz-accordion .accordion-button:not(.collapsed) {
+            border-color: #af7e3c !important;
+            color: #af7e3c !important;
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+        }
+        /* تلوين السهم بالأبيض */
+        .tiraz-accordion .accordion-button::after {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+        /* تلوين السهم بالدهبي لما يفتح */
+        .tiraz-accordion .accordion-button:not(.collapsed):::after {
+            filter: invert(70%) sepia(40%) saturate(500%) hue-rotate(350deg) brightness(90%); 
+        }
+        .tiraz-accordion .accordion-body {
+            background-color: #0a0a0a;
+            color: #b0b0b0;
+            border: 1px solid rgba(175, 126, 60, 0.1);
+            border-top: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 25px;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
 
         /* ============================================== */
         /* الفوتر والواتساب */
@@ -199,20 +242,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.html" class="nav-item nav-link">الرئيسية</a>
-            <a href="about.html" class="nav-item nav-link">من نحن</a>
-            <a href="service.html" class="nav-item nav-link active">خدماتنا</a>
-            <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
-            <a href="testimonial.html" class="nav-item nav-link">آراء العملاء</a>
-            <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
-        </div>
+                <a href="index.html" class="nav-item nav-link">الرئيسية</a>
+                <a href="about.html" class="nav-item nav-link">من نحن</a>
+                <a href="service.html" class="nav-item nav-link active">خدماتنا</a>
+                <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
+                <a href="testimonial.html" class="nav-item nav-link">آراء العملاء</a>
+                <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
+            </div>
             <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
         </div>
     </nav>
 
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
-            <h1 class="display-1 text-white animated slideInDown">خدماتنا</h1>
+            <h1 class="display-1 text-white animated slideInDown">خدماتنا الهندسية</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb text-uppercase mb-0">
                     <li class="breadcrumb-item"><a class="text-white" href="index.html">الرئيسية</a></li>
@@ -223,33 +266,33 @@
     </div>
 
     <div class="container-xxl py-5">
-        <div class="container pt-5">
+        <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="fact-item text-center bg-light h-100 p-5 pt-0">
+                    <div class="fact-item text-center h-100 p-5 pt-0">
                         <div class="fact-icon">
                             <img src="img/icons/icon-2.png" alt="Icon">
                         </div>
                         <h3 class="mb-3">النهج الهندسي</h3>
-                        <p class="mb-0">نعتمد على المعايير الهندسية الصارمة في كل خطوة، من مراجعة المخططات إلى استلام البنود في الموقع.</p>
+                        <p class="mb-0" style="color: #b0b0b0;">نعتمد على المعايير الهندسية الصارمة في كل خطوة، من مراجعة المخططات إلى استلام البنود في الموقع.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="fact-item text-center bg-light h-100 p-5 pt-0">
+                    <div class="fact-item text-center h-100 p-5 pt-0">
                         <div class="fact-icon">
                             <img src="img/icons/icon-3.png" alt="Icon">
                         </div>
                         <h3 class="mb-3">دقة المقايسات</h3>
-                        <p class="mb-0">إعداد قوائم كميات (BOQ) تفصيلية تضمن لك رؤية واضحة للميزانية بدون أي مفاجآت أو تكاليف خفية.</p>
+                        <p class="mb-0" style="color: #b0b0b0;">إعداد قوائم كميات (BOQ) تفصيلية تضمن لك رؤية واضحة للميزانية بدون أي مفاجآت أو تكاليف خفية.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="fact-item text-center bg-light h-100 p-5 pt-0">
+                    <div class="fact-item text-center h-100 p-5 pt-0">
                         <div class="fact-icon">
                             <img src="img/icons/icon-4.png" alt="Icon">
                         </div>
                         <h3 class="mb-3">إدارة المواقع</h3>
-                        <p class="mb-0">متابعة يومية دقيقة لسير العمل لضمان الالتزام بالجدول الزمني وتسليم المشروع في موعده المحدد.</p>
+                        <p class="mb-0" style="color: #b0b0b0;">متابعة يومية دقيقة لسير العمل لضمان الالتزام بالجدول الزمني وتسليم المشروع في موعده المحدد.</p>
                     </div>
                 </div>
             </div>
@@ -348,6 +391,198 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5 mt-4">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="video-wrapper">
+                        <img src="img/TIRAZ(15).jpeg" alt="كيف نعمل">
+                        <div class="video-overlay"></div>
+                        <a href="#" class="play-btn" data-bs-toggle="modal" data-bs-target="#videoModal">
+                            <i class="fas fa-play"></i>
+                        </a>
+                        <div class="floating-badge">
+                            <h3 dir="ltr">100%</h3>
+                            <p>دقة في التنفيذ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h4 class="section-title mb-3" style="color: #af7e3c;">إستراتيجية العمل</h4>
+                    <h1 class="display-5 mb-4 text-white">كيف نحول التصميم إلى واقع بدقة متناهية؟</h1>
+                    <p class="mb-4" style="color: #b0b0b0; line-height: 1.8; font-size: 1.1rem;">
+                        في "طراز"، نؤمن أن جودة التشطيب تبدأ من المتابعة الصارمة للموقع. شاهد كيف يدير فريقنا الهندسي المشاريع لضمان استلام كل بند وفقاً للأكواد الهندسية وحماية استثماراتك.
+                    </p>
+                    
+                    <div class="row g-3 mb-5">
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-shield-alt"></i>
+                                <span>حماية كاملة للميزانية</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-pencil-ruler"></i>
+                                <span>تصميمات قابلة للتنفيذ</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-hard-hat"></i>
+                                <span>إشراف هندسي للموقع</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <i class="fa fa-key"></i>
+                                <span>تسليم مفتاح Turnkey</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0 pb-0 justify-content-end">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="opacity: 1; text-shadow: none;"></button>
+                </div>
+                <div class="modal-body p-0 mt-2" style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid rgba(175, 126, 60, 0.3);">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=0" title="Tiraz Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5 bg-light mt-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div>
+                    <h4 class="section-title" style="color: #af7e3c;">أحدث أعمالنا</h4>
+                    <h1 class="display-5 mb-0 text-white">تصفح نتائج خدماتنا على أرض الواقع</h1>
+                </div>
+                <a href="project.html" class="btn text-white py-3 px-4 d-none d-md-block" style="background: linear-gradient(135deg, #af7e3c 0%, #8a632b 100%); border: none; border-radius: 8px; font-weight: bold;">عرض كل المشاريع</a>
+            </div>
+            
+            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.3s">
+                <div class="portfolio-card" onclick="window.location.href='project.html';">
+                    <img src="img/TIRAZ(1).jpeg" alt="فيلا التجمع">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category"><i class="fa fa-home"></i> التشطيب المتكامل</span>
+                        <h4 class="portfolio-title">فيلا سكنية - التجمع الخامس</h4>
+                        <div class="portfolio-link">شاهد التفاصيل <i class="fa fa-arrow-left"></i></div>
+                    </div>
+                </div>
+                <div class="portfolio-card" onclick="window.location.href='project.html';">
+                    <img src="img/TIRAZ(21).jpeg" alt="ستوديو فندقى">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category"><i class="fa fa-couch"></i> تصميم وديكور</span>
+                        <h4 class="portfolio-title">ستوديو فندقى - المعادي</h4>
+                        <div class="portfolio-link">شاهد التفاصيل <i class="fa fa-arrow-left"></i></div>
+                    </div>
+                </div>
+                <div class="portfolio-card" onclick="window.location.href='project.html';">
+                    <img src="img/TIRAZ(27).jpeg" alt="مطعم تجاري">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category"><i class="fa fa-utensils"></i> تجاري</span>
+                        <h4 class="portfolio-title">تشطيب مطعم وكافيه - زايد</h4>
+                        <div class="portfolio-link">شاهد التفاصيل <i class="fa fa-arrow-left"></i></div>
+                    </div>
+                </div>
+                <div class="portfolio-card" onclick="window.location.href='project.html';">
+                    <img src="img/TIRAZ(32).jpeg" alt="عيادة طبية">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category"><i class="fa fa-tooth"></i> طبي</span>
+                        <h4 class="portfolio-title">عيادة أسنان - مصر الجديدة</h4>
+                        <div class="portfolio-link">شاهد التفاصيل <i class="fa fa-arrow-left"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 d-block d-md-none">
+                <a href="project.html" class="btn text-white py-3 px-5 w-100" style="background: linear-gradient(135deg, #af7e3c 0%, #8a632b 100%); border: none; border-radius: 8px; font-weight: bold;">عرض كل المشاريع</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5 my-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title" style="color: #af7e3c;">الأسئلة الشائعة</h4>
+                <h1 class="display-5 mb-4 text-white">إجابات لكل ما يدور في ذهنك</h1>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="accordion tiraz-accordion" id="faqAccordion">
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    هل تقومون بالتشطيب فقط أم يمكنكم عمل التصميم الداخلي أيضاً؟
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    نحن نقدم الحلين معاً. يمكننا تنفيذ التشطيبات بناءً على تصميمات هندسية تمتلكها بالفعل، أو أن يقوم فريق المهندسين لدينا بعمل تصميم داخلي (3D) متكامل ومخططات تنفيذية (Shop Drawings) قبل البدء لضمان استغلال كل مساحة بأفضل شكل.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    كيف أضمن عدم تجاوز الميزانية المتفق عليها أثناء التشطيب؟
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    هذه هي نقطة قوتنا الأساسية في "طراز". قبل بدء أي أعمال، نقوم بإعداد مقايسة دقيقة وحصر كميات تفصيلي (BOQ) بناءً على الرسومات، مما يمنحك رؤية واضحة ومحددة للتكلفة النهائية دون أي مفاجآت أو تكاليف خفية أثناء التنفيذ.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    ما هي المدة الزمنية المتوقعة للتشطيب المتكامل؟
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    تختلف المدة بالتأكيد حسب مساحة الوحدة وحجم وتفاصيل الأعمال المطلوبة. ولكن في المتوسط، تستغرق أعمال التشطيب المتكامل (تسليم مفتاح) لوحدة سكنية قياسية ما بين 3 إلى 5 أشهر، مع التزامنا الصارم بالجدول الزمني المحدد في التعاقد.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    هل تقدمون ضماناً على أعمال التشطيب والتأسيس؟
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    بالتأكيد. جودة التنفيذ هي الأساس لدينا، لذا نقدم شهادات ضمان من الشركات المصنعة على كافة أعمال التأسيس الكهروميكانيكية (السباكة والكهرباء)، بالإضافة لضمان شامل على جودة التشطيبات النهائية التي نلتزم بتنفيذها وفقاً لأعلى معايير الكود الهندسي.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -453,8 +688,42 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
     <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // سكربت إيقاف الفيديو
+            var videoModal = document.getElementById('videoModal');
+            if(videoModal) {
+                var iframe = videoModal.querySelector('iframe');
+                var videoSrc = iframe.src;
+                videoModal.addEventListener('hide.bs.modal', function () {
+                    iframe.src = videoSrc;
+                });
+            }
+
+            // تشغيل سلايدر الأعمال
+            setTimeout(function() {
+                if(jQuery().owlCarousel) {
+                    $('.project-carousel').owlCarousel({
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        smartSpeed: 1000,
+                        margin: 20,
+                        loop: true,
+                        rtl: true,
+                        dots: false,
+                        nav: true,
+                        navText : [
+                            '<i class="fa fa-chevron-right"></i>',
+                            '<i class="fa fa-chevron-left"></i>'
+                        ],
+                        responsive: { 0:{ items: 1 }, 768:{ items: 2 }, 992:{ items: 3 } }
+                    });
+                }
+            }, 500); 
+        });
+    </script>
 </body>
 
 </html>
