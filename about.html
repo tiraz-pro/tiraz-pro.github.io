@@ -6,7 +6,7 @@
     <title>Tiraz | من نحن</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="تشطيبات, ديكور, مقاولات, تصميم داخلي, إشراف هندسي" name="keywords">
-    <meta content="طراز للتنفيذ المتكامل والإشراف الهندسي" name="description">
+    <meta content="طراز للتنفيذ المتكامل والإشراف الهندسي - تعرف على رؤيتنا ورسالتنا" name="description">
 
     <link href="img/favicon.ico" rel="icon">
 
@@ -22,15 +22,26 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-
     <link href="css/style.css" rel="stylesheet">
 
     <style>
         body, h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, select, textarea {
             font-family: 'Tajawal', sans-serif !important;
         }
+        
+        /* ألوان طراز الأساسية في صفحة من نحن */
+        body { background-color: #0a0a0a !important; color: #d1d1d1 !important; }
+        .bg-light { background-color: #111111 !important; border-top: 1px solid rgba(175, 126, 60, 0.1); border-bottom: 1px solid rgba(175, 126, 60, 0.1); }
+        h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
+        .text-primary, .section-title {
+            background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%) !important;
+            -webkit-background-clip: text !important; 
+            -webkit-text-fill-color: transparent !important;
+            display: inline-block; font-weight: 800;
+        }
+        i.text-primary { background: none !important; -webkit-text-fill-color: #af7e3c !important; color: #af7e3c !important; }
+
         .text-start { text-align: right !important; }
         .text-end { text-align: left !important; }
         .me-auto { margin-left: 0 !important; margin-right: auto !important; }
@@ -39,17 +50,52 @@
         .ms-4, .ms-3 { margin-right: 1.5rem !important; margin-left: 0 !important; }
         .pe-5 { padding-left: 3rem !important; padding-right: 0 !important; }
         .ps-4 { padding-right: 1.5rem !important; padding-left: 0 !important; }
+
+        /* ستايلات البطاقات الفاخرة لصفحة من نحن */
+        .about-card {
+            background-color: #111;
+            border: 1px solid rgba(175, 126, 60, 0.2);
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: 0.4s;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .about-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 0;
+            background: linear-gradient(135deg, rgba(175, 126, 60, 0.1) 0%, transparent 100%);
+            transition: 0.4s; z-index: -1;
+        }
+        .about-card:hover::before { height: 100%; }
+        .about-card:hover {
+            border-color: #af7e3c;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(175, 126, 60, 0.15);
+        }
+        .icon-box {
+            width: 70px; height: 70px;
+            background: rgba(175, 126, 60, 0.1);
+            color: #af7e3c; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; margin-bottom: 25px;
+            border: 1px solid rgba(175, 126, 60, 0.3);
+            transition: 0.4s;
+        }
+        .about-card:hover .icon-box {
+            background: #af7e3c; color: #111; transform: scale(1.1);
+        }
+        
+        .goal-list { padding: 0; list-style: none; }
+        .goal-list li {
+            margin-bottom: 15px; color: #d1d1d1;
+            display: flex; align-items: center; font-size: 1.1rem;
+        }
+        .goal-list li i { color: #af7e3c; margin-left: 15px; font-size: 20px; }
     </style>
-</head>
 
-<body>
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
-        <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
-    </div>
-
- <style>
-        /* ستايل أيقونات السوشيال في الشريط العلوي */
+    <style>
         .topbar-social-btn {
             width: 32px; height: 32px;
             display: inline-flex; align-items: center; justify-content: center;
@@ -75,10 +121,16 @@
             color: #ffffff;
         }
     </style>
+</head>
+
+<body>
+    <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
+        <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
+    </div>
 
     <div class="container-fluid p-0" style="background-color: #050505; border-bottom: 1px solid rgba(175, 126, 60, 0.1);">
         <div class="row gx-0 d-none d-lg-flex">
-            
             <div class="col-lg-6 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-2 me-3">
                     <a class="topbar-text px-3 border-end border-secondary" href="mailto:info@tiraz.pro">
@@ -89,7 +141,6 @@
                     </a>
                 </div>
             </div>
-
             <div class="col-lg-6 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center py-2 me-3">
                     <span class="topbar-text px-3 border-end border-secondary" style="cursor: default;">
@@ -99,15 +150,15 @@
                 <div class="h-100 d-inline-flex align-items-center ps-2">
                     <a class="topbar-social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
                     <a class="topbar-social-btn" href="https://instagram.com/tiraz.pro" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="topbar-social-btn" href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a class="topbar-social-btn" href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            
         </div>
     </div>
    
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s" style="background-color: #0a0a0a !important; border-bottom: 1px solid rgba(175, 126, 60, 0.2);">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
             <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="Icon"></h1>
         </a>
@@ -116,17 +167,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link" style="color: #d1d1d1;">الرئيسية</a>
-                <a href="about.html" class="nav-item nav-link active" style="color: #af7e3c;">من نحن</a>
-                <a href="service.html" class="nav-item nav-link" style="color: #d1d1d1;">خدماتنا</a>
-                <a href="project.html" class="nav-item nav-link" style="color: #d1d1d1;">سوابق أعمالنا</a>
-                <a href="contact.html" class="nav-item nav-link" style="color: #d1d1d1;">تواصل معنا</a>
+                <a href="index.html" class="nav-item nav-link">الرئيسية</a>
+                <a href="about.html" class="nav-item nav-link active">من نحن</a>
+                <a href="service.html" class="nav-item nav-link">خدماتنا</a>
+                <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
+                <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
             </div>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block" style="background: #af7e3c; color:#111; border:none; font-weight:bold;">اطلب مقايسة</a>
+            <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
         </div>
     </nav>
-   
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(img/TIRAZ(21).jpeg) center center no-repeat; background-size: cover;">
+
+
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(img/TIRAZ\\(1\\).jpeg) center center no-repeat; background-size: cover;">
         <div class="container py-5">
             <h1 class="display-1 text-white animated slideInDown">من نحن</h1>
             <nav aria-label="breadcrumb animated slideInDown">
@@ -137,220 +189,272 @@
             </nav>
         </div>
     </div>
-    
+
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div id="tirazAboutSlider" class="carousel slide carousel-fade mb-5 mb-lg-0" data-bs-ride="carousel" data-bs-interval="3000" style="aspect-ratio: 1 / 1; border-radius: 15px; border: 1px solid rgba(175, 126, 60, 0.3); overflow: hidden; box-shadow: 0 10px 30px rgba(175, 126, 60, 0.1);">
-                        <div class="carousel-inner h-100">
-                            <div class="carousel-item active h-100">
-                                <img src="img/TIRAZ(1).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 1">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="img/TIRAZ(20).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 2">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="img/TIRAZ(21).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 3">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="img/TIRAZ(27).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 4">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="img/TIRAZ(32).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 5">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="img/TIRAZ(37).jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="مشروع طراز 6">
-                            </div>
-                        </div>
+                    <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                        <img class="img-fluid w-100" src="img/TIRAZ(21).jpeg" alt="تصميم داخلي طراز" style="border-radius: 15px; border: 1px solid rgba(175, 126, 60, 0.3);">
                     </div>
-                    </div>
+                </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <h4 class="section-title">من نحن</h4>
-                    <h1 class="display-5 mb-4">شركة تشطيبات هندسية رائدة لبناء منزل أحلامك</h1>
-                    <p>في "طراز"، نحن لا نقوم بالتشطيب العشوائي. نحن ندير مشروعك بعقلية هندسية احترافية. نؤمن بأن جودة التشطيب تبدأ من التخطيط السليم والدراسة الدقيقة لكل بند.</p>
-                    <p class="mb-4">سواء كنت تمتلك تصميماً مسبقاً تبحث عن من ينفذه بدقة، أو تبحث عن حلول (تسليم مفتاح) متكاملة، فريقنا من المهندسين المتخصصين جاهز لتحويل رؤيتك إلى واقع ملموس يعكس ذوقك الرفيع مع الالتزام التام بالمقايسات الدقيقة والمواصفات الفنية.</p>
+                    <h4 class="section-title">قصتنا</h4>
+                    <h1 class="display-5 mb-4 text-white">نخبة من الخبراء لتحويل حلمك إلى واقع ملموس</h1>
+                    <p class="text-light opacity-75 mb-4" style="line-height: 1.8; font-size: 1.1rem;">
+                        في "طراز"، نحن لا نصمم مساحات فحسب بل نخلق انطباعات دائمة. فريقنا يمتلك البوصلة الهندسية التي تقوده نحو تحقيق أعلى معايير الجودة والابتكار. نحن لسنا مجرد منفذين! بل شركاء في رحلة إبداع طويلة، حيث نؤمن بأن كل زاوية وكل مساحة تستحق أن تكون تحفة فنية فريدة تعكس جوهرك وتتجاوز توقعاتك.
+                    </p>
                     <div class="d-flex align-items-center mb-5">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center border border-2" style="width: 120px; height: 120px; border-color: #af7e3c !important; border-radius: 50%;">
-                            <h1 class="display-1 mb-n2" data-toggle="counter-up" style="color: #af7e3c !important;">10</h1>
+                            <h1 class="display-1 mb-n2 text-primary" data-toggle="counter-up">10</h1>
                         </div>
                         <div class="ps-4 ms-3">
-                            <h3>سنوات</h3>
-                            <h3>من الخبرة</h3>
-                            <h3 class="mb-0">الهندسية</h3>
+                            <h3 class="text-white">سنوات</h3>
+                            <h3 class="text-white">من الخبرة</h3>
+                            <h3 class="mb-0 text-white">الهندسية</h3>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5" href="contact.html" style="background: #af7e3c; color:#111; border:none; font-weight:bold; border-radius: 8px;">تواصل معنا</a>
+                    <a class="btn py-3 px-5 text-dark" href="contact.html" style="background-color: #af7e3c; font-weight: bold; border-radius: 8px;">تواصل معنا الآن</a>
                 </div>
             </div>
         </div>
     </div>
-   
-    
-    <div class="container-xxl py-5">
-        <div class="container">
+
+    <div class="container-xxl py-5 bg-light mt-5">
+        <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h4 class="section-title">لماذا تختارنا!</h4>
-                    <h1 class="display-5 mb-4">لماذا يجب أن تثق بنا في تنفيذ مشروعك؟</h1>
-                    <p class="mb-4">لأننا ندمج بين الجانب الفني للتصميم والصرامة الهندسية في التنفيذ. نحن نتولى مسؤولية مشروعك بالكامل ونحميك من عشوائية السوق وتلاعب العمالة، لنسلمك وحدة مطابقة للمواصفات.</p>
-                    <div class="row g-4">
-                        <div class="col-12">
-                            <div class="d-flex align-items-start">
-                                <img class="flex-shrink-0" src="img/icons/icon-2.png" alt="Icon">
-                                <div class="ms-4">
-                                    <h3>شفافية التعامل</h3>
-                                    <p class="mb-0">تقارير دورية ومقايسات واضحة تضعك في الصورة خطوة بخطوة.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex align-items-start">
-                                <img class="flex-shrink-0" src="img/icons/icon-3.png" alt="Icon">
-                                <div class="ms-4">
-                                    <h3>حلول هندسية مبتكرة</h3>
-                                    <p class="mb-0">معالجة التحديات المعمارية في الموقع بذكاء وكفاءة عالية.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex align-items-start">
-                                <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
-                                <div class="ms-4">
-                                    <h3>إدارة صارمة للموقع</h3>
-                                    <p class="mb-0">رقابة يومية لضمان عدم وجود أي أخطاء أو تأخير في الجدول الزمني.</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="about-card text-center">
+                        <div class="icon-box mx-auto"><i class="fa fa-eye"></i></div>
+                        <h2 class="text-white mb-3">رؤيتنا</h2>
+                        <p class="text-light opacity-75" style="line-height: 1.8;">
+                            نسعى في "طراز" أن نكون الشريك الأفضل لعملائنا والوجهة الأولى للباحثين عن الفخامة والدقة في مجال التصميم الداخلي والديكور والمقاولات في مصر. نطمح أن نصبح الخيار المفضل من خلال تقديم مساحات تدمج بين الجمال المعماري والكفاءة الوظيفية مع الحفاظ على أعلى مستويات الاحترافية.
+                        </p>
                     </div>
                 </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="feature-img" style="aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; border: 1px solid rgba(175, 126, 60, 0.3);">
-                        <img class="img-fluid w-100 h-100" src="img/TIRAZ(20).jpeg" alt="لماذا طراز" style="object-fit: cover;">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="about-card text-center">
+                        <div class="icon-box mx-auto"><i class="fa fa-bullseye"></i></div>
+                        <h2 class="text-white mb-3">رسالتنا</h2>
+                        <p class="text-light opacity-75" style="line-height: 1.8;">
+                            تسعى طراز بمشاريعها إلى تحقيق رضا عملائنا التام من خلال تقديم حلول (تسليم مفتاح) شاملة ومتكاملة، مصممة بدقة لتلبية احتياجاتهم وتجاوز توقعاتهم. نلتزم بتقديم تجربة استثنائية من التصميم الأولي وحتى التسليم النهائي لضمان نجاح مستدام لكل مشروع ننفذه.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   
-    
-    <div class="container-xxl py-5">
+
+    <div class="container-xxl py-5 mt-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="section-title">فريق العمل</h4>
-                <h1 class="display-5 mb-4">نخبة من المهندسين لضمان نجاح مشروعك</h1>
+                <h4 class="section-title">معايير التميز</h4>
+                <h1 class="display-5 mb-4 text-white">قيمنا الجوهرية في كل مشروع</h1>
             </div>
-            <div class="row g-0 team-items">
+            <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">اسم المهندس</h3>
-                            <span class="text-primary" style="color: #af7e3c !important;">المدير العام والمشرف المعماري</span>
-                        </div>
+                    <div class="about-card">
+                        <div class="icon-box"><i class="fa fa-paint-brush"></i></div>
+                        <h3 class="text-white mb-3" style="font-size: 1.4rem;">الإبداع</h3>
+                        <p class="text-light opacity-75 mb-0">نحن ملتزمون بتقديم أفكار تصميم مبتكرة، تعكس شخصية كل عميل وتعزز من جودة مساحته المعمارية.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">اسم المهندس</h3>
-                            <span class="text-primary" style="color: #af7e3c !important;">مهندس مكتب فني (BOQ)</span>
-                        </div>
+                    <div class="about-card">
+                        <div class="icon-box"><i class="fa fa-gem"></i></div>
+                        <h3 class="text-white mb-3" style="font-size: 1.4rem;">الجودة</h3>
+                        <p class="text-light opacity-75 mb-0">نعتبر الجودة حجر الزاوية في جميع جوانب عملنا، حيث نسعى لتحقيق الكمال وانتقاء أفضل الخامات لكل مشروع.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">اسم المهندس</h3>
-                            <span class="text-primary" style="color: #af7e3c !important;">مهندس موقع كهروميكانيك</span>
-                        </div>
+                    <div class="about-card">
+                        <div class="icon-box"><i class="fa fa-hard-hat"></i></div>
+                        <h3 class="text-white mb-3" style="font-size: 1.4rem;">الاحترافية</h3>
+                        <p class="text-light opacity-75 mb-0">نعمل وفقًا لأعلى المعايير الهندسية، مع إدارة موقع صارمة والتركيز على تفاصيل التنفيذ لضمان نتائج استثنائية.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">اسم المهندس</h3>
-                            <span class="text-primary" style="color: #af7e3c !important;">مصمم داخلي</span>
-                        </div>
+                    <div class="about-card">
+                        <div class="icon-box"><i class="fa fa-handshake"></i></div>
+                        <h3 class="text-white mb-3" style="font-size: 1.4rem;">الشراكات</h3>
+                        <p class="text-light opacity-75 mb-0">نؤمن بأهمية بناء علاقات متينة قائمة على الثقة مع عملائنا وشركائنا، مما يدعم النمو والابتكار المستدام.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   
-    
-    <footer class="container-fluid wow fadeIn" data-wow-delay="0.1s" style="background: linear-gradient(to bottom, #111111 0%, #050505 100%); border-top: 1px solid rgba(175, 126, 60, 0.2); padding-top: 70px; margin-top: 5rem;">
+
+    <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <h2 class="mb-4" style="font-weight: 900; letter-spacing: 1px; color: #af7e3c;">TIRAZ <span style="color: #fff; font-weight: 300;">.PRO</span></h2>
-                    <p class="mb-4 text-light">ندمج بين الجانب الفني للتصميم والصرامة الهندسية في التنفيذ. نسلمك وحدتك مطابقة للمواصفات، بدون تجاوز لميزانيتك.</p>
-                    <div class="d-flex gap-2">
-                        <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); color: #af7e3c; border-radius: 50%; border: 1px solid rgba(175, 126, 60, 0.2); text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/tiraz.pro" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); color: #af7e3c; border-radius: 50%; border: 1px solid rgba(175, 126, 60, 0.2); text-decoration: none;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); color: #af7e3c; border-radius: 50%; border: 1px solid rgba(175, 126, 60, 0.2); text-decoration: none;"><i class="fab fa-youtube"></i></a>
-                    </div>
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h4 class="section-title">أهدافنا</h4>
+                    <h1 class="display-5 mb-4 text-white">نحول رؤيتك إلى واقع ملموس</h1>
+                    <p class="text-light opacity-75 mb-4" style="line-height: 1.8;">
+                        في طراز نحن ملتزمون بتقديم حلول شاملة تلبي احتياجات كل قطاع (السكني، التجاري، والطبي) من خلال مجموعة من الأهداف الاستراتيجية الواضحة:
+                    </p>
+                    <ul class="goal-list">
+                        <li><i class="fa fa-check-circle"></i> الالتزام بالاستدامة وتنفيذ مشاريع تتلاءم مع البيئة.</li>
+                        <li><i class="fa fa-check-circle"></i> تحقيق الريادة في السوق من خلال خدمات متكاملة واحترافية.</li>
+                        <li><i class="fa fa-check-circle"></i> بناء علاقات طويلة الأمد مع عملائنا تستند إلى الثقة المطلقة.</li>
+                        <li><i class="fa fa-check-circle"></i> تعزيز الابتكار من خلال استثمار أحدث التقنيات في التنفيذ.</li>
+                    </ul>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <h4 style="color: #ffffff; font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; border-bottom: 3px solid #af7e3c; display: inline-block; padding-bottom: 5px;">روابط سريعة</h4>
-                    <div class="d-flex flex-column gap-2">
-                        <a href="index.html" style="color: #b0b0b0; text-decoration: none;"><i class="fa fa-chevron-left me-2" style="color: #af7e3c;"></i> الرئيسية</a>
-                        <a href="about.html" style="color: #b0b0b0; text-decoration: none;"><i class="fa fa-chevron-left me-2" style="color: #af7e3c;"></i> من نحن</a>
-                        <a href="service.html" style="color: #b0b0b0; text-decoration: none;"><i class="fa fa-chevron-left me-2" style="color: #af7e3c;"></i> خدماتنا الهندسية</a>
-                        <a href="project.html" style="color: #b0b0b0; text-decoration: none;"><i class="fa fa-chevron-left me-2" style="color: #af7e3c;"></i> سوابق الأعمال</a>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="position-relative overflow-hidden" style="border-radius: 15px; border: 1px solid rgba(175, 126, 60, 0.3);">
+                        <img class="img-fluid w-100" src="img/TIRAZ(15).jpeg" alt="أهداف طراز">
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h4 style="color: #ffffff; font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; border-bottom: 3px solid #af7e3c; display: inline-block; padding-bottom: 5px;">بيانات التواصل</h4>
-                    <p class="text-light mb-2"><i class="fa fa-map-marker-alt me-3" style="color:#af7e3c;"></i> <span style="color:#b0b0b0;">القاهرة، مصر</span></p>
-                    <p class="text-light mb-2"><i class="fa fa-envelope me-3" style="color:#af7e3c;"></i> <span style="color:#b0b0b0;">info@tiraz.pro</span></p>
-                    <p class="text-light mb-2"><i class="fa fa-phone-alt me-3" style="color:#af7e3c;"></i> <span dir="ltr" style="color:#b0b0b0;">+20 121 450 3036</span></p>
                 </div>
             </div>
         </div>
-        <div class="text-center" style="background: #000; padding: 20px 0; margin-top: 40px;">
-            <p class="mb-0 text-light">&copy; جميع الحقوق محفوظة لشركة <strong style="color:#af7e3c;">طراز للتشطيبات والمقاولات</strong>.</p>
-        </div>
-    </footer>
-    
+    </div>
 
-    <a href="https://wa.me/201214503036" target="_blank" title="تواصل معنا عبر واتساب" style="position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    <style>
+        .tiraz-footer {
+            background: linear-gradient(to bottom, #111111 0%, #050505 100%);
+            border-top: 1px solid rgba(175, 126, 60, 0.2);
+            color: #b0b0b0;
+            padding-top: 70px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .tiraz-footer h4 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .tiraz-footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 40px; height: 3px;
+            background: #af7e3c;
+            border-radius: 2px;
+        }
+        .footer-link {
+            display: flex;
+            align-items: center;
+            color: #b0b0b0;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+        .footer-link i {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            color: #af7e3c;
+            transition: 0.3s;
+        }
+        .footer-link:hover { color: #ffffff; }
+        .footer-link:hover i { transform: translateX(-5px); color: #ffffff; }
+        .footer-contact p { display: flex; align-items: flex-start; margin-bottom: 15px; }
+        .footer-contact i { color: #af7e3c; font-size: 1.1rem; margin-left: 10px; margin-top: 4px; }
+        .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+        .footer-social a {
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            background: rgba(255, 255, 255, 0.05); color: #af7e3c; border-radius: 50%;
+            text-decoration: none; transition: all 0.4s ease; border: 1px solid rgba(175, 126, 60, 0.2);
+        }
+        .footer-social a:hover { background: #af7e3c; color: #111111; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(175, 126, 60, 0.4); }
+        .footer-wa-btn {
+            display: inline-flex; align-items: center; justify-content: center; width: 100%;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff !important;
+            padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 700;
+            margin-top: 15px; transition: 0.3s; border: none; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+        }
+        .footer-wa-btn i { font-size: 1.3rem; margin-left: 8px; }
+        .footer-wa-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); color: #ffffff; }
+        .footer-bottom { background: #000000; padding: 20px 0; margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        .floating-whatsapp {
+            position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
+            background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center;
+            font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; transition: 0.3s; text-decoration: none;
+            animation: wa-pulse 2s infinite;
+        }
+        .floating-whatsapp:hover { background-color: #128C7E; color: #ffffff; transform: scale(1.1); }
+        @keyframes wa-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .back-to-top {
+            position: fixed; bottom: 30px; right: 30px; background: #af7e3c; color: #111;
+            border: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .back-to-top:hover { background: #ffffff; color: #af7e3c; }
+    </style>
+
+    <footer class="tiraz-footer wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                
+                <div class="col-lg-3 col-md-6">
+                    <h2 class="text-primary mb-4" style="font-weight: 900; letter-spacing: 1px;">TIRAZ <span style="color: #fff; font-weight: 300;">.PRO</span></h2>
+                    <p class="mb-4">ندمج بين الجانب الفني للتصميم والصرامة الهندسية في التنفيذ. نسلمك وحدتك مطابقة للمواصفات، بدون تجاوز لميزانيتك.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/tiraz.pro" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4>روابط سريعة</h4>
+                    <a class="footer-link" href="index.html"><i class="fa fa-chevron-left"></i> الرئيسية</a>
+                    <a class="footer-link" href="about.html"><i class="fa fa-chevron-left"></i> من نحن</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> خدماتنا الهندسية</a>
+                    <a class="footer-link" href="project.html"><i class="fa fa-chevron-left"></i> سابقة الأعمال</a>
+                    <a class="footer-link" href="contact.html"><i class="fa fa-chevron-left"></i> تواصل معنا</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4>مجالات التخصص</h4>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> التشطيب المتكامل</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> التصميم الداخلي 3D</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> الإشراف الهندسي</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> المخططات التنفيذية</a>
+                    <a class="footer-link" href="service.html"><i class="fa fa-chevron-left"></i> المقايسات والحصر</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>بيانات التواصل</h4>
+                    <p><i class="fa fa-map-marker-alt"></i> <span>برج ريحانة، المرشدى جروب، مدخل B-2، وحدة 02 F12، زهراء المعادي، القاهرة</span></p>
+                    <p><i class="fa fa-envelope"></i> <span>info@tiraz.pro</span></p>
+                    <p><i class="fa fa-phone-alt"></i> <span dir="ltr">+20 121 450 3036</span></p>
+                    
+                    <a href="https://wa.me/201214503036" target="_blank" class="footer-wa-btn">
+                        <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                        &copy; جميع الحقوق محفوظة لشركة <strong class="text-primary">طراز للتشطيبات والمقاولات</strong>.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <span style="font-size: 0.85rem; color: #666;">تصميم وتطوير بواسطة <span class="text-white">Tiraz Engineering</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+    <a href="https://wa.me/201214503036" target="_blank" class="floating-whatsapp" title="تواصل معنا عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" style="background-color: #af7e3c; border: none; color: #111;"><i class="bi bi-arrow-up"></i></a>
-
+    
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
