@@ -1,0 +1,604 @@
+/**
+ * طراز ريموت — النظام الكامل
+ * ═══════════════════════════════════════════════════════════════
+ *  المعمار:
+ *    السجل الرئيسي  → كل المشاريع والرموز (للمكتب فقط)
+ *    ملف لكل مشروع  → نسخة من القالب، جوّه مجلده في الدرايف
+ *    فورم لكل مشروع → المهندس بيحدّث منه، الصور بتتضغط أوتوماتيك
+ *    Web App مركزي  → لوحة العميل بتقرا منه (المنشور فقط)
+ *
+ *  الضغط: جوجل بيعمل نسخة مصغّرة لأي صورة. بنجيبها بعرض 1600px،
+ *  نحفظها مكان الأصلية، ونمسح الأصلية. 6 ميجا → ~250 كيلو.
+ * ═══════════════════════════════════════════════════════════════
+ */
+
+var P = PropertiesService.getScriptProperties();
+var IMG_WIDTH = 1600;          // عرض الصورة بعد الضغط
+var DRAFT = 'مسودة', PUB = 'منشور', REJ = 'مرفوض';
+
+function cfg_(k) { return P.getProperty(k); }
+function master_() { return SpreadsheetApp.openById(cfg_('MASTER_ID')); }
+function projects_() { return master_().getSheetByName('المشاريع'); }
+
+function json_(o) {
+  return ContentService.createTextOutput(JSON.stringify(o))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function txt_(v) {
+  if (v === null || v === undefined || v === '') return '';
+  if (Object.prototype.toString.call(v) === '[object Date]')
+    return Utilities.formatDate(v, 'Africa/Cairo', 'yyyy-MM-dd HH:mm');
+  return String(v).trim();
+}
+
+function num_(v) {
+  var n = Number(String(v).replace(/[^0-9.\-]/g, ''));
+  return isNaN(n) ? 0 : n;
+}
+
+function token_() {
+  var c = 'abcdefghjkmnpqrstuvwxyz23456789', s = '';
+  for (var i = 0; i < 24; i++) s += c.charAt(Math.floor(Math.random() * c.length));
+  return s;
+}
+
+/* ═════════════════ ضغط الصور ═════════════════
+   بنستبدل الملف الأصلي بنسخة مصغّرة عشان التخزين ما يخلصش.
+   لو الضغط فشل لأي سبب، بنسيب الأصلية — أهم حاجة إن الصورة ما تضيعش. */
+function shrink_(fileId, folder) {
+  try {
+    var f = DriveApp.getFileById(fileId);
+    var before = f.getSize();
+    if (before < 400 * 1024) {                       // أصلاً صغيرة
+      f.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      return {id: fileId, url: view_(fileId), kb: Math.round(before / 1024), shrunk: false};
+    }
+    f.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    Utilities.sleep(900);                             // جوجل محتاج ثانية يجهّز المصغّرة
+
+    var url = 'https://drive.google.com/thumbnail?id=' + fileId + '&sz=w' + IMG_WIDTH;
+    var res = UrlFetchApp.fetch(url, {muteHttpExceptions: true, followRedirects: true});
+    if (res.getResponseCode() !== 200) throw new Error('thumb ' + res.getResponseCode());
+
+    var blob = res.getBlob();
+    if (blob.getBytes().length < 8 * 1024) throw new Error('thumb too small');
+
+    blob.setName(f.getName().replace(/\.[^.]+$/, '') + '.jpg');
+    var small = folder.createFile(blob);
+    small.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    f.setTrashed(true);                               // الأصلية تروح سلة المهملات
+
+    return {id: small.getId(), url: view_(small.getId()),
+            kb: Math.round(small.getSize() / 1024), was: Math.round(before / 1024), shrunk: true};
+  } catch (err) {
+    try {
+      var g = DriveApp.getFileById(fileId);
+      g.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      return {id: fileId, url: view_(fileId), kb: Math.round(g.getSize() / 1024),
+              shrunk: false, err: String(err)};
+    } catch (e2) { return {id: fileId, url: view_(fileId), kb: 0, shrunk: false, err: String(e2)}; }
+  }
+}
+
+function view_(id) { return 'https://drive.google.com/thumbnail?id=' + id + '&sz=w1600'; }
+function full_(id) { return 'https://drive.google.com/file/d/' + id + '/view'; }
+
+/* ═════════════════ مشروع جديد ═════════════════ */
+function newProject(d) {
+  d = d || {};
+  var sh = projects_();
+  var last = sh.getLastRow();
+  var n = Math.max(0, last - 3) + 1;
+  var year = new Date().getFullYear();
+  var code = 'TZ-' + year + '-' + ('00' + n).slice(-3);
+
+  // 1) مجلد المشروع
+  var root = DriveApp.getFolderById(cfg_('PROJECTS_FOLDER'));
+  var pf = root.createFolder(code + ' — ' + (d.name || 'مشروع'));
+  var photos = pf.createFolder('صور');
+  var docs = pf.createFolder('مستندات');
+
+  // 2) نسخة من القالب
+  var tpl = DriveApp.getFileById(cfg_('TEMPLATE_ID'));
+  var copy = tpl.makeCopy(code + ' — ' + (d.name || 'مشروع'), pf);
+  var ss = SpreadsheetApp.openById(copy.getId());
+
+  var info = ss.getSheetByName('المشروع');
+  info.getRange('B4').setValue(code);
+  info.getRange('B5').setValue(d.name || '');
+  info.getRange('B6').setValue(d.client || '');
+  info.getRange('B7').setValue(d.country || '');
+  info.getRange('B8').setValue(d.tz || 'Africa/Cairo');
+  info.getRange('B9').setValue(d.area || '');
+  info.getRange('B10').setValue(d.start || '');
+  info.getRange('B11').setValue(d.due || '');
+  info.getRange('B12').setValue(d.budget || '');
+  info.getRange('B17').setValue(pf.getUrl());
+
+  // 3) الفورم
+  var form = buildForm_(code, d.name || 'مشروع', ss);
+  ScriptApp.newTrigger('onFormSubmit').forForm(form).onFormSubmit().create();
+
+  // 4) سطر في السجل
+  var tk = token_();
+  var row = last < 4 ? 4 : last + 1;
+  sh.getRange(row, 1, 1, 15).setValues([[
+    code, d.name || '', d.client || '', d.country || '', d.tz || 'Africa/Cairo',
+    d.area || '', d.start || '', d.due || '', 'نشط',
+    ss.getUrl(), pf.getUrl(), tk,
+    '=IF(L' + row + '="","","https://tiraz.pro/r/?p="&A' + row + '&"&t="&L' + row + ')',
+    '', '=IF(N' + row + '="","",ROUND((NOW()-N' + row + ')*24,0))'
+  ]]);
+
+  P.setProperty('FORM_' + form.getId(), JSON.stringify({code: code, ss: ss.getId(), photos: photos.getId()}));
+  P.setProperty('PRJ_' + code, JSON.stringify({ss: ss.getId(), photos: photos.getId(), form: form.getId()}));
+
+  return {code: code, sheet: ss.getUrl(), folder: pf.getUrl(),
+          form: form.getPublishedUrl(), token: tk,
+          client: 'https://tiraz.pro/r/?p=' + code + '&t=' + tk};
+}
+
+/* ═════════════════ الفورم ═════════════════ */
+function buildForm_(code, name, ss) {
+  var items = ss.getSheetByName('البنود').getRange('A4:B100').getValues()
+    .filter(function (r) { return r[0]; })
+    .map(function (r) { return r[0] + ' — ' + r[1]; });
+
+  var f = FormApp.create('تحديث يومي — ' + code + ' — ' + name);
+  f.setDescription('املا التحديث من الموقع. الصور بتتضغط أوتوماتيك — صوّر عادي من غير قلق على المساحة.')
+   .setCollectEmail(false).setAllowResponseEdits(false).setShowLinkToRespondAgain(true)
+   .setConfirmationMessage('اتسجّل ✓ المكتب هيراجعه وينشره للعميل.');
+
+  f.addListItem().setTitle('البند').setChoiceValues(items).setRequired(true);
+  f.addScaleItem().setTitle('نسبة الإنجاز %').setBounds(0, 10)
+   .setLabels('0%', '100%').setRequired(true)
+   .setHelpText('كل درجة = 10%. مثال: 7 يعني 70%');
+  f.addParagraphTextItem().setTitle('اللي اتعمل النهاردة')
+   .setHelpText('جملة أو اتنين. المكتب هيظبط الصياغة قبل ما توصل للعميل.').setRequired(true);
+  f.addTextItem().setTitle('اسمك').setRequired(true);
+
+  var up = f.addListItem();  // placeholder — الرفع بيتضاف بعدين
+  f.deleteItem(up);
+  try {
+    var fu = f.addFileUploadItem();
+    fu.setTitle('صور').setHelpText('لحد 8 صور').setMaxFiles(8)
+      .setMaxFileSize(20 * 1024 * 1024)
+      .setAllowedFileTypes([FormApp.FileType.IMAGE]).setRequired(false);
+  } catch (e) { /* رفع الملفات محتاج حساب Workspace */ }
+
+  // الردود تروح نفس ملف المشروع
+  f.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
+  return f;
+}
+
+/* ═════════════════ استقبال الفورم ═════════════════ */
+function onFormSubmit(e) {
+  var meta = P.getProperty('FORM_' + e.source.getId());
+  if (!meta) return;
+  meta = JSON.parse(meta);
+
+  var ss = SpreadsheetApp.openById(meta.ss);
+  var photos = DriveApp.getFolderById(meta.photos);
+  var ans = {};
+  e.response.getItemResponses().forEach(function (ir) {
+    ans[ir.getItem().getTitle()] = ir.getResponse();
+  });
+
+  var band = String(ans['البند'] || '');
+  var codeItem = band.split(' — ')[0];
+  var pct = num_(ans['نسبة الإنجاز %']) * 10;
+  var note = String(ans['اللي اتعمل النهاردة'] || '');
+  var who = String(ans['اسمك'] || '');
+
+  // الصور: ضغط + نقل لمجلد المشروع
+  var urls = [], saved = 0, before = 0, after = 0;
+  var files = ans['صور'];
+  if (files && files.length) {
+    files.forEach(function (id) {
+      try {
+        var orig = DriveApp.getFileById(id);
+        before += orig.getSize();
+        try { photos.addFile(orig); } catch (x) {}
+        var r = shrink_(id, photos);
+        after += r.kb * 1024;
+        urls.push(r.url);
+        saved++;
+        // أرشيف الصور
+        ss.getSheetByName('الصور').appendRow(
+          [new Date(), codeItem, note.slice(0, 120), r.url, 'نعم']);
+      } catch (err) { /* صورة واحدة فشلت — كمّل الباقي */ }
+    });
+  }
+
+  ss.getSheetByName('تحديثات').appendRow(
+    [new Date(), codeItem, pct, note, urls.join('\n'), who, DRAFT, '', '']);
+
+  logAct_(meta.ss, 'تحديث جديد من ' + who + ' — ' + codeItem +
+    (saved ? ' · ' + saved + ' صورة · ' +
+      Math.round(before / 1024) + 'ك → ' + Math.round(after / 1024) + 'ك' : ''));
+}
+
+function logAct_(ssId, msg) {
+  try {
+    var ss = SpreadsheetApp.openById(ssId);
+    var sh = ss.getSheetByName('السجل') || ss.insertSheet('السجل');
+    sh.appendRow([new Date(), msg]);
+  } catch (e) {}
+}
+
+/* ═════════════════ المراجعة والنشر ═════════════════ */
+function publishRow_(ss, row, who) {
+  var sh = ss.getSheetByName('تحديثات');
+  sh.getRange(row, 7).setValue(PUB);
+  sh.getRange(row, 8).setValue(who || Session.getActiveUser().getEmail());
+  sh.getRange(row, 9).setValue(new Date());
+  syncMaster_(ss);
+}
+
+function publishAll() {
+  var ss = SpreadsheetApp.getActive();
+  var sh = ss.getSheetByName('تحديثات');
+  var last = sh.getLastRow(), n = 0;
+  if (last < 4) return ui_('مفيش تحديثات.');
+  var st = sh.getRange(4, 7, last - 3, 1).getValues();
+  for (var i = 0; i < st.length; i++)
+    if (st[i][0] === DRAFT) { publishRow_(ss, 4 + i, null); n++; }
+  ui_(n ? ('اتنشر ' + n + ' تحديث. العميل شايفهم دلوقتي.') : 'مفيش مسودات مستنية.');
+}
+
+function publishSelected() {
+  var ss = SpreadsheetApp.getActive();
+  var sh = ss.getActiveSheet();
+  if (sh.getName() !== 'تحديثات') return ui_('افتح شيت «تحديثات» الأول واختار السطر.');
+  var r = sh.getActiveRange().getRow();
+  if (r < 4) return ui_('اختار سطر تحديث.');
+  publishRow_(ss, r, null);
+  ui_('اتنشر ✓');
+}
+
+function rejectSelected() {
+  var sh = SpreadsheetApp.getActive().getActiveSheet();
+  if (sh.getName() !== 'تحديثات') return ui_('افتح شيت «تحديثات» الأول.');
+  var r = sh.getActiveRange().getRow();
+  if (r < 4) return ui_('اختار سطر تحديث.');
+  sh.getRange(r, 7).setValue(REJ);
+  ui_('اترفض — مش هيوصل للعميل.');
+}
+
+function syncMaster_(ss) {
+  try {
+    var code = ss.getSheetByName('المشروع').getRange('B4').getValue();
+    var upd = ss.getSheetByName('تحديثات');
+    var last = upd.getLastRow();
+    var latest = '';
+    if (last >= 4) {
+      var v = upd.getRange(4, 7, last - 3, 3).getValues();
+      for (var i = v.length - 1; i >= 0; i--)
+        if (v[i][0] === PUB && v[i][2]) { latest = v[i][2]; break; }
+    }
+    var m = projects_();
+    var codes = m.getRange(4, 1, Math.max(1, m.getLastRow() - 3), 1).getValues();
+    for (var j = 0; j < codes.length; j++)
+      if (codes[j][0] === code) { m.getRange(4 + j, 14).setValue(latest); return; }
+  } catch (e) {}
+}
+
+function ui_(msg) {
+  try { SpreadsheetApp.getUi().alert(msg); } catch (e) { Logger.log(msg); }
+}
+
+/* ═════════════════ الـAPI — لوحة العميل ═════════════════ */
+function doGet(e) {
+  try {
+    var p = e && e.parameter ? e.parameter : {};
+    if (!p.p || !p.t) return json_({error: 'رابط ناقص'});
+
+    var m = projects_();
+    var last = m.getLastRow();
+    if (last < 4) return json_({error: 'مفيش مشاريع'});
+    var rows = m.getRange(4, 1, last - 3, 15).getValues();
+    var hit = null;
+    for (var i = 0; i < rows.length; i++)
+      if (String(rows[i][0]).trim() === String(p.p).trim()) { hit = rows[i]; break; }
+
+    if (!hit || String(hit[11]).trim() !== String(p.t).trim()) {
+      logAccess_(p.p, 'رمز غلط');
+      return json_({error: 'الرابط ده مش صحيح أو اتغيّر. كلّمنا وهنبعتلك رابط جديد.'});
+    }
+    if (hit[8] === 'مؤرشف') {
+      logAccess_(p.p, 'مؤرشف');
+      return json_({error: 'المشروع ده اتأرشف. لو محتاج نسخة من الأرشيف كلّمنا.'});
+    }
+
+    logAccess_(p.p, 'دخول');
+    return json_(payload_(hit));
+  } catch (err) {
+    return json_({error: 'حصل خطأ مؤقت. جرّب تاني بعد شوية.', detail: String(err)});
+  }
+}
+
+function logAccess_(code, res) {
+  try {
+    master_().getSheetByName('سجل الدخول').appendRow([new Date(), code, res, '', '']);
+  } catch (e) {}
+}
+
+function payload_(row) {
+  var meta = JSON.parse(P.getProperty('PRJ_' + row[0]) || '{}');
+  var ss = SpreadsheetApp.openById(meta.ss);
+  var g = function (n) { var s = ss.getSheetByName(n); return s ? s.getDataRange().getValues() : []; };
+
+  var info = {};
+  g('المشروع').slice(3).forEach(function (r) { if (r[0]) info[r[0]] = r[1]; });
+
+  var items = g('البنود').slice(3).filter(function (r) { return r[0]; }).map(function (r) {
+    return {code: r[0], name: r[1], cat: r[2], state: r[5], pct: num_(r[6]),
+            note: txt_(r[7]), at: txt_(r[8])};
+  });
+
+  var boq = g('المقايسة').slice(3).filter(function (r) { return r[0] && r[2]; }).map(function (r) {
+    return {cat: r[0], item: txt_(r[1]), budget: num_(r[2]), spent: num_(r[3]), pct: num_(r[5])};
+  });
+
+  var pays = g('الدفعات').slice(3).filter(function (r) { return r[1]; }).map(function (r) {
+    return {no: r[0], desc: txt_(r[1]), amount: num_(r[2]), due: txt_(r[3]), state: txt_(r[4])};
+  });
+
+  var decs = g('القرارات').slice(3).filter(function (r) { return r[1]; }).map(function (r) {
+    return {code: r[0], title: txt_(r[1]), why: txt_(r[2]), before: txt_(r[3]),
+            impact: txt_(r[4]), cost: num_(r[5]), days: num_(r[6]), state: txt_(r[7])};
+  });
+
+  var cams = String(info['كاميرات؟']).trim() === 'نعم'
+    ? g('الكاميرات').slice(3).filter(function (r) { return r[1]; }).map(function (r) {
+        return {code: r[0], name: txt_(r[1]), place: txt_(r[2]), state: txt_(r[3]),
+                live: txt_(r[4]), lapse: txt_(r[5])};
+      })
+    : [];
+
+  var photos = g('الصور').slice(3).filter(function (r) { return r[3] && r[4] !== 'لا'; })
+    .slice(-60).reverse().map(function (r) {
+      return {at: txt_(r[0]), item: r[1], desc: txt_(r[2]), url: r[3]};
+    });
+
+  var upd = g('تحديثات').slice(3).filter(function (r) { return r[6] === PUB; })
+    .slice(-40).reverse().map(function (r) {
+      return {at: txt_(r[0]), item: r[1], pct: num_(r[2]), note: txt_(r[3]),
+              photos: String(r[4] || '').split('\n').filter(Boolean)};
+    });
+
+  var done = items.filter(function (i) { return i.pct >= 100; }).length;
+  var prog = items.length ? Math.round(items.reduce(function (a, i) { return a + i.pct; }, 0) / items.length) : 0;
+  var budget = boq.reduce(function (a, b) { return a + b.budget; }, 0);
+  var spent = boq.reduce(function (a, b) { return a + b.spent; }, 0);
+
+  return {
+    ok: true,
+    project: {code: row[0], name: info['اسم المشروع'], client: info['اسم العميل'],
+              country: info['بلد إقامة العميل'], tz: info['المنطقة الزمنية'] || 'Africa/Cairo',
+              area: info['المساحة (م²)'], start: txt_(info['تاريخ البدء']),
+              due: txt_(info['التسليم المتعاقد عليه']), state: row[8],
+              engineer: info['مهندس الموقع']},
+    kpi: {progress: prog, itemsDone: done, itemsTotal: items.length,
+          budget: budget, spent: spent,
+          spentPct: budget ? Math.round(spent / budget * 100) : 0,
+          decisionsOpen: decs.filter(function (d) { return d.state === 'مطلوب'; }).length,
+          paymentsDue: pays.filter(function (p) { return p.state === 'مستحقة' || p.state === 'متأخرة'; }).length},
+    items: items, boq: boq, payments: pays, decisions: decs,
+    cameras: cams, photos: photos, updates: upd,
+    lastUpdate: upd.length ? upd[0].at : '',
+    serverTime: Utilities.formatDate(new Date(), 'Africa/Cairo', "yyyy-MM-dd'T'HH:mm:ss")
+  };
+}
+
+/* ═════════════════ القوائم ═════════════════ */
+function onOpenMaster(e) {
+  SpreadsheetApp.getUi().createMenu('طراز ريموت')
+    .addItem('➕ مشروع جديد', 'newProjectDialog')
+    .addSeparator()
+    .addItem('🔑 توليد رمز جديد للمشروع المحدّد', 'rotateToken')
+    .addItem('📋 نسخ لينك العميل', 'showLink')
+    .addSeparator()
+    .addItem('⚠️ فحص المشاريع المتوقفة', 'healthCheck')
+    .addToUi();
+}
+
+function onOpenProject(e) {
+  SpreadsheetApp.getUi().createMenu('طراز ريموت')
+    .addItem('✅ انشر السطر المحدّد', 'publishSelected')
+    .addItem('✅ انشر كل المسودات', 'publishAll')
+    .addItem('✖️ ارفض السطر المحدّد', 'rejectSelected')
+    .addSeparator()
+    .addItem('🔗 لينك الفورم للمهندس', 'showFormLink')
+    .addToUi();
+}
+
+function newProjectDialog() {
+  var h = HtmlService.createHtmlOutput(
+    '<div dir="rtl" style="font-family:Arial;padding:6px">' +
+    '<style>label{display:block;margin:9px 0 3px;font-size:13px;color:#444}' +
+    'input{width:100%;padding:7px;border:1px solid #ccc;border-radius:5px;box-sizing:border-box}' +
+    'button{margin-top:14px;padding:9px 18px;background:#8E6B48;color:#fff;border:0;' +
+    'border-radius:6px;cursor:pointer;font-size:14px}#o{margin-top:12px;font-size:13px}</style>' +
+    '<label>اسم المشروع</label><input id="name" placeholder="شقة 185 م² — بيت الوطن">' +
+    '<label>اسم العميل</label><input id="client">' +
+    '<label>بلد الإقامة</label><input id="country" placeholder="قطر">' +
+    '<label>المنطقة الزمنية</label><input id="tz" value="Asia/Qatar">' +
+    '<label>المساحة م²</label><input id="area" type="number">' +
+    '<label>تاريخ البدء</label><input id="start" type="date">' +
+    '<label>التسليم المتوقع</label><input id="due" type="date">' +
+    '<label>الميزانية المعتمدة (ج)</label><input id="budget" type="number">' +
+    '<button onclick="go()">أنشئ المشروع</button><div id="o"></div>' +
+    '<script>function go(){document.getElementById("o").innerHTML="⏳ بيتعمل…";' +
+    'var d={};["name","client","country","tz","area","start","due","budget"]' +
+    '.forEach(function(k){d[k]=document.getElementById(k).value});' +
+    'google.script.run.withSuccessHandler(function(r){' +
+    'document.getElementById("o").innerHTML="<b>✓ "+r.code+"</b><br><br>"+' +
+    '"<b>لينك العميل:</b><br><input value=\\""+r.client+"\\" onclick=\\"this.select()\\">"+' +
+    '"<br><br><b>فورم المهندس:</b><br><input value=\\""+r.form+"\\" onclick=\\"this.select()\\">"' +
+    '}).withFailureHandler(function(e){document.getElementById("o").innerHTML="✖ "+e.message})' +
+    '.newProject(d)}</script></div>')
+    .setWidth(420).setHeight(620);
+  SpreadsheetApp.getUi().showModalDialog(h, 'مشروع جديد');
+}
+
+function rotateToken() {
+  var sh = projects_();
+  var r = sh.getActiveRange().getRow();
+  if (r < 4) return ui_('اختار سطر مشروع الأول.');
+  var tk = token_();
+  sh.getRange(r, 12).setValue(tk);
+  ui_('الرمز اتغيّر. اللينك القديم بطل خلاص — ابعت الجديد للعميل من العمود M.');
+}
+
+function showLink() {
+  var sh = projects_();
+  var r = sh.getActiveRange().getRow();
+  if (r < 4) return ui_('اختار سطر مشروع.');
+  ui_(sh.getRange(r, 13).getDisplayValue());
+}
+
+function showFormLink() {
+  var code = SpreadsheetApp.getActive().getSheetByName('المشروع').getRange('B4').getValue();
+  var meta = JSON.parse(P.getProperty('PRJ_' + code) || '{}');
+  if (!meta.form) return ui_('مفيش فورم مربوط بالمشروع ده.');
+  ui_(FormApp.openById(meta.form).getPublishedUrl());
+}
+
+/* ═════════════════ الفحص والتنبيهات ═════════════════ */
+function healthCheck() {
+  var m = projects_();
+  var last = m.getLastRow();
+  if (last < 4) return ui_('مفيش مشاريع.');
+  var rows = m.getRange(4, 1, last - 3, 15).getValues();
+  var out = [], drafts = 0;
+
+  rows.forEach(function (r) {
+    if (!r[0] || r[8] === 'مؤرشف' || r[8] === 'مُسلّم') return;
+    var hrs = r[13] ? Math.round((new Date() - new Date(r[13])) / 36e5) : 9999;
+    if (hrs > 48) out.push('⏰ ' + r[0] + ' — ' + r[1] + ': ' +
+      (hrs === 9999 ? 'مفيش أي تحديث منشور' : hrs + ' ساعة من آخر تحديث'));
+    try {
+      var meta = JSON.parse(P.getProperty('PRJ_' + r[0]) || '{}');
+      if (meta.ss) {
+        var u = SpreadsheetApp.openById(meta.ss).getSheetByName('تحديثات');
+        var l = u.getLastRow();
+        if (l >= 4) {
+          var st = u.getRange(4, 7, l - 3, 1).getValues();
+          var d = st.filter(function (x) { return x[0] === DRAFT; }).length;
+          if (d) { drafts += d; out.push('📝 ' + r[0] + ': ' + d + ' مسودة مستنية مراجعة'); }
+        }
+      }
+    } catch (e) {}
+  });
+
+  ui_(out.length ? out.join('\n') : '✓ كل المشاريع متحدّثة ومفيش مسودات مستنية.');
+  return out;
+}
+
+function dailyAlert() {
+  var issues = healthCheck_();
+  if (!issues.length) return;
+  MailApp.sendEmail({
+    to: Session.getEffectiveUser().getEmail(),
+    subject: 'طراز ريموت — ' + issues.length + ' حاجة محتاجة انتباه',
+    htmlBody: '<div dir="rtl" style="font-family:Arial;font-size:15px;line-height:1.9">' +
+      '<h3 style="color:#8E6B48">محتاج انتباهك</h3><ul><li>' +
+      issues.join('</li><li>') + '</li></ul>' +
+      '<p style="color:#777;font-size:13px">مسودة مستنية معناها العميل شايف بيانات قديمة.</p></div>'
+  });
+}
+
+function healthCheck_() {
+  var m = projects_(), last = m.getLastRow();
+  if (last < 4) return [];
+  var rows = m.getRange(4, 1, last - 3, 15).getValues(), out = [];
+  rows.forEach(function (r) {
+    if (!r[0] || r[8] === 'مؤرشف' || r[8] === 'مُسلّم') return;
+    var hrs = r[13] ? Math.round((new Date() - new Date(r[13])) / 36e5) : 9999;
+    if (hrs > 48) out.push(r[0] + ' — ' + r[1] + ': ' +
+      (hrs === 9999 ? 'مفيش أي تحديث منشور' : hrs + ' ساعة من آخر تحديث'));
+    try {
+      var meta = JSON.parse(P.getProperty('PRJ_' + r[0]) || '{}');
+      if (!meta.ss) return;
+      var u = SpreadsheetApp.openById(meta.ss).getSheetByName('تحديثات'), l = u.getLastRow();
+      if (l < 4) return;
+      var d = u.getRange(4, 7, l - 3, 1).getValues()
+        .filter(function (x) { return x[0] === DRAFT; }).length;
+      if (d) out.push(r[0] + ': ' + d + ' مسودة مستنية مراجعة');
+    } catch (e) {}
+  });
+  return out;
+}
+
+/* ═════════════════ التقرير الأسبوعي ═════════════════ */
+function weeklyReports() {
+  var m = projects_(), last = m.getLastRow();
+  if (last < 4) return;
+  m.getRange(4, 1, last - 3, 15).getValues().forEach(function (r) {
+    if (!r[0] || r[8] !== 'نشط') return;
+    try { sendReport_(r); } catch (e) {}
+  });
+}
+
+function sendReport_(row) {
+  var d = payload_(row);
+  var tz = d.project.tz || 'Africa/Cairo';
+  var date = Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd');
+  var recent = d.updates.slice(0, 6);
+
+  var html = '<div dir="rtl" style="font-family:Tahoma,Arial;max-width:620px;margin:auto;' +
+    'background:#0B0D0E;color:#EDEAE6;padding:26px;border-radius:12px">' +
+    '<div style="font-size:20px;font-weight:bold;letter-spacing:.05em">TIRAZ<span style="color:#B78D65">.</span>PRO</div>' +
+    '<div style="font-size:11px;color:#7A828A;margin-bottom:20px">Concept for Finishing</div>' +
+    '<h2 style="font-size:19px;margin:0 0 6px">تقرير أسبوع ' + date + '</h2>' +
+    '<div style="color:#A8B0B6;font-size:14px;margin-bottom:18px">' + d.project.name + '</div>' +
+    '<table style="width:100%;border-collapse:collapse;margin-bottom:18px">' +
+    '<tr>' +
+    '<td style="background:#131719;padding:14px;border-radius:9px;text-align:center;width:33%">' +
+    '<div style="font-size:26px;color:#5FCF8E;font-weight:bold">' + d.kpi.progress + '%</div>' +
+    '<div style="font-size:12px;color:#7A828A">الإنجاز</div></td><td style="width:8px"></td>' +
+    '<td style="background:#131719;padding:14px;border-radius:9px;text-align:center;width:33%">' +
+    '<div style="font-size:26px;color:#D8B78E;font-weight:bold">' + d.kpi.spentPct + '%</div>' +
+    '<div style="font-size:12px;color:#7A828A">المنصرف</div></td><td style="width:8px"></td>' +
+    '<td style="background:#131719;padding:14px;border-radius:9px;text-align:center;width:33%">' +
+    '<div style="font-size:26px;font-weight:bold">' + d.kpi.itemsDone + '/' + d.kpi.itemsTotal + '</div>' +
+    '<div style="font-size:12px;color:#7A828A">بنود خلصت</div></td></tr></table>';
+
+  if (recent.length) {
+    html += '<h3 style="font-size:15px;color:#D8B78E">اللي اتعمل</h3><ul style="padding-inline-start:18px;color:#A8B0B6;font-size:14px;line-height:1.9">';
+    recent.forEach(function (u) { html += '<li>' + u.note + '</li>'; });
+    html += '</ul>';
+  }
+  if (d.kpi.decisionsOpen) {
+    html += '<div style="background:rgba(224,164,88,.1);border:1px solid rgba(224,164,88,.35);' +
+      'border-radius:9px;padding:14px;margin:16px 0;font-size:14px">' +
+      '<b style="color:#E0A458">مستني قرار منك:</b> ' + d.kpi.decisionsOpen +
+      ' قرار. كل يوم تأخير فيهم بيأخّر التسليم.</div>';
+  }
+  html += '<div style="margin-top:22px;text-align:center">' +
+    '<a href="https://tiraz.pro/r/?p=' + d.project.code + '&t=' + row[11] + '" ' +
+    'style="background:#B78D65;color:#0B0D0E;padding:12px 26px;border-radius:8px;' +
+    'text-decoration:none;font-weight:bold;font-size:15px">افتح اللوحة الكاملة</a></div>' +
+    '<div style="margin-top:20px;border-top:1px solid #262D31;padding-top:14px;' +
+    'font-size:12px;color:#7A828A">طراز للتشطيبات والمقاولات · info@tiraz.pro · +20 121 450 3036</div></div>';
+
+  var ss = SpreadsheetApp.openById(JSON.parse(P.getProperty('PRJ_' + row[0])).ss);
+  ss.getSheetByName('التقارير').appendRow(
+    [date, new Date(), d.kpi.progress, d.kpi.spentPct,
+     recent.map(function (u) { return u.note; }).join(' · '), '']);
+  return html;
+}
+
+/* ═════════════════ التنصيب ═════════════════ */
+function install() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (['onOpenMaster', 'dailyAlert', 'weeklyReports'].indexOf(t.getHandlerFunction()) >= 0)
+      ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger('onOpenMaster').forSpreadsheet(cfg_('MASTER_ID')).onOpen().create();
+  ScriptApp.newTrigger('dailyAlert').timeBased().atHour(18).everyDays(1).create();
+  ScriptApp.newTrigger('weeklyReports').timeBased().onWeekDay(ScriptApp.WeekDay.THURSDAY).atHour(17).create();
+  return '✓ اتركّبت: قائمة السجل الرئيسي · تنبيه يومي 6م · تقارير الخميس 5م';
+}
