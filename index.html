@@ -443,6 +443,39 @@ body.nav-lock{overflow:hidden}
   .dash-nav button.on i{transition:none;width:100%}
 }
 
+
+/* ══ أقسام الشركة ══ */
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+@media(max-width:980px){.dgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.dgrid{grid-template-columns:1fr}}
+.dept{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 21px 18px;
+  position:relative;transition:.26s;overflow:hidden}
+.dept:hover{border-color:var(--gold);transform:translateY(-3px)}
+.dept::before{content:"";position:absolute;inset-block-start:0;inset-inline-start:0;width:100%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.3s}
+.dept:hover::before{opacity:1}
+.dnum{position:absolute;inset-block-start:14px;inset-inline-end:18px;font-family:'IBM Plex Mono',monospace;
+  font-size:28px;font-weight:500;color:var(--line);line-height:1;user-select:none;pointer-events:none}
+.dept .drole{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;
+  color:var(--gold);margin-bottom:9px;direction:ltr;text-align:end}
+.dept h3{font-size:18px;margin-bottom:9px;position:relative}
+.dept p{font-size:13.8px;font-weight:300;color:var(--mut);line-height:1.8;margin-bottom:13px}
+.dept .skills{display:flex;flex-wrap:wrap;gap:6px}
+.dept .skills span{font-size:11.4px;color:var(--mut2);background:rgba(255,255,255,.035);
+  border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+
+/* ══ الكيان القانوني ══ */
+.legal{margin-top:30px;background:linear-gradient(180deg,rgba(183,141,101,.07),rgba(183,141,101,.02));
+  border:1px solid rgba(183,141,101,.26);border-radius:15px;padding:24px 26px}
+.legal h4{font-size:14px;color:var(--gold-hi);margin-bottom:16px;letter-spacing:.02em}
+.lrow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:860px){.lrow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.lrow{grid-template-columns:1fr}}
+.lrow span{display:block;font-size:11.6px;color:var(--mut2);margin-bottom:5px}
+.lrow b{font-size:14px;font-weight:700;line-height:1.6}
+.lnote{margin-top:18px;padding-top:15px;border-top:1px solid var(--line);
+  font-size:13.4px;font-weight:300;color:var(--mut);line-height:1.8}
+
 </style>
 </head>
 <body>
@@ -647,21 +680,66 @@ body.nav-lock{overflow:hidden}
 <section id="who" style="background:#08090A;border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="eyebrow rv">مين إحنا</div>
-    <h2 class="sec-t rv">مهندسان. مكتب واحد.<br>وحد منهم بيروح الموقع كل يوم.</h2>
-    <p class="sec-s rv">إحنا مش شركة بـ40 موظف بتوزّع مشروعك على حد ما تعرفوش. إحنا شريكان بنقسّم الشغل بينّا بشكل صريح، وكل مشروع بيمرّ على واحد فينا شخصياً — وده اللي بنحافظ عليه مهما كبرنا.</p>
-    <div class="fgrid">
-      <div class="founder rv">
-        <div class="role">PARTNER · TECHNICAL OFFICE</div>
-        <h3>الشريك الأول — المكتب الفني</h3>
-        <p>مهندس معماري وخبرة كمهندس مكتب فني أول. مسؤول عن التصميم، الرسومات التنفيذية (Shop Drawings)، حصر الكميات، وتسعير الخامات — يعني هو اللي بيبني المقايسة اللي بتشوفها مفتوحة قدامك.</p>
+    <h2 class="sec-t rv">طراز شركة، مش شغل جنب شغل.<br><span class="hl">كيان مسجّل، وأقسام لكل مرحلة.</span></h2>
+    <p class="sec-s rv">إنت بره مصر وبتسلّم وحدتك لجهة مش لشخص. عشان كده الشغل عندنا مقسوم على
+      أقسام واضحة، كل قسم ليه مسؤول ومخرجات محدّدة تقدر تحاسبنا عليها — والتعاقد بيتم
+      باسم الشركة بعقد مسجّل، مش باتفاق شفهي.</p>
+
+    <div class="dgrid rv">
+      <div class="dept">
+        <div class="dnum">01</div>
+        <div class="drole">TECHNICAL OFFICE</div>
+        <h3>المكتب الفني</h3>
+        <p>التصميم الداخلي والرسومات التنفيذية وحصر الكميات وتسعير الخامات. ده القسم اللي بيطلّع المقايسة اللي بتشوفها مفتوحة قدامك بند ببند.</p>
         <div class="skills"><span>Shop Drawings</span><span>B.O.Q</span><span>التصميم الداخلي</span><span>تسعير الخامات</span></div>
       </div>
-      <div class="founder rv">
-        <div class="role">PARTNER · SITE &amp; EXECUTION</div>
-        <h3>الشريك الثاني — الموقع والتنفيذ</h3>
-        <p>مهندس موقع وتنفيذ. مسؤول عن الإشراف اليومي، استلام وتسليم البنود، إدارة الصنايعية والمقاولين، والجودة على الأرض — وهو مصدر التقرير الأسبوعي اللي بيوصلك.</p>
-        <div class="skills"><span>الإشراف الهندسي</span><span>استلام البنود</span><span>إدارة المقاولين</span><span>ضبط الجودة</span></div>
+      <div class="dept">
+        <div class="dnum">02</div>
+        <div class="drole">SITE &amp; EXECUTION</div>
+        <h3>التنفيذ والإشراف الموقعي</h3>
+        <p>مهندس مقيم على كل مشروع، بيدير المقاولين والصنايعية ويستلم كل بند قبل ما اللي بعده يبدأ. ومنه بييجي التقرير الأسبوعي اللي بيوصلك.</p>
+        <div class="skills"><span>الإشراف الهندسي</span><span>استلام البنود</span><span>إدارة المقاولين</span><span>جدول زمني</span></div>
       </div>
+      <div class="dept">
+        <div class="dnum">03</div>
+        <div class="drole">PROCUREMENT</div>
+        <h3>المشتريات والخامات</h3>
+        <p>التعاقد مع الموردين وتتبّع كل توريدة. كل خامة بتدخل الموقع ليها فاتورة أصلية باسم المورّد بتتصوّر وتترفع على ملف مشروعك في نفس اليوم.</p>
+        <div class="skills"><span>التعاقد مع الموردين</span><span>الفواتير الأصلية</span><span>جدول التوريد</span><span>بدائل الخامات</span></div>
+      </div>
+      <div class="dept">
+        <div class="dnum">04</div>
+        <div class="drole">QUALITY CONTROL</div>
+        <h3>ضبط الجودة والتسليم</h3>
+        <p>مراجعة مستقلة عن التنفيذ. قوائم فحص لكل بند قبل الاستلام، وقائمة ملاحظات نهائية (Snag List) بتتقفل بالكامل قبل تسليم المفتاح.</p>
+        <div class="skills"><span>قوائم الفحص</span><span>Snag List</span><span>الاستلام النهائي</span><span>الضمان</span></div>
+      </div>
+      <div class="dept">
+        <div class="dnum">05</div>
+        <div class="drole">CLIENT REPORTING</div>
+        <h3>التوثيق ومتابعة العملاء</h3>
+        <p>القسم المسؤول عن «طراز ريموت»: التصوير اليومي، تحديث نسب الإنجاز، والرد على استفسارك حسب توقيت بلدك مش توقيت القاهرة.</p>
+        <div class="skills"><span>التقارير اليومية</span><span>التوثيق المصوّر</span><span>طراز ريموت</span><span>دعم بتوقيتك</span></div>
+      </div>
+      <div class="dept">
+        <div class="dnum">06</div>
+        <div class="drole">FINANCE</div>
+        <h3>الإدارة المالية</h3>
+        <p>المقايسة المفتوحة وتتبّع المنصرف مقابل الميزانية. أي تجاوز بيتبلّغ لك قبل ما يحصل، مش في كشف حساب آخر الشهر.</p>
+        <div class="skills"><span>المقايسة المفتوحة</span><span>تتبّع المنصرف</span><span>الدفعات</span><span>تقرير مالي</span></div>
+      </div>
+    </div>
+
+    <div class="legal rv">
+      <h4>الكيان القانوني</h4>
+      <div class="lrow">
+        <div><span>الاسم التجاري</span><b>طراز للتشطيبات والمقاولات</b></div>
+        <div><span>السجل التجاري</span><b class="mono">◄ يُضاف الرقم</b></div>
+        <div><span>البطاقة الضريبية</span><b class="mono">◄ يُضاف الرقم</b></div>
+        <div><span>المقر</span><b>برج ريحانة، مدخل B-2، وحدة 02 F12<br>زهراء المعادي، القاهرة</b></div>
+      </div>
+      <p class="lnote">أي مشروع بيبدأ بعقد مكتوب بين الشركة وبينك، فيه نطاق الأعمال والمقايسة
+        والجدول الزمني وشروط الدفع والضمان — نسخة توصلك قبل ما تحوّل أي مبلغ.</p>
     </div>
   </div>
 </section>
