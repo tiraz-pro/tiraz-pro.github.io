@@ -1,0 +1,290 @@
+/**
+ * طراز ريموت — سكربت التأسيس
+ * بيبني هيكل المجلدات + السجل الرئيسي + قالب المشروع جوّه مساحة التخزين المشتركة.
+ * شغّل setup() مرة واحدة بس.
+ */
+var DRIVE_ID = '0AGh4iClvui88Uk9PVA';   // مساحة «طراز ريموت» المشتركة
+
+var BOQ = [
+ ['أعمال المباني والمحارة', ['تكسير وإزالة','مباني وحوائط','محارة وبياض']],
+ ['التأسيسات', ['كهرباء (تأسيس)','سباكة وصحي (تأسيس)','تكييف (تأسيس)','شبكات وإنترنت']],
+ ['العزل', ['عزل مائي — حمامات ومطبخ','عزل حراري']],
+ ['الأرضيات', ['أرضيات سيراميك وبورسلين','رخام ومداخل','باركيه']],
+ ['الأسقف والجدران', ['أسقف جبس بورد','كرانيش وإضاءة مخفية','ديكورات حوائط']],
+ ['النجارة', ['أبواب داخلية','دريسنج وخزائن','مطبخ','وحدات تلفزيون']],
+ ['الدهانات', ['معجون وتأسيس','دهانات نهائي','ورق حائط']],
+ ['التشطيبات النهائية', ['أدوات صحية','مفاتيح وبرايز','وحدات إضاءة','مقابض وإكسسوار']],
+ ['التسليم', ['تنظيف نهائي','قائمة ملاحظات (Snag)','تسليم المفتاح']]
+];
+
+var GOLD = '#8E6B48', HEAD = '#2F3A40', YEL = '#FFF2CC', OKC = '#E2F0D9', WRN = '#FCE4D6';
+
+/* ═════════ أدوات ═════════ */
+function folder_(parentId, name) {
+  var q = "'" + parentId + "' in parents and name='" + name +
+          "' and mimeType='application/vnd.google-apps.folder' and trashed=false";
+  var r = Drive.Files.list({q: q, supportsAllDrives: true, includeItemsFromAllDrives: true,
+                            corpora: 'drive', driveId: DRIVE_ID, fields: 'files(id,name)'});
+  if (r.files && r.files.length) return r.files[0].id;
+  var f = Drive.Files.create({name: name, mimeType: 'application/vnd.google-apps.folder',
+                              parents: [parentId]}, null, {supportsAllDrives: true});
+  return f.id;
+}
+
+function newSheet_(name, folderId) {
+  var f = Drive.Files.create({name: name, mimeType: 'application/vnd.google-apps.spreadsheet',
+                              parents: [folderId]}, null, {supportsAllDrives: true});
+  return SpreadsheetApp.openById(f.id);
+}
+
+function tab_(ss, name, title, sub, headers, widths) {
+  var sh = ss.getSheetByName(name) || ss.insertSheet(name);
+  sh.setRightToLeft(true);
+  if (title) {
+    sh.getRange('A1').setValue(title).setFontSize(14).setFontWeight('bold').setFontColor(GOLD);
+    if (sub) sh.getRange('A2').setValue(sub).setFontSize(9).setFontColor('#808080').setFontStyle('italic');
+  }
+  if (headers) {
+    var r = sh.getRange(3, 1, 1, headers.length);
+    r.setValues([headers]).setBackground(HEAD).setFontColor('#FFFFFF')
+     .setFontWeight('bold').setHorizontalAlignment('center').setWrap(true);
+    sh.setRowHeight(3, 34);
+    sh.setFrozenRows(3);
+  }
+  if (widths) for (var i = 0; i < widths.length; i++) sh.setColumnWidth(i + 1, widths[i]);
+  return sh;
+}
+
+function listRule_(vals) {
+  return SpreadsheetApp.newDataValidation().requireValueInList(vals, true).setAllowInvalid(false).build();
+}
+
+/* ═════════ 1 · السجل الرئيسي ═════════ */
+function buildMaster_(folderId) {
+  var ss = newSheet_('طراز ريموت — السجل الرئيسي', folderId);
+
+  var sh = tab_(ss, 'اقرأني', 'طراز ريموت — السجل الرئيسي', '', null, [700]);
+  sh.getRange('A3:A22').setValues([
+   ['الملف ده مخ النظام: كل المشاريع ورموز دخول العملاء وروابط الملفات.'],
+   [''],
+   ['⚠️  للمكتب فقط. متشاركوش مع أي عميل. أي حد بيفتحه بيقدر يدخل لوحة أي عميل.'],
+   [''],
+   ['── مشروع جديد ──'],
+   ['من القائمة العلوية: طراز ريموت ← مشروع جديد'],
+   ['السكربت بيعمل: نسخة من القالب + مجلد درايف + رمز عشوائي + سطر في شيت «المشاريع»'],
+   ['بعدين انسخ «لينك العميل» من العمود M وابعته له.'],
+   [''],
+   ['── الأعمدة المهمة ──'],
+   ['الرمز            : مفتاح دخول العميل. غيّره من هنا لو اتسرّب — اللينك القديم بيبطل فوراً.'],
+   ['حالة المشروع     : نشط / متوقف / مُسلّم / مؤرشف. «مؤرشف» بيقفل اللوحة.'],
+   ['ساعات من آخر تحديث : بيولّع أحمر فوق 48 ساعة. ده إنذار إن مشروع اتنسي، مش زينة.'],
+   [''],
+   ['── الألوان ──'],
+   ['أصفر = تكتبه بإيدك   ·   أبيض = معادلة متلمسهاش'],
+   [''], [''], [''], ['']
+  ]);
+  sh.getRange('A5').setFontWeight('bold');
+  sh.getRange('A7').setFontWeight('bold');
+  sh.getRange('A12').setFontWeight('bold');
+  sh.getRange('A17').setFontWeight('bold');
+
+  var H = ['كود المشروع','اسم المشروع','العميل','بلد الإقامة','المنطقة الزمنية','المساحة م²',
+           'تاريخ البدء','التسليم المتوقع','حالة المشروع','رابط ملف المشروع','مجلد الدرايف',
+           'الرمز','لينك العميل','آخر تحديث منشور','ساعات من آخر تحديث'];
+  sh = tab_(ss, 'المشاريع', 'المشاريع', 'كل مشروع سطر. متمسحش سطر — غيّر الحالة لـ«مؤرشف».',
+            H, [110,220,150,110,140,80,95,105,95,240,240,190,330,120,120]);
+  sh.getRange('I4:I200').setDataValidation(listRule_(['نشط','متوقف','مُسلّم','مؤرشف']));
+  sh.getRange('B4:I200').setBackground(YEL).setFontColor('#0000FF');
+  var rules = sh.getConditionalFormatRules();
+  rules.push(SpreadsheetApp.newConditionalFormatRule()
+    .whenNumberGreaterThan(48).setBackground(WRN).setFontColor('#C00000')
+    .setRanges([sh.getRange('O4:O200')]).build());
+  sh.setConditionalFormatRules(rules);
+
+  sh = tab_(ss, 'الفريق', 'الفريق',
+            'مهندس موقع = بيحدّث · مكتب = بيراجع وينشر · مدير = كل حاجة',
+            ['الاسم','الإيميل','الدور','المشاريع المسؤول عنها'], [170,220,130,240]);
+  sh.getRange('C4:C100').setDataValidation(listRule_(['مهندس موقع','مكتب','مدير']));
+  sh.getRange('A4:D100').setBackground(YEL).setFontColor('#0000FF');
+
+  tab_(ss, 'سجل الدخول', 'سجل دخول العملاء',
+       'بيتكتب تلقائي من الـAPI. مفيد لو شكيت إن رمز اتسرّب.',
+       ['الوقت','كود المشروع','النتيجة','الدولة','الجهاز'], [150,120,110,120,200]);
+
+  var d = ss.getSheetByName('Sheet1') || ss.getSheetByName('ورقة1');
+  if (d) ss.deleteSheet(d);
+  return ss;
+}
+
+/* ═════════ 2 · قالب المشروع ═════════ */
+function buildTemplate_(folderId) {
+  var ss = newSheet_('طراز ريموت — قالب المشروع', folderId);
+
+  var sh = tab_(ss, 'اقرأني', 'قالب مشروع — طراز ريموت', '', null, [700]);
+  sh.getRange('A3:A18').setValues([
+   ['الملف ده بيتنسخ لكل مشروع جديد. متكتبش فيه — ده القالب الأصلي.'],[''],
+   ['── دورة الشغل ──'],
+   ['1) مهندس الموقع بيبعت فورم من موبايله ← بينزل في «تحديثات» بحالة «مسودة»'],
+   ['2) المكتب بيفتح «مراجعة» ← يظبط الصياغة ← يغيّر الحالة لـ«منشور»'],
+   ['3) «البنود» بيسحب آخر تحديث منشور تلقائي'],
+   ['4) لوحة العميل بتقرا المنشور بس'],[''],
+   ['⚠️  العميل مش بيشوف أي حاجة حالتها «مسودة». ده مقصود — بيدّي المكتب فرصة'],
+   ['     يصلّح صياغة أو يشيل صورة قبل ما توصل. بس مسودة منسية = العميل شايف بيانات قديمة.'],
+   ['     عشان كده فيه عدّاد في «لوحة الفريق» لازم يبقى صفر آخر كل يوم.'],[''],
+   ['── الألوان ──'],
+   ['أصفر = تكتبه مرة واحدة عند فتح المشروع'],
+   ['أبيض = معادلة تلقائية متلمسهاش'],
+   ['أخضر = بيتحدّث من الفورم']
+  ]);
+  sh.getRange('A5').setFontWeight('bold');
+  sh.getRange('A11').setFontWeight('bold');
+  sh.getRange('A15').setFontWeight('bold');
+
+  sh = tab_(ss, 'المشروع', 'بيانات المشروع', 'تتملي مرة واحدة عند فتح المشروع',
+            ['البند','القيمة','ملاحظة'], [200,300,260]);
+  sh.getRange(4, 1, 14, 3).setValues([
+   ['كود المشروع','','من السجل الرئيسي'],['اسم المشروع','',''],['اسم العميل','',''],
+   ['بلد إقامة العميل','','عشان التقارير توصل بتوقيته'],
+   ['المنطقة الزمنية','Asia/Qatar','مثال: Europe/London'],
+   ['المساحة (م²)','',''],['تاريخ البدء','',''],['التسليم المتعاقد عليه','',''],
+   ['الميزانية المعتمدة (ج)','','إجمالي المقايسة'],['أتعاب طراز (ج)','',''],
+   ['مهندس الموقع','',''],['مسؤول المكتب','',''],
+   ['كاميرات؟','لا','نعم = تظهر تبويبة الكاميرات للعميل'],
+   ['مجلد الدرايف','','بيتولّد تلقائي']]);
+  sh.getRange('B4:B17').setBackground(YEL).setFontColor('#0000FF');
+  sh.getRange('B16').setDataValidation(listRule_(['نعم','لا']));
+
+  sh = tab_(ss, 'تحديثات', 'سجل التحديثات',
+            'الفورم بيكتب هنا لوحده. المكتب بيغيّر عمود «الحالة» بس.',
+            ['الوقت','كود البند','النسبة %','الملاحظة','روابط الصور','مين حدّث',
+             'الحالة','راجعها','وقت النشر'], [140,90,70,330,300,130,90,130,140]);
+  sh.getRange('G4:G2000').setDataValidation(listRule_(['مسودة','منشور','مرفوض']));
+  var r2 = sh.getConditionalFormatRules();
+  r2.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('مسودة')
+    .setBackground(WRN).setRanges([sh.getRange('G4:G2000')]).build());
+  r2.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('منشور')
+    .setBackground(OKC).setRanges([sh.getRange('G4:G2000')]).build());
+  sh.setConditionalFormatRules(r2);
+
+  sh = tab_(ss, 'مراجعة', 'مستني مراجعة', 'اقفل الشيت ده فاضي كل يوم قبل ما تمشي.',
+            ['الوقت','كود البند','الملاحظة','مين حدّث','صور'], [140,90,360,130,300]);
+  sh.getRange('A4').setFormula(
+    '=IFERROR(FILTER({تحديثات!A4:A,تحديثات!B4:B,تحديثات!D4:D,تحديثات!F4:F,تحديثات!E4:E},' +
+    'تحديثات!G4:G="مسودة"),"✓ مفيش حاجة مستنية")');
+
+  // البنود
+  var H = ['كود','اسم البند','الفئة','يبدأ','ينتهي','الحالة','النسبة %',
+           'آخر ملاحظة منشورة','آخر تحديث','ترتيب'];
+  sh = tab_(ss, 'البنود', 'بنود المشروع',
+            'من «الحالة» لليمين بيتحسب لوحده من التحديثات المنشورة',
+            H, [70,230,170,90,90,110,80,330,130,70]);
+  var rows = [], n = 0;
+  for (var i = 0; i < BOQ.length; i++) {
+    for (var j = 0; j < BOQ[i][1].length; j++) {
+      n++;
+      var r = 3 + n;
+      var base = 'LOOKUP(2,1/(تحديثات!$B$4:$B$2000=$A' + r + ')/(تحديثات!$G$4:$G$2000="منشور")';
+      rows.push(['B-' + (n < 10 ? '0' : '') + n, BOQ[i][1][j], BOQ[i][0], '', '',
+        '=IF(G' + r + '=0,"لسه ما بدأش",IF(G' + r + '>=100,"خلص","شغال"))',
+        '=IFERROR(' + base + ',تحديثات!$C$4:$C$2000),0)',
+        '=IFERROR(' + base + ',تحديثات!$D$4:$D$2000),"")',
+        '=IFERROR(' + base + ',تحديثات!$A$4:$A$2000),"")', n]);
+    }
+  }
+  sh.getRange(4, 1, rows.length, 10).setValues(rows);
+  sh.getRange(4, 4, rows.length, 2).setBackground(YEL).setFontColor('#0000FF');
+
+  // المقايسة
+  sh = tab_(ss, 'المقايسة', 'المقايسة مقابل المنصرف', 'المتبقي والنسبة بيتحسبوا لوحدهم',
+            ['الفئة','بند المقايسة','المعتمد (ج)','المنصرف (ج)','المتبقي (ج)','المنصرف %'],
+            [170,240,110,110,110,90]);
+  var m = [];
+  for (var k = 0; k < BOQ.length; k++) {
+    var rr = 4 + k;
+    m.push([BOQ[k][0], '', '', '',
+      '=IF(C' + rr + '="","",C' + rr + '-D' + rr + ')',
+      '=IF(OR(C' + rr + '="",C' + rr + '=0),"",ROUND(D' + rr + '/C' + rr + '*100,0))']);
+  }
+  sh.getRange(4, 1, m.length, 6).setValues(m);
+  sh.getRange(4, 2, m.length, 3).setBackground(YEL).setFontColor('#0000FF');
+
+  sh = tab_(ss, 'الدفعات', 'جدول الدفعات', 'الحالة «مستحقة» = العميل بيشوف تنبيه في لوحته',
+            ['#','الوصف','المبلغ (ج)','الاستحقاق','الحالة','مربوطة ببند'], [50,240,110,105,105,150]);
+  sh.getRange('E4:E60').setDataValidation(listRule_(['لسه','مستحقة','مدفوعة','متأخرة']));
+  sh.getRange('A4:F60').setBackground(YEL).setFontColor('#0000FF');
+
+  sh = tab_(ss, 'القرارات', 'قرارات مطلوبة من العميل',
+            'أكتر حاجة بتأخّر المشاريع — خليها واضحة ومؤرخة',
+            ['كود','العنوان','الشرح للعميل','مطلوب قبل','الأثر لو اتأخر','التكلفة (ج)','أيام','الحالة'],
+            [60,210,360,105,210,100,70,90]);
+  sh.getRange('H4:H60').setDataValidation(listRule_(['مطلوب','اتأخذ','ملغي']));
+  sh.getRange('A4:H60').setBackground(YEL).setFontColor('#0000FF');
+
+  sh = tab_(ss, 'الكاميرات', 'الكاميرات', 'تظهر للعميل بس لو «كاميرات؟ = نعم»',
+            ['كود','اسم الكاميرا','المكان والتغطية','الحالة','رابط البث','آخر تايم لابس'],
+            [60,160,240,95,280,150]);
+  sh.getRange('D4:D30').setDataValidation(listRule_(['شغالة','متوقفة','صيانة']));
+
+  sh = tab_(ss, 'الصور', 'أرشيف الصور', 'بيتكتب تلقائي من الفورم — الصور في مجلد المشروع',
+            ['الوقت','كود البند','الوصف','رابط الصورة','ظاهرة للعميل'], [140,90,330,300,110]);
+  sh.getRange('E4:E2000').setDataValidation(listRule_(['نعم','لا']));
+
+  tab_(ss, 'التقارير', 'التقارير الأسبوعية', 'بيتولّد تلقائي كل خميس ويتبعت بتوقيت العميل',
+       ['الأسبوع','التاريخ','الإنجاز %','المنصرف %','أهم ما تم','الأسبوع الجاي'],
+       [100,140,90,100,330,240]);
+
+  sh = tab_(ss, 'لوحة الفريق', 'لوحة الفريق', 'نفس أرقام العميل + اللي هو مش شايفه',
+            null, [230,160,320]);
+  sh.getRange(4, 1, 15, 3).setValues([
+   ['نسبة الإنجاز الكلية','=ROUND(AVERAGE(البنود!G4:G100),0)&"%"','متوسط كل البنود'],
+   ['بنود خلصت','=COUNTIF(البنود!F4:F100,"خلص")',''],
+   ['بنود شغالة','=COUNTIF(البنود!F4:F100,"شغال")',''],
+   ['بنود ما بدأتش','=COUNTIF(البنود!F4:F100,"لسه ما بدأش")',''],
+   ['','',''],
+   ['⚠ مسودات مستنية مراجعة','=COUNTIF(تحديثات!G4:G2000,"مسودة")','لازم يبقى صفر آخر كل يوم'],
+   ['ساعات من آخر نشر','=IFERROR(ROUND((NOW()-MAX(تحديثات!I4:I2000))*24,0),"—")','فوق 48 = مشكلة'],
+   ['','',''],
+   ['المعتمد (ج)','=SUM(المقايسة!C4:C40)',''],
+   ['المنصرف (ج)','=SUM(المقايسة!D4:D40)',''],
+   ['المنصرف %','=IFERROR(ROUND(SUM(المقايسة!D4:D40)/SUM(المقايسة!C4:C40)*100,0)&"%","—")',
+    'أعلى من الإنجاز % ← إنذار تجاوز'],
+   ['','',''],
+   ['قرارات مطلوبة من العميل','=COUNTIF(القرارات!H4:H60,"مطلوب")','كل قرار متأخر = يوم تأخير'],
+   ['دفعات مستحقة','=COUNTIF(الدفعات!E4:E60,"مستحقة")',''],
+   ['دفعات متأخرة','=COUNTIF(الدفعات!E4:E60,"متأخرة")','']]);
+  sh.getRange('B4:B18').setFontWeight('bold');
+
+  var d = ss.getSheetByName('Sheet1') || ss.getSheetByName('ورقة1');
+  if (d) ss.deleteSheet(d);
+  return ss;
+}
+
+/* ═════════ التشغيل ═════════ */
+function setup() {
+  var sys      = folder_(DRIVE_ID, '00 — النظام');
+  var projects = folder_(DRIVE_ID, '01 — المشاريع');
+  var guides   = folder_(DRIVE_ID, '02 — الأدلة');
+  var camera   = folder_(DRIVE_ID, '03 — الكاميرات');
+
+  var master = buildMaster_(sys);
+  var tpl    = buildTemplate_(sys);
+
+  var props = PropertiesService.getScriptProperties();
+  props.setProperties({
+    DRIVE_ID: DRIVE_ID, SYS_FOLDER: sys, PROJECTS_FOLDER: projects,
+    GUIDES_FOLDER: guides, CAMERA_FOLDER: camera,
+    MASTER_ID: master.getId(), TEMPLATE_ID: tpl.getId()
+  });
+
+  var out = [
+    '✓ تم التأسيس',
+    '',
+    'مساحة العمل : https://drive.google.com/drive/folders/' + DRIVE_ID,
+    'السجل الرئيسي: ' + master.getUrl(),
+    'قالب المشروع : ' + tpl.getUrl(),
+    '',
+    'المجلدات: 00 — النظام · 01 — المشاريع · 02 — الأدلة · 03 — الكاميرات'
+  ].join('\n');
+  Logger.log(out);
+  return out;
+}
