@@ -1,186 +1,438 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="utf-8">
-    <title>Tiraz | صفحة غير موجودة</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="تشطيبات, ديكور, مقاولات, تصميم داخلي, إشراف هندسي" name="keywords">
-    <meta content="طراز للتنفيذ المتكامل والإشراف الهندسي" name="description">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصفحة مش موجودة | طراز</title>
+<meta name="description" content="احجز مكالمة تشخيص مجانية 20 دقيقة مع مهندس من طراز — في وقت مناسب لتوقيتك أنت. برج ريحانة، زهراء المعادي، القاهرة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0D0E; --panel:#131719; --panel2:#1A1F22; --line:#262D31;
+  --gold:#B78D65; --gold-hi:#D8B78E; --gold-dim:rgba(183,141,101,.14);
+  --tx:#EDEAE6; --mut:#8C949B; --mut2:#616B72;
+  --ok:#5FCF8E; --warn:#E0A458; --bad:#D96A5B;
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--tx);font-family:'Tajawal',system-ui,sans-serif;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.mono{font-family:'IBM Plex Mono',monospace;font-feature-settings:"tnum";direction:ltr;display:inline-block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{line-height:1.25;font-weight:800;letter-spacing:-.01em}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+section{padding:76px 0;position:relative}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.6}
+.sec-t{font-size:clamp(24px,3.2vw,38px);margin-bottom:13px}
+.sec-s{color:var(--mut);font-size:16.5px;max-width:64ch;font-weight:300}
+.hl{color:var(--gold-hi)}
+.ribbon{background:linear-gradient(90deg,var(--gold),#8E6B48);color:#0B0D0E;text-align:center;padding:8px 16px;font-size:12.5px;font-weight:700;position:relative;z-index:70}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:10px;font-weight:700;font-size:15px;border:1px solid transparent;transition:.25s;white-space:nowrap}
+.btn-p{background:var(--gold);color:#0B0D0E}
+.btn-p:hover{background:var(--gold-hi);transform:translateY(-1px);box-shadow:0 8px 26px rgba(183,141,101,.3)}
+.btn-p:disabled{background:#2A3034;color:var(--mut2);cursor:not-allowed;transform:none;box-shadow:none}
+.btn-g{background:transparent;color:var(--tx);border-color:var(--line)}
+.btn-g:hover{border-color:var(--gold);color:var(--gold-hi)}
+.btn-lg{padding:17px 32px;font-size:16.5px}
 
-    <link href="img/favicon.ico" rel="icon">
+/* util + nav */
+.util{background:#08090A;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--mut);position:relative;z-index:60}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;height:42px;gap:20px}
+.clocks{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.clock{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.clock b{color:var(--tx);font-weight:500}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(95,207,142,.16);animation:pl 2.4s infinite;flex:0 0 auto}
+.dot.off{background:var(--mut2);box-shadow:0 0 0 3px rgba(140,148,155,.12);animation:none}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.35}}
+.util-r{display:flex;gap:18px;align-items:center}
+@media(max-width:900px){.util-r{display:none}}
+nav{position:sticky;top:0;z-index:50;background:rgba(11,13,14,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:24px}
+.logo{display:flex;align-items:baseline;gap:3px;direction:ltr;font-weight:900;font-size:24px;letter-spacing:.02em}
+.logo i{color:var(--gold);font-style:normal}
+.logo small{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut2);letter-spacing:.18em;margin-inline-start:6px}
+.nlinks{display:flex;gap:26px;font-size:14.5px;color:var(--mut);font-weight:500}
+.nlinks a{transition:color .2s;position:relative}
+.nlinks a:hover,.nlinks a.active{color:var(--gold-hi)}
+.nlinks a.active::after{content:"";position:absolute;bottom:-6px;right:0;left:0;height:2px;background:var(--gold)}
+@media(max-width:1120px){.nlinks{display:none}}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+/* hero */
+.phero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.phero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.24}
+.phero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,14,.76),rgba(11,13,14,.94) 58%,#0B0D0E)}
+.phero-in{position:relative;z-index:2;padding:64px 0 54px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.phero .eyebrow{justify-content:center}.phero .eyebrow::before{display:none}
+.phero h1{font-size:clamp(28px,4.2vw,50px);font-weight:900;margin-bottom:16px;max-width:26ch;text-wrap:balance}
+.phero p{font-size:clamp(15px,1.4vw,19px);color:#C3C8CC;font-weight:300;max-width:62ch;margin-bottom:24px}
+.badges{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;font-size:12.5px;color:var(--mut)}
+.badge{background:rgba(255,255,255,.04);border:1px solid var(--line);padding:6px 14px;border-radius:99px}
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+/* booking */
+.bk{display:grid;grid-template-columns:.82fr 1.18fr;gap:22px;align-items:start}
+@media(max-width:980px){.bk{grid-template-columns:1fr}.bk>:first-child{order:2}.bk>:last-child{order:1}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden}
+.panel-h{padding:15px 21px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.3);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut2);letter-spacing:.13em;display:flex;justify-content:space-between;align-items:center}
+.panel-h span{direction:ltr;unicode-bidi:isolate}
+.panel-b{padding:22px}
+.agenda{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:4px}
+.agenda li{display:flex;gap:12px;font-size:14.5px;color:#C6CBCF;font-weight:300;line-height:1.65;align-items:flex-start}
+.agenda li .n{flex:0 0 22px;height:22px;border-radius:6px;background:var(--gold-dim);border:1px solid rgba(183,141,101,.3);color:var(--gold-hi);display:flex;align-items:center;justify-content:center;font-size:11px;font-family:'IBM Plex Mono',monospace;margin-top:2px}
+.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
+.meta-row .m{flex:1;min-width:112px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.meta-row .m .l{font-size:10.5px;font-family:'IBM Plex Mono',monospace;color:var(--mut2);letter-spacing:.1em;margin-bottom:4px}
+.meta-row .m .v{font-size:15px;font-weight:700;color:var(--gold-hi)}
 
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+/* steps */
+.step{padding:20px 22px;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step-h{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.step-h .sn{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--mut);display:flex;align-items:center;justify-content:center;font-size:12px;font-family:'IBM Plex Mono',monospace;flex:0 0 auto;transition:.3s}
+.step.on .step-h .sn{background:var(--gold);color:#0B0D0E;font-weight:800}
+.step.ok .step-h .sn{background:rgba(95,207,142,.18);color:var(--ok);border:1px solid rgba(95,207,142,.45)}
+.step-h .st{font-size:15.5px;font-weight:700}
+.step-h .pick{margin-inline-start:auto;font-size:12.5px;color:var(--gold-hi);font-weight:600}
+.tzrow{display:flex;gap:8px;flex-wrap:wrap}
+.tz{background:rgba(0,0,0,.3);border:1px solid var(--line);color:var(--mut);padding:9px 15px;border-radius:9px;font-size:13.5px;transition:.2s;font-weight:600}
+.tz:hover{border-color:var(--mut2);color:var(--tx)}
+.tz.on{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-hi)}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:7px;margin-bottom:14px;scrollbar-width:thin;scroll-snap-type:x proximity}
+.days .day{scroll-snap-align:start}
+.days::-webkit-scrollbar{height:5px}
+.days::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
+.calc-ctx{background:var(--gold-dim);border:1px solid rgba(183,141,101,.32);border-radius:12px;padding:14px 16px;margin-bottom:16px}
+.calc-ctx .ct-h{font-size:12.5px;color:var(--gold-hi);font-weight:700;margin-bottom:11px}
+.calc-ctx .ct-g{display:flex;gap:10px;flex-wrap:wrap}
+.calc-ctx .ct-g>div{flex:1;min-width:96px;background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:9px;padding:9px 12px}
+.calc-ctx .ct-g span{display:block;font-size:10.5px;color:var(--mut2);margin-bottom:2px}
+.calc-ctx .ct-g b{font-size:14.5px;color:var(--tx);font-weight:600}
+.calc-ctx .ct-back{display:inline-block;margin-top:11px;font-size:12.5px;color:var(--gold-hi);border-bottom:1px dashed rgba(183,141,101,.5)}
+.swipe{display:none;font-size:11.5px;color:var(--mut2);margin:-6px 0 12px}
+@media(max-width:760px){.swipe{display:block}}
+.day{flex:0 0 auto;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:10px;padding:10px 15px;min-width:76px;text-align:center;transition:.2s}
+.day:hover{border-color:var(--mut2)}
+.day.on{background:var(--gold);border-color:var(--gold);color:#0B0D0E}
+.day .dw{font-size:12px;color:var(--mut);margin-bottom:2px}
+.day.on .dw{color:rgba(11,13,14,.7)}
+.day .dd{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600}
+.day .dm{font-size:10.5px;color:var(--mut2)}
+.day.on .dm{color:rgba(11,13,14,.65)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:620px){.slots{grid-template-columns:1fr 1fr}}
+.slot{background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:9px;padding:11px 6px;text-align:center;transition:.2s}
+.slot:hover{border-color:var(--gold);background:var(--gold-dim)}
+.slot.on{background:var(--gold);border-color:var(--gold);color:#0B0D0E}
+.slot .h{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600}
+.slot .c{font-size:10.5px;color:var(--mut2);margin-top:2px}
+.slot.on .c{color:rgba(11,13,14,.65)}
+.slot .shift{display:block;font-size:9.5px;font-family:'Tajawal',sans-serif;font-weight:700;color:var(--warn);letter-spacing:0;margin-top:1px}
+.slot.on .shift{color:#5C3F14}
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:12.5px;color:var(--mut);margin-bottom:6px}
+.fld input,.fld select,.fld textarea{width:100%;background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:9px;color:var(--tx);font-family:inherit;font-size:15px;padding:11px 13px;outline:none;transition:.2s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--gold)}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--mut2)}
+.fld.err input{border-color:var(--bad)}
+.fld .msg{font-size:11.5px;color:var(--bad);margin-top:5px;display:none}
+.fld.err .msg{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.confirm{background:rgba(183,141,101,.09);border:1px solid rgba(183,141,101,.3);border-radius:11px;padding:14px 17px;margin-bottom:16px;font-size:14px;line-height:1.75}
+.confirm b{color:var(--gold-hi)}
+.confirm .sub{color:var(--mut);font-size:12.5px;font-weight:300;margin-top:4px}
+.privacy{font-size:11.5px;color:var(--mut2);text-align:center;margin-top:12px;line-height:1.6}
+.doneview{text-align:center;padding:44px 26px}
+.doneview .ic{width:58px;height:58px;border-radius:50%;background:rgba(95,207,142,.14);border:1px solid rgba(95,207,142,.4);color:var(--ok);font-size:27px;display:flex;align-items:center;justify-content:center;margin:0 auto 17px}
+.doneview h3{font-size:22px;margin-bottom:10px}
+.doneview p{font-size:14.5px;color:var(--mut);font-weight:300;max-width:44ch;margin:0 auto 8px}
+.doneview .card{background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:20px auto;max-width:340px;text-align:right}
+.doneview .card .r{display:flex;justify-content:space-between;padding:6px 0;font-size:13.5px}
+.doneview .card .r span:first-child{color:var(--mut2)}
+.doneview .card .r span:last-child{color:var(--gold-hi);font-weight:600}
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+/* channels */
+.chg{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:38px}
+@media(max-width:900px){.chg{grid-template-columns:1fr}}
+.ch{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:26px 24px;transition:.3s;display:block}
+.ch:hover{border-color:rgba(183,141,101,.45);transform:translateY(-3px)}
+.ch .ic{width:42px;height:42px;border-radius:11px;background:var(--gold-dim);border:1px solid rgba(183,141,101,.3);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px}
+.ch h3{font-size:17px;margin-bottom:6px}
+.ch .v{font-family:'IBM Plex Mono',monospace;font-size:16px;color:var(--gold-hi);direction:ltr;display:block;margin-bottom:8px}
+.ch p{font-size:13px;color:var(--mut);font-weight:300;line-height:1.65}
+.ch .when{margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:12px;color:var(--mut2)}
+.ch .when b{color:var(--ok)}
 
-    <link href="css/style.css" rel="stylesheet">
+/* company info + map */
+.info{display:grid;grid-template-columns:1fr 1.25fr;gap:22px;align-items:stretch;margin-top:38px}
+@media(max-width:980px){.info{grid-template-columns:1fr}}
+.dl{display:flex;flex-direction:column}
+.dl .row{display:flex;gap:14px;padding:15px 0;border-bottom:1px dashed rgba(38,45,49,.8)}
+.dl .row:last-child{border-bottom:0}
+.dl .row .k{flex:0 0 108px;font-size:12.5px;color:var(--mut2);font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;padding-top:2px}
+.dl .row .v{flex:1;font-size:14.5px;line-height:1.7}
+.dl .row .v b{color:var(--gold-hi)}
+.dl .row .v small{display:block;color:var(--mut2);font-size:12px;font-weight:300;margin-top:3px}
+.mapbox{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column;min-height:380px}
+.mapbox iframe{width:100%;flex:1;border:0;min-height:300px;filter:grayscale(.35) contrast(1.05) brightness(.86)}
+.mapbox .mf{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--mut)}
+.mapbox .mf a{color:var(--gold-hi);font-weight:600}
 
-    <style>
-        body, h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, select, textarea {
-            font-family: 'Tajawal', sans-serif !important;
-        }
-        .text-start { text-align: right !important; }
-        .text-end { text-align: left !important; }
-        .me-auto { margin-left: 0 !important; margin-right: auto !important; }
-        .ms-auto { margin-right: 0 !important; margin-left: auto !important; }
-        .me-3, .me-2, .me-4 { margin-left: 1rem !important; margin-right: 0 !important; }
-        .ms-4, .ms-3 { margin-right: 1.5rem !important; margin-left: 0 !important; }
-        .pe-5 { padding-left: 3rem !important; padding-right: 0 !important; }
-        .ps-4 { padding-right: 1.5rem !important; padding-left: 0 !important; }
-    </style>
-</head>
+/* faq */
+.faq{margin-top:34px;border-top:1px solid var(--line)}
+.fi{border-bottom:1px solid var(--line)}
+.fq{width:100%;font-size:16.5px;font-weight:600;text-align:start;padding:21px 0;display:flex;justify-content:space-between;gap:18px;align-items:center;transition:.2s}
+.fq:hover{color:var(--gold-hi)}
+.fq .pm{flex:0 0 auto;width:25px;height:25px;border:1px solid var(--line);border-radius:7px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;transition:.3s}
+.fi.open .pm{transform:rotate(45deg);background:var(--gold);color:#0B0D0E;border-color:var(--gold)}
+.fa{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.2,.8,.2,1)}
+.fa p{color:var(--mut);font-weight:300;font-size:15px;padding-bottom:23px;max-width:80ch}
+.fa p b{color:var(--gold-hi);font-weight:600}
 
+footer{background:#060708;border-top:1px solid var(--line);padding:56px 0 30px;font-size:14.5px}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px;margin-bottom:40px}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:26px}}
+footer h5{font-size:12px;font-family:'IBM Plex Mono',monospace;color:var(--mut2);letter-spacing:.16em;margin-bottom:15px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;color:var(--mut)}
+footer ul a:hover{color:var(--gold-hi)}
+footer .about{color:var(--mut);font-weight:300;max-width:40ch;margin-top:13px}
+.fbot{border-top:1px solid var(--line);padding-top:21px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--mut2);font-size:13px}
+.note{background:rgba(224,164,88,.07);border:1px solid rgba(224,164,88,.26);border-radius:11px;padding:14px 18px;font-size:13.5px;color:#D7C3A8;font-weight:300;line-height:1.7}
+.note b{color:var(--warn)}
+@media(max-width:760px){
+  .wrap{padding:0 17px}
+  section{padding:54px 0}
+  .util .wrap{height:auto;padding-block:9px}
+  .clocks{gap:14px;font-size:11.5px;row-gap:4px}
+  .clock:nth-child(4){display:none}
+  nav .wrap{height:62px;gap:10px}
+  .logo{font-size:19px}.logo small{display:none}
+  nav .btn{padding:10px 14px;font-size:13px}
+  .btn-lg{padding:15px 20px;font-size:15px}
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .day{min-width:70px;padding:9px 12px}
+  .dl .row{flex-direction:column;gap:4px}
+  .dl .row .k{flex:none}
+  .fg{grid-template-columns:1fr;gap:24px}
+  .ribbon{font-size:11.5px;padding:8px 12px;line-height:1.5}
+}
+
+.tz-logo{display:inline-flex;align-items:center;gap:11px}
+.tz-mark{flex:0 0 auto;display:block}
+.tz-word{display:inline-flex;flex-direction:column;direction:ltr;line-height:1}
+/* الاسم بيحدّد العرض — والسطر التاني بيتمدّ عشان يطابقه بالظبط */
+.tz-word b{font-weight:800;font-size:19px;letter-spacing:.055em;color:var(--tx);white-space:nowrap}
+.tz-word b i{color:var(--gold);font-style:normal}
+.tz-word small{display:block;width:100%;margin-top:5px;font-family:'IBM Plex Mono',monospace;
+  font-size:8.5px;color:var(--mut2);white-space:nowrap;
+  text-align:justify;text-align-last:justify;text-justify:inter-character}
+@media(max-width:760px){.tz-word b{font-size:17px}.tz-word small{font-size:8px}}
+
+/* ══ الشريط العلوي — وسائل التواصل ══ */
+.topbar{background:#070809;border-bottom:1px solid var(--line);font-size:12.5px;position:relative;z-index:61}
+.tb-in{max-width:1320px;margin:0 auto;padding:0 24px;height:40px;display:flex;align-items:center;
+  justify-content:space-between;gap:18px}
+.tb-l,.tb-r{display:flex;align-items:center;gap:18px}
+.tb-i{display:flex;align-items:center;gap:7px;color:var(--mut);transition:.2s;white-space:nowrap}
+.tb-i:hover{color:var(--gold-hi)}
+.tb-i svg{flex:0 0 auto;opacity:.75}
+.tb-lbl{color:var(--mut2);font-size:11.5px}
+.tb-r{gap:8px}
+.tb-s{width:27px;height:27px;border-radius:7px;border:1px solid var(--line);display:flex;
+  align-items:center;justify-content:center;color:var(--mut);transition:.22s;background:rgba(255,255,255,.02)}
+.tb-s:hover{border-color:var(--gold);color:var(--gold-hi);background:var(--gold-dim)}
+.tb-s.wa:hover{border-color:#25D366;color:#25D366;background:rgba(37,211,102,.1)}
+.tb-s.soon{opacity:.42}
+@media(max-width:1000px){.tb-loc{display:none}}
+@media(max-width:760px){
+  .tb-in{height:auto;padding-block:8px;flex-direction:column;gap:9px}
+  .tb-l{gap:14px;font-size:11.8px}
+  .tb-lbl{display:none}
+}
+@media(max-width:420px){.tb-l .tb-i span:not(.mono){display:none}}
+
+/* ══ ناف بار موحّد ══ */
+.tznav{position:sticky;top:0;z-index:60;background:rgba(11,13,14,.9);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)}
+.tznav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px;
+  max-width:1320px;margin:0 auto;padding:0 24px}
+.tznav .nlinks{display:flex;gap:19px;font-size:14.2px;color:var(--mut);font-weight:500;white-space:nowrap}
+.tznav .nlinks a{transition:color .2s;position:relative;padding-block:6px}
+.tznav .nlinks a:hover,.tznav .nlinks a.active{color:var(--gold-hi)}
+.tznav .nlinks a.active::after{content:"";position:absolute;bottom:-4px;right:0;left:0;height:2px;background:var(--gold)}
+.nav-r{display:flex;align-items:center;gap:11px}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);border-radius:10px;
+  flex-direction:column;justify-content:center;align-items:center;gap:4px;background:rgba(0,0,0,.3)}
+.burger span{display:block;width:17px;height:1.8px;background:var(--tx);border-radius:2px;transition:.25s}
+.burger.on span:nth-child(1){transform:translateY(5.8px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-5.8px) rotate(-45deg)}
+@media(max-width:1240px){
+  .tznav .nlinks{display:none}
+  .burger{display:flex}
+  .tznav .wrap{height:64px}
+}
+@media(max-width:520px){.nav-cta{display:none}}
+/* درج الموبايل */
+.tzdrawer{position:fixed;inset:0;z-index:59;background:rgba(8,9,10,.97);backdrop-filter:blur(14px);
+  display:none;flex-direction:column;padding:86px 24px 32px;overflow-y:auto}
+.tzdrawer.on{display:flex}
+.tzdrawer a.dl{display:flex;align-items:center;justify-content:space-between;padding:17px 4px;
+  border-bottom:1px solid var(--line);font-size:17px;font-weight:700;color:var(--tx);transition:.2s}
+.tzdrawer a.dl:hover,.tzdrawer a.dl.active{color:var(--gold-hi)}
+.tzdrawer a.dl span{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut2)}
+.tzdrawer .dfoot{margin-top:auto;padding-top:26px;display:flex;flex-direction:column;gap:11px}
+body.nav-lock{overflow:hidden}
+
+/* ══ فوتر موحّد ══ */
+.tzfoot{background:#08090A;border-top:1px solid var(--line);padding:54px 0 24px;font-size:14px}
+.tzfoot .wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+.tzfoot .g{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.25fr;gap:36px}
+@media(max-width:900px){.tzfoot .g{grid-template-columns:1fr 1fr;gap:30px}}
+@media(max-width:560px){.tzfoot .g{grid-template-columns:1fr}}
+.tzfoot h5{font-size:11.5px;color:var(--mut2);font-family:'IBM Plex Mono',monospace;letter-spacing:.15em;
+  margin-bottom:15px;font-weight:500}
+.tzfoot ul{list-style:none;display:flex;flex-direction:column;gap:10px;color:var(--mut)}
+.tzfoot ul a:hover{color:var(--gold-hi)}
+.tzfoot .about{color:var(--mut);font-weight:300;font-size:13.8px;margin-top:14px;max-width:36ch;line-height:1.75}
+.tzfoot .bot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;
+  justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--mut2);font-size:12.3px;align-items:center}
+.tzfoot .soc{display:flex;gap:9px}
+.tzfoot .soc a{width:32px;height:32px;border:1px solid var(--line);border-radius:9px;display:flex;
+  align-items:center;justify-content:center;color:var(--mut);transition:.2s;font-size:13px}
+.tzfoot .soc a:hover{border-color:var(--gold);color:var(--gold-hi)}
+
+
+.ofc-badge{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 16px;
+  padding:10px 13px;background:rgba(95,207,142,.06);border:1px solid rgba(95,207,142,.22);
+  border-radius:10px;font-size:12.8px;color:var(--mut)}
+.ofc-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:0 0 auto;
+  box-shadow:0 0 0 3px rgba(95,207,142,.16)}
+.ofc-badge .dot.off{background:var(--mut2);box-shadow:0 0 0 3px rgba(122,130,138,.14)}
+.ofc-badge b{color:var(--tx);font-weight:700}
+</style>
+</head><script>
+(function(){
+  var M={"about.html": "index.html#who", "team.html": "index.html#who", "testimonial.html": "index.html", "service.html": "pricing.html", "feature.html": "remote.html", "project.html": "gallery.html", "project-details.html": "gallery.html", "appointment.html": "contact.html"};
+  var k=location.pathname.split('/').pop().toLowerCase();
+  if(M[k]) location.replace('/'+M[k]);
+})();
+</script>
 <body>
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
-        <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
+<div class="topbar"><div class="tb-in">
+  <div class="tb-l">
+    <a href="tel:+201214503036" class="tb-i"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg><span class="mono">+20 121 450 3036</span></a>
+    <a href="mailto:info@tiraz.pro" class="tb-i"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span>info@tiraz.pro</span></a>
+    <span class="tb-i tb-loc"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span>زهراء المعادي، القاهرة</span></span>
+  </div>
+  <div class="tb-r">
+    <span class="tb-lbl">تابعنا</span>
+    <a href="https://wa.me/201214503036" class="tb-s wa" aria-label="واتساب" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1l-1 1.2c-.2.2-.3.3-.6.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.7l1.8.6c.8.1 1.4.1 2-.1.6-.2 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4l-.6-.3zM12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.3 8.3 0 1120.3 12 8.3 8.3 0 0112 20.3z"/></svg></a>
+    <a href="https://facebook.com/TirazPro" class="tb-s" aria-label="فيسبوك" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3.5 1.6-3.5 3.5V12H8v3h2.5v7h3v-7H16l.5-3h-3V9.5c0-.3.2-.5.5-.5z"/></svg></a>
+    <a href="https://instagram.com/TirazPro" class="tb-s" aria-label="إنستجرام" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-3.2-.2-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9C2.4 3.9 4 2.4 7.1 2.3c1.3 0 1.7-.1 4.9-.1zm0 5.1a4.7 4.7 0 100 9.4 4.7 4.7 0 000-9.4zm0 7.7a3 3 0 110-6.1 3 3 0 010 6.1zm5.9-7.9a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg></a>
+    <a href="https://www.tiktok.com/@tirazpro" class="tb-s soon" aria-label="تيك توك" target="_blank" rel="noopener" title="◄ يُضاف الحساب"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16.6 5.8a4.8 4.8 0 01-1.1-3h-3v12.1a2.5 2.5 0 11-2.5-2.5c.3 0 .5 0 .8.1V9.4a5.6 5.6 0 00-.8-.1 5.6 5.6 0 105.6 5.6V8.7a7.9 7.9 0 004.6 1.5V7.2a4.7 4.7 0 01-3.6-1.4z"/></svg></a>
+    <a href="https://www.linkedin.com/company/tirazpro" class="tb-s soon" aria-label="لينكدإن" target="_blank" rel="noopener" title="◄ يُضاف الحساب"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6.9 8.5H4V20h2.9V8.5zM5.4 4a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20 13.6c0-3.1-1.7-4.6-3.9-4.6-1.8 0-2.6 1-3 1.7V8.5H10V20h3v-6.2c0-1.3.6-2 1.7-2s1.6.8 1.6 2V20H20v-6.4z"/></svg></a>
+    <a href="https://www.youtube.com/@tirazpro" class="tb-s soon" aria-label="يوتيوب" target="_blank" rel="noopener" title="◄ يُضاف الحساب"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.8C18.4 5 12 5 12 5s-6.4 0-7.9.5a2.5 2.5 0 00-1.7 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.7 1.8 1.5.5 7.9.5 7.9.5s6.4 0 7.9-.5a2.5 2.5 0 001.7-1.8c.4-1.5.4-4.7.4-4.7zM10 15V9l5.2 3-5.2 3z"/></svg></a>
+  </div>
+</div></div>
+<nav class="tznav"><div class="wrap">
+  <a href="index.html" style="text-decoration:none"><span class="tz-logo"><svg class="tz-mark" viewBox="0 0 330 580" width="19" height="34"
+ xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شعار طراز">
+<defs><linearGradient id="navlg" x1=".08" y1="0" x2=".72" y2="1">
+ <stop offset="0" stop-color="#8E7440"/><stop offset=".22" stop-color="#C4A87C"/>
+ <stop offset=".5" stop-color="#E4D2A8"/><stop offset=".78" stop-color="#C4A87C"/>
+ <stop offset="1" stop-color="#8E7440"/></linearGradient></defs>
+<g fill="url(#navlg)">
+ <path d="M0 0h330v50H0z"/>
+ <path d="M0 60h130v50H0z"/>
+ <path d="M200 60h120v50H200z"/>
+ <path d="M80 60h50v470H80z"/>
+ <path d="M140 50h50v530h-50z"/>
+ <path d="M200 60h50v470l-70 50h-40v-50l60-50z"/>
+</g>
+</svg><span class="tz-word"><b>TIRAZ<i>.</i>PRO</b><small>Concept for Finishing</small></span></span></a>
+  <div class="nlinks"><a href="index.html">الرئيسية</a><a href="remote.html">نظام الرقابة</a><a href="pricing.html">الشفافية المالية</a><a href="gallery.html">معرض التصاميم</a><a href="calculator.html">حاسبة الميزانية</a><a href="blog.html">المدوّنة</a><a href="contact.html" class="active">تواصل معنا</a></div>
+  <div class="nav-r">
+    <a href="contact.html" class="btn btn-p nav-cta">احجز مكالمة تشخيص</a>
+    <button class="burger" id="tzBurger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+<main style="max-width:660px;margin:0 auto;padding:96px 24px 110px;text-align:center">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:64px;color:var(--gold);opacity:.5;margin-bottom:18px">404</div>
+  <h1 style="font-size:clamp(24px,3.4vw,34px);margin-bottom:14px">الصفحة اللي بتدوّر عليها مش موجودة</h1>
+  <p style="color:var(--mut);font-weight:300;font-size:16.5px;margin-bottom:30px;line-height:1.8">
+    يمكن الرابط قديم أو فيه غلطة في العنوان. تقدر ترجع للرئيسية، أو تروح على طول للحاجات اللي أغلب الناس بتدوّر عليها.</p>
+  <div style="display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-bottom:34px">
+    <a href="index.html" class="btn btn-p btn-lg">الرئيسية</a>
+    <a href="contact.html" class="btn btn-g btn-lg">احجز مكالمة</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:11px;text-align:start">
+    <a href="calculator.html" class="btn btn-g" style="justify-content:flex-start">حاسبة الميزانية</a>
+    <a href="gallery.html" class="btn btn-g" style="justify-content:flex-start">معرض التصاميم</a>
+    <a href="blog.html" class="btn btn-g" style="justify-content:flex-start">المدوّنة</a>
+    <a href="remote.html" class="btn btn-g" style="justify-content:flex-start">نظام الرقابة</a>
+  </div>
+</main>
+<footer class="tzfoot"><div class="wrap">
+  <div class="g">
+    <div>
+      <span class="tz-logo"><svg class="tz-mark" viewBox="0 0 330 580" width="17" height="30"
+ xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شعار طراز">
+<defs><linearGradient id="ftlg" x1=".08" y1="0" x2=".72" y2="1">
+ <stop offset="0" stop-color="#8E7440"/><stop offset=".22" stop-color="#C4A87C"/>
+ <stop offset=".5" stop-color="#E4D2A8"/><stop offset=".78" stop-color="#C4A87C"/>
+ <stop offset="1" stop-color="#8E7440"/></linearGradient></defs>
+<g fill="url(#ftlg)">
+ <path d="M0 0h330v50H0z"/>
+ <path d="M0 60h130v50H0z"/>
+ <path d="M200 60h120v50H200z"/>
+ <path d="M80 60h50v470H80z"/>
+ <path d="M140 50h50v530h-50z"/>
+ <path d="M200 60h50v470l-70 50h-40v-50l60-50z"/>
+</g>
+</svg><span class="tz-word"><b>TIRAZ<i>.</i>PRO</b><small>Concept for Finishing</small></span></span>
+      <p class="about">تشطيبات تسليم مفتاح للوحدات السكنية، متخصصة في خدمة المصريين خارج مصر.
+        التجمع الخامس · الرحاب · مدينتي.</p>
     </div>
-    <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
-        <div class="row gx-0 d-none d-lg-flex">
-            <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-3">
-                    <a class="text-body px-2" href="tel:+0123456789"><i class="fa fa-phone-alt text-primary me-2"></i>+20 123 456 7890</a>
-                    <a class="text-body px-2" href="mailto:info@tiraz.pro"><i class="fa fa-envelope-open text-primary me-2"></i>info@tiraz.pro</a>
-                </div>
-            </div>
-            <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-2">
-                    <a class="text-body px-2" href="">الشروط والأحكام</a>
-                    <a class="text-body px-2" href="">سياسة الخصوصية</a>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square btn-outline-body me-0" href=""><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
+    <div><h5>النظام</h5><ul>
+      <li><a href="remote.html">نظام الرقابة عن بُعد</a></li>
+      <li><a href="pricing.html">الشفافية المالية</a></li>
+      <li><a href="calculator.html">حاسبة الميزانية</a></li>
+    </ul></div>
+    <div><h5>الشركة</h5><ul>
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="gallery.html">معرض التصاميم</a></li>
+      <li><a href="blog.html">المدوّنة</a></li>
+      <li><a href="contact.html">تواصل واحجز</a></li>
+    </ul></div>
+    <div><h5>تواصل</h5><ul>
+      <li>برج ريحانة، مدخل B-2، وحدة 02 F12<br>زهراء المعادي، القاهرة</li>
+      <li><a href="https://wa.me/201214503036" class="mono">+20 121 450 3036</a></li>
+      <li><a href="mailto:info@tiraz.pro">info@tiraz.pro</a></li>
+    </ul></div>
+  </div>
+  <div class="bot">
+    <span>© 2026 طراز للتشطيبات والمقاولات — كل الحقوق محفوظة</span>
+    <div class="soc">
+      <a href="https://facebook.com/TirazPro" aria-label="فيسبوك">f</a>
+      <a href="https://instagram.com/TirazPro" aria-label="إنستجرام">◎</a>
+      <a href="https://wa.me/201214503036" aria-label="واتساب">✆</a>
     </div>
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
-            <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-11.png" alt="لوجو طراز"></h1>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.html" class="nav-item nav-link">الرئيسية</a>
-            <a href="about.html" class="nav-item nav-link">من نحن</a>
-            <a href="service.html" class="nav-item nav-link">خدماتنا</a>
-            <a href="project.html" class="nav-item nav-link">سوابق أعمالنا</a>
-            <a href="testimonial.html" class="nav-item nav-link">آراء العملاء</a>
-            <a href="contact.html" class="nav-item nav-link">تواصل معنا</a>
-        </div>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">اطلب مقايسة</a>
-        </div>
-    </nav>
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <h1 class="display-1 text-white animated slideInDown">خطأ 404</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb text-uppercase mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="index.html">الرئيسية</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">من نحن</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
-                    <h1 class="display-1">404</h1>
-                    <h1 class="mb-4">عذراً، الصفحة غير موجودة</h1>
-                    <p class="mb-4">يبدو أن الصفحة التي تبحث عنها غير موجودة أو تم نقلها. لا تقلق، يمكنك العودة دائماً إلى واجهتنا الرئيسية للاطلاع على خدماتنا ومشاريعنا.</p>
-                    <a class="btn btn-primary py-3 px-5" href="index.html">العودة للرئيسية</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">بيانات التواصل</h3>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>القاهرة، مصر</p>
-                    <p class="mb-2" dir="ltr"><i class="fa fa-phone-alt text-primary ms-3"></i>+20 123 456 7890</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@tiraz.pro</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-body me-0" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">خدماتنا</h3>
-                    <a class="btn btn-link" href="">التشطيب المتكامل</a>
-                    <a class="btn btn-link" href="">الإشراف الهندسي</a>
-                    <a class="btn btn-link" href="">المقايسات وحصر الكميات</a>
-                    <a class="btn btn-link" href="">التصميم الداخلي</a>
-                    <a class="btn btn-link" href="">الرسومات التنفيذية</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">روابط سريعة</h3>
-                    <a class="btn btn-link" href="">من نحن</a>
-                    <a class="btn btn-link" href="">تواصل معنا</a>
-                    <a class="btn btn-link" href="">خدماتنا</a>
-                    <a class="btn btn-link" href="">الشروط والأحكام</a>
-                    <a class="btn btn-link" href="">الدعم الفني</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-light mb-4">النشرة البريدية</h3>
-                    <p>اشترك ليصلك أحدث أعمالنا الهندسية وعروض التشطيب.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="البريد الإلكتروني">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 start-0 mt-2 ms-2">اشتراك</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Tiraz.pro</a>, جميع الحقوق محفوظة.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        تصميم وتطوير بواسطة <a href="#">Tiraz Engineering</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <script src="js/main.js"></script>
-</body>
-
-</html>
+  </div>
+</div></footer>
+<script>
+(function(){
+  var b=document.getElementById('tzBurger'), d=document.getElementById('tzDrawer');
+  if(!b||!d) return;
+  function t(){var o=d.classList.toggle('on');b.classList.toggle('on',o);
+    document.body.classList.toggle('nav-lock',o);b.setAttribute('aria-expanded',o);}
+  b.addEventListener('click',t);
+  d.addEventListener('click',function(e){if(e.target.closest('a'))t();});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&d.classList.contains('on'))t();});
+})();
+</script>
+</body></html>
