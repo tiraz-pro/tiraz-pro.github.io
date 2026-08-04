@@ -745,7 +745,7 @@ document.addEventListener('click',e=>{
 });
 
 /* ═══════ الإرسال ═══════ */
-$('submitBtn').onclick=()=>{
+$('submitBtn').onclick = async () => {
   const nm=$('iName').value.trim(), ph=$('iPhone').value.trim();
   let ok=true;
   $('fName').classList.toggle('err',!nm); if(!nm) ok=false;
@@ -763,15 +763,14 @@ $('submitBtn').onclick=()=>{
     source:calcCtx?'contact-page · from-calculator':'contact-page', ts:new Date().toISOString()
   };
   const TIRAZ_EP = 'https://script.google.com/macros/s/AKfycbzs4oW2RZy0h1l1BvgzMgzjCZmbDuH9Y0em0S_HPQ4mvs7RHt2ELNRn1oRbBApziwub/exec';
-$('submitBtn').disabled = true;
-$('submitBtn').textContent = 'جاري الإرسال…';
+const _btn = $('submitBtn'), _txt = _btn.textContent;
+_btn.disabled = true; _btn.textContent = 'جاري الإرسال…';
 try {
   const res = await fetch(TIRAZ_EP, { method: 'POST', body: JSON.stringify(payload) });
   const out = await res.json();
   if (!out.ok) throw new Error(out.error || 'failed');
 } catch (err) {
-  $('submitBtn').disabled = false;
-  $('submitBtn').textContent = 'اختار الموعد الأول';
+  _btn.disabled = false; _btn.textContent = _txt;
   alert('حصلت مشكلة في الإرسال. جرّب تاني أو كلّمنا واتساب على 3036 450 121 20+');
   return;
 }
