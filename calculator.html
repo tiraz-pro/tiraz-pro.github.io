@@ -644,7 +644,7 @@ $('btnCall').onclick=e=>{                       // يحمل تقديرك معا�
 };
 $('closeM').onclick=$('closeDone').onclick=()=>$('ov').classList.remove('on');
 $('ov').onclick=e=>{if(e.target===$('ov'))$('ov').classList.remove('on');};
-$('submitM').onclick=()=>{
+$('submitM').onclick = async () => {
   const nm=$('iName').value.trim(), ph=$('iPhone').value.trim();
   let ok=true;
   $('fName').classList.toggle('err',!nm); if(!nm) ok=false;
@@ -659,7 +659,18 @@ $('submitM').onclick=()=>{
     selections:k.picked.map(i=>({category:i.catTitle,item:i.name,option:i.opts[state.sel[i.id]].n,
                                  rate:i.opts[state.sel[i.id]].r, total:Math.round(i.opts[state.sel[i.id]].r*k.a)})),
     url:location.href, ts:new Date().toISOString()};
-  console.log('LEAD PAYLOAD →', payload);   // ← اربطها بـ /api/lead أو Formspree
+  const TIRAZ_EP = 'https://script.google.com/macros/s/AKfycbzs4oW2RZy0h1l1BvgzMgzjCZmbDuH9Y0em0S_HPQ4mvs7RHt2ELNRn1oRbBApziwub/exec';
+const _btn = $('submitM'), _txt = _btn.textContent;
+_btn.disabled = true; _btn.textContent = 'جاري الإرسال…';
+try {
+  const res = await fetch(TIRAZ_EP, { method: 'POST', body: JSON.stringify(payload) });
+  const out = await res.json();
+  if (!out.ok) throw new Error(out.error || 'failed');
+} catch (err) {
+  _btn.disabled = false; _btn.textContent = _txt;
+  alert('حصلت مشكلة في الإرسال. جرّب تاني أو كلّمنا واتساب على 3036 450 121 20+');
+  return;
+}
   $('formStage').style.display='none'; $('doneStage').style.display='';
 };
 $('btnShare').onclick=async()=>{
