@@ -762,7 +762,19 @@ $('submitBtn').onclick=()=>{
     calcEstimate:calcCtx||null,
     source:calcCtx?'contact-page · from-calculator':'contact-page', ts:new Date().toISOString()
   };
-  console.log('BOOKING PAYLOAD →', payload);   // ← اربطها بـ Cal.com API أو /api/book أو Formspree
+  const TIRAZ_EP = 'https://script.google.com/macros/s/AKfycbzs4oW2RZy0h1l1BvgzMgzjCZmbDuH9Y0em0S_HPQ4mvs7RHt2ELNRn1oRbBApziwub/exec';
+$('submitBtn').disabled = true;
+$('submitBtn').textContent = 'جاري الإرسال…';
+try {
+  const res = await fetch(TIRAZ_EP, { method: 'POST', body: JSON.stringify(payload) });
+  const out = await res.json();
+  if (!out.ok) throw new Error(out.error || 'failed');
+} catch (err) {
+  $('submitBtn').disabled = false;
+  $('submitBtn').textContent = 'اختار الموعد الأول';
+  alert('حصلت مشكلة في الإرسال. جرّب تاني أو كلّمنا واتساب على 3036 450 121 20+');
+  return;
+}
   $('doneCard').innerHTML=`
     <div class="r"><span>الاسم</span><span>${nm}</span></div>
     <div class="r"><span>الموعد بتوقيتك</span><span>${payload.slotLocal}</span></div>
