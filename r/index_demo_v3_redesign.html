@@ -292,9 +292,12 @@ function render(d){
     return `<div class="cat">${esc(c)} · ${avg}%</div>`+arr.map(i=>`
       <div class="card" style="padding:13px 15px">
         <div class="row"><b>${esc(i.name)}</b>
-          <span>${stateChip(i.state,i.pct)} <span class="pct">${i.pct}%</span></span></div>
+          <span>${(i.materials&&i.materials.length)?`<span class="pct" style="background:var(--gold-dim);color:var(--gold-hi)">◆ ${i.materials.length}</span> `:''}${stateChip(i.state,i.pct)} <span class="pct">${i.pct}%</span></span></div>
         <div class="bar"><i style="width:${i.pct}%;background:${barColor(i.pct)}"></i></div>
         ${i.note?`<div class="note">${esc(i.note)} <span class="muted">· ${ago(i.at)}</span></div>`:''}
+        ${(i.materials&&i.materials.length)?`<div class="grid" style="margin-top:10px">`+i.materials.map(mt=>`
+          <div class="ph" onclick="lb('${mt.photo}')"><img loading="lazy" src="${mt.photo}"><span>${esc(mt.name)}</span></div>`
+          ).join('')+`</div>`:''}
       </div>`).join('');
   }).join('');
 
