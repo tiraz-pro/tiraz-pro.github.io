@@ -354,6 +354,7 @@ function render(d){
         <div class="kpi"><div class="v">${r.itemsDone}</div><div class="l">بنود خلصت</div></div>
       </div>
       ${r.itemsDoneNames?`<div class="note" style="margin-top:10px"><b>خلص:</b> ${esc(r.itemsDoneNames)}</div>`:''}
+      ${r.materialsCount?`<div class="note" style="margin-top:6px">◆ <b>${r.materialsCount}</b> خامة اتوثّقت — إجمالي الفواتير <b class="mono" style="color:var(--gold-hi)">${money(r.materialsValue)} ج.م</b></div>`:''}
       ${r.highlights?`<div class="note" style="margin-top:6px">${esc(r.highlights)}</div>`:''}
       ${r.payments?`<div class="muted" style="margin-top:8px">💰 ${esc(r.payments)}</div>`:''}
       ${r.nextWeek?`<div class="alert" style="margin-top:10px"><b>◆</b><div><b>الأسبوع الجاي:</b> ${esc(r.nextWeek)}</div></div>`:''}
