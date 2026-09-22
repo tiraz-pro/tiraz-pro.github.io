@@ -271,8 +271,19 @@ function render(d){
     التفاصيل في تبويبة «الفلوس».</div></div>`;
   $('alerts').innerHTML=al;
 
-  /* الملخص: آخر التحديثات */
-  $('feed').innerHTML = d.updates.length ? d.updates.slice(0,12).map(u=>{
+  /* الملخص: آخر التحديثات + الخامات مع بعض */
+  const feedList = d.feed || d.updates;
+  $('feed').innerHTML = feedList.length ? feedList.slice(0,14).map(u=>{
+    if(u.type==='material'){
+      const it=d.items.find(i=>i.code===u.item)||{};
+      return `<div class="card">
+        <div class="row"><b><span style="color:var(--gold-hi)">◆</span> ${esc(u.name)}</b><span class="muted mono">${ago(u.at)}</span></div>
+        <div class="note">خامة جديدة للبند: ${esc(it.name||u.item)}${u.price?' · '+money(u.price)+' ج.م':''}</div>
+        <div class="grid" style="margin-top:10px">
+          ${u.photo?`<div class="ph" onclick="lb('${u.photo}')"><img loading="lazy" src="${u.photo}"><span>الخامة</span></div>`:''}
+        </div>
+      </div>`;
+    }
     const it=d.items.find(i=>i.code===u.item)||{};
     const ph=(u.photos||[]).slice(0,3).map(p=>`<div class="ph" onclick="lb('${p}')"><img loading="lazy" src="${p}"></div>`).join('');
     return `<div class="card">
@@ -282,7 +293,7 @@ function render(d){
       ${ph?`<div class="grid" style="margin-top:10px">${ph}</div>`:''}
     </div>`;
   }).join('') : empty('📋','لسه مفيش تحديثات منشورة',
-     'أول ما المهندس يبعت تحديث من الموقع والمكتب يراجعه، هيظهر هنا بصوره وتاريخه.');
+     'أول ما المهندس يبعت تحديث أو خامة من الموقع والمكتب يراجعه، هيظهر هنا بصوره وتاريخه.');
 
   /* البنود */
   const cats={};
@@ -309,14 +320,22 @@ function render(d){
 
   /* الخامات */
   const matsList = d.materials || [];
-  $('mats').innerHTML = matsList.length ? matsList.map(mt=>{
+  const matsTotal = k.materialsTotal || 0;
+  const matsHeader = `<div class="card" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="muted">إجمالي فواتير الخامات لحد دلوقتي</div>
+      <b class="mono" style="color:var(--gold-hi);font-size:22px">${money(matsTotal)} ج.م</b>
+    </div>`;
+  $('mats').innerHTML = matsList.length ? matsHeader + matsList.map(mt=>{
     const it = d.items.find(i=>i.code===mt.item) || {};
     return `<div class="card">
-      <div class="row"><b>${esc(mt.name)}</b><span class="muted mono">${ago(mt.at)}</span></div>
-      <div class="muted" style="margin-top:2px">${esc(it.name||mt.item)}${mt.supplier?' · '+esc(mt.supplier):''}</div>
-      <div class="grid" style="margin-top:10px">
+      <div class="row"><b style="font-size:15px">${esc(mt.name)}</b><span class="muted mono">${ago(mt.at)}</span></div>
+      <div class="muted" style="margin:2px 0 12px">للبند: ${esc(it.name||mt.item)}${mt.supplier?' · المورد: '+esc(mt.supplier):''}</div>
+      <div class="grid">
         ${mt.photo?`<div class="ph" onclick="lb('${mt.photo}')"><img loading="lazy" src="${mt.photo}"><span>الخامة</span></div>`:''}
         ${mt.invoice?`<div class="ph" onclick="lb('${mt.invoice}')"><img loading="lazy" src="${mt.invoice}"><span>الفاتورة</span></div>`:''}
+      </div>
+      <div class="row" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--line)">
+        <span class="muted">سعر الفاتورة</span><b class="mono" style="color:var(--gold-hi)">${money(mt.price)} ج.م</b>
       </div>
     </div>`;
   }).join('') : empty('◆','لسه مفيش خامات موثّقة','أول ما المهندس يصوّر خامة وفاتورتها من الموقع، هتظهر هنا بند ببند.');
