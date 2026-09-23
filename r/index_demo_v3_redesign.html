@@ -65,6 +65,22 @@ body.archive-view header{padding-bottom:8px}
 .rstrip .l{font-size:11px;color:var(--mut2);margin-top:3px}
 .rsec{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
 .rsec .t{font-size:12px;color:var(--mut2);margin-bottom:6px}
+.rcover{display:flex;align-items:center;gap:20px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.rring{position:relative;flex:0 0 auto}
+.rring .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:bold}
+.rmeta .wk{font-size:22px;font-weight:bold}
+.rmeta .rng{font-size:12px;color:var(--mut2);margin-top:3px}
+.cmp{margin-bottom:16px;padding:14px;background:var(--panel2);border-radius:12px}
+.cmp .cm-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.cmp .cm-row:last-child{margin-bottom:0}
+.cmp .cm-tag{width:32px;font-size:10px;color:var(--mut2);flex:0 0 auto}
+.cmp .cm-track{flex:1;height:7px;background:var(--line);border-radius:4px;overflow:hidden}
+.cmp .cm-fill{height:100%;border-radius:4px}
+.cmp .cm-v{width:38px;font-size:11px;flex:0 0 auto;text-align:end}
+.rsec2{display:flex;gap:10px;margin-top:14px;padding-inline-start:12px;border-inline-start:3px solid var(--gold)}
+.rsec2 .ic{font-size:16px;line-height:1.4}
+.rsec2 .body .t{font-size:11px;color:var(--mut2);margin-bottom:4px}
+.rsec2 .body .b{font-size:14px;line-height:1.7}
 .tl{margin-top:16px}
 .tl .bar{position:relative;height:6px;background:var(--line);border-radius:4px;margin:8px 0}
 .tl .fill{position:absolute;inset-inline-start:0;top:0;bottom:0;background:var(--gold);border-radius:4px}
@@ -220,6 +236,34 @@ function ago(iso){
 }
 
 function barColor(p){ return p>=100?'var(--ok)':p>0?'var(--warn)':'var(--line)'; }
+
+function ring(pct,size,stroke,color){
+  size=size||92; stroke=stroke||8; color=color||'var(--ok-hi)';
+  const r=(size-stroke)/2, c=2*Math.PI*r, off=c*(1-Math.min(Math.max(pct,0),100)/100);
+  return `<div class="rring" style="width:${size}px;height:${size}px">
+    <svg width="${size}" height="${size}">
+      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
+      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}"
+        stroke-dasharray="${c}" stroke-dashoffset="${off}" stroke-linecap="round"
+        style="transform:rotate(-90deg);transform-origin:50% 50%"/>
+    </svg>
+    <div class="pct">${pct}%</div>
+  </div>`;
+}
+function cmpMetric(label,now,prev,color){
+  return `<div class="cm-row"><div class="cm-tag">ده</div>
+      <div class="cm-track"><div class="cm-fill" style="width:${now}%;background:${color}"></div></div>
+      <div class="cm-v mono">${now}%</div></div>
+    <div class="cm-row" style="margin-bottom:2px"><div class="cm-tag">فات</div>
+      <div class="cm-track"><div class="cm-fill" style="width:${prev}%;background:var(--mut2);opacity:.55"></div></div>
+      <div class="cm-v mono muted">${prev}%</div></div>
+    <div class="muted" style="font-size:11px;margin:2px 0 10px">${label}</div>`;
+}
+function repSec(icon,title,body,color){
+  return `<div class="rsec2" style="border-inline-start-color:${color}">
+    <div class="ic">${icon}</div><div class="body"><div class="t">${title}</div><div class="b">${body}</div></div>
+  </div>`;
+}
 function stateChip(s,p){
   if(p>=100) return '<span class="chip c-ok">خلص</span>';
   if(p>0) return '<span class="chip c-run">شغال</span>';
@@ -352,27 +396,35 @@ function render(d){
     </div>`;
   }).join('') : empty('◆','لسه مفيش خامات موثّقة','أول ما المهندس يصوّر خامة وفاتورتها من الموقع، هتظهر هنا بند ببند.');
 
-  /* التقرير الأسبوعي */
+  /* التقرير الأسبوعي — الغلاف التنفيذي */
   const reps = d.reports || [];
-  $('reports').innerHTML = reps.length ? reps.map(r=>{
-    const delta = r.progressDelta>0?`<span style="color:var(--ok-hi)">▲ ${r.progressDelta}%</span>`
-                : r.progressDelta<0?`<span style="color:var(--bad)">▼ ${Math.abs(r.progressDelta)}%</span>`:'<span class="muted">= بدون تغيير</span>';
+  $('reports').innerHTML = reps.length ? reps.map((r,i)=>{
+    const prev = reps[i+1];
+    const deltaColor = r.progressDelta>0?'var(--ok-hi)':r.progressDelta<0?'var(--bad)':'var(--mut2)';
+    const deltaTxt = r.progressDelta>0?`▲ ${r.progressDelta}%`:r.progressDelta<0?`▼ ${Math.abs(r.progressDelta)}%`:'زي ما هو';
     return `<div class="rcard">
-      <div class="rhead">
-        <b>${esc(r.week)}</b>
-        <span class="muted mono">${esc(r.from)} → ${esc(r.to)}</span>
+      <div class="rcover">
+        ${ring(r.progress,92,8,'var(--ok-hi)')}
+        <div class="rmeta">
+          <div class="wk">${esc(r.week)}</div>
+          <div class="rng mono">${esc(r.from)} → ${esc(r.to)}</div>
+          <div style="margin-top:7px;font-size:13px;color:${deltaColor}">${deltaTxt} عن الأسبوع اللي فات</div>
+        </div>
       </div>
+      ${prev?`<div class="cmp">
+        ${cmpMetric('نسبة الإنجاز', r.progress, prev.progress, 'var(--ok-hi)')}
+        ${cmpMetric('المنصرف من الميزانية', r.spentPct, prev.spentPct, 'var(--gold-hi)')}
+      </div>`:''}
       <div class="rstrip">
-        <div><div class="v" style="color:var(--ok-hi)">${r.progress}%</div><div class="l">الإنجاز (${delta})</div></div>
-        <div><div class="v" style="color:var(--gold-hi)">${r.spentPct}%</div><div class="l">المنصرف</div></div>
         <div><div class="v">${r.itemsDone}</div><div class="l">بنود خلصت</div></div>
         <div><div class="v">${r.photosCount||0}</div><div class="l">صورة</div></div>
+        <div><div class="v">${r.materialsCount||0}</div><div class="l">خامة</div></div>
+        <div><div class="v mono" style="font-size:15px;color:var(--gold-hi)">${money(r.materialsValue||0)}</div><div class="l">ج.م خامات</div></div>
       </div>
-      ${r.itemsDoneNames?`<div class="rsec"><div class="t">البنود اللي خلصت</div>${esc(r.itemsDoneNames)}</div>`:''}
-      ${r.materialsCount?`<div class="rsec"><div class="t">الخامات</div>◆ ${r.materialsCount} خامة اتوثّقت — إجمالي الفواتير <b class="mono" style="color:var(--gold-hi)">${money(r.materialsValue)} ج.م</b></div>`:''}
-      ${(r.decisionsOpened||r.payments)?`<div class="rsec"><div class="t">القرارات والدفعات</div>
-        ${r.decisionsOpened?`${r.decisionsOpened} قرار مستني منك حاليًا. `:''}${r.payments?esc(r.payments):''}</div>`:''}
-      ${r.highlights?`<div class="rsec"><div class="t">أهم ما تم يوم بيوم</div>${esc(r.highlights)}</div>`:''}
+      ${r.itemsDoneNames?repSec('🏗️','بنود خلصت الأسبوع ده',esc(r.itemsDoneNames),'var(--ok-hi)'):''}
+      ${(r.decisionsOpened||r.payments)?repSec('📋','القرارات والدفعات',
+        (r.decisionsOpened?'<b style="color:var(--warn)">'+r.decisionsOpened+' قرار</b> مستني منك حاليًا. ':'')+(r.payments?esc(r.payments):''),'var(--warn)'):''}
+      ${r.highlights?repSec('📝','يوميات الموقع',esc(r.highlights),'var(--mut2)'):''}
       ${r.nextWeek?`<div class="alert" style="margin-top:16px"><b>◆</b><div><b>الأسبوع الجاي:</b> ${esc(r.nextWeek)}</div></div>`:''}
     </div>`;
   }).join('') : empty('📆','لسه مفيش تقرير أسبوعي','كل خميس هيتولد تقرير جديد يلخّص أهم ما حصل في مشروعك.');
