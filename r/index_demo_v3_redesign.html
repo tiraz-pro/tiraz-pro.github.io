@@ -265,10 +265,10 @@ function render(d){
   }
 
   /* أحدث صورة — البطلة */
-  const heroPhoto = (d.photos||[])[0];
-  $('hero').innerHTML = heroPhoto ? `<div class="hero" onclick="tab('photo')">
-      <img loading="lazy" src="${heroPhoto.url}">
-      <div class="t"><b>${esc(heroPhoto.desc||'آخر صورة من الموقع')}</b><span>${ago(heroPhoto.at)}</span></div>
+  const heroUpdate = (d.updates||[]).find(u=>u.photos && u.photos.length);
+  $('hero').innerHTML = heroUpdate ? `<div class="hero" onclick="tab('photo')">
+      <img loading="lazy" src="${heroUpdate.photos[0]}">
+      <div class="t"><b>${esc(heroUpdate.note||'آخر تحديث من الموقع')}</b><span>${ago(heroUpdate.at)}</span></div>
     </div>` : '';
 
   /* دلوقتي بيشتغل على — أول بند شغال (بين 1 و99%) */
