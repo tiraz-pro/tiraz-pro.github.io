@@ -478,6 +478,8 @@ function render(d){
     const byDay = {};
     updsThisWeek.forEach(u=>{ const day=String(u.at).slice(0,10); (byDay[day]=byDay[day]||[]).push(u); });
     const days = Object.keys(byDay).sort();
+    const openDecisions = (d.decisions||[]).filter(x=>x.state==='مطلوب');
+    const duePays = (d.payments||[]).filter(p=>p.state==='مستحقة'||p.state==='متأخرة');
 
     return `<div class="rcard">
       <div class="rtitle">${esc(r.week)}</div>
@@ -510,11 +512,17 @@ function render(d){
       ${matsThisWeek.length?repBlock('◆','الخامات اللي اترفت الأسبوع ده',
         `<div class="rmatgrid">${matsThisWeek.map(m=>matBigCard(m,d.items)).join('')}</div>`):''}
 
-      ${(r.decisionsOpened||r.payments)?repBlock('📋','القرارات والدفعات',
-        `<div class="rlist">
-          ${r.decisionsOpened?`<div class="li"><span class="warn">◆</span><span><b style="color:var(--warn)">${r.decisionsOpened} قرار</b> مستني منك حاليًا — شوف تبويبة «القرارات» في اللوحة.</span></div>`:''}
-          ${r.payments?`<div class="li"><span class="warn">◆</span><span>${esc(r.payments)}</span></div>`:''}
-        </div>`):''}
+      ${openDecisions.length?repBlock('📋','قرارات مستنية منك حاليًا',
+        `<div class="rlist">${openDecisions.map(x=>`<div class="li">
+          <span class="warn">◆</span>
+          <span><b>${esc(x.title)}</b>${x.impact?' — '+esc(x.impact):''}${x.days?` <span class="muted">(بيأخّر التسليم ${x.days} يوم)</span>`:''}</span>
+        </div>`).join('')}</div>`):''}
+
+      ${duePays.length?repBlock('💰','دفعات مستحقة حاليًا',
+        `<div class="rlist">${duePays.map(p=>`<div class="li" style="justify-content:space-between">
+          <span>${esc(p.desc)}${p.due?' <span class="muted">— مستحقة '+esc(p.due)+'</span>':''}</span>
+          <b class="mono" style="color:var(--gold-hi)">${money(p.amount)} ج.م</b>
+        </div>`).join('')}</div>`):''}
 
       ${days.length?repBlock('📝','يوميات الموقع يوم بيوم',
         days.map(day=>`<div class="rday">
