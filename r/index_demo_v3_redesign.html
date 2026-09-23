@@ -92,6 +92,18 @@ body.archive-view header{padding-bottom:8px}
 .rtrend .bars .wk{font-size:10px;color:var(--mut2)}
 .rnext{background:var(--gold-dim);border:1px solid rgba(183,141,101,.4);border-radius:16px;padding:22px;font-size:15px;line-height:1.9}
 .rnext b{color:var(--gold-hi)}
+.rday{margin-bottom:18px}
+.rday:last-child{margin-bottom:0}
+.rday .dh{font-size:13px;color:var(--gold-hi);font-weight:bold;margin-bottom:8px;padding-inline-start:2px}
+.rday .li{align-items:flex-start}
+.rday .li .tm{font-size:11px;color:var(--mut2);flex:0 0 auto;margin-inline-start:6px}
+.money-row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 18px;
+  background:var(--panel2);border-radius:12px;font-size:14px}
+.money-row b{font-size:16px}
+.traffic{margin-top:12px;padding:14px 18px;border-radius:12px;font-size:14px;display:flex;align-items:center;gap:10px}
+.traffic.g{background:rgba(95,207,142,.1);border:1px solid rgba(95,207,142,.3)}
+.traffic.y{background:rgba(201,133,0,.1);border:1px solid rgba(201,133,0,.3)}
+.traffic.r{background:rgba(217,106,91,.1);border:1px solid rgba(217,106,91,.3)}
 .tl{margin-top:16px}
 .tl .bar{position:relative;height:6px;background:var(--line);border-radius:4px;margin:8px 0}
 .tl .fill{position:absolute;inset-inline-start:0;top:0;bottom:0;background:var(--gold);border-radius:4px}
@@ -250,6 +262,14 @@ function barColor(p){ return p>=100?'var(--ok)':p>0?'var(--warn)':'var(--line)';
 
 function repBlock(icon,title,bodyHtml){
   return `<div class="rblock"><div class="bh"><span class="ic">${icon}</span><span class="tt">${title}</span></div>${bodyHtml}</div>`;
+}
+function dayLabel(dateStr){
+  try{ return new Date(dateStr+'T00:00:00').toLocaleDateString('ar-EG-u-nu-latn',{weekday:'long',day:'numeric',month:'long'}); }
+  catch(e){ return dateStr; }
+}
+function timeOnly(at){
+  const parts=String(at).split(' ');
+  return parts[1]||'';
 }
 function donutBig(pct,color,label){
   const size=150, stroke=16, r=(size-stroke)/2, c=2*Math.PI*r, seg=c*Math.min(Math.max(pct,0),100)/100;
@@ -430,7 +450,24 @@ function render(d){
       return day >= r.from && day <= r.to;
     });
     const doneList = (r.itemsDoneNames?r.itemsDoneNames.split('، '):[]).filter(Boolean);
-    const dayNotes = (r.highlights?r.highlights.split(' · '):[]).filter(Boolean);
+
+    const budget = k.budget||0;
+    const spentSoFar = budget ? Math.round(budget*r.spentPct/100) : 0;
+    const remaining = budget - spentSoFar;
+    const gap = r.spentPct - r.progress;
+    const tCls = gap>15?'r':gap>5?'y':'g';
+    const tIcon = gap>15?'🔴':gap>5?'🟡':'🟢';
+    const tTxt = gap>15?'بيتصرف على المشروع أسرع بكتير من نسبة التنفيذ الفعلية — يستاهل مراجعة.'
+               : gap>5?'بيتصرف شوية أسرع من نسبة التنفيذ — طبيعي في مراحل التأسيس والخامات المدفوعة مقدّمًا.'
+               : 'المنصرف متماشي كويس مع نسبة الإنجاز الفعلية.';
+
+    const updsThisWeek = (d.updates||[]).filter(u=>{
+      const day = String(u.at).slice(0,10);
+      return day >= r.from && day <= r.to;
+    });
+    const byDay = {};
+    updsThisWeek.forEach(u=>{ const day=String(u.at).slice(0,10); (byDay[day]=byDay[day]||[]).push(u); });
+    const days = Object.keys(byDay).sort();
 
     return `<div class="rcard">
       <div class="rtitle">${esc(r.week)}</div>
@@ -441,6 +478,14 @@ function render(d){
         <div class="hitem">${donutBig(r.progress,'var(--ok-hi)','نسبة الإنجاز')}</div>
         <div class="hitem">${donutBig(r.spentPct,'var(--gold-hi)','المنصرف من الميزانية')}</div>
       </div>
+
+      ${budget?repBlock('💰','الوضع المالي',`<div class="rlist">
+        <div class="money-row"><span class="muted">الميزانية الكلية</span><b class="mono">${money(budget)} ج.م</b></div>
+        <div class="money-row"><span class="muted">المنصرف لحد الأسبوع ده</span><b class="mono" style="color:var(--gold-hi)">${money(spentSoFar)} ج.م</b></div>
+        <div class="money-row"><span class="muted">الباقي من الميزانية</span><b class="mono" style="color:var(--ok-hi)">${money(remaining)} ج.م</b></div>
+        <div class="money-row"><span class="muted">خامات اترفت الأسبوع ده تحديدًا</span><b class="mono">${money(r.materialsValue||0)} ج.م</b></div>
+      </div>
+      <div class="traffic ${tCls}"><span>${tIcon}</span><span>${tTxt}</span></div>`):''}
 
       <div class="rstatbar">
         <div class="sc"><div class="v">${r.itemsDone}</div><div class="l">بنود خلصت</div></div>
@@ -461,8 +506,14 @@ function render(d){
           ${r.payments?`<div class="li"><span class="warn">◆</span><span>${esc(r.payments)}</span></div>`:''}
         </div>`):''}
 
-      ${dayNotes.length?repBlock('📝','يوميات الموقع يوم بيوم',
-        `<div class="rlist">${dayNotes.map(n=>`<div class="li"><span class="chk">•</span><span>${esc(n)}</span></div>`).join('')}</div>`):''}
+      ${days.length?repBlock('📝','يوميات الموقع يوم بيوم',
+        days.map(day=>`<div class="rday">
+          <div class="dh">${dayLabel(day)}</div>
+          <div class="rlist">${byDay[day].map(u=>{
+            const it=d.items.find(i=>i.code===u.item)||{};
+            return `<div class="li"><span class="chk">•</span><span><span class="tm mono">${timeOnly(u.at)}</span>${it.name?'<b>'+esc(it.name)+':</b> ':''}${esc(u.note)}</span></div>`;
+          }).join('')}</div>
+        </div>`).join('')):''}
 
       ${upToHere.length>1?repBlock('📈','مسار الإنجاز عبر الأسابيع',trendBlock(upToHere)):''}
 
