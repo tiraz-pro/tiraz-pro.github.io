@@ -81,6 +81,20 @@ body.archive-view header{padding-bottom:8px}
 .rsec2 .ic{font-size:16px;line-height:1.4}
 .rsec2 .body .t{font-size:11px;color:var(--mut2);margin-bottom:4px}
 .rsec2 .body .b{font-size:14px;line-height:1.7}
+.rmag{display:grid;grid-template-columns:1fr 240px;gap:22px}
+@media(max-width:720px){.rmag{grid-template-columns:1fr}}
+.rside{display:flex;flex-direction:column;gap:16px}
+.rbox{background:var(--panel2);border-radius:14px;padding:16px;text-align:center}
+.rbox .lbl{font-size:11px;color:var(--mut2);margin-bottom:10px}
+.rstat3{display:flex;flex-direction:column;gap:10px}
+.rstat3 .row3{display:flex;justify-content:space-between;align-items:baseline;
+  padding:9px 12px;background:var(--panel2);border-radius:10px}
+.rstat3 .row3 b{font-size:17px}
+.mmini-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px;margin-top:6px}
+.mmini{cursor:pointer}
+.mmini img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:9px;display:block;border:1px solid var(--line)}
+.mmini .mm-t{font-size:10px;color:var(--mut2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mmini .mm-p{font-size:11px;color:var(--gold-hi);font-weight:bold}
 .tl{margin-top:16px}
 .tl .bar{position:relative;height:6px;background:var(--line);border-radius:4px;margin:8px 0}
 .tl .fill{position:absolute;inset-inline-start:0;top:0;bottom:0;background:var(--gold);border-radius:4px}
@@ -264,6 +278,36 @@ function repSec(icon,title,body,color){
     <div class="ic">${icon}</div><div class="body"><div class="t">${title}</div><div class="b">${body}</div></div>
   </div>`;
 }
+function donut(pct,size,stroke,label){
+  size=size||130; stroke=stroke||15;
+  const r=(size-stroke)/2, c=2*Math.PI*r, seg=c*Math.min(Math.max(pct,0),100)/100;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--gold-hi)" stroke-width="${stroke}"
+      stroke-dasharray="${seg} ${c-seg}" stroke-linecap="round"
+      style="transform:rotate(-90deg);transform-origin:50% 50%"/>
+    <text x="50%" y="46%" text-anchor="middle" fill="var(--tx)" font-size="24" font-weight="bold" font-family="inherit">${pct}%</text>
+    <text x="50%" y="63%" text-anchor="middle" fill="var(--mut2)" font-size="10" font-family="inherit">${esc(label||'')}</text>
+  </svg>`;
+}
+function trendChart(repsAsc){
+  const max=Math.max.apply(null,repsAsc.map(r=>r.progress).concat([10]));
+  return `<div style="display:flex;align-items:flex-end;gap:5px;height:64px">
+    ${repsAsc.map((r,idx)=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px" title="${esc(r.week)}">
+      <div style="width:100%;background:${idx===repsAsc.length-1?'var(--ok-hi)':'var(--line)'};
+        height:${Math.max(r.progress/max*46,3)}px;border-radius:3px 3px 0 0"></div>
+      <div style="font-size:9px;color:var(--mut2)">${r.progress}%</div>
+    </div>`).join('')}
+  </div>`;
+}
+function matMini(m,items){
+  const it=items.find(i=>i.code===m.item)||{};
+  return `<div class="mmini" onclick="lb('${m.photo}')" title="${esc(it.name||m.item)}">
+    <img src="${m.photo}" loading="lazy">
+    <div class="mm-t">${esc(m.name)}</div>
+    <div class="mm-p mono">${money(m.price)} ج.م</div>
+  </div>`;
+}
 function stateChip(s,p){
   if(p>=100) return '<span class="chip c-ok">خلص</span>';
   if(p>0) return '<span class="chip c-run">شغال</span>';
@@ -396,36 +440,48 @@ function render(d){
     </div>`;
   }).join('') : empty('◆','لسه مفيش خامات موثّقة','أول ما المهندس يصوّر خامة وفاتورتها من الموقع، هتظهر هنا بند ببند.');
 
-  /* التقرير الأسبوعي — الغلاف التنفيذي */
+  /* التقرير الأسبوعي — تصميم مجلة/Infographic */
   const reps = d.reports || [];
+  const repsAsc = [...reps].reverse();
   $('reports').innerHTML = reps.length ? reps.map((r,i)=>{
-    const prev = reps[i+1];
     const deltaColor = r.progressDelta>0?'var(--ok-hi)':r.progressDelta<0?'var(--bad)':'var(--mut2)';
     const deltaTxt = r.progressDelta>0?`▲ ${r.progressDelta}%`:r.progressDelta<0?`▼ ${Math.abs(r.progressDelta)}%`:'زي ما هو';
+    const idxAsc = repsAsc.indexOf(r);
+    const upToHere = repsAsc.slice(0, idxAsc+1);
+    const matsThisWeek = (d.materials||[]).filter(m=>{
+      const day = String(m.at).slice(0,10);
+      return day >= r.from && day <= r.to;
+    });
     return `<div class="rcard">
-      <div class="rcover">
-        ${ring(r.progress,92,8,'var(--ok-hi)')}
-        <div class="rmeta">
-          <div class="wk">${esc(r.week)}</div>
-          <div class="rng mono">${esc(r.from)} → ${esc(r.to)}</div>
-          <div style="margin-top:7px;font-size:13px;color:${deltaColor}">${deltaTxt} عن الأسبوع اللي فات</div>
+      <div class="rhead">
+        <b>${esc(r.week)}</b>
+        <span class="muted mono">${esc(r.from)} → ${esc(r.to)}</span>
+      </div>
+      <div class="muted" style="margin-bottom:16px;font-size:13px;color:${deltaColor}">${deltaTxt} عن الأسبوع اللي فات</div>
+      <div class="rmag">
+        <div class="rmain">
+          ${r.itemsDoneNames?repSec('🏗️','بنود خلصت الأسبوع ده',esc(r.itemsDoneNames),'var(--ok-hi)'):''}
+          ${matsThisWeek.length?repSec('◆','خامات الأسبوع ده',
+            `<div class="mmini-grid">${matsThisWeek.map(m=>matMini(m,d.items)).join('')}</div>`,'var(--gold-hi)'):''}
+          ${(r.decisionsOpened||r.payments)?repSec('📋','القرارات والدفعات',
+            (r.decisionsOpened?'<b style="color:var(--warn)">'+r.decisionsOpened+' قرار</b> مستني منك حاليًا. ':'')+(r.payments?esc(r.payments):''),'var(--warn)'):''}
+          ${r.highlights?repSec('📝','يوميات الموقع',esc(r.highlights),'var(--mut2)'):''}
+          ${r.nextWeek?`<div class="alert" style="margin-top:16px"><b>◆</b><div><b>الأسبوع الجاي:</b> ${esc(r.nextWeek)}</div></div>`:''}
+        </div>
+        <div class="rside">
+          <div class="rbox"><div class="lbl">المنصرف من الميزانية</div>${donut(r.spentPct,120,14,'')}</div>
+          <div class="rbox" style="text-align:start">
+            <div class="lbl" style="text-align:center">مسار الإنجاز حتى الأسبوع ده</div>
+            ${trendChart(upToHere)}
+          </div>
+          <div class="rstat3">
+            <div class="row3"><span class="muted">بنود خلصت</span><b>${r.itemsDone}</b></div>
+            <div class="row3"><span class="muted">صور</span><b>${r.photosCount||0}</b></div>
+            <div class="row3"><span class="muted">خامات</span><b>${r.materialsCount||0}</b></div>
+            <div class="row3"><span class="muted">قيمة الخامات</span><b class="mono" style="color:var(--gold-hi);font-size:14px">${money(r.materialsValue||0)}</b></div>
+          </div>
         </div>
       </div>
-      ${prev?`<div class="cmp">
-        ${cmpMetric('نسبة الإنجاز', r.progress, prev.progress, 'var(--ok-hi)')}
-        ${cmpMetric('المنصرف من الميزانية', r.spentPct, prev.spentPct, 'var(--gold-hi)')}
-      </div>`:''}
-      <div class="rstrip">
-        <div><div class="v">${r.itemsDone}</div><div class="l">بنود خلصت</div></div>
-        <div><div class="v">${r.photosCount||0}</div><div class="l">صورة</div></div>
-        <div><div class="v">${r.materialsCount||0}</div><div class="l">خامة</div></div>
-        <div><div class="v mono" style="font-size:15px;color:var(--gold-hi)">${money(r.materialsValue||0)}</div><div class="l">ج.م خامات</div></div>
-      </div>
-      ${r.itemsDoneNames?repSec('🏗️','بنود خلصت الأسبوع ده',esc(r.itemsDoneNames),'var(--ok-hi)'):''}
-      ${(r.decisionsOpened||r.payments)?repSec('📋','القرارات والدفعات',
-        (r.decisionsOpened?'<b style="color:var(--warn)">'+r.decisionsOpened+' قرار</b> مستني منك حاليًا. ':'')+(r.payments?esc(r.payments):''),'var(--warn)'):''}
-      ${r.highlights?repSec('📝','يوميات الموقع',esc(r.highlights),'var(--mut2)'):''}
-      ${r.nextWeek?`<div class="alert" style="margin-top:16px"><b>◆</b><div><b>الأسبوع الجاي:</b> ${esc(r.nextWeek)}</div></div>`:''}
     </div>`;
   }).join('') : empty('📆','لسه مفيش تقرير أسبوعي','كل خميس هيتولد تقرير جديد يلخّص أهم ما حصل في مشروعك.');
 
