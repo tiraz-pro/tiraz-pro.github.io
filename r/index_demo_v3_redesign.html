@@ -462,7 +462,7 @@ function render(d){
     const doneList = (r.itemsDoneNames?r.itemsDoneNames.split('، '):[]).filter(Boolean);
 
     const budget = k.budget||0;
-    const spentSoFar = budget ? Math.round(budget*r.spentPct/100) : 0;
+    const spentSoFar = r.spent || Math.round(budget*r.spentPct/100);
     const remaining = budget - spentSoFar;
     const gap = r.spentPct - r.progress;
     const tCls = gap>15?'r':gap>5?'y':'g';
