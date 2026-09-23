@@ -4,11 +4,35 @@
 <title>متابعة مشروعك | طراز ريموت</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#0B0D0E">
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" id="manifestLink" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="طراز ريموت">
 <link rel="apple-touch-icon" href="icon-192.png">
+<script>
+(function(){
+  try{
+    var params = new URLSearchParams(location.search);
+    var code = params.get('p') || '';
+    if(!code) return; // مفيش كود مشروع في اللينك، سيب المانيفست العام زي ما هو
+    var manifest = {
+      name: 'لوحة متابعة — ' + code,
+      short_name: code,
+      start_url: location.pathname + location.search,
+      scope: location.pathname,
+      display: 'standalone',
+      background_color: '#0B0D0E',
+      theme_color: '#0B0D0E',
+      icons: [
+        {src: new URL('icon-192.png', location.href).href, sizes: '192x192', type: 'image/png'},
+        {src: new URL('icon-512.png', location.href).href, sizes: '512x512', type: 'image/png'}
+      ]
+    };
+    var blobUrl = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type: 'application/json'}));
+    document.getElementById('manifestLink').setAttribute('href', blobUrl);
+  }catch(e){}
+})();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0B0D0E;--panel:#131719;--panel2:#0F1213;--line:#262D31;--gold:#B78D65;
@@ -38,14 +62,24 @@ header{background:linear-gradient(180deg,#12171A,var(--ink));border-bottom:1px s
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 h1{font-size:clamp(18px,4.2vw,25px);font-weight:800;margin-top:14px;line-height:1.35}
 .sub{color:var(--mut2);font-size:13px;margin-top:5px}
-.profile{display:flex;align-items:center;gap:12px;margin-top:18px}
-.avatar{width:46px;height:46px;border-radius:50%;flex:0 0 auto;
+.idrow{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-top:18px;flex-wrap:wrap}
+.titlewrap{flex:1;min-width:0}
+.titlewrap h1{margin:0}
+.titlewrap .sub{margin-top:6px}
+.profile{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+.avatar{width:44px;height:44px;border-radius:50%;flex:0 0 auto;
   background:linear-gradient(135deg,var(--gold),var(--gold-hi));
   color:var(--ink);display:flex;align-items:center;justify-content:center;
-  font-size:19px;font-weight:800}
-.profile-txt{min-width:0}
+  font-size:18px;font-weight:800}
+.profile-txt{min-width:0;text-align:end}
 .ptag{font-size:11px;color:var(--gold-hi);letter-spacing:.03em}
-.pname{font-size:19px;font-weight:800;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pname{font-size:16px;font-weight:800;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+@media(max-width:620px){
+  .idrow{flex-direction:column-reverse;align-items:stretch;gap:12px}
+  .profile{justify-content:flex-start}
+  .profile-txt{text-align:start}
+  .pname{max-width:220px}
+}
 
 /* KPI */
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px}
@@ -211,15 +245,19 @@ section.pane.on{display:block;animation:fade .3s}
       <div class="lgw"><b>TIRAZ<i>.</i>PRO</b><small>Concept for Finishing</small></div></a>
     <div class="live"><span class="dot"></span><span id="last">…</span></div>
   </div>
-  <div class="profile">
-    <div class="avatar" id="avatar">ط</div>
-    <div class="profile-txt">
-      <div class="ptag">لوحة متابعة مشروعك</div>
-      <div class="pname" id="clientName">…</div>
+  <div class="idrow">
+    <div class="titlewrap">
+      <h1 id="ttl">…</h1>
+      <div class="sub" id="sub"></div>
+    </div>
+    <div class="profile">
+      <div class="profile-txt">
+        <div class="ptag">لوحة متابعة مشروعك</div>
+        <div class="pname" id="clientName">…</div>
+      </div>
+      <div class="avatar" id="avatar">ط</div>
     </div>
   </div>
-  <h1 id="ttl">…</h1>
-  <div class="sub" id="sub"></div>
   <div class="tl" id="tl" style="display:none">
     <div class="lbl"><span id="tl-a"></span><span id="tl-b"></span></div>
     <div class="bar"><div class="fill" id="tl-fill"></div><div class="now" id="tl-now"></div></div>
