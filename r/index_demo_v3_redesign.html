@@ -54,47 +54,44 @@ h1{font-size:clamp(18px,4.2vw,25px);font-weight:800;margin-top:14px;line-height:
 .now-on b{color:var(--gold-hi)}
 body.archive-view #kpis,body.archive-view #nowon,body.archive-view #tl{display:none!important}
 body.archive-view header{padding-bottom:8px}
-.rcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
-.rcard .rhead{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;
-  border-bottom:1px solid var(--line);margin-bottom:14px}
-.rcard .rhead b{font-size:19px}
-.rstrip{display:flex;text-align:center}
-.rstrip>div{flex:1;padding:4px 6px}
-.rstrip>div+div{border-inline-start:1px solid var(--line)}
-.rstrip .v{font-size:21px;font-weight:bold}
-.rstrip .l{font-size:11px;color:var(--mut2);margin-top:3px}
-.rsec{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
-.rsec .t{font-size:12px;color:var(--mut2);margin-bottom:6px}
-.rcover{display:flex;align-items:center;gap:20px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--line)}
-.rring{position:relative;flex:0 0 auto}
-.rring .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:bold}
-.rmeta .wk{font-size:22px;font-weight:bold}
-.rmeta .rng{font-size:12px;color:var(--mut2);margin-top:3px}
-.cmp{margin-bottom:16px;padding:14px;background:var(--panel2);border-radius:12px}
-.cmp .cm-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.cmp .cm-row:last-child{margin-bottom:0}
-.cmp .cm-tag{width:32px;font-size:10px;color:var(--mut2);flex:0 0 auto}
-.cmp .cm-track{flex:1;height:7px;background:var(--line);border-radius:4px;overflow:hidden}
-.cmp .cm-fill{height:100%;border-radius:4px}
-.cmp .cm-v{width:38px;font-size:11px;flex:0 0 auto;text-align:end}
-.rsec2{display:flex;gap:10px;margin-top:14px;padding-inline-start:12px;border-inline-start:3px solid var(--gold)}
-.rsec2 .ic{font-size:16px;line-height:1.4}
-.rsec2 .body .t{font-size:11px;color:var(--mut2);margin-bottom:4px}
-.rsec2 .body .b{font-size:14px;line-height:1.7}
-.rmag{display:grid;grid-template-columns:1fr 240px;gap:22px}
-@media(max-width:720px){.rmag{grid-template-columns:1fr}}
-.rside{display:flex;flex-direction:column;gap:16px}
-.rbox{background:var(--panel2);border-radius:14px;padding:16px;text-align:center}
-.rbox .lbl{font-size:11px;color:var(--mut2);margin-bottom:10px}
-.rstat3{display:flex;flex-direction:column;gap:10px}
-.rstat3 .row3{display:flex;justify-content:space-between;align-items:baseline;
-  padding:9px 12px;background:var(--panel2);border-radius:10px}
-.rstat3 .row3 b{font-size:17px}
-.mmini-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px;margin-top:6px}
-.mmini{cursor:pointer}
-.mmini img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:9px;display:block;border:1px solid var(--line)}
-.mmini .mm-t{font-size:10px;color:var(--mut2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mmini .mm-p{font-size:11px;color:var(--gold-hi);font-weight:bold}
+.rcard{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px 28px;margin-bottom:28px}
+@media(max-width:600px){.rcard{padding:22px 16px}}
+.rtitle{font-size:27px;font-weight:bold}
+.rdate{font-size:13px;color:var(--mut2);margin-top:6px}
+.rdelta{font-size:14px;margin-top:14px;font-weight:600}
+.rhero{display:flex;justify-content:center;flex-wrap:wrap;gap:48px;margin:28px 0;padding:28px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rhero .hitem{text-align:center}
+.rhero .hitem .cap{font-size:13px;color:var(--mut2);margin-top:10px}
+.rstatbar{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
+@media(max-width:560px){.rstatbar{grid-template-columns:repeat(2,1fr)}}
+.rstatbar .sc{background:var(--panel2);border-radius:14px;padding:20px 10px;text-align:center}
+.rstatbar .sc .v{font-size:27px;font-weight:bold}
+.rstatbar .sc .l{font-size:12px;color:var(--mut2);margin-top:6px}
+.rblock{margin-bottom:36px}
+.rblock:last-child{margin-bottom:0}
+.rblock .bh{display:flex;align-items:center;gap:11px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--gold)}
+.rblock .bh .ic{font-size:21px}
+.rblock .bh .tt{font-size:17px;font-weight:bold}
+.rlist{display:flex;flex-direction:column;gap:11px}
+.rlist .li{display:flex;align-items:center;gap:12px;padding:15px 18px;background:var(--panel2);border-radius:12px;font-size:15px;line-height:1.6}
+.rlist .li .chk{color:var(--ok-hi);font-size:18px;flex:0 0 auto}
+.rlist .li .warn{color:var(--warn);font-size:18px;flex:0 0 auto}
+.rmatgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.rmatcard{background:var(--panel2);border-radius:16px;overflow:hidden;cursor:pointer}
+.rmatcard img{width:100%;height:160px;object-fit:cover;display:block}
+.rmatcard .info{padding:14px 16px}
+.rmatcard .nm{font-size:15px;font-weight:bold;margin-bottom:5px}
+.rmatcard .sup{font-size:12px;color:var(--mut2);margin-bottom:10px}
+.rmatcard .pr{font-size:16px;color:var(--gold-hi);font-weight:bold}
+.rtrend{padding:8px 4px 0}
+.rtrend .bars{display:flex;align-items:flex-end;gap:10px;height:120px}
+.rtrend .bars>div{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.rtrend .bars .b{width:100%;border-radius:6px 6px 0 0}
+.rtrend .bars .pc{font-size:13px;font-weight:bold}
+.rtrend .bars .wk{font-size:10px;color:var(--mut2)}
+.rnext{background:var(--gold-dim);border:1px solid rgba(183,141,101,.4);border-radius:16px;padding:22px;font-size:15px;line-height:1.9}
+.rnext b{color:var(--gold-hi)}
 .tl{margin-top:16px}
 .tl .bar{position:relative;height:6px;background:var(--line);border-radius:4px;margin:8px 0}
 .tl .fill{position:absolute;inset-inline-start:0;top:0;bottom:0;background:var(--gold);border-radius:4px}
@@ -251,61 +248,39 @@ function ago(iso){
 
 function barColor(p){ return p>=100?'var(--ok)':p>0?'var(--warn)':'var(--line)'; }
 
-function ring(pct,size,stroke,color){
-  size=size||92; stroke=stroke||8; color=color||'var(--ok-hi)';
-  const r=(size-stroke)/2, c=2*Math.PI*r, off=c*(1-Math.min(Math.max(pct,0),100)/100);
-  return `<div class="rring" style="width:${size}px;height:${size}px">
-    <svg width="${size}" height="${size}">
-      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
-      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}"
-        stroke-dasharray="${c}" stroke-dashoffset="${off}" stroke-linecap="round"
-        style="transform:rotate(-90deg);transform-origin:50% 50%"/>
-    </svg>
-    <div class="pct">${pct}%</div>
-  </div>`;
+function repBlock(icon,title,bodyHtml){
+  return `<div class="rblock"><div class="bh"><span class="ic">${icon}</span><span class="tt">${title}</span></div>${bodyHtml}</div>`;
 }
-function cmpMetric(label,now,prev,color){
-  return `<div class="cm-row"><div class="cm-tag">ده</div>
-      <div class="cm-track"><div class="cm-fill" style="width:${now}%;background:${color}"></div></div>
-      <div class="cm-v mono">${now}%</div></div>
-    <div class="cm-row" style="margin-bottom:2px"><div class="cm-tag">فات</div>
-      <div class="cm-track"><div class="cm-fill" style="width:${prev}%;background:var(--mut2);opacity:.55"></div></div>
-      <div class="cm-v mono muted">${prev}%</div></div>
-    <div class="muted" style="font-size:11px;margin:2px 0 10px">${label}</div>`;
-}
-function repSec(icon,title,body,color){
-  return `<div class="rsec2" style="border-inline-start-color:${color}">
-    <div class="ic">${icon}</div><div class="body"><div class="t">${title}</div><div class="b">${body}</div></div>
-  </div>`;
-}
-function donut(pct,size,stroke,label){
-  size=size||130; stroke=stroke||15;
-  const r=(size-stroke)/2, c=2*Math.PI*r, seg=c*Math.min(Math.max(pct,0),100)/100;
+function donutBig(pct,color,label){
+  const size=150, stroke=16, r=(size-stroke)/2, c=2*Math.PI*r, seg=c*Math.min(Math.max(pct,0),100)/100;
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
     <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
-    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--gold-hi)" stroke-width="${stroke}"
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}"
       stroke-dasharray="${seg} ${c-seg}" stroke-linecap="round"
       style="transform:rotate(-90deg);transform-origin:50% 50%"/>
-    <text x="50%" y="46%" text-anchor="middle" fill="var(--tx)" font-size="24" font-weight="bold" font-family="inherit">${pct}%</text>
-    <text x="50%" y="63%" text-anchor="middle" fill="var(--mut2)" font-size="10" font-family="inherit">${esc(label||'')}</text>
-  </svg>`;
+    <text x="50%" y="46%" text-anchor="middle" fill="var(--tx)" font-size="28" font-weight="bold" font-family="inherit">${pct}%</text>
+  </svg><div class="cap">${esc(label)}</div>`;
 }
-function trendChart(repsAsc){
+function trendBlock(repsAsc){
   const max=Math.max.apply(null,repsAsc.map(r=>r.progress).concat([10]));
-  return `<div style="display:flex;align-items:flex-end;gap:5px;height:64px">
-    ${repsAsc.map((r,idx)=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px" title="${esc(r.week)}">
-      <div style="width:100%;background:${idx===repsAsc.length-1?'var(--ok-hi)':'var(--line)'};
-        height:${Math.max(r.progress/max*46,3)}px;border-radius:3px 3px 0 0"></div>
-      <div style="font-size:9px;color:var(--mut2)">${r.progress}%</div>
+  return `<div class="rtrend"><div class="bars">
+    ${repsAsc.map((r,idx)=>`<div title="${esc(r.week)}">
+      <div class="pc">${r.progress}%</div>
+      <div class="b" style="background:${idx===repsAsc.length-1?'var(--ok-hi)':'var(--line)'};
+        height:${Math.max(r.progress/max*88,4)}px"></div>
+      <div class="wk">${esc(r.week.replace('الأسبوع ',''))}</div>
     </div>`).join('')}
-  </div>`;
+  </div></div>`;
 }
-function matMini(m,items){
+function matBigCard(m,items){
   const it=items.find(i=>i.code===m.item)||{};
-  return `<div class="mmini" onclick="lb('${m.photo}')" title="${esc(it.name||m.item)}">
+  return `<div class="rmatcard" onclick="lb('${m.photo}')">
     <img src="${m.photo}" loading="lazy">
-    <div class="mm-t">${esc(m.name)}</div>
-    <div class="mm-p mono">${money(m.price)} ج.م</div>
+    <div class="info">
+      <div class="nm">${esc(m.name)}</div>
+      <div class="sup">للبند: ${esc(it.name||m.item)}${m.supplier?' · '+esc(m.supplier):''}</div>
+      <div class="pr">${money(m.price)} ج.م</div>
+    </div>
   </div>`;
 }
 function stateChip(s,p){
@@ -440,48 +415,58 @@ function render(d){
     </div>`;
   }).join('') : empty('◆','لسه مفيش خامات موثّقة','أول ما المهندس يصوّر خامة وفاتورتها من الموقع، هتظهر هنا بند ببند.');
 
-  /* التقرير الأسبوعي — تصميم مجلة/Infographic */
+  /* التقرير الأسبوعي — تقرير كامل واسع */
   const reps = d.reports || [];
   const repsAsc = [...reps].reverse();
   $('reports').innerHTML = reps.length ? reps.map((r,i)=>{
     const deltaColor = r.progressDelta>0?'var(--ok-hi)':r.progressDelta<0?'var(--bad)':'var(--mut2)';
-    const deltaTxt = r.progressDelta>0?`▲ ${r.progressDelta}%`:r.progressDelta<0?`▼ ${Math.abs(r.progressDelta)}%`:'زي ما هو';
+    const deltaTxt = r.progressDelta>0?`▲ اتحسّن ${r.progressDelta}% عن الأسبوع اللي فات`
+                   : r.progressDelta<0?`▼ اتأخر ${Math.abs(r.progressDelta)}% عن الأسبوع اللي فات`
+                   : 'نفس نسبة الأسبوع اللي فات بالظبط';
     const idxAsc = repsAsc.indexOf(r);
     const upToHere = repsAsc.slice(0, idxAsc+1);
     const matsThisWeek = (d.materials||[]).filter(m=>{
       const day = String(m.at).slice(0,10);
       return day >= r.from && day <= r.to;
     });
+    const doneList = (r.itemsDoneNames?r.itemsDoneNames.split('، '):[]).filter(Boolean);
+    const dayNotes = (r.highlights?r.highlights.split(' · '):[]).filter(Boolean);
+
     return `<div class="rcard">
-      <div class="rhead">
-        <b>${esc(r.week)}</b>
-        <span class="muted mono">${esc(r.from)} → ${esc(r.to)}</span>
+      <div class="rtitle">${esc(r.week)}</div>
+      <div class="rdate mono">${esc(r.from)} → ${esc(r.to)}</div>
+      <div class="rdelta" style="color:${deltaColor}">${deltaTxt}</div>
+
+      <div class="rhero">
+        <div class="hitem">${donutBig(r.progress,'var(--ok-hi)','نسبة الإنجاز')}</div>
+        <div class="hitem">${donutBig(r.spentPct,'var(--gold-hi)','المنصرف من الميزانية')}</div>
       </div>
-      <div class="muted" style="margin-bottom:16px;font-size:13px;color:${deltaColor}">${deltaTxt} عن الأسبوع اللي فات</div>
-      <div class="rmag">
-        <div class="rmain">
-          ${r.itemsDoneNames?repSec('🏗️','بنود خلصت الأسبوع ده',esc(r.itemsDoneNames),'var(--ok-hi)'):''}
-          ${matsThisWeek.length?repSec('◆','خامات الأسبوع ده',
-            `<div class="mmini-grid">${matsThisWeek.map(m=>matMini(m,d.items)).join('')}</div>`,'var(--gold-hi)'):''}
-          ${(r.decisionsOpened||r.payments)?repSec('📋','القرارات والدفعات',
-            (r.decisionsOpened?'<b style="color:var(--warn)">'+r.decisionsOpened+' قرار</b> مستني منك حاليًا. ':'')+(r.payments?esc(r.payments):''),'var(--warn)'):''}
-          ${r.highlights?repSec('📝','يوميات الموقع',esc(r.highlights),'var(--mut2)'):''}
-          ${r.nextWeek?`<div class="alert" style="margin-top:16px"><b>◆</b><div><b>الأسبوع الجاي:</b> ${esc(r.nextWeek)}</div></div>`:''}
-        </div>
-        <div class="rside">
-          <div class="rbox"><div class="lbl">المنصرف من الميزانية</div>${donut(r.spentPct,120,14,'')}</div>
-          <div class="rbox" style="text-align:start">
-            <div class="lbl" style="text-align:center">مسار الإنجاز حتى الأسبوع ده</div>
-            ${trendChart(upToHere)}
-          </div>
-          <div class="rstat3">
-            <div class="row3"><span class="muted">بنود خلصت</span><b>${r.itemsDone}</b></div>
-            <div class="row3"><span class="muted">صور</span><b>${r.photosCount||0}</b></div>
-            <div class="row3"><span class="muted">خامات</span><b>${r.materialsCount||0}</b></div>
-            <div class="row3"><span class="muted">قيمة الخامات</span><b class="mono" style="color:var(--gold-hi);font-size:14px">${money(r.materialsValue||0)}</b></div>
-          </div>
-        </div>
+
+      <div class="rstatbar">
+        <div class="sc"><div class="v">${r.itemsDone}</div><div class="l">بنود خلصت</div></div>
+        <div class="sc"><div class="v">${r.photosCount||0}</div><div class="l">صورة من الموقع</div></div>
+        <div class="sc"><div class="v">${r.materialsCount||0}</div><div class="l">خامة اتوثّقت</div></div>
+        <div class="sc"><div class="v mono" style="color:var(--gold-hi)">${money(r.materialsValue||0)}</div><div class="l">ج.م قيمة الخامات</div></div>
       </div>
+
+      ${doneList.length?repBlock('🏗️','البنود اللي خلصت الأسبوع ده',
+        `<div class="rlist">${doneList.map(n=>`<div class="li"><span class="chk">✓</span><span>${esc(n)}</span></div>`).join('')}</div>`):''}
+
+      ${matsThisWeek.length?repBlock('◆','الخامات اللي اترفت الأسبوع ده',
+        `<div class="rmatgrid">${matsThisWeek.map(m=>matBigCard(m,d.items)).join('')}</div>`):''}
+
+      ${(r.decisionsOpened||r.payments)?repBlock('📋','القرارات والدفعات',
+        `<div class="rlist">
+          ${r.decisionsOpened?`<div class="li"><span class="warn">◆</span><span><b style="color:var(--warn)">${r.decisionsOpened} قرار</b> مستني منك حاليًا — شوف تبويبة «القرارات» في اللوحة.</span></div>`:''}
+          ${r.payments?`<div class="li"><span class="warn">◆</span><span>${esc(r.payments)}</span></div>`:''}
+        </div>`):''}
+
+      ${dayNotes.length?repBlock('📝','يوميات الموقع يوم بيوم',
+        `<div class="rlist">${dayNotes.map(n=>`<div class="li"><span class="chk">•</span><span>${esc(n)}</span></div>`).join('')}</div>`):''}
+
+      ${upToHere.length>1?repBlock('📈','مسار الإنجاز عبر الأسابيع',trendBlock(upToHere)):''}
+
+      ${r.nextWeek?repBlock('◆','الأسبوع الجاي',`<div class="rnext"><b>الخطة:</b> ${esc(r.nextWeek)}</div>`):''}
     </div>`;
   }).join('') : empty('📆','لسه مفيش تقرير أسبوعي','كل خميس هيتولد تقرير جديد يلخّص أهم ما حصل في مشروعك.');
 
