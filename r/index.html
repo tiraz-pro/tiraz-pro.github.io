@@ -474,6 +474,9 @@ function render(d){
           <span>${(i.materials&&i.materials.length)?`<span class="pct" style="background:var(--gold-dim);color:var(--gold-hi)">◆ ${i.materials.length}</span> `:''}${stateChip(i.state,i.pct)} <span class="pct">${i.pct}%</span></span></div>
         <div class="bar"><i style="width:${i.pct}%;background:${barColor(i.pct)}"></i></div>
         ${i.note?`<div class="note">${esc(i.note)} <span class="muted">· ${ago(i.at)}</span></div>`:''}
+        ${(i.photos&&i.photos.length)?`<div class="grid" style="margin-top:10px">`+i.photos.map(p=>`
+          <div class="ph" onclick="lb('${p}')"><img loading="lazy" src="${p}"></div>`
+          ).join('')+`</div>`:''}
         ${(i.materials&&i.materials.length)?`<div class="grid" style="margin-top:10px">`+i.materials.map(mt=>`
           <div class="ph" onclick="lb('${mt.photo}')"><img loading="lazy" src="${mt.photo}"><span>${esc(mt.name)}</span></div>`
           ).join('')+`</div>`:''}
