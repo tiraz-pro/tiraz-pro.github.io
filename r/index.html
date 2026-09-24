@@ -198,6 +198,22 @@ section.pane.on{display:block;animation:fade .3s}
 .bar>i{display:block;height:100%;border-radius:4px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
 .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .row b{font-size:14.5px;font-weight:500}
+.catband{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px;
+  padding:12px 14px;background:var(--panel2);border-radius:12px}
+.catband .cn{font-size:14px;font-weight:bold}
+.catband .cp{display:flex;align-items:center;gap:8px}
+.catband .track{width:70px;height:6px;background:var(--line);border-radius:4px;overflow:hidden}
+.catband .track i{display:block;height:100%;border-radius:4px}
+.itcard{background:var(--panel);border-radius:14px;padding:16px 17px 14px;margin-bottom:10px;
+  border-inline-start:4px solid var(--line)}
+.itcard.done{border-inline-start-color:var(--ok-hi)}
+.itcard.going{border-inline-start-color:var(--gold)}
+.isec{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+.isec .ih{font-size:11px;color:var(--mut2);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.itl{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.itl .tph{flex:0 0 auto;text-align:center;cursor:pointer}
+.itl .tph img{width:76px;height:76px;object-fit:cover;border-radius:9px;display:block;border:1px solid var(--line)}
+.itl .tph span{font-size:9.5px;color:var(--mut2);margin-top:3px;display:block}
 .pct{font-family:'IBM Plex Mono',monospace;font-size:13px;direction:ltr}
 .muted{color:var(--mut2);font-size:12.6px}
 .note{font-size:13px;color:var(--mut);font-weight:300;margin-top:7px;line-height:1.75}
@@ -468,19 +484,29 @@ function render(d){
   d.items.forEach(i=>{(cats[i.cat]=cats[i.cat]||[]).push(i)});
   $('items').innerHTML=Object.entries(cats).map(([c,arr])=>{
     const avg=Math.round(arr.reduce((a,i)=>a+i.pct,0)/arr.length);
-    return `<div class="cat">${esc(c)} · ${avg}%</div>`+arr.map(i=>`
-      <div class="card" style="padding:13px 15px">
+    return `<div class="catband">
+        <div class="cn">${esc(c)}</div>
+        <div class="cp"><div class="track"><i style="width:${avg}%;background:${barColor(avg)}"></i></div>
+        <span class="muted mono" style="font-size:12px">${avg}%</span></div>
+      </div>`+arr.map(i=>{
+        const itemUpdates=(d.updates||[]).filter(u=>u.item===i.code).slice().reverse(); // الأقدم الأول
+        const timeline=[];
+        itemUpdates.forEach(u=>(u.photos||[]).forEach(p=>timeline.push({url:p,at:u.at})));
+        const cardCls=i.state==='خلص'?'done':i.state==='شغال'?'going':'';
+        return `<div class="itcard ${cardCls}">
         <div class="row"><b>${esc(i.name)}</b>
-          <span>${(i.materials&&i.materials.length)?`<span class="pct" style="background:var(--gold-dim);color:var(--gold-hi)">◆ ${i.materials.length}</span> `:''}${stateChip(i.state,i.pct)} <span class="pct">${i.pct}%</span></span></div>
+          <span>${stateChip(i.state,i.pct)} <span class="pct">${i.pct}%</span></span></div>
         <div class="bar"><i style="width:${i.pct}%;background:${barColor(i.pct)}"></i></div>
         ${i.note?`<div class="note">${esc(i.note)} <span class="muted">· ${ago(i.at)}</span></div>`:''}
-        ${(i.photos&&i.photos.length)?`<div class="grid" style="margin-top:10px">`+i.photos.map(p=>`
-          <div class="ph" onclick="lb('${p}')"><img loading="lazy" src="${p}"></div>`
-          ).join('')+`</div>`:''}
-        ${(i.materials&&i.materials.length)?`<div class="grid" style="margin-top:10px">`+i.materials.map(mt=>`
-          <div class="ph" onclick="lb('${mt.photo}')"><img loading="lazy" src="${mt.photo}"><span>${esc(mt.name)}</span></div>`
-          ).join('')+`</div>`:''}
-      </div>`).join('');
+        ${timeline.length?`<div class="isec"><div class="ih">📷 صور الموقع (${timeline.length})</div>
+          <div class="itl">${timeline.map(t=>`<div class="tph" onclick="lb('${t.url}')">
+            <img loading="lazy" src="${t.url}"><span>${esc(String(t.at).split(' ')[0])}</span></div>`).join('')}</div>
+        </div>`:''}
+        ${(i.materials&&i.materials.length)?`<div class="isec"><div class="ih">◆ الخامات المرتبطة (${i.materials.length})</div>
+          <div class="grid">${i.materials.map(mt=>`
+          <div class="ph" onclick="lb('${mt.photo}')"><img loading="lazy" src="${mt.photo}"><span>${esc(mt.name)}</span></div>`).join('')}</div>
+        </div>`:''}
+      </div>`;}).join('');
   }).join('');
 
   /* الصور */
