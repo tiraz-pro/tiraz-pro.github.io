@@ -489,9 +489,7 @@ function render(d){
         <div class="cp"><div class="track"><i style="width:${avg}%;background:${barColor(avg)}"></i></div>
         <span class="muted mono" style="font-size:12px">${avg}%</span></div>
       </div>`+arr.map(i=>{
-        const itemUpdates=(d.updates||[]).filter(u=>u.item===i.code).slice().reverse(); // الأقدم الأول
-        const timeline=[];
-        itemUpdates.forEach(u=>(u.photos||[]).forEach(p=>timeline.push({url:p,at:u.at})));
+        const timeline=i.photos||[];
         const cardCls=i.state==='خلص'?'done':i.state==='شغال'?'going':'';
         return `<div class="itcard ${cardCls}">
         <div class="row"><b>${esc(i.name)}</b>
