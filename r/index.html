@@ -688,22 +688,39 @@ function empty(ic,t,p){ return `<div class="empty"><div class="ic">${ic}</div><b
 function lb(u){ const l=$('lb'); l.querySelector('img').src=u; l.classList.add('on'); }
 
 /* ── التحميل ── */
+let _fails=0;
 async function load(){
   if(!P||!T){ return fail('الرابط ناقص','اطلب من طراز يبعتلك الرابط الكامل تاني.'); }
   const cached=localStorage.getItem(KEY);
   if(cached){ try{ render(JSON.parse(cached)); $('boot').style.display='none'; }catch(e){} }
-  try{
-    const r=await fetch(API+'?p='+encodeURIComponent(P)+'&t='+encodeURIComponent(T),{credentials:'omit'});
-    const j=await r.json();
-    if(j.error) throw new Error(j.error);
-    localStorage.setItem(KEY,JSON.stringify(j));
-    render(j); $('boot').style.display='none'; $('off').classList.remove('on');
-    checkNotify(j);
-  }catch(e){
-    if(cached){ $('off').classList.add('on'); $('off').textContent='مفيش نت — دي آخر نسخة محفوظة'; }
-    else fail('مش قادرين نوصل لبيانات مشروعك',String(e.message||e));
+  let j=null, lastErr=null;
+  // محاولتين قبل ما نعتبر في مشكلة (سيرفر جوجل أحياناً بيتأخر أو بيرد خطأ لحظي)
+  for(let i=0;i<2&&!j;i++){
+    try{
+      const r=await fetch(API+'?p='+encodeURIComponent(P)+'&t='+encodeURIComponent(T),{credentials:'omit'});
+      const x=await r.json();
+      if(x.error) throw new Error(x.error);
+      j=x;
+    }catch(e){ lastErr=e; if(i===0) await new Promise(s=>setTimeout(s,2500)); }
   }
+  if(j){
+    _fails=0;
+    localStorage.setItem(KEY,JSON.stringify(j));
+    $('off').classList.remove('on');
+    try{ render(j); $('boot').style.display='none'; }catch(e){ console.error(e); }
+    checkNotify(j);
+    return;
+  }
+  _fails++;
+  if(cached){
+    // الرسالة بتظهر بس لو فعلاً مفيش نت، أو التحديث فشل مرتين ورا بعض
+    if(navigator.onLine===false){ $('off').classList.add('on'); $('off').textContent='مفيش نت — دي آخر نسخة محفوظة'; }
+    else if(_fails>=2){ $('off').classList.add('on'); $('off').textContent='تعذّر التحديث دلوقتي — دي آخر نسخة محفوظة وهنحاول تاني تلقائياً'; }
+  }
+  else fail('مش قادرين نوصل لبيانات مشروعك',String((lastErr&&lastErr.message)||lastErr));
 }
+addEventListener('online',()=>load());
+addEventListener('offline',()=>{ if(localStorage.getItem(KEY)){ $('off').classList.add('on'); $('off').textContent='مفيش نت — دي آخر نسخة محفوظة'; } });
 const NKEY=KEY+'_seen';
 function checkNotify(j){
   try{
